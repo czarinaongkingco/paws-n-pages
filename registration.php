@@ -77,10 +77,16 @@ include("connection.php");
             display: none;
         }
 
+        .password-container {
+            position: relative;
+            margin: auto;
+        }
+
         .fa-eye {
             position: absolute;
-            top: 23px;
+            top: 50%;
             right: 4%;
+            transform: translateY(-50%);
             cursor: pointer;
             color: lightgray;
         }
