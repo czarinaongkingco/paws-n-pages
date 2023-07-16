@@ -234,6 +234,8 @@ $clinicID = $row_ca['ClinicID'];
                 order: [
                     [3, 'asc']
                 ],
+
+                lengthMenu: [5, 10, 20, 50],
             });
         });
     </script>
@@ -441,6 +443,7 @@ $clinicID = $row_ca['ClinicID'];
                                         <th class="column1" style="border:0px; color:#80b434;">Price</th>
                                         <th class="column1" style="border:0px; color:#80b434;">Stocks</th>
                                         <th class="column1" style="border:0px; color:#80b434;">Needs Prescription</th>
+                                        <th class="column1" style="border:0px; color:#80b434; text-align: center;">View</th>
                                     </tr>
                                 </thead>
 
@@ -460,6 +463,11 @@ $clinicID = $row_ca['ClinicID'];
                                                 <td style="border:0px; width: 20%;">₱ <?php echo $row['SupplyPrice']; ?></td>
                                                 <td style="border:0px;"><?php echo $row['Stocks']; ?></td>
                                                 <td style="border:0px;"><?php echo $row['NeedPrescription']; ?></td>
+                                                <td style="border:0px; text-align: center;">
+                                                    <a href="" asupply-id="<?php echo $row['SupplyID'] ?>" asupply-clinic="<?php echo $row['ClinicName'] ?>" asupply-image="<?php echo $row['SupplyImage'] ?>" asupply-name="<?php echo $row['SupplyName'] ?>" asupply-desc="<?php echo $row['SupplyDescription'] ?>" asupply-price="<?php echo $row['SupplyPrice'] ?>" astocks="<?php echo $row['Stocks'] ?>" aneed-presc="<?php echo $row['NeedPrescription'] ?>" class="edit" data-toggle="modal" data-target="#view_modal">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         <?php
                                             $cnt = $cnt + 1;

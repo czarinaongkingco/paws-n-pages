@@ -244,6 +244,17 @@ $clinicID = $row_ca['ClinicID'];
 
             });
         });
+
+        $(document).ready(function() {
+            var table = $('#orders2').DataTable({
+                order: [
+                    [4, 'desc']
+                ],
+
+                lengthMenu: [5, 10, 20, 50],
+
+            });
+        });
     </script>
 </head>
 
@@ -483,7 +494,7 @@ $clinicID = $row_ca['ClinicID'];
                     <div class="card mb-4 mb-xl-0" style="border-radius: 15px;">
                         <div class="card-header userProfile-font"><b>📦 Orders</b></div>
                         <div class="card-body text-center">
-                            <table class="table table-striped table-hover" style="border:0px;  text-align:left;" id="orders">
+                            <table class="table table-striped table-hover" style="border:0px;  text-align:left;" id="orders2">
                                 <thead style="border:0px;">
                                     <tr class="table100-head" style="border:0px;">
                                         <th class="column1" style="border:0px; color:#80b434;">Reference No.</th>
