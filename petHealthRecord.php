@@ -174,8 +174,8 @@ $petID = $_GET['petid'];
 
     <!-- START OF PET HEALTH RECORD -->
     <br>
-    <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
-        <h1 class="text-primary text-uppercase"><b>⚕️Pet Health Record</b></h1>
+    <div class="border-start border-5 border-primary ps-5 mb-5">
+        <h2 class="text-primary text-uppercase"><b>⚕️Pet Health Record</b></h2>
     </div>
     <div style="padding-right:30px; padding-left:30px;">
         <div class="row">

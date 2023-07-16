@@ -262,11 +262,10 @@ $_SESSION['clinic_id'] = $clinic_id;
                 <br>
                 <a class="btn button4 btn-dark m-1" href="booking_form.php?clinicid=<?php echo htmlentities($clinic_id); ?>" style="text-align: center; border-radius: 15px; width: 95%;">Book an appointment
                 </a>
-
-                <br>
-                <a class="btn btn-primary m-1" data-toggle="modal" data-target="#view_services" style="text-align: center; border-radius: 15px; width: 95%;">View Services
-                </a>
             <?php } ?>
+            <br>
+            <a class="btn btn-primary m-1" data-toggle="modal" data-target="#view_services" style="text-align: center; border-radius: 15px; width: 95%;">View Services
+            </a>
 
                 </div>
             </div>
