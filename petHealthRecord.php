@@ -13,8 +13,7 @@ $petID = $_GET['petid'];
 <head>
     <meta charset="utf-8">
     <title>Paws N Pages | Pet Health Record</title>
-    <link rel="icon" href="https://media.discordapp.net/attachments/1112075552669581332/1113455947420024832/icon.png"
-        type="image/x-icon">
+    <link rel="icon" href="https://media.discordapp.net/attachments/1112075552669581332/1113455947420024832/icon.png" type="image/x-icon">
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -106,7 +105,7 @@ $petID = $_GET['petid'];
             if (file) {
                 var reader = new FileReader();
 
-                reader.onload = function () {
+                reader.onload = function() {
                     $("#image").attr("src", reader.result);
                 }
 
@@ -115,7 +114,7 @@ $petID = $_GET['petid'];
         }
     </script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             var table = $('#vaccine').DataTable({
                 order: [
                     [6, 'desc']
@@ -123,7 +122,7 @@ $petID = $_GET['petid'];
             });
         });
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             var table = $('#assessment').DataTable({
                 order: [
                     [1, 'asc']
@@ -183,8 +182,7 @@ $petID = $_GET['petid'];
             <div class="col-xl-12">
                 <div class="card mb-4 mb-xl-0" style="border-radius: 15px;" id="vaccine_tab" name="tab">
                     <div class="tab">
-                        <button id="v_tab" class="tablinks active"
-                            onclick="showContent('content1', this)">Vaccine</button>
+                        <button id="v_tab" class="tablinks active" onclick="showContent('content1', this)">Vaccine</button>
                         <button id="ha_tab" class="tablinks" onclick="showContent('content2', this)">Health
                             Assessment</button>
                     </div>
@@ -213,7 +211,7 @@ $petID = $_GET['petid'];
                                 if ($row > 0) {
                                     while ($row = mysqli_fetch_array($ret)) {
 
-                                        ?>
+                                ?>
                                         <!--Fetch the Records -->
                                         <tr style="border:0px;">
                                             <td style="border:0px;">
@@ -250,14 +248,14 @@ $petID = $_GET['petid'];
                                             if ($row1 > 0) {
                                                 while ($row1 = mysqli_fetch_array($ret1)) {
 
-                                                    ?>
+                                            ?>
 
                                                     <td style="border:0px;">
                                                         <?php echo $row1['ClinicName']; ?>
                                                     </td>
 
 
-                                                <?php }
+                                            <?php }
                                             } ?>
 
                                             <!-- <td style="text-align: center;">
@@ -265,30 +263,30 @@ $petID = $_GET['petid'];
                                         <a href="inventory_management.php?delid=<?php echo ($row['SupplyID']); ?>" class="delete" title="Delete" data-toggle="tooltip" onclick="return confirm('Delete item?');"><i class="material-icons" style="color:firebrick;">&#xE872;</i></a>
                                     </td> -->
                                         </tr>
-                                        <?php
+                                    <?php
                                         $cnt = $cnt + 1;
                                     }
                                 } else { ?>
-                                <tr>
-                                    <th style="text-align:center; color:red; border:0px;" colspan="9">No Record Found
-                                    </th>
-                                    <th style="text-align:center; color:red; border:0px; display:none;">No Record Found
-                                    </th>
-                                    <th style="text-align:center; color:red; border:0px; display:none;">No Record Found
-                                    </th>
-                                    <th style="text-align:center; color:red; border:0px; display:none;">No Record Found
-                                    </th>
-                                    <th style="text-align:center; color:red; border:0px; display:none;">No Record Found
-                                    </th>
-                                    <th style="text-align:center; color:red; border:0px; display:none;">No Record Found
-                                    </th>
-                                    <th style="text-align:center; color:red; border:0px; display:none;">No Record Found
-                                    </th>
-                                    <th style="text-align:center; color:red; border:0px; display:none;">No Record Found
-                                    </th>
-                                    <th style="text-align:center; color:red; border:0px; display:none;">No Record Found
-                                    </th>
-                                </tr>
+                                    <tr>
+                                        <th style="text-align:center; color:red; border:0px;" colspan="9">No Record Found
+                                        </th>
+                                        <th style="text-align:center; color:red; border:0px; display:none;">No Record Found
+                                        </th>
+                                        <th style="text-align:center; color:red; border:0px; display:none;">No Record Found
+                                        </th>
+                                        <th style="text-align:center; color:red; border:0px; display:none;">No Record Found
+                                        </th>
+                                        <th style="text-align:center; color:red; border:0px; display:none;">No Record Found
+                                        </th>
+                                        <th style="text-align:center; color:red; border:0px; display:none;">No Record Found
+                                        </th>
+                                        <th style="text-align:center; color:red; border:0px; display:none;">No Record Found
+                                        </th>
+                                        <th style="text-align:center; color:red; border:0px; display:none;">No Record Found
+                                        </th>
+                                        <th style="text-align:center; color:red; border:0px; display:none;">No Record Found
+                                        </th>
+                                    </tr>
                                 <?php } ?>
 
                             </tbody>
@@ -317,7 +315,7 @@ $petID = $_GET['petid'];
                                 if ($row > 0) {
                                     while ($row = mysqli_fetch_array($ret)) {
 
-                                        ?>
+                                ?>
                                         <!--Fetch the Records -->
                                         <tr>
                                             <td style="border:0px;">
@@ -341,14 +339,14 @@ $petID = $_GET['petid'];
                                             if ($row1 > 0) {
                                                 while ($row1 = mysqli_fetch_array($ret1)) {
 
-                                                    ?>
+                                            ?>
 
                                                     <td style="border:0px;">
                                                         <?php echo $row1['ClinicName']; ?>
                                                     </td>
 
 
-                                                <?php }
+                                            <?php }
                                             } ?>
 
                                             <!-- <td style="text-align: center;">
@@ -356,22 +354,22 @@ $petID = $_GET['petid'];
                                         <a href="inventory_management.php?delid=<?php echo ($row['SupplyID']); ?>" class="delete" title="Delete" data-toggle="tooltip" onclick="return confirm('Delete item?');"><i class="material-icons" style="color:firebrick;">&#xE872;</i></a>
                                     </td> -->
                                         </tr>
-                                        <?php
+                                    <?php
                                         $cnt = $cnt + 1;
                                     }
                                 } else { ?>
-                                <tr>
-                                    <th style="text-align:center; color:red; border:0px;" colspan="5">No Record Found
-                                    </th>
-                                    <th style="text-align:center; color:red; border:0px;" style="display:none">No Record
-                                        Found</th>
-                                    <th style="text-align:center; color:red; border:0px;" style="display:none">No Record
-                                        Found</th>
-                                    <th style="text-align:center; color:red; border:0px;" style="display:none">No Record
-                                        Found</th>
-                                    <th style="text-align:center; color:red; border:0px;" style="display:none">No Record
-                                        Found</th>
-                                </tr>
+                                    <tr>
+                                        <th style="text-align:center; color:red; border:0px;" colspan="5">No Record Found
+                                        </th>
+                                        <th style="text-align:center; color:red; border:0px;" style="display:none">No Record
+                                            Found</th>
+                                        <th style="text-align:center; color:red; border:0px;" style="display:none">No Record
+                                            Found</th>
+                                        <th style="text-align:center; color:red; border:0px;" style="display:none">No Record
+                                            Found</th>
+                                        <th style="text-align:center; color:red; border:0px;" style="display:none">No Record
+                                            Found</th>
+                                    </tr>
                                 <?php } ?>
 
                             </tbody>
@@ -396,10 +394,8 @@ $petID = $_GET['petid'];
                 <div class="col-lg-4 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Get In Touch</h5>
                     <p class="mb-4">If you have inquiries feel free to contact us below</p>
-                    <a class="mb-2" href="https://goo.gl/maps/nGdbiDamK7MP9L5z5"><i
-                            class="bi bi-geo-alt text-primary me-2"></i>Manila, PH</br></a>
-                    <a class="mb-2" href="mailto:pawsnpages.site@gmail.com"><i
-                            class="bi bi-envelope-open text-primary me-2"></i>pawsnpages.site@gmail.com</a>
+                    <a class="mb-2" href="https://goo.gl/maps/nGdbiDamK7MP9L5z5"><i class="bi bi-geo-alt text-primary me-2"></i>Manila, PH</br></a>
+                    <a class="mb-2" href="mailto:pawsnpages.site@gmail.com"><i class="bi bi-envelope-open text-primary me-2"></i>pawsnpages.site@gmail.com</a>
                     <a class="mb-0" href="tel:+6396176261"></br><i class="bi bi-telephone text-primary me-2"></i>+63 961
                         762 6162</a>
                 </div>
@@ -407,14 +403,10 @@ $petID = $_GET['petid'];
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Quick Links</h5>
                     <div class="d-flex flex-column justify-content-start">
                         <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                        <a class="text-body mb-2" href="clinics.php"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Vet Clinics</a>
-                        <a class="text-body mb-2" href="#services"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
-                        <a class="text-body mb-2" href="#founders"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Meet The Team</a>
-                        <a class="text-body" href="contact.php"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                        <a class="text-body mb-2" href="clinics.php"><i class="bi bi-arrow-right text-primary me-2"></i>Vet Clinics</a>
+                        <a class="text-body mb-2" href="#services"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
+                        <a class="text-body mb-2" href="#founders"><i class="bi bi-arrow-right text-primary me-2"></i>Meet The Team</a>
+                        <a class="text-body" href="contact.php"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
                     </div>
                 </div>
 
@@ -459,7 +451,6 @@ $petID = $_GET['petid'];
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script>
-
         // FOR TAB LINKS
         function showContent(contentId) {
             // Hide all content elements
@@ -479,8 +470,8 @@ $petID = $_GET['petid'];
 
         document.getElementById('content1').style.display = 'block';
 
-        $(document).ready(function () {
-            $('.tablinks').on('click', function () {
+        $(document).ready(function() {
+            $('.tablinks').on('click', function() {
                 $('.tablinks').removeClass('active');
                 $(this).addClass('active');
             })

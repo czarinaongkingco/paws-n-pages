@@ -17,8 +17,7 @@ $clinicID = $_GET['clinicid'];
 <head>
     <meta charset="utf-8">
     <title>Paws N Pages | Orders</title>
-    <link rel="icon" href="https://media.discordapp.net/attachments/1112075552669581332/1113455947420024832/icon.png"
-        type="image/x-icon">
+    <link rel="icon" href="https://media.discordapp.net/attachments/1112075552669581332/1113455947420024832/icon.png" type="image/x-icon">
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -104,7 +103,7 @@ $clinicID = $_GET['clinicid'];
             if (file) {
                 var reader = new FileReader();
 
-                reader.onload = function () {
+                reader.onload = function() {
                     $("#image").attr("src", reader.result);
                 }
 
@@ -114,7 +113,7 @@ $clinicID = $_GET['clinicid'];
     </script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             var table = $('#order').DataTable({
                 order: [
                     [2, 'asc']
@@ -194,25 +193,14 @@ $clinicID = $_GET['clinicid'];
                         if ($row1 > 0) {
                             while ($row1 = mysqli_fetch_array($ret1)) {
 
-                                ?>
+                        ?>
                                 <!--Fetch the Records -->
                                 <tr>
-                                    <td style="border:0px;"><a href="" orderid="<?php echo $row1['OrderID'] ?>"
-                                            refno="<?php echo $row1['Order_RefNo'] ?>" products="<?php $prod = $row1['OrderedProducts'];
-                                               $explodedArray = explode(', ', $prod);
-                                               foreach ($explodedArray as $element) {
-                                                   echo $element . "\n";
-                                               } ?>"
-                                            user="<?php echo $row1['FirstName'] . ' ' . $row1['MiddleName'] . ' ' . $row1['LastName'] ?>"
-                                            totalprice="<?php echo "₱ " . $row1['TotalPrice']; ?>"
-                                            dtcout="<?php echo $row1['DateTimeCheckedOut'] ?>"
-                                            address="<?php echo $row1['ShippingTo'] ?>"
-                                            proofpayment="<?php echo $row1['ProofOfPayment']; ?>"
-                                            proofrefno="<?php echo $row1['Proof_RefNo']; ?>"
-                                            prescription="<?php echo $row1['OrderPrescription'] ?>"
-                                            orderstatus="<?php echo $row1['OrderStatus']; ?>"
-                                            odremarks="<?php echo $row1['OrderRemarks']; ?>" class="edit" title="View"
-                                            data-toggle="modal" data-target="#view_order"><?php echo $row1['Order_RefNo'] ?></a>
+                                    <td style="border:0px;"><a href="" orderid="<?php echo $row1['OrderID'] ?>" refno="<?php echo $row1['Order_RefNo'] ?>" products="<?php $prod = $row1['OrderedProducts'];
+                                                                                                                                                                        $explodedArray = explode(', ', $prod);
+                                                                                                                                                                        foreach ($explodedArray as $element) {
+                                                                                                                                                                            echo $element . "\n";
+                                                                                                                                                                        } ?>" user="<?php echo $row1['FirstName'] . ' ' . $row1['MiddleName'] . ' ' . $row1['LastName'] ?>" totalprice="<?php echo "₱ " . $row1['TotalPrice']; ?>" dtcout="<?php echo $row1['DateTimeCheckedOut'] ?>" address="<?php echo $row1['ShippingTo'] ?>" proofpayment="<?php echo $row1['ProofOfPayment']; ?>" proofrefno="<?php echo $row1['Proof_RefNo']; ?>" prescription="<?php echo $row1['OrderPrescription'] ?>" orderstatus="<?php echo $row1['OrderStatus']; ?>" odremarks="<?php echo $row1['OrderRemarks']; ?>" class="edit" title="View" data-toggle="modal" data-target="#view_order"><?php echo $row1['Order_RefNo'] ?></a>
                                     </td>
                                     <td style="border:0px;">
                                         ₱
@@ -227,37 +215,33 @@ $clinicID = $_GET['clinicid'];
                                     <td style="border:0px;">
                                         <?php $status = $row1['OrderStatus'];
                                         if ($status === 'Pending') { ?>
-                                            <a
-                                                style="color:white; font-size:12px; padding: 5px 25px; border-radius:10px; background-color:#F4BB44;">
+                                            <a style="color:white; font-size:12px; padding: 5px 25px; border-radius:10px; background-color:#F4BB44;">
                                                 <?php echo $row1['OrderStatus']; ?>
                                             </a>
                                         <?php }
                                         if ($status === 'To Ship') { ?>
-                                            <a
-                                                style="color:white; font-size:12px; padding: 5px 30px; border-radius:10px; background-color:#228B22;">
+                                            <a style="color:white; font-size:12px; padding: 5px 30px; border-radius:10px; background-color:#228B22;">
                                                 <?php echo $row1['OrderStatus']; ?>
                                             </a>
                                         <?php }
                                         if ($status === 'Denied') { ?>
-                                            <a
-                                                style="color:white; font-size:12px; padding: 5px 30px;  border-radius:10px; background-color:#A52A2A;">
+                                            <a style="color:white; font-size:12px; padding: 5px 30px;  border-radius:10px; background-color:#A52A2A;">
                                                 <?php echo $row1['OrderStatus']; ?>
                                             </a>
                                         <?php }
                                         if ($status === 'Approved') { ?>
-                                            <a
-                                                style="color:white; font-size:12px; padding: 5px 22px;  border-radius:10px; background-color:#0096FF;">
+                                            <a style="color:white; font-size:12px; padding: 5px 22px;  border-radius:10px; background-color:#0096FF;">
                                                 <?php echo $row1['OrderStatus']; ?>
                                             </a>
                                         <?php }
                                         if ($status === 'Completed') { ?>
-                                            <?php echo $row1['OrderStatus'];
+                                        <?php echo $row1['OrderStatus'];
                                         } ?>
                                     </td>
 
                                     <?php
                                     if ($row1['OrderStatus'] != 'Completed') {
-                                        ?>
+                                    ?>
                                         <td style="border:0px;">
 
                                         </td>
@@ -270,12 +254,10 @@ $clinicID = $_GET['clinicid'];
                                         $row_fb = mysqli_num_rows($sql_fb);
 
                                         if ($row_fb < 1) {
-                                            ?>
+                                        ?>
 
                                             <td style="border:0px;">
-                                                <a href="" data-toggle="modal" onclick="<?php $order_id = $row1['OrderID']; ?>"
-                                                    data-target="#feedback_modal" id="<?php echo $row1['ClinicID'] ?>"
-                                                    orderid="<?php echo $row1['OrderID'] ?>">Leave a Review</a>
+                                                <a href="" data-toggle="modal" onclick="<?php $order_id = $row1['OrderID']; ?>" data-target="#feedback_modal" id="<?php echo $row1['ClinicID'] ?>" orderid="<?php echo $row1['OrderID'] ?>">Leave a Review</a>
                                             </td>
 
                                         <?php } else { ?>
@@ -289,18 +271,18 @@ $clinicID = $_GET['clinicid'];
                                     <?php } ?>
 
                                 </tr>
-                                <?php
+                            <?php
                                 $cnt = $cnt + 1;
                             }
                         } else { ?>
-                        <tr>
-                            <th style="text-align:center; color:red; border:0px;" colspan="6">No Record Found</th>
-                            <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
-                            <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
-                            <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
-                            <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
-                            <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
-                        </tr>
+                            <tr>
+                                <th style="text-align:center; color:red; border:0px;" colspan="6">No Record Found</th>
+                                <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
+                                <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
+                                <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
+                                <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
+                                <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
+                            </tr>
                         <?php } ?>
 
                     </tbody>
@@ -321,10 +303,8 @@ $clinicID = $_GET['clinicid'];
                 <div class="col-lg-4 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Get In Touch</h5>
                     <p class="mb-4">If you have inquiries feel free to contact us below</p>
-                    <a class="mb-2" href="https://goo.gl/maps/nGdbiDamK7MP9L5z5"><i
-                            class="bi bi-geo-alt text-primary me-2"></i>Manila, PH</br></a>
-                    <a class="mb-2" href="mailto:pawsnpages.site@gmail.com"><i
-                            class="bi bi-envelope-open text-primary me-2"></i>pawsnpages.site@gmail.com</a>
+                    <a class="mb-2" href="https://goo.gl/maps/nGdbiDamK7MP9L5z5"><i class="bi bi-geo-alt text-primary me-2"></i>Manila, PH</br></a>
+                    <a class="mb-2" href="mailto:pawsnpages.site@gmail.com"><i class="bi bi-envelope-open text-primary me-2"></i>pawsnpages.site@gmail.com</a>
                     <a class="mb-0" href="tel:+6396176261"></br><i class="bi bi-telephone text-primary me-2"></i>+63 961
                         762 6162</a>
                 </div>
@@ -332,14 +312,10 @@ $clinicID = $_GET['clinicid'];
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Quick Links</h5>
                     <div class="d-flex flex-column justify-content-start">
                         <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                        <a class="text-body mb-2" href="clinics.php"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Vet Clinics</a>
-                        <a class="text-body mb-2" href="#services"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
-                        <a class="text-body mb-2" href="#founders"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Meet The Team</a>
-                        <a class="text-body" href="contact.php"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                        <a class="text-body mb-2" href="clinics.php"><i class="bi bi-arrow-right text-primary me-2"></i>Vet Clinics</a>
+                        <a class="text-body mb-2" href="#services"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
+                        <a class="text-body mb-2" href="#founders"><i class="bi bi-arrow-right text-primary me-2"></i>Meet The Team</a>
+                        <a class="text-body" href="contact.php"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
                     </div>
                 </div>
 
@@ -386,19 +362,16 @@ $clinicID = $_GET['clinicid'];
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Order Reference No.</label>
-                                        <input type="text" name="Order_RefNo" id="Order_RefNo" class="form-control"
-                                            readonly />
+                                        <input type="text" name="Order_RefNo" id="Order_RefNo" class="form-control" readonly />
                                     </div>
                                     <div class="form-group">
                                         <label>Ordered Products</label>
                                         <!-- <input type="textarea" name="Orders" id="Orders" class="form-control" readonly /> -->
-                                        <textarea name="OrderedProducts" id="OrderedProducts" class="form-control"
-                                            style="width: 100%; height: 150px;" readonly></textarea>
+                                        <textarea name="OrderedProducts" id="OrderedProducts" class="form-control" style="width: 100%; height: 150px;" readonly></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Total Price</label>
-                                        <input type="text" name="TotalPrice" id="TotalPrice" class="form-control"
-                                            readonly />
+                                        <input type="text" name="TotalPrice" id="TotalPrice" class="form-control" readonly />
                                     </div>
                                     <hr />
                                     <div class="form-group">
@@ -435,16 +408,14 @@ $clinicID = $_GET['clinicid'];
                                     </div>
                                     <div class="form-group">
                                         <label>Reference No. (For Proof of Payment)</label>
-                                        <input type="text" name="Proof_RefNo" id="Proof_RefNo" class="form-control"
-                                            readonly />
+                                        <input type="text" name="Proof_RefNo" id="Proof_RefNo" class="form-control" readonly />
                                     </div>
 
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Customer</label>
-                                        <input type="text" name="Customer" id="Customer" class="form-control"
-                                            readonly />
+                                        <input type="text" name="Customer" id="Customer" class="form-control" readonly />
                                     </div>
                                     <div class="form-group">
                                         <label>Date & Time Checked Out</label>
@@ -452,19 +423,16 @@ $clinicID = $_GET['clinicid'];
                                     </div>
                                     <div class="form-group">
                                         <label>Shipping To</label>
-                                        <textarea name="ShippingTo" id="ShippingTo" class="form-control"
-                                            style=" width: 100%; height: 150px;" readonly></textarea>
+                                        <textarea name="ShippingTo" id="ShippingTo" class="form-control" style=" width: 100%; height: 150px;" readonly></textarea>
                                     </div>
                                     <hr />
                                     <div class="form-group">
                                         <label>Status</label>
-                                        <input type="text" name="OrderStatus" id="OrderStatus" class="form-control"
-                                            style="height: 100%;" readonly />
+                                        <input type="text" name="OrderStatus" id="OrderStatus" class="form-control" style="height: 100%;" readonly />
                                     </div>
                                     <div class="form-group">
                                         <label>Remarks</label>
-                                        <textarea name="OrderRemarks" id="OrderRemarks" class="form-control"
-                                            style=" width: 100%; height: 150px;" readonly></textarea>
+                                        <textarea name="OrderRemarks" id="OrderRemarks" class="form-control" style=" width: 100%; height: 150px;" readonly></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -474,8 +442,7 @@ $clinicID = $_GET['clinicid'];
                     </div>
                     <div style="clear:both;"></div>
                     <div class="modal-footer">
-                        <button class="btn btn-danger" type="button" data-dismiss="modal"
-                            style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                        <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span> Close</button>
                     </div>
                 </form>
             </div>
@@ -502,24 +469,18 @@ $clinicID = $_GET['clinicid'];
 
                                 <h5>How's your experience?</h5>
                                 <div style="text-align: center;">
-                                    <span style="font-size: 75px;" class="rating-star" data-value="1"
-                                        onclick="handleStarClick(this)">☆</span>
-                                    <span style="font-size: 75px;" class="rating-star" data-value="2"
-                                        onclick="handleStarClick(this)">☆</span>
-                                    <span style="font-size: 75px;" class="rating-star" data-value="3"
-                                        onclick="handleStarClick(this)">☆</span>
-                                    <span style="font-size: 75px;" class="rating-star" data-value="4"
-                                        onclick="handleStarClick(this)">☆</span>
-                                    <span style="font-size: 75px;" class="rating-star" data-value="5"
-                                        onclick="handleStarClick(this)">☆</span>
+                                    <span style="font-size: 75px;" class="rating-star" data-value="1" onclick="handleStarClick(this)">☆</span>
+                                    <span style="font-size: 75px;" class="rating-star" data-value="2" onclick="handleStarClick(this)">☆</span>
+                                    <span style="font-size: 75px;" class="rating-star" data-value="3" onclick="handleStarClick(this)">☆</span>
+                                    <span style="font-size: 75px;" class="rating-star" data-value="4" onclick="handleStarClick(this)">☆</span>
+                                    <span style="font-size: 75px;" class="rating-star" data-value="5" onclick="handleStarClick(this)">☆</span>
                                     <input type="hidden" id="ratingInput" name="rating" value="">
                                 </div>
                             </div>
                             <br><br>
                             <div class="col-12">
                                 <h5 style="padding-bottom: 10px;">Comments/Suggestions</h5>
-                                <textarea name="feedback" class="form-control bg-light border-3 px-4 py-3"
-                                    style="border-radius: 15px;" rows="5"></textarea>
+                                <textarea name="feedback" class="form-control bg-light border-3 px-4 py-3" style="border-radius: 15px;" rows="5"></textarea>
 
                                 <input type="hidden" name="orderid" value="">
                             </div>
@@ -527,10 +488,8 @@ $clinicID = $_GET['clinicid'];
                         </div>
                         <div style="clear:both;"></div>
                         <div class="modal-footer">
-                            <input type="submit" name="submit" value="Submit" style="border-radius: 15px;"
-                                class="btn btn-primary" />
-                            <button class="btn btn-danger" type="button" data-dismiss="modal"
-                                style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
+                            <input type="submit" name="submit" value="Submit" style="border-radius: 15px;" class="btn btn-primary" />
+                            <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
                                 Cancel</button>
                         </div>
                 </form>
@@ -600,9 +559,7 @@ $clinicID = $_GET['clinicid'];
     <script src="js/main.js"></script>
 
     <!-- Latest compiled and minified JavaScript (needed for editing details on a tabled list of data) -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <!-- To show details when editing -->
     <script>
@@ -610,7 +567,7 @@ $clinicID = $_GET['clinicid'];
             $(window).off("resize", resizer);
         }
 
-        $('#view_order').on('show.bs.modal', function (e) {
+        $('#view_order').on('show.bs.modal', function(e) {
             var opener = e.relatedTarget;
 
             var orderid = $(opener).attr('orderid');
@@ -652,7 +609,7 @@ $clinicID = $_GET['clinicid'];
             endResize();
         });
 
-        $('#feedback_modal').on('show.bs.modal', function (e) {
+        $('#feedback_modal').on('show.bs.modal', function(e) {
             var opener = e.relatedTarget;
 
             var id = $(opener).attr('id');

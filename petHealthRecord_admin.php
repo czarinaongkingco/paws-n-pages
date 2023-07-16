@@ -324,7 +324,7 @@ $_SESSION['petid'] = $petid;
     <div class="wrapper">
         <div class="side_bar" >
 
-            <div class="side_bar_bottom">
+            <div class="side_bar_bottom" style="height:100%;">
                 <ul>
                     <li>
                         <span class="top_curve"></span>
@@ -453,7 +453,6 @@ $_SESSION['petid'] = $petid;
                                         <tr class="table100-head">
                                             <th class="column1" style="border:0px; color:#80b434;">Vaccine Name</th>
                                             <th class="column1" style="border:0px; color:#80b434;">Brand</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Description</th>
                                             <th class="column1" style="border:0px; color:#80b434;">Dosage</th>
                                             <th class="column1" style="border:0px; color:#80b434;">Lot #</th>
                                             <th class="column1" style="border:0px; color:#80b434;">Date Vaccinated</th>
@@ -479,9 +478,6 @@ $_SESSION['petid'] = $petid;
                                                     </td>
                                                     <td style="border:0px;">
                                                         <?php echo $row['Brand']; ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['Description']; ?>
                                                     </td>
                                                     <td style="border:0px;">
                                                         <?php echo $row['Dosage']; ?>
@@ -519,8 +515,7 @@ $_SESSION['petid'] = $petid;
                                             }
                                         } else { ?>
                                             <tr>
-                                                <th style="text-align:center; border:0; color:red;" colspan="9">No Record Found</th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; color:red;" colspan="8">No Record Found</th>
                                                 <th style="text-align:center; border:0; display:none;"></th>
                                                 <th style="text-align:center; border:0; display:none;"></th>
                                                 <th style="text-align:center; border:0; display:none;"></th>
@@ -641,13 +636,12 @@ $_SESSION['petid'] = $petid;
                                 <button id="ha_tab" class="tablinks" onclick="showContent('content2', this)">Health Assessment</button>
                             </div>
                             <div class="card-body text-center" id="content1">
-                                <div style="padding-bottom:70px;"><button class="btn" type="button" data-toggle="modal" data-target="#vaccine_modal" style="float:right; background-color: #80b434; color: white;">Add</button></div>
+                                <div style="padding-bottom:70px;"><button class="btn" type="button" data-toggle="modal" data-target="#vaccine_modal" style="float:right; background-color: #80b434; color: white; border-radius: 15px;">Add</button></div>
                                 <table class="table table-striped table-hover" id="vaccine" style="text-align: left; border: 0;">
                                     <thead>
                                         <tr class="table100-head">
                                             <th class="column1" style="border:0px; color:#80b434;">Vaccine Name</th>
                                             <th class="column1" style="border:0px; color:#80b434;">Brand</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Description</th>
                                             <th class="column1" style="border:0px; color:#80b434;">Dosage</th>
                                             <th class="column1" style="border:0px; color:#80b434;">Lot #</th>
                                             <th class="column1" style="border:0px; color:#80b434;">Date Vaccinated</th>
@@ -674,9 +668,6 @@ $_SESSION['petid'] = $petid;
                                                     </td>
                                                     <td style="border:0px;">
                                                         <?php echo $row['Brand']; ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['Description']; ?>
                                                     </td>
                                                     <td style="border:0px;">
                                                         <?php echo $row['Dosage']; ?>
@@ -724,8 +715,7 @@ $_SESSION['petid'] = $petid;
                                             }
                                         } else { ?>
                                             <tr>
-                                                <th style="text-align:center; border:0; color:red;" colspan="10">No Record Found</th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; color:red;" colspan="9">No Record Found</th>
                                                 <th style="text-align:center; border:0; display:none;"></th>
                                                 <th style="text-align:center; border:0; display:none;"></th>
                                                 <th style="text-align:center; border:0; display:none;"></th>
@@ -744,7 +734,7 @@ $_SESSION['petid'] = $petid;
 
                             <!-- START OF HEALTH ASSESSMENT RECORD -->
                         <div class="card-body text-center" id="content2">
-                                <div style="padding-bottom:70px;"><button class="btn" type="button" data-toggle="modal" data-target="#assess_modal" style="float:right; background-color: #80b434; color: white;">Add</button></div>
+                                <div style="padding-bottom:70px;"><button class="btn" type="button" data-toggle="modal" data-target="#assess_modal" style="float:right; background-color: #80b434; color: white; border-radius: 15px;">Add</button></div>
                                 <table class="table table-striped table-hover" id="assessment" style="text-align: left; border: 0px;">
                                     <thead>
                                         <tr class="table100-head">
@@ -799,7 +789,9 @@ $_SESSION['petid'] = $petid;
                                                     <?php }
                                                     } ?>
                                                      <td style="text-align: center; border:0px;">
+                                                     <?php if ($clinicID == $clinic) { ?>
                                                         <a href="" ass_id="<?php echo $row['AssessmentID'] ?>" ass_remarks="<?php echo $row['Remarks'] ?>" ass_date="<?php echo $row['DateAssessed'] ?>" ass_by="<?php echo $row['AssessedBy'] ?>" ass_prescription="<?php echo $row['Prescription'] ?>" class="edit" data-toggle="modal" data-target="#edit_assessment"><i class="fa fa-edit"></i></a>
+                                                     <?php } ?>   
                                                     </td>
                                                 </tr>
                                             <?php
@@ -1090,9 +1082,22 @@ $_SESSION['petid'] = $petid;
         $query = mysqli_query($con, "INSERT INTO petvaccine (VaccineName, Brand, Description, Dosage, LotNo, DateVaccinated, ExpirationDate, Vaccinator, PetID, ClinicID) VALUES ('$vname', '$brand', '$desc', '$dosage', '$lotno', '$datevacc', '$expdate', '$vaccinator', '$petid', '$clinicID')");
 
         if ($query) {
-            echo "<script>alert('You have successfully added a vaccine record');</script>";
-            echo "<script>event.preventDefault();</script>";
-            echo "<script> document.location ='petHealthRecord_admin.php?petid=$petid'; </script>";
+            echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                echo '<script>';
+                echo 'swal({
+                                            title: "Success",
+                                            text: "You have successfully added a vaccine record",
+                                            icon: "success",
+                                            html: true,
+                                            showCancelButton: true,
+                                            })
+                                                .then((willDelete) => {
+                                                    if (willDelete) {
+                                                         event.preventDefault();
+                                                         document.location ="petHealthRecord_admin.php?petid='. $petid . '";
+                                                    }
+                                                })';
+                echo '</script>';
         } else {
             echo "<script>alert('Error adding new record.');</script>";
         }
@@ -1113,10 +1118,23 @@ $_SESSION['petid'] = $petid;
         $query = mysqli_query($con, "INSERT INTO petassessment (Remarks, DateAssessed, AssessedBy, Prescription, PetID, ClinicID) VALUES ('$remarks', '$date_assessed', '$assessed_by', '$file', '$petid', '$clinicID')");
 
         if ($query) {
-            echo "<script>alert('You have successfully added an assessment');</script>";
-            echo "<script>event.preventDefault();</script>";
-            echo "<script> document.location ='petHealthRecord_admin.php?petid=$petid'; </script>";
-        } else {
+            echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                echo '<script>';
+                echo 'swal({
+                                            title: "Success",
+                                            text: "You have successfully added an assessment",
+                                            icon: "success",
+                                            html: true,
+                                            showCancelButton: true,
+                                            })
+                                                .then((willDelete) => {
+                                                    if (willDelete) {
+                                                         event.preventDefault();
+                                                         document.location ="petHealthRecord_admin.php?petid='. $petid . '";
+                                                    }
+                                                })';
+                echo '</script>';        
+            } else {
             echo "<script>alert('Error adding new record.');</script>";
         }
     }
@@ -1139,9 +1157,22 @@ $_SESSION['petid'] = $petid;
             $query = mysqli_query($con, "UPDATE petassessment SET Remarks='$remarks1', DateAssessed='$d_assessed1', AssessedBy='$assessed_by1', Prescription='$file1' WHERE AssessmentID='$assessmentID'");
             
             if ($query) {
-                echo "<script>alert('You have successfully updated an assessment');</script>";
-                echo "<script>event.preventDefault();</script>";
-                echo "<script> document.location ='petHealthRecord_admin.php?petid=$petid'; </script>";
+              echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                echo '<script>';
+                echo 'swal({
+                                            title: "Success",
+                                            text: "You have successfully updated an assessment",
+                                            icon: "success",
+                                            html: true,
+                                            showCancelButton: true,
+                                            })
+                                                .then((willDelete) => {
+                                                    if (willDelete) {
+                                                         event.preventDefault();
+                                                         document.location ="petHealthRecord_admin.php?petid='. $petid . '";
+                                                    }
+                                                })';
+                echo '</script>';
             } else {
                 echo "<script>alert('Error updating a record.');</script>";
             }
@@ -1149,9 +1180,22 @@ $_SESSION['petid'] = $petid;
             $query = mysqli_query($con, "UPDATE petassessment SET Remarks='$remarks1', DateAssessed='$d_assessed1', AssessedBy='$assessed_by1' WHERE AssessmentID='$assessmentID'");
             
             if ($query) {
-                echo "<script>alert('You have successfully updated an assessment');</script>";
-                echo "<script>event.preventDefault();</script>";
-                echo "<script> document.location ='petHealthRecord_admin.php?petid=$petid'; </script>";
+                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                echo '<script>';
+                echo 'swal({
+                                            title: "Success",
+                                            text: "You have successfully updated an assessment",
+                                            icon: "success",
+                                            html: true,
+                                            showCancelButton: true,
+                                            })
+                                                .then((willDelete) => {
+                                                    if (willDelete) {
+                                                         event.preventDefault();
+                                                         document.location ="petHealthRecord_admin.php?petid='. $petid . '";
+                                                    }
+                                                })';
+                echo '</script>';
             } else {
                 echo "<script>alert('Error updating a record.');</script>";
             }
@@ -1174,9 +1218,22 @@ $_SESSION['petid'] = $petid;
         $query = mysqli_query($con, "UPDATE petvaccine SET VaccineName='$vname1', Brand='$brand1', Description='$desc1', Dosage='$dosage1', LotNo='$lot_no1', DateVaccinated='$d_vacc1', ExpirationDate='$exp_date1', Vaccinator='$vaccinator1' WHERE VaccineID='$vaccineID'");
 
         if ($query) {
-            echo "<script>alert('You have successfully updated a vaccine record');</script>";
-            echo "<script>event.preventDefault();</script>";
-            echo "<script> document.location ='petHealthRecord_admin.php?petid=$petid'; </script>";
+           echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                echo '<script>';
+                echo 'swal({
+                                            title: "Success",
+                                            text: "You have successfully updated a vaccine record",
+                                            icon: "success",
+                                            html: true,
+                                            showCancelButton: true,
+                                            })
+                                                .then((willDelete) => {
+                                                    if (willDelete) {
+                                                         event.preventDefault();
+                                                         document.location ="petHealthRecord_admin.php?petid='. $petid . '";
+                                                    }
+                                                })';
+                echo '</script>';
         } else {
             echo "<script>alert('Error updating a record.');</script>";
         }

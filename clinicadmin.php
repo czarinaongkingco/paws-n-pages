@@ -525,20 +525,14 @@ $row_cb = mysqli_num_rows($ret_cb);
                                                     $ret = mysqli_query($con, "SELECT * FROM address, clinics, users WHERE address.UserID = users.UserID AND clinics.UserID = users.UserID AND users.UserID='$userID'");
                                                     while ($row = mysqli_fetch_array($ret)) {
                                                     ?>
-                                                        <tr>
-                                                            <td style="color:#80b434;"><b>Clinic Image: &nbsp;&nbsp;</b></td>
-                                                            <td>
-                                                        <center >
+                                                        <center style="display: none;">
                                                             <?php if ($row['ClinicImage'] != "") {
                                                                 echo '<img class="img-fluid" src=image_upload/' . $row['ClinicImage'] . ' height=200px; width=200px;';
                                                             }
                                                             ?>
                                                         </center>
-                                                            </td>
-
-                                                        </tr>
-                                                        
-
+                                                        <br />
+                                                        <br />
                                                         <tr>
                                                             <td style="color:#80b434;"><b>Clinic Name: &nbsp;&nbsp;</b></td>
                                                             <td>
@@ -1042,7 +1036,7 @@ $row_cb = mysqli_num_rows($ret_cb);
 
             if ($ufile_cb != "") {
 
-                $uquery_cb = mysqli_query($con, "UPDATE clinic_billing set BillingImage='$ufile_cb', ClinicID='$clinicID'");
+                $uquery_cb = mysqli_query($con, "UPDATE clinic_billing set BillingImage='$ufile_cb' WHERE ClinicID='$clinicID'");
 
                 if ($uquery_cb) {
                     echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
