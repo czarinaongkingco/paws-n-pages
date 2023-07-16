@@ -116,7 +116,7 @@ $clinicID = $_GET['clinicid'];
         $(document).ready(function() {
             var table = $('#order').DataTable({
                 order: [
-                    [2, 'asc']
+                    [3, 'desc']
                 ],
             });
         });

@@ -109,7 +109,7 @@ include('connection.php');
                                 <span>List of Appointments</span>
                                 <i class="bi bi-check2 fs-4 text-primary"></i>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between mb-1">
+                            <div class="d-flex align-items-center justify-content-between mb-1" style="padding-bottom: 9%;">
                                 <span>List of Services Available</span>
                                 <i class="bi bi-check2 fs-4 text-primary"></i>
                             </div>

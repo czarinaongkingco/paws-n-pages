@@ -117,7 +117,7 @@ $petID = $_GET['petid'];
         $(document).ready(function() {
             var table = $('#vaccine').DataTable({
                 order: [
-                    [6, 'desc']
+                    [6, 'asc']
                 ],
             });
         });
@@ -125,7 +125,7 @@ $petID = $_GET['petid'];
         $(document).ready(function() {
             var table = $('#assessment').DataTable({
                 order: [
-                    [1, 'asc']
+                    [1, 'desc']
                 ],
             });
         });
@@ -300,8 +300,8 @@ $petID = $_GET['petid'];
                             <thead>
                                 <tr class="table100-head">
                                     <th class="column1" style="border:0px; color:#80b434;">Remarks</th>
-                                    <th class="column1" style="border:0px; color:#80b434;">DateAssessed</th>
-                                    <th class="column1" style="border:0px; color:#80b434;">AssessedBy</th>
+                                    <th class="column1" style="border:0px; color:#80b434;">Date Assessed</th>
+                                    <th class="column1" style="border:0px; color:#80b434;">Assessed By</th>
                                     <th class="column1" style="border:0px; color:#80b434;">Prescription</th>
                                     <th class="column1" style="border:0px; color:#80b434;">Clinic</th>
                                     <!-- <th class="column1">Edit/Delete</th> -->

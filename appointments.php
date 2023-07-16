@@ -77,7 +77,7 @@ $userID = $_SESSION["id"];
         $(document).ready(function() {
             var table = $('#appointments').DataTable({
                 order: [
-                    [2, 'asc']
+                    [8, 'desc']
                 ],
             });
         });
