@@ -211,66 +211,69 @@ $_SESSION['clinic_id'] = $clinic_id;
 
     <div class="container">
         <div class="row g-5">
-            <div class="col-lg-3 bg-light" style="border-radius: 15px;">
+            <div class="col-lg-3 bg-light  overflow-hidden" style="border-radius: 15px;">
                 <!-- CLINIC PROFILE START -->
-                <div class="mb-5">
+<div class="mb-5">
+    <?php
+    $ret = mysqli_query($con, "SELECT * FROM clinics WHERE ClinicID = '$clinic_id'");
+    $cnt = 1;
+    $row = mysqli_num_rows($ret);
+    if ($row > 0) {
+        while ($row = mysqli_fetch_array($ret)) {
+    ?>
+            <div class="h-100" style="padding-bottom: 25px; position: relative;">
+                <?php if ($row['ClinicImage'] != "") {
+                    echo '<a href="clinic_profile.php?clinicid=' . $row['ClinicID'] . '"><img src="image_upload/' . $row['ClinicImage'] . '" class="img-fluid" style="object-fit: cover; width: 100%; height: 100%;"></a>';
+                }
+                ?>
+                <!-- Add eye icon here -->
+<a href="#" data-toggle="modal" data-target="#view_clinicimage" style="position: absolute; top: 10px; right: 10px; z-index: 1; background-color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center;">
+    <i class="fa fa-eye" style="color: black;"></i>
+</a>
 
 
-                    <?php
-                    $ret = mysqli_query($con, "SELECT * FROM clinics WHERE ClinicID = '$clinic_id'");
-                    $cnt = 1;
-                    $row = mysqli_num_rows($ret);
-                    if ($row > 0) {
-                        while ($row = mysqli_fetch_array($ret)) {
-
-                    ?>
-                            <div style="padding-bottom: 25px;">
-                                <?php if ($row['ClinicImage'] != "") {
-                                    echo '<a href="clinic_profile.php?clinicid=' . $row['ClinicID'] . '"><img src="image_upload/' . $row['ClinicImage'] . '" style="object-fit: cover; width: 100%; height: 100%;"></a>';
-                                }
-                                ?>
-                            </div>
-                            <p class="text-uppercase mb-3" style="font-size:20px; color:black;"><b>
-                                    <?php echo $row['ClinicName'] ?>
-                                </b>
-                                </br>
-
-                                <?php
-                                $ret1 = mysqli_query($con, "SELECT address.LotNo_Street, address.Barangay, address.City, users.UserID, users.ContactNo, clinics.OpeningTime, clinics.ClosingTime, clinics.OperatingDays ,clinics.ClinicID FROM address, users, clinics WHERE address.UserID = users.UserID AND users.UserID = clinics.UserID AND clinics.ClinicID = '$clinic_id' LIMIT 1");
-                                $cnt1 = 1;
-                                $row1 = mysqli_num_rows($ret1);
-                                if ($row1 > 0) {
-                                    while ($row1 = mysqli_fetch_array($ret1)) {
-                                ?>
-                            <p>
-                                <?php echo $row1['LotNo_Street'] . '<br/> Brgy. ' . $row1['Barangay'] . ',  ' . $row1['City'] ?><br /><br />
-                                <?php echo '<b>Operating Hours: </b>' . date('h:i A', strtotime($row['OpeningTime'])) . ' - ' . date('h:i A', strtotime($row['ClosingTime'])) ?><br />
-                                <?php echo '<b>Operating Days: </b>' . $row1['OperatingDays'] ?>
-                            </p>
-                    <?php
-                                    }
-                                } ?>
-
-            <?php
-
-                        }
-                    } ?>
-            <br />
-            <br />
-
-            <?php if ($_SESSION["id"] != "") { ?>
-                <br>
-                <a class="btn button4 btn-dark m-1" href="booking_form.php?clinicid=<?php echo htmlentities($clinic_id); ?>" style="text-align:center; border-radius: 15px;  width: 95%;">Book an appointment
-                </a>
-
-                <br>
-                <a class="btn   btn-primary m-1" data-toggle="modal" data-target="#view_services" style="text-align:center; border-radius: 15px; width: 95%;">View Services
-                </a>
-            <?php } ?>
-
-                </div>
             </div>
-            <!-- CLINIC PROFILE END -->
+            <p class="text-uppercase mb-3" style="font-size: 20px; color: black;"><b>
+                    <?php echo $row['ClinicName'] ?>
+                </b>
+                <br />
+
+                <?php
+                $ret1 = mysqli_query($con, "SELECT address.LotNo_Street, address.Barangay, address.City, users.UserID, users.ContactNo, clinics.OpeningTime, clinics.ClosingTime, clinics.OperatingDays ,clinics.ClinicID FROM address, users, clinics WHERE address.UserID = users.UserID AND users.UserID = clinics.UserID AND clinics.ClinicID = '$clinic_id' LIMIT 1");
+                $cnt1 = 1;
+                $row1 = mysqli_num_rows($ret1);
+                if ($row1 > 0) {
+                    while ($row1 = mysqli_fetch_array($ret1)) {
+                ?>
+                <p>
+                    <?php echo $row1['LotNo_Street'] . '<br/> Brgy. ' . $row1['Barangay'] . ',  ' . $row1['City'] ?><br /><br />
+                    <?php echo '<b>Operating Hours: </b>' . date('h:i A', strtotime($row['OpeningTime'])) . ' - ' . date('h:i A', strtotime($row['ClosingTime'])) ?><br />
+                    <?php echo '<b>Operating Days: </b>' . $row1['OperatingDays'] ?>
+                </p>
+        <?php
+                    }
+                } ?>
+
+    <?php
+        }
+    } ?>
+    <br />
+    <br />
+
+    <?php if ($_SESSION["id"] != "") { ?>
+        <br>
+        <a class="btn button4 btn-dark m-1" href="booking_form.php?clinicid=<?php echo htmlentities($clinic_id); ?>" style="text-align: center; border-radius: 15px; width: 95%;">Book an appointment
+        </a>
+
+        <br>
+        <a class="btn btn-primary m-1" data-toggle="modal" data-target="#view_services" style="text-align: center; border-radius: 15px; width: 95%;">View Services
+        </a>
+    <?php } ?>
+
+</div>
+</div>
+<!-- CLINIC PROFILE END -->
+
 
             <!-- PRODUCTS START -->
             <div class="col-lg-9">
@@ -466,6 +469,47 @@ $_SESSION['clinic_id'] = $clinic_id;
                     <!-- For table -->
 
 
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- END OF MODAL FOR VIEW SERVICES -->
+
+      <!-- START OF MODAL FOR VIEW IMAGE -->
+    <div class="modal fade" id="view_clinicimage" aria-hidden="true" role="dialog" style="padding-top: 30px; width: 100%; height: 100%;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="border-radius: 15px;">
+                <div class="modal-header modal-header-success">
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <!-- For image -->
+                    <?php
+                    $ret = mysqli_query($con, "SELECT * FROM clinics WHERE ClinicID = '$clinic_id'");
+                    $cnt = 1;
+                    $row = mysqli_num_rows($ret);
+                    if ($row > 0) {
+                        while ($row = mysqli_fetch_array($ret)) {
+
+                            echo '<div class="h-100" style="padding-bottom: 25px;">';
+                            if ($row['ClinicImage'] != "") {
+                                echo '<a href="#" onclick="showModal(\'' . $row['ClinicImage'] . '\')"><img src="image_upload/' . $row['ClinicImage'] . '"  class="img-fluid"  style="object-fit: cover; width: 100%; height: 100%;"></a>';
+                            }
+                            echo '</div>';
+
+                            // Rest of the code...
+                        }
+                    }
+                    ?>
+
+                    <!-- For image -->
 
                 </div>
                 <div class="modal-footer">
