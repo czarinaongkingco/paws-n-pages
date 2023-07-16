@@ -568,7 +568,7 @@ $_SESSION['petid'] = $petid;
                                                             <?php echo $row['AssessedBy']; ?>
                                                         </td>
                                                         <td style="border:0px;">
-                                                            <?php echo $row['Prescription']; ?>
+                                                            <a href="image_upload/<?php echo $row['Prescription']; ?>" download><?php echo $row['Prescription']; ?></a>
                                                         </td>
 
                                                         <?php
