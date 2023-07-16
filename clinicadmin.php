@@ -91,7 +91,6 @@ $row_cb = mysqli_num_rows($ret_cb);
         }
 
 
-
         .side_bar .side_bar_top .profile_pic {
             display: flex;
             justify-content: center;
@@ -294,7 +293,7 @@ $row_cb = mysqli_num_rows($ret_cb);
     <div class="wrapper">
         <div class="side_bar">
 
-            <div class="side_bar_bottom">
+            <div class="side_bar_bottom" style="height: max-content;">
                 <ul>
                     <li>
                         <span class="top_curve"></span>
@@ -534,6 +533,12 @@ $row_cb = mysqli_num_rows($ret_cb);
                                                         <br />
                                                         <br />
                                                         <tr>
+                                                            <td style="color:#80b434;"><b>Clinic Profile Picture: &nbsp;&nbsp;</b></td>
+                                                            <td>
+                                                                <a href="image_upload/<?php echo $row['ClinicImage'] ?>" target="_blank"><img src='image_upload/<?php echo $row['ClinicImage'] ?>' style="max-width: 300px; " /></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
                                                             <td style="color:#80b434;"><b>Clinic Name: &nbsp;&nbsp;</b></td>
                                                             <td>
                                                                 <?php echo $row['ClinicName'] ?>
@@ -660,388 +665,388 @@ $row_cb = mysqli_num_rows($ret_cb);
                 </div>
             </div>
         <?php } ?>
-
-        <!-- START OF MODAL FOR EDIT USER PROFILE (ADMIN) -->
-        <div class="modal fade" id="admin_modal<?php echo $row['userID'] ?>" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content" style="border-radius: 15px;">
-                    <form method="POST">
-                        <div class="modal-header modal-header-success">
-                            <h3 class="modal-title">Edit Profile</h3>
-                        </div>
-                        <div class="modal-body">
-                            <div class="col-md-2"></div>
-                            <div class="col-md-12">
-                                <?php
-                                $ret = mysqli_query($con, "SELECT * FROM users WHERE UserID='$userID'");
-                                while ($row = mysqli_fetch_array($ret)) {
-                                ?>
-                                    <div class="row gx-3 mb-3">
-                                        <div class="col-md-4">
-                                            <label>First Name</label>
-                                            <input type="hidden" name="userID" value="<?php echo $row['UserID'] ?>" />
-                                            <input type="text" name="fname" value="<?php echo $row['FirstName'] ?>" class="form-control" />
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Middle Name</label>
-                                            <input type="text" name="mname" value="<?php echo $row['MiddleName'] ?>" class="form-control" />
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Last Name</label>
-                                            <input type="text" name="lname" value="<?php echo $row['LastName'] ?>" class="form-control" />
-                                        </div>
-                                    </div>
-                                    <div class="row gx-3 mb-3">
-                                        <div class="col-md-6">
-                                            <label>Contact No.</label>
-                                            <input type="text" name="cnum" value="<?php echo $row['ContactNo'] ?>" class="form-control" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>Birthdate</label>
-                                            <input type="date" name="bdate" value="<?php echo $row['Birth_Date'] ?>" class="form-control" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Username</label>
-                                        <input type="text" name="username" value="<?php echo $row['Username'] ?>" class="form-control" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="text" name="email" value="<?php echo $row['Email'] ?>" class="form-control" readonly />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" name="password" value="<?php echo $row['Password'] ?>" class="form-control" readonly />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>New Password</label>
-                                        <input type="password" name="newpassword" class="form-control" />
-                                    </div>
-                                <?php } ?>
-                            </div>
-                        </div>
-                        <div style="clear:both;"></div>
-                        <div class="modal-footer">
-                            <button name="update_admin" class="btn btn-primary" style="border-radius: 15px;">Update</button>
-                            <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;">Close</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- END OF MODAL FOR EDIT USER PROFILE -->
-
-        <!-- START OF MODAL FOR EDIT USER PROFILE (CLINIC ADMIN) -->
-        <div class="modal fade" id="update_modal<?php echo $row['userID'] ?>" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content" style="border-radius: 15px;">
-                    <form method="POST">
-                        <div class="modal-header modal-header-success">
-                            <h3 class="modal-title">Edit Profile</h3>
-                        </div>
-                        <div class="modal-body">
-                            <div class="col-md-2"></div>
-                            <div class="col-md-12">
-                                <?php
-                                $ret = mysqli_query($con, "SELECT * FROM users WHERE UserID='$userID'");
-                                while ($row = mysqli_fetch_array($ret)) {
-                                ?>
-                                    <div class="row gx-3 mb-3">
-                                        <div class="col-md-4">
-                                            <label>First Name</label>
-                                            <input type="hidden" name="userID" value="<?php echo $row['UserID'] ?>" />
-                                            <input type="text" name="fname" value="<?php echo $row['FirstName'] ?>" class="form-control" />
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Middle Name</label>
-                                            <input type="text" name="mname" value="<?php echo $row['MiddleName'] ?>" class="form-control" />
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Last Name</label>
-                                            <input type="text" name="lname" value="<?php echo $row['LastName'] ?>" class="form-control" />
-                                        </div>
-                                    </div>
-                                    <div class="row gx-3 mb-3">
-                                        <div class="col-md-6">
-                                            <label>Contact No.</label>
-                                            <input type="text" name="cnum" value="<?php echo $row['ContactNo'] ?>" class="form-control" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>Birthdate</label>
-                                            <input type="date" name="bdate" value="<?php echo $row['Birth_Date'] ?>" class="form-control" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Username</label>
-                                        <input type="text" name="username" value="<?php echo $row['Username'] ?>" class="form-control" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="text" name="email" value="<?php echo $row['Email'] ?>" class="form-control" readonly />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" name="password" value="<?php echo $row['Password'] ?>" class="form-control" readonly />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>New Password</label>
-                                        <input type="password" name="newpassword" class="form-control" />
-                                    </div>
-                                <?php } ?>
-                            </div>
-                        </div>
-                        <div style="clear:both;"></div>
-                        <div class="modal-footer">
-                            <button name="update" class="btn btn-primary" style="border-radius: 15px;"><span class="glyphicon glyphicon-edit"></span>
-                                Update</button>
-                            <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
-                                Close</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- END OF MODAL FOR EDIT USER PROFILE -->
-
-        <!-- START OF MODAL FOR EDIT CLINIC DETAILS -->
-        <div class="modal fade" id="clinic_modal<?php echo $row['userID'] ?>" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content" style="border-radius: 15px;">
-                    <form method="POST" enctype="multipart/form-data" runat="server">
-                        <div class="modal-header modal-header-success">
-                            <h3 class="modal-title">Edit Clinic Details</h3>
-                        </div>
-                        <div class="modal-body">
-                            <div class="col-md-2"></div>
-                            <div class="col-md-12">
-                                <?php
-                                $ret = mysqli_query($con, "SELECT * FROM address, clinics, users WHERE address.UserID = users.UserID AND clinics.UserID = users.UserID AND clinics.UserID='$userID'");
-                                while ($row = mysqli_fetch_array($ret)) {
-                                ?>
-                                    <div class="row gx-3 mb-3">
-
-                                        <input type="hidden" name="id_clinic" value="<?php echo $row['ClinicID'] ?>" />
-                                        <input type="hidden" name="id_user" value="<?php echo $row['ClinicID'] ?>" />
-
-                                        <div class="col-md-6">
-                                            <label style="padding-bottom: 5px;">Clinic Profile Picture (Current)</label><br>
-                                            <a href="clinic_verification/<?php echo $row['ClinicImage']; ?>" target="_blank">
-                                                <span name="old" value="<?php echo $row['ClinicImage']; ?>">
-                                                    <?php echo $row['ClinicImage']; ?>
-                                                </span>
-                                            </a>&nbsp;<a href="clinic_verification/<?php echo $row['ClinicImage']; ?>" target="_blank" download>(Download)</a></span>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>Update Clinic Profile Picture</label>
-                                            <input type="file" id="cliniclogo" name="cliniclogo" class="form-control" style="width: 100%;" accept="image/*">
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row gx-3 mb-3">
-                                        <div class="col-md-12">
-                                            <label>Clinic Name</label>
-                                            <input type="text" name="clinicname" value="<?php echo $row['ClinicName'] ?>" class="form-control" style="width: 100%;" />
-                                        </div>
-                                    </div>
-                                    <div class="row gx-3 mb-3">
-                                        <div class="col-md-6">
-                                            <label>Opening Hours</label>
-                                            <input type="time" name="openhours" value="<?php echo $row['OpeningTime'] ?>" class="form-control" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>Closing Hours</label>
-                                            <input type="time" name="closehours" value="<?php echo $row['ClosingTime'] ?>" class="form-control" required>
-                                        </div>
-                                    </div>
-                                    <div class="row gx-3 mb-3">
-                                        <div class="col-md-6">
-                                            <label>Operating Days (Current)</label>
-                                            <textarea name="opendays1" id="opendays1" class="form-control" style="width: 100%;" rows="6" readonly><?php echo $row['OperatingDays'] ?></textarea>
-                                            <input type="hidden" name="opendays_1" value="<?php echo $row['OperatingDays'] ?>">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>Update Operating Days</label><br>
-                                            <div style="padding-left: 20px;">
-                                                <input type="checkbox" name="operatingdays[]" value="Sunday"> Sunday <br>
-                                                <input type="checkbox" name="operatingdays[]" value="Monday"> Monday <br>
-                                                <input type="checkbox" name="operatingdays[]" value="Tuesday"> Tuesday <br>
-                                                <input type="checkbox" name="operatingdays[]" value="Wednesday"> Wednesday <br>
-                                                <input type="checkbox" name="operatingdays[]" value="Thursday"> Thursday <br>
-                                                <input type="checkbox" name="operatingdays[]" value="Friday"> Friday <br>
-                                                <input type="checkbox" name="operatingdays[]" value="Saturday"> Saturday <br>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row gx-3 mb-3">
-                                        <div class="col-md-12" style="padding-bottom: 15px;">
-                                            <label style="font-weight: bold;">Clinic Address</label>
-                                        </div>
-
-                                        <div class="col-md-8">
-                                            <label>House/Lot No. & Street</label>
-                                            <input type="text" name="lotno_street" class="form-control" value="<?php echo $row['LotNo_Street'] ?>" required>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Barangay</label>
-                                            <?php
-                                            $sql = mysqli_query($con, "SELECT BarangayName FROM Barangay");
-                                            $data = $sql->fetch_all(MYSQLI_ASSOC);
-                                            ?>
-                                            <select id="barangay" style="height: 48px; width: 100%; border-radius: 5px;" class="bg-light border-0" name="barangay" placeholder="Barangay" required>
-                                                <option value="<?php echo $row['Barangay'] ?>" selected hidden>&nbsp;&nbsp;<?php echo $row['Barangay'] ?></option>
-                                                <?php foreach ($data as $row1) : ?>
-                                                    <option value="<?= htmlspecialchars($row1['BarangayName']) ?>">
-                                                        &nbsp;&nbsp;<?= htmlspecialchars($row1['BarangayName']) ?>
-                                                    </option>
-                                                <?php endforeach ?>
-                                                <!-- <option value="'.htmlspecialchars($barangay).'"></option>' -->
-                                            </select>
-                                        </div>
-
-                                    </div>
-                                    <div class="row gx-3 mb-3">
-                                        <div class="col-md-4">
-                                            <label>City</label>
-                                            <input type="text" name="city" class="form-control" value="Quezon City" readonly>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Province</label>
-                                            <input type="text" name="province" class="form-control" value="NCR" readonly>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>ZIP Code</label>
-                                            <input type="text" name="zipcode" style="height: 48px;" class="form-control" value="<?php echo $row['ZIPCode'] ?>" required>
-                                        </div>
-                                    </div>
-
-
-                                <?php } ?>
+    </div>
+    <!-- START OF MODAL FOR EDIT USER PROFILE (ADMIN) -->
+    <div class="modal fade" id="admin_modal<?php echo $row['userID'] ?>" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="border-radius: 15px;">
+                <form method="POST">
+                    <div class="modal-header modal-header-success">
+                        <h3 class="modal-title">Edit Profile</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-12">
+                            <?php
+                            $ret = mysqli_query($con, "SELECT * FROM users WHERE UserID='$userID'");
+                            while ($row = mysqli_fetch_array($ret)) {
+                            ?>
                                 <div class="row gx-3 mb-3">
                                     <div class="col-md-4">
+                                        <label>First Name</label>
+                                        <input type="hidden" name="userID" value="<?php echo $row['UserID'] ?>" />
+                                        <input type="text" name="fname" value="<?php echo $row['FirstName'] ?>" class="form-control" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Middle Name</label>
+                                        <input type="text" name="mname" value="<?php echo $row['MiddleName'] ?>" class="form-control" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Last Name</label>
+                                        <input type="text" name="lname" value="<?php echo $row['LastName'] ?>" class="form-control" />
                                     </div>
                                 </div>
-                            </div>
+                                <div class="row gx-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label>Contact No.</label>
+                                        <input type="text" name="cnum" value="<?php echo $row['ContactNo'] ?>" class="form-control" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Birthdate</label>
+                                        <input type="date" name="bdate" value="<?php echo $row['Birth_Date'] ?>" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Username</label>
+                                    <input type="text" name="username" value="<?php echo $row['Username'] ?>" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" name="email" value="<?php echo $row['Email'] ?>" class="form-control" readonly />
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" name="password" value="<?php echo $row['Password'] ?>" class="form-control" readonly />
+                                </div>
+                                <div class="form-group">
+                                    <label>New Password</label>
+                                    <input type="password" name="newpassword" class="form-control" />
+                                </div>
+                            <?php } ?>
                         </div>
-                        <div style="clear:both;"></div>
-                        <div class="modal-footer">
-                            <button name="update_clinic" type="submit" class="btn btn-primary" style="border-radius: 15px;"><span class="glyphicon glyphicon-edit"></span>
-                                Update</button>
-                            <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
-                                Close</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="modal-footer">
+                        <button name="update_admin" class="btn btn-primary" style="border-radius: 15px;">Update</button>
+                        <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;">Close</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <!-- END OF MODAL FOR EDIT CLINIC DETAILS -->
+    </div>
+    <!-- END OF MODAL FOR EDIT USER PROFILE -->
 
-        <!-- START OF MODAL FOR EDIT CLINIC QR -->
-        <div class="modal fade" id="billing_modal" aria-hidden="true">
-            <div class="modal-dialog modal-m">
-                <div class="modal-content" style="border-radius: 15px;">
-                    <form method="POST" enctype="multipart/form-data" runat="server">
-                        <div class="modal-header modal-header-success">
-                            <h3 class="modal-title">GCash QR</h3>
+    <!-- START OF MODAL FOR EDIT USER PROFILE (CLINIC ADMIN) -->
+    <div class="modal fade" id="update_modal<?php echo $row['userID'] ?>" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="border-radius: 15px;">
+                <form method="POST">
+                    <div class="modal-header modal-header-success">
+                        <h3 class="modal-title">Edit Profile</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-12">
+                            <?php
+                            $ret = mysqli_query($con, "SELECT * FROM users WHERE UserID='$userID'");
+                            while ($row = mysqli_fetch_array($ret)) {
+                            ?>
+                                <div class="row gx-3 mb-3">
+                                    <div class="col-md-4">
+                                        <label>First Name</label>
+                                        <input type="hidden" name="userID" value="<?php echo $row['UserID'] ?>" />
+                                        <input type="text" name="fname" value="<?php echo $row['FirstName'] ?>" class="form-control" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Middle Name</label>
+                                        <input type="text" name="mname" value="<?php echo $row['MiddleName'] ?>" class="form-control" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Last Name</label>
+                                        <input type="text" name="lname" value="<?php echo $row['LastName'] ?>" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row gx-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label>Contact No.</label>
+                                        <input type="text" name="cnum" value="<?php echo $row['ContactNo'] ?>" class="form-control" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Birthdate</label>
+                                        <input type="date" name="bdate" value="<?php echo $row['Birth_Date'] ?>" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Username</label>
+                                    <input type="text" name="username" value="<?php echo $row['Username'] ?>" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" name="email" value="<?php echo $row['Email'] ?>" class="form-control" readonly />
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" name="password" value="<?php echo $row['Password'] ?>" class="form-control" readonly />
+                                </div>
+                                <div class="form-group">
+                                    <label>New Password</label>
+                                    <input type="password" name="newpassword" class="form-control" />
+                                </div>
+                            <?php } ?>
                         </div>
-                        <div class="modal-body">
-                            <div class="col-md-2"></div>
-                            <div class="col-md-12">
-                                <?php
-                                $ret = mysqli_query($con, "SELECT * FROM clinic_billing WHERE clinicID ='$clinicID'");
-                                while ($row = mysqli_fetch_array($ret)) {
-                                ?>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="modal-footer">
+                        <button name="update" class="btn btn-primary" style="border-radius: 15px;"><span class="glyphicon glyphicon-edit"></span>
+                            Update</button>
+                        <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
+                            Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- END OF MODAL FOR EDIT USER PROFILE -->
+
+    <!-- START OF MODAL FOR EDIT CLINIC DETAILS -->
+    <div class="modal fade" id="clinic_modal<?php echo $row['userID'] ?>" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="border-radius: 15px;">
+                <form method="POST" enctype="multipart/form-data" runat="server">
+                    <div class="modal-header modal-header-success">
+                        <h3 class="modal-title">Edit Clinic Details</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-12">
+                            <?php
+                            $ret = mysqli_query($con, "SELECT * FROM address, clinics, users WHERE address.UserID = users.UserID AND clinics.UserID = users.UserID AND clinics.UserID='$userID'");
+                            while ($row = mysqli_fetch_array($ret)) {
+                            ?>
+                                <div class="row gx-3 mb-3">
+
                                     <input type="hidden" name="id_clinic" value="<?php echo $row['ClinicID'] ?>" />
                                     <input type="hidden" name="id_user" value="<?php echo $row['ClinicID'] ?>" />
 
-                                    <div class="col-md-12">
-                                        <label style="padding-bottom: 5px;">Clinic GCash QR (Current)</label><br>
-                                        <a href="image_upload/<?php echo $row['BillingImage']; ?>" target="_blank">
-                                            <span name="old">
-                                                <?php
-                                                $b_image = substr($row['BillingImage'], 0, 15);
-                                                echo $b_image . '...';
-                                                ?>
+                                    <div class="col-md-6">
+                                        <label style="padding-bottom: 5px;">Clinic Profile Picture (Current)</label><br>
+                                        <a href="clinic_verification/<?php echo $row['ClinicImage']; ?>" target="_blank">
+                                            <span name="old" value="<?php echo $row['ClinicImage']; ?>">
+                                                <?php echo $row['ClinicImage']; ?>
                                             </span>
-                                        </a>&nbsp;<a href="image_upload/<?php echo $row['BillingImage']; ?>" target="_blank" download>(Download)</a></span>
+                                        </a>&nbsp;<a href="clinic_verification/<?php echo $row['ClinicImage']; ?>" target="_blank" download>(Download)</a></span>
+
                                     </div>
-                                    <br>
+                                    <div class="col-md-6">
+                                        <label>Update Clinic Profile Picture</label>
+                                        <input type="file" id="cliniclogo" name="cliniclogo" class="form-control" style="width: 100%;" accept="image/*">
+                                    </div>
+
+                                </div>
+
+                                <div class="row gx-3 mb-3">
                                     <div class="col-md-12">
-                                        <label>Update Clinic GCash QR</label>
-                                        <input type="file" id="uClinicQR" name="uClinicQR" class="form-control" style="width: 100%;" accept="image/*" required="required">
+                                        <label>Clinic Name</label>
+                                        <input type="text" name="clinicname" value="<?php echo $row['ClinicName'] ?>" class="form-control" style="width: 100%;" />
                                     </div>
-                                    <br>
-                                <?php } ?>
+                                </div>
+                                <div class="row gx-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label>Opening Hours</label>
+                                        <input type="time" name="openhours" value="<?php echo $row['OpeningTime'] ?>" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Closing Hours</label>
+                                        <input type="time" name="closehours" value="<?php echo $row['ClosingTime'] ?>" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="row gx-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label>Operating Days (Current)</label>
+                                        <textarea name="opendays1" id="opendays1" class="form-control" style="width: 100%;" rows="6" readonly><?php echo $row['OperatingDays'] ?></textarea>
+                                        <input type="hidden" name="opendays_1" value="<?php echo $row['OperatingDays'] ?>">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Update Operating Days</label><br>
+                                        <div style="padding-left: 20px;">
+                                            <input type="checkbox" name="operatingdays[]" value="Sunday"> Sunday <br>
+                                            <input type="checkbox" name="operatingdays[]" value="Monday"> Monday <br>
+                                            <input type="checkbox" name="operatingdays[]" value="Tuesday"> Tuesday <br>
+                                            <input type="checkbox" name="operatingdays[]" value="Wednesday"> Wednesday <br>
+                                            <input type="checkbox" name="operatingdays[]" value="Thursday"> Thursday <br>
+                                            <input type="checkbox" name="operatingdays[]" value="Friday"> Friday <br>
+                                            <input type="checkbox" name="operatingdays[]" value="Saturday"> Saturday <br>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row gx-3 mb-3">
+                                    <div class="col-md-12" style="padding-bottom: 15px;">
+                                        <label style="font-weight: bold;">Clinic Address</label>
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <label>House/Lot No. & Street</label>
+                                        <input type="text" name="lotno_street" class="form-control" value="<?php echo $row['LotNo_Street'] ?>" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Barangay</label>
+                                        <?php
+                                        $sql = mysqli_query($con, "SELECT BarangayName FROM Barangay");
+                                        $data = $sql->fetch_all(MYSQLI_ASSOC);
+                                        ?>
+                                        <select id="barangay" style="height: 48px; width: 100%; border-radius: 5px;" class="bg-light border-0" name="barangay" placeholder="Barangay" required>
+                                            <option value="<?php echo $row['Barangay'] ?>" selected hidden>&nbsp;&nbsp;<?php echo $row['Barangay'] ?></option>
+                                            <?php foreach ($data as $row1) : ?>
+                                                <option value="<?= htmlspecialchars($row1['BarangayName']) ?>">
+                                                    &nbsp;&nbsp;<?= htmlspecialchars($row1['BarangayName']) ?>
+                                                </option>
+                                            <?php endforeach ?>
+                                            <!-- <option value="'.htmlspecialchars($barangay).'"></option>' -->
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="row gx-3 mb-3">
+                                    <div class="col-md-4">
+                                        <label>City</label>
+                                        <input type="text" name="city" class="form-control" value="Quezon City" readonly>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Province</label>
+                                        <input type="text" name="province" class="form-control" value="NCR" readonly>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>ZIP Code</label>
+                                        <input type="text" name="zipcode" style="height: 48px;" class="form-control" value="<?php echo $row['ZIPCode'] ?>" required>
+                                    </div>
+                                </div>
+
+
+                            <?php } ?>
+                            <div class="row gx-3 mb-3">
+                                <div class="col-md-4">
+                                </div>
                             </div>
                         </div>
-                        <div style="clear:both;"></div>
-                        <div class="modal-footer">
-                            <button name="update_qr" type="submit" class="btn btn-primary" style="border-radius: 15px;"><span class="glyphicon glyphicon-edit"></span>
-                                Update</button>
-                            <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
-                                Close</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="modal-footer">
+                        <button name="update_clinic" type="submit" class="btn btn-primary" style="border-radius: 15px;"><span class="glyphicon glyphicon-edit"></span>
+                            Update</button>
+                        <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
+                            Close</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <!-- END OF MODAL FOR EDIT CLINIC QR -->
+    </div>
+    <!-- END OF MODAL FOR EDIT CLINIC DETAILS -->
 
-        <!-- START OF MODAL FOR ADD CLINIC QR -->
-        <div class="modal fade" id="billing_upload" aria-hidden="true">
-            <div class="modal-dialog modal-m">
-                <div class="modal-content" style="border-radius: 15px;">
-                    <form method="POST" enctype="multipart/form-data" runat="server">
-                        <div class="modal-header modal-header-success">
-                            <h3 class="modal-title">GCash QR</h3>
-                        </div>
-                        <div class="modal-body">
-                            <div class="col-md-2"></div>
-                            <div class="col-md-12">
+    <!-- START OF MODAL FOR EDIT CLINIC QR -->
+    <div class="modal fade" id="billing_modal" aria-hidden="true">
+        <div class="modal-dialog modal-m">
+            <div class="modal-content" style="border-radius: 15px;">
+                <form method="POST" enctype="multipart/form-data" runat="server">
+                    <div class="modal-header modal-header-success">
+                        <h3 class="modal-title">GCash QR</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-12">
+                            <?php
+                            $ret = mysqli_query($con, "SELECT * FROM clinic_billing WHERE clinicID ='$clinicID'");
+                            while ($row = mysqli_fetch_array($ret)) {
+                            ?>
                                 <input type="hidden" name="id_clinic" value="<?php echo $row['ClinicID'] ?>" />
                                 <input type="hidden" name="id_user" value="<?php echo $row['ClinicID'] ?>" />
 
                                 <div class="col-md-12">
-                                    <label>Upload GCash QR</label>
-                                    <input type="file" id="ClinicQR" name="ClinicQR" class="form-control" style="width: 100%;" required="required">
+                                    <label style="padding-bottom: 5px;">Clinic GCash QR (Current)</label><br>
+                                    <a href="image_upload/<?php echo $row['BillingImage']; ?>" target="_blank">
+                                        <span name="old">
+                                            <?php
+                                            $b_image = substr($row['BillingImage'], 0, 15);
+                                            echo $b_image . '...';
+                                            ?>
+                                        </span>
+                                    </a>&nbsp;<a href="image_upload/<?php echo $row['BillingImage']; ?>" target="_blank" download>(Download)</a></span>
                                 </div>
-                            </div>
+                                <br>
+                                <div class="col-md-12">
+                                    <label>Update Clinic GCash QR</label>
+                                    <input type="file" id="uClinicQR" name="uClinicQR" class="form-control" style="width: 100%;" accept="image/*" required="required">
+                                </div>
+                                <br>
+                            <?php } ?>
                         </div>
-                        <div style="clear:both;"></div>
-                        <div class="modal-footer">
-                            <button name="submit_billing" type="submit" class="btn btn-primary" style="border-radius: 15px;"><span class="glyphicon glyphicon-edit"></span>
-                                Submit</button>
-                            <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
-                                Close</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="modal-footer">
+                        <button name="update_qr" type="submit" class="btn btn-primary" style="border-radius: 15px;"><span class="glyphicon glyphicon-edit"></span>
+                            Update</button>
+                        <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
+                            Close</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <!-- END OF MODAL FOR EDIT CLINIC DETAILS -->
+    </div>
+    <!-- END OF MODAL FOR EDIT CLINIC QR -->
+
+    <!-- START OF MODAL FOR ADD CLINIC QR -->
+    <div class="modal fade" id="billing_upload" aria-hidden="true">
+        <div class="modal-dialog modal-m">
+            <div class="modal-content" style="border-radius: 15px;">
+                <form method="POST" enctype="multipart/form-data" runat="server">
+                    <div class="modal-header modal-header-success">
+                        <h3 class="modal-title">GCash QR</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-12">
+                            <input type="hidden" name="id_clinic" value="<?php echo $row['ClinicID'] ?>" />
+                            <input type="hidden" name="id_user" value="<?php echo $row['ClinicID'] ?>" />
+
+                            <div class="col-md-12">
+                                <label>Upload GCash QR</label>
+                                <input type="file" id="ClinicQR" name="ClinicQR" class="form-control" style="width: 100%;" required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="modal-footer">
+                        <button name="submit_billing" type="submit" class="btn btn-primary" style="border-radius: 15px;"><span class="glyphicon glyphicon-edit"></span>
+                            Submit</button>
+                        <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
+                            Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- END OF MODAL FOR EDIT CLINIC DETAILS -->
 
 
 
-        <!-- START OF EDIT -->
+    <!-- START OF EDIT -->
 
-        <?php
-        //FOR EDITING CLINIC QR
+    <?php
+    //FOR EDITING CLINIC QR
 
-        if (isset($_POST['update_qr'])) {
-            $ufile_cb = $_FILES['uClinicQR']['name'];
-            $utempfile_cb = $_FILES['uClinicQR']['tmp_name'];
-            $ufolder_cb = "image_upload/" . $ufile_cb;
-            move_uploaded_file($utempfile_cb, $ufolder_cb);
+    if (isset($_POST['update_qr'])) {
+        $ufile_cb = $_FILES['uClinicQR']['name'];
+        $utempfile_cb = $_FILES['uClinicQR']['tmp_name'];
+        $ufolder_cb = "image_upload/" . $ufile_cb;
+        move_uploaded_file($utempfile_cb, $ufolder_cb);
 
-            if ($ufile_cb != "") {
+        if ($ufile_cb != "") {
 
-                $uquery_cb = mysqli_query($con, "UPDATE clinic_billing set BillingImage='$ufile_cb' WHERE ClinicID='$clinicID'");
+            $uquery_cb = mysqli_query($con, "UPDATE clinic_billing set BillingImage='$ufile_cb' WHERE ClinicID='$clinicID'");
 
-                if ($uquery_cb) {
-                    echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
-                    echo '<script>';
-                    echo 'swal({
+            if ($uquery_cb) {
+                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                echo '<script>';
+                echo 'swal({
                                                 title: "Success",
                                                 text: "You have successfully updated your QR",
                                                 icon: "success",
@@ -1054,28 +1059,28 @@ $row_cb = mysqli_num_rows($ret_cb);
                                                             document.location ="clinicadmin.php";
                                                         }
                                                     })';
-                    echo '</script>';
-                } else {
-                    echo "<script>alert('Something Went Wrong. Please try again');</script>";
-                }
+                echo '</script>';
             } else {
                 echo "<script>alert('Something Went Wrong. Please try again');</script>";
             }
+        } else {
+            echo "<script>alert('Something Went Wrong. Please try again');</script>";
         }
+    }
 
-        //FOR ADDING CLINIC QR
-        if (isset($_POST['submit_billing'])) {
-            $file_cb = $_FILES['ClinicQR']['name'];
-            $tempfile_cb = $_FILES['ClinicQR']['tmp_name'];
-            $folder_cb = "image_upload/" . $file_cb;
-            move_uploaded_file($tempfile_cb, $folder_cb);
+    //FOR ADDING CLINIC QR
+    if (isset($_POST['submit_billing'])) {
+        $file_cb = $_FILES['ClinicQR']['name'];
+        $tempfile_cb = $_FILES['ClinicQR']['tmp_name'];
+        $folder_cb = "image_upload/" . $file_cb;
+        move_uploaded_file($tempfile_cb, $folder_cb);
 
-            $query_cb = mysqli_query($con, "INSERT INTO clinic_billing(BillingImage, ClinicID) VALUES ('$file_cb', '$clinicID')");
+        $query_cb = mysqli_query($con, "INSERT INTO clinic_billing(BillingImage, ClinicID) VALUES ('$file_cb', '$clinicID')");
 
-            if ($query_cb) {
-                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
-                echo '<script>';
-                echo 'swal({
+        if ($query_cb) {
+            echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+            echo '<script>';
+            echo 'swal({
                                             title: "Success",
                                             text: "You have successfully added your QR",
                                             icon: "success",
@@ -1088,56 +1093,56 @@ $row_cb = mysqli_num_rows($ret_cb);
                                                         document.location ="clinicadmin.php";
                                                     }
                                                 })';
-                echo '</script>';
-            } else {
-                echo "<script>alert('Something Went Wrong. Please try again');</script>";
-            }
+            echo '</script>';
+        } else {
+            echo "<script>alert('Something Went Wrong. Please try again');</script>";
+        }
+    }
+
+    if (isset($_POST['update_clinic'])) {
+
+        // For clinic logo
+        $file = $_FILES['cliniclogo']['name'];
+        $tempfile = $_FILES['cliniclogo']['tmp_name'];
+        $folder = "image_upload/" . $file;
+        move_uploaded_file($tempfile, $folder);
+
+        // Other details
+        $cname = $_POST['clinicname'];
+        $op_hours = $_POST['openhours'];
+        $cl_hours = $_POST['closehours'];
+
+        $operatingDays = $_POST['operatingdays'];
+        $op_days = '';
+
+        foreach ($operatingDays as $opDays) {
+            $op_days .= $opDays . ", ";
         }
 
-        if (isset($_POST['update_clinic'])) {
+        $op_days = rtrim($op_days, ", ");
 
-            // For clinic logo
-            $file = $_FILES['cliniclogo']['name'];
-            $tempfile = $_FILES['cliniclogo']['tmp_name'];
-            $folder = "image_upload/" . $file;
-            move_uploaded_file($tempfile, $folder);
+        // For address
+        $lotno_street1 = $_POST['lotno_street'];
+        $barangay = $_POST['barangay'];
+        $zipcode = $_POST['zipcode'];
 
-            // Other details
-            $cname = $_POST['clinicname'];
-            $op_hours = $_POST['openhours'];
-            $cl_hours = $_POST['closehours'];
-
-            $operatingDays = $_POST['operatingdays'];
-            $op_days = '';
-
-            foreach ($operatingDays as $opDays) {
-                $op_days .= $opDays . ", ";
-            }
-
-            $op_days = rtrim($op_days, ", ");
-
-            // For address
-            $lotno_street1 = $_POST['lotno_street'];
-            $barangay = $_POST['barangay'];
-            $zipcode = $_POST['zipcode'];
-
-            // For operating days
-            if ($op_days == null)
-                $op_days = $_POST['opendays_1'];
+        // For operating days
+        if ($op_days == null)
+            $op_days = $_POST['opendays_1'];
 
 
-            if ($file != "")
-                $query = mysqli_query($con, "UPDATE clinics SET ClinicImage='$file', ClinicName='$cname', OpeningTime='$op_hours', ClosingTime='$cl_hours', OperatingDays='$op_days' WHERE ClinicID='$clinicID'");
-            else
-                $query = mysqli_query($con, "UPDATE clinics SET ClinicName='$cname', OpeningTime='$op_hours', ClosingTime='$cl_hours', OperatingDays='$op_days' WHERE ClinicID='$clinicID'");
+        if ($file != "")
+            $query = mysqli_query($con, "UPDATE clinics SET ClinicImage='$file', ClinicName='$cname', OpeningTime='$op_hours', ClosingTime='$cl_hours', OperatingDays='$op_days' WHERE ClinicID='$clinicID'");
+        else
+            $query = mysqli_query($con, "UPDATE clinics SET ClinicName='$cname', OpeningTime='$op_hours', ClosingTime='$cl_hours', OperatingDays='$op_days' WHERE ClinicID='$clinicID'");
 
-            // $query = mysqli_query($con, "UPDATE clinics SET ClinicImage='$file', ClinicName='$cname', OpeningTime='$op_hours', ClosingTime='$cl_hours', OperatingDays='$op_days' WHERE ClinicID='$clinicID'");
-            $query_a = mysqli_query($con, "UPDATE address SET LotNo_Street='$lotno_street1', Barangay='$barangay', ZIPCode='$zipcode' WHERE UserID='$userID'");
+        // $query = mysqli_query($con, "UPDATE clinics SET ClinicImage='$file', ClinicName='$cname', OpeningTime='$op_hours', ClosingTime='$cl_hours', OperatingDays='$op_days' WHERE ClinicID='$clinicID'");
+        $query_a = mysqli_query($con, "UPDATE address SET LotNo_Street='$lotno_street1', Barangay='$barangay', ZIPCode='$zipcode' WHERE UserID='$userID'");
 
-            if ($query && $query_a) {
-                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
-                echo '<script>';
-                echo 'swal({
+        if ($query && $query_a) {
+            echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+            echo '<script>';
+            echo 'swal({
                                             title: "Success",
                                             text: "You have successfully updated your clinic details",
                                             icon: "success",
@@ -1150,35 +1155,35 @@ $row_cb = mysqli_num_rows($ret_cb);
                                                         document.location ="clinicadmin.php";
                                                     }
                                                 })';
-                echo '</script>';
-            } else {
-                echo "<script>alert('Something Went Wrong. Please try again');</script>";
-            }
+            echo '</script>';
+        } else {
+            echo "<script>alert('Something Went Wrong. Please try again');</script>";
         }
+    }
 
-        ?>
-
-
-
-        <?php
-        /////////////////////////////////////// FOR UPDATING USER PROFILE (ADMIN) ///////////////////////////////////////
-        $anewpass = $_POST['anewpassword'];
-
-        // Hashed password
-        $ah_pword = password_hash($anewpass, PASSWORD_DEFAULT);
-
-        if (isset($_POST['update_admin']) && $anewpass != "") {
-
-            $ausername = $_POST['ausername'];
-            $aemail = $_POST['aemail'];
+    ?>
 
 
-            $query = mysqli_query($con, "UPDATE users SET  Username='$ausername', Password='$ah_pword', Email='$aemail' WHERE UserID='$userID'");
 
-            if ($query) {
-                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
-                echo '<script>';
-                echo 'swal({
+    <?php
+    /////////////////////////////////////// FOR UPDATING USER PROFILE (ADMIN) ///////////////////////////////////////
+    $anewpass = $_POST['anewpassword'];
+
+    // Hashed password
+    $ah_pword = password_hash($anewpass, PASSWORD_DEFAULT);
+
+    if (isset($_POST['update_admin']) && $anewpass != "") {
+
+        $ausername = $_POST['ausername'];
+        $aemail = $_POST['aemail'];
+
+
+        $query = mysqli_query($con, "UPDATE users SET  Username='$ausername', Password='$ah_pword', Email='$aemail' WHERE UserID='$userID'");
+
+        if ($query) {
+            echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+            echo '<script>';
+            echo 'swal({
                                             title: "Success",
                                             text: "You have successfully updated an information",
                                             icon: "success",
@@ -1191,22 +1196,22 @@ $row_cb = mysqli_num_rows($ret_cb);
                                                         document.location ="clinicadmin.php";
                                                     }
                                                 })';
-                echo '</script>';
-            } else {
-                echo "<script>alert('Something Went Wrong. Please try again');</script>";
-            }
+            echo '</script>';
+        } else {
+            echo "<script>alert('Something Went Wrong. Please try again');</script>";
         }
-        if (isset($_POST['update_admin']) && $anewpass == "") {
+    }
+    if (isset($_POST['update_admin']) && $anewpass == "") {
 
-            $username = $_POST['ausername'];
-            $aemail = $_POST['aemail'];
+        $username = $_POST['ausername'];
+        $aemail = $_POST['aemail'];
 
-            $query = mysqli_query($con, "UPDATE users SET Username='$username', Email='$aemail' WHERE UserID='$userID'");
+        $query = mysqli_query($con, "UPDATE users SET Username='$username', Email='$aemail' WHERE UserID='$userID'");
 
-            if ($query) {
-                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
-                echo '<script>';
-                echo 'swal({
+        if ($query) {
+            echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+            echo '<script>';
+            echo 'swal({
                                             title: "Success",
                                             text: "You have successfully updated your information",
                                             icon: "success",
@@ -1219,35 +1224,35 @@ $row_cb = mysqli_num_rows($ret_cb);
                                                         document.location ="clinicadmin.php";
                                                     }
                                                 })';
-                echo '</script>';
-            } else {
-                echo "<script>alert('Something Went Wrong. Please try again');</script>";
-            }
+            echo '</script>';
+        } else {
+            echo "<script>alert('Something Went Wrong. Please try again');</script>";
         }
+    }
 
-        /////////////////////////////////////// FOR UPDATING USER PROFILE (CLINIC ADMIN) ///////////////////////////////////////
-        $newpass = $_POST['newpassword'];
+    /////////////////////////////////////// FOR UPDATING USER PROFILE (CLINIC ADMIN) ///////////////////////////////////////
+    $newpass = $_POST['newpassword'];
 
-        // Hashed password
-        $h_pword = password_hash($newpass, PASSWORD_DEFAULT);
+    // Hashed password
+    $h_pword = password_hash($newpass, PASSWORD_DEFAULT);
 
-        if (isset($_POST['update']) && $newpass != "") {
+    if (isset($_POST['update']) && $newpass != "") {
 
-            $userID = $_POST['userID'];
-            $fname = $_POST['fname'];
-            $mname = $_POST['mname'];
-            $lname = $_POST['lname'];
-            $cnum = $_POST['cnum'];
-            $username = $_POST['username'];
-            $bdate = $_POST['bdate'];
+        $userID = $_POST['userID'];
+        $fname = $_POST['fname'];
+        $mname = $_POST['mname'];
+        $lname = $_POST['lname'];
+        $cnum = $_POST['cnum'];
+        $username = $_POST['username'];
+        $bdate = $_POST['bdate'];
 
 
-            $query = mysqli_query($con, "UPDATE users SET FirstName='$fname', MiddleName='$mname', LastName='$lname', ContactNo='$cnum', Birth_Date='$bdate', Username='$username', Password='$h_pword' WHERE UserID='$userID'");
+        $query = mysqli_query($con, "UPDATE users SET FirstName='$fname', MiddleName='$mname', LastName='$lname', ContactNo='$cnum', Birth_Date='$bdate', Username='$username', Password='$h_pword' WHERE UserID='$userID'");
 
-            if ($query) {
-                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
-                echo '<script>';
-                echo 'swal({
+        if ($query) {
+            echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+            echo '<script>';
+            echo 'swal({
                                             title: "Success",
                                             text: "You have successfully updated your information",
                                             icon: "success",
@@ -1260,29 +1265,29 @@ $row_cb = mysqli_num_rows($ret_cb);
                                                         document.location ="clinicadmin.php";
                                                     }
                                                 })';
-                echo '</script>';
-            } else {
-                echo "<script>alert('Something Went Wrong. Please try again');</script>";
-            }
+            echo '</script>';
+        } else {
+            echo "<script>alert('Something Went Wrong. Please try again');</script>";
         }
+    }
 
-        if (isset($_POST['update']) && $newpass == "") {
+    if (isset($_POST['update']) && $newpass == "") {
 
-            $userID = $_POST['userID'];
-            $fname = $_POST['fname'];
-            $mname = $_POST['mname'];
-            $lname = $_POST['lname'];
-            $cnum = $_POST['cnum'];
-            $username = $_POST['username'];
-            $bdate = $_POST['bdate'];
+        $userID = $_POST['userID'];
+        $fname = $_POST['fname'];
+        $mname = $_POST['mname'];
+        $lname = $_POST['lname'];
+        $cnum = $_POST['cnum'];
+        $username = $_POST['username'];
+        $bdate = $_POST['bdate'];
 
 
-            $query = mysqli_query($con, "UPDATE users SET FirstName='$fname', MiddleName='$mname', LastName='$lname', ContactNo='$cnum', Birth_Date='$bdate', Username='$username' WHERE UserID='$userID'");
+        $query = mysqli_query($con, "UPDATE users SET FirstName='$fname', MiddleName='$mname', LastName='$lname', ContactNo='$cnum', Birth_Date='$bdate', Username='$username' WHERE UserID='$userID'");
 
-            if ($query) {
-                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
-                echo '<script>';
-                echo 'swal({
+        if ($query) {
+            echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+            echo '<script>';
+            echo 'swal({
                                             title: "Success",
                                             text: "You have successfully updated your information",
                                             icon: "success",
@@ -1295,12 +1300,12 @@ $row_cb = mysqli_num_rows($ret_cb);
                                                         document.location ="clinicadmin.php";
                                                     }
                                                 })';
-                echo '</script>';
-            } else {
-                echo "<script>alert('Something Went Wrong. Please try again');</script>";
-            }
+            echo '</script>';
+        } else {
+            echo "<script>alert('Something Went Wrong. Please try again');</script>";
         }
-        ?>
+    }
+    ?>
 
 </body>
 
