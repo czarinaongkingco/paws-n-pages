@@ -188,7 +188,8 @@ $_SESSION['petid'] = $petid;
             list-style-type: none;
             padding-bottom: 5.5em;
         }
- /* Style the tab */
+
+        /* Style the tab */
         .tab {
             overflow: auto;
             border: 1px solid #ccc;
@@ -226,36 +227,37 @@ $_SESSION['petid'] = $petid;
             border: 1px solid #ccc;
             border-top: none;
         }
-          .card-body {
+
+        .card-body {
             display: none;
         }
     </style>
 
-            <!-- FOR DIGITAL TIME AND DATE -->
-        <script type="text/javascript">
-        function updateClock(){
-        var now = new Date();
-        var dname = now.getDay(),
-            mo = now.getMonth(),
-            dnum = now.getDate(),
-            yr = now.getFullYear(),
-            hou = now.getHours(),
-            min = now.getMinutes(),
-            sec = now.getSeconds(),
-            pe = "AM";
+    <!-- FOR DIGITAL TIME AND DATE -->
+    <script type="text/javascript">
+        function updateClock() {
+            var now = new Date();
+            var dname = now.getDay(),
+                mo = now.getMonth(),
+                dnum = now.getDate(),
+                yr = now.getFullYear(),
+                hou = now.getHours(),
+                min = now.getMinutes(),
+                sec = now.getSeconds(),
+                pe = "AM";
 
-            if(hou >= 12){
+            if (hou >= 12) {
                 pe = "PM";
             }
-            if(hou == 0){
+            if (hou == 0) {
                 hou = 12;
             }
-            if(hou > 12){
+            if (hou > 12) {
                 hou = hou - 12;
             }
 
-            Number.prototype.pad = function(digits){
-                for(var n = this.toString(); n.length < digits; n = 0 + n);
+            Number.prototype.pad = function(digits) {
+                for (var n = this.toString(); n.length < digits; n = 0 + n);
                 return n;
             }
 
@@ -263,15 +265,15 @@ $_SESSION['petid'] = $petid;
             var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
             var values = [week[dname], months[mo], dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
-            for(var i = 0; i < ids.length; i++)
-            document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+            for (var i = 0; i < ids.length; i++)
+                document.getElementById(ids[i]).firstChild.nodeValue = values[i];
         }
 
-        function initClock(){
-        updateClock();
-        window.setInterval("updateClock()", 1);
+        function initClock() {
+            updateClock();
+            window.setInterval("updateClock()", 1);
         }
-        </script>
+    </script>
     <script>
         $(document).ready(function() {
             var table = $('#vaccine').DataTable({
@@ -313,72 +315,73 @@ $_SESSION['petid'] = $petid;
 
 <body onload="initClock()">
     <div style="width:100%; height:50px; background-color:#73a22e;">
-            <p style="color:white; font-size:23px; padding-left:10px;"><img src="img/logo_white.png" height="50px">&nbsp;PawsNPages
+        <p style="color:white; font-size:23px; padding-left:10px;"><img src="img/logo_white.png" height="50px">&nbsp;PawsNPages
             <?php
             $ret = mysqli_query($con, "SELECT * FROM users WHERE UserID='$userID'");
             while ($row = mysqli_fetch_array($ret)) {
             ?>
-                <a href="logout.php" style="color:white; font-size:20px; padding-top:10px; float:right; padding-right:15px;"><i class="fa fa-sign-out"></i></a><a style="color:white; font-size:15px; padding-top:13px; float:right; padding-left:10px; padding-right:10px;">Logged in as, <i><?php echo $row['Username'] ?></i></a>&nbsp;&nbsp;</p>
-            <?php } ?>
+                <a href="logout.php" style="color:white; font-size:20px; padding-top:10px; float:right; padding-right:15px;"><i class="fa fa-sign-out"></i></a><a style="color:white; font-size:15px; padding-top:13px; float:right; padding-left:10px; padding-right:10px;">Logged in as, <i><?php echo $row['Username'] ?></i></a>&nbsp;&nbsp;
+        </p>
+    <?php } ?>
     </div>
     <div class="wrapper">
-        <div class="side_bar" >
+        <div class="side_bar">
 
             <div class="side_bar_bottom" style="height:100%;">
                 <ul>
                     <li>
                         <span class="top_curve"></span>
                         <a href="dashboard.php"><span class="icon"><i class="fa fa-home"></i></span>
-                        <span class="item">Dashboard</span></a>
+                            <span class="item">Dashboard</span></a>
                         <span class="bottom_curve"></span>
                     </li>
 
                     <li>
                         <span class="top_curve"></span>
                         <a href="clinicadmin.php"><span class="icon"><i class="fa fa-user"></i></span>
-                        <span class="item">Profile</span></a>
+                            <span class="item">Profile</span></a>
                         <span class="bottom_curve"></span>
                     </li>
 
                     <li>
                         <span class="top_curve"></span>
                         <a href="supplies.php"><span class="icon"><i class="fa fa-tags"></i></span>
-                        <span class="item">Products</span></a>
+                            <span class="item">Products</span></a>
                         <span class="bottom_curve"></span>
                     </li>
 
                     <li>
                         <span class="top_curve"></span>
                         <a href="bookings.php"><span class="icon"><i class="fa fa-calendar"></i></span>
-                        <span class="item">Bookings</span></a>
+                            <span class="item">Bookings</span></a>
                         <span class="bottom_curve"></span>
                     </li>
 
                     <li>
                         <span class="top_curve"></span>
                         <a href="orders_admin.php"><span class="icon"><i class="fa fa-truck"></i></span>
-                        <span class="item">Orders</span></a>
+                            <span class="item">Orders</span></a>
                         <span class="bottom_curve"></span>
                     </li>
 
-                    <li >
+                    <li>
                         <span class="top_curve"></span>
                         <a href="feedbacks_admin.php"><span class="icon"><i class="fa fa-envelope"></i></span>
-                        <span class="item">Feedback</span></a>
+                            <span class="item">Feedback</span></a>
                         <span class="bottom_curve"></span>
                     </li>
 
                     <li>
                         <span class="top_curve"></span>
                         <a href="services.php"><span class="icon"><i class="fa fa-list"></i></span>
-                        <span class="item">Services</span></a>
+                            <span class="item">Services</span></a>
                         <span class="bottom_curve"></span>
                     </li>
-                
+
                     <li class="active">
                         <span class="top_curve"></span>
                         <a href="petsearch.php"><span class="icon"><i class="fa fa-paw"></i></span>
-                        <span class="item">Pet Records</span></a>
+                            <span class="item">Pet Records</span></a>
                         <span class="bottom_curve"></span>
                     </li>
 
@@ -386,232 +389,232 @@ $_SESSION['petid'] = $petid;
                         <li>
                             <span class="top_curve"></span>
                             <a href="users.php"><span class="icon"><i class="fa fa-users"></i></span>
-                            <span class="item">Users</span></a>
+                                <span class="item">Users</span></a>
                             <span class="bottom_curve"></span>
                         </li>
 
                         <li>
                             <span class="top_curve"></span>
                             <a href="clinics_admin.php"><span class="icon"><i class="fa fa-building"></i></span>
-                            <span class="item">Clinics</span></a>
+                                <span class="item">Clinics</span></a>
                             <span class="bottom_curve"></span>
                         </li>
 
                         <li>
                             <span class="top_curve"></span>
                             <a href="petbooklet.php"><span class="icon"><i class="fa fa-book"></i></span>
-                            <span class="item">Pet Booklet</span></a>
+                                <span class="item">Pet Booklet</span></a>
                             <span class="bottom_curve"></span>
                         </li>
 
-                         <li >
+                        <li>
                             <span class="top_curve"></span>
                             <a href="reports.php"><span class="icon"><i class="fa fa-exclamation-triangle"></i></span>
-                            <span class="item">Reports</span></a>
+                                <span class="item">Reports</span></a>
                             <span class="bottom_curve"></span>
                         </li>
                     <?php } ?>
                 </ul>
-                    <!--digital clock start-->
-                    <div class="datetime" style="color:white;  text-align:center;">
-                        <div class="date">
-                            <span id="dayname">Day</span>,
-                            <span id="month">Month</span>
-                            <span id="daynum">00</span>,
-                            <span id="year">Year</span>
-                        </div>
-                        <div class="time">
-                            <span id="hour">00</span>:
-                            <span id="minutes">00</span>:
-                            <span id="seconds">00</span>
-                            <span id="period">AM</span>
-                        </div>
+                <!--digital clock start-->
+                <div class="datetime" style="color:white;  text-align:center;">
+                    <div class="date">
+                        <span id="dayname">Day</span>,
+                        <span id="month">Month</span>
+                        <span id="daynum">00</span>,
+                        <span id="year">Year</span>
                     </div>
-                    <!--digital clock end-->
+                    <div class="time">
+                        <span id="hour">00</span>:
+                        <span id="minutes">00</span>:
+                        <span id="seconds">00</span>
+                        <span id="period">AM</span>
+                    </div>
+                </div>
+                <!--digital clock end-->
             </div>
         </div>
 
         <br>
         <?php if ($usertype == 'Administrator') { ?>
 
-            <div class="main_container" >
+            <div class="main_container">
                 <div style="padding-right:30px; padding-left:30px; padding-top:10px;">
-                <div class="row">
-                    <div class="col-xl-12">
+                    <div class="row">
+                        <div class="col-xl-12">
 
-                        <!-- START OF VACCINE RECORD -->
-                        <div class="card mb-4 mb-xl-0" style="border-radius: 15px;" id="vaccine_tab" name="tab">
-                            <!-- <div class="card-header userProfile-font"><b>💉 Vaccine Record</b>
+                            <!-- START OF VACCINE RECORD -->
+                            <div class="card mb-4 mb-xl-0" style="border-radius: 15px;" id="vaccine_tab" name="tab">
+                                <!-- <div class="card-header userProfile-font"><b>💉 Vaccine Record</b>
                             </div> -->
-                            <div class="tab">
-                                <button id="v_tab" class="tablinks active" onclick="showContent('content1', this)">Vaccine</button>
-                                <button id="ha_tab" class="tablinks" onclick="showContent('content2', this)">Health Assessment</button>
-                            </div>
-                            <div class="card-body text-center" id="content1">
-                                <table class="table table-striped table-hover" id="vaccine" style="text-align: left; border: 0;">
-                                    <thead>
-                                        <tr class="table100-head">
-                                            <th class="column1" style="border:0px; color:#80b434;">Vaccine Name</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Brand</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Dosage</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Lot #</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Date Vaccinated</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Expiration Date</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Vaccinator</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Clinic</th>
-                                            <!-- <th class="column1">Edit/Delete</th> -->
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $ret = mysqli_query($con, "SELECT * FROM petvaccine WHERE PetID='$petid'");
-                                        $cnt = 1;
-                                        $row = mysqli_num_rows($ret);
-                                        if ($row > 0) {
-                                            while ($row = mysqli_fetch_array($ret)) {
-
-                                        ?>
-                                                <!--Fetch the Records -->
-                                                <tr>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['VaccineName'] ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['Brand']; ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['Dosage']; ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['LotNo']; ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['DateVaccinated']; ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['ExpirationDate']; ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['Vaccinator']; ?>
-                                                    </td>
-                                                    <?php
-                                                    $clinic = $row['ClinicID'];
-                                                    $ret1 = mysqli_query($con, "SELECT * FROM clinics WHERE ClinicID='$clinic'");
-                                                    $cnt1 = 1;
-                                                    $row1 = mysqli_num_rows($ret1);
-                                                    if ($row1 > 0) {
-                                                        while ($row1 = mysqli_fetch_array($ret1)) {
-
-                                                    ?>
-
-                                                            <td style="border:0px;">
-                                                                <?php echo $row1['ClinicName']; ?>
-                                                            </td>
-                                                    <?php }
-                                                    } ?>                                               
-                                                </tr>
-                                            <?php
-                                                $cnt = $cnt + 1;
-                                            }
-                                        } else { ?>
-                                            <tr>
-                                                <th style="text-align:center; border:0; color:red;" colspan="8">No Record Found</th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
+                                <div class="tab">
+                                    <button id="v_tab" class="tablinks active" onclick="showContent('content1', this)">Vaccine</button>
+                                    <button id="ha_tab" class="tablinks" onclick="showContent('content2', this)">Health Assessment</button>
+                                </div>
+                                <div class="card-body text-center" id="content1">
+                                    <table class="table table-striped table-hover" id="vaccine" style="text-align: left; border: 0;">
+                                        <thead>
+                                            <tr class="table100-head">
+                                                <th class="column1" style="border:0px; color:#80b434;">Vaccine Name</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Brand</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Dosage</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Lot #</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Date Vaccinated</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Expiration Date</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Vaccinator</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Clinic</th>
+                                                <!-- <th class="column1">Edit/Delete</th> -->
                                             </tr>
-                                        <?php } ?>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- END OF VACCINE RECORD -->
-
-                            <!-- START OF HEALTH ASSESSMENT RECORD -->
-                        <div class="card-body text-center" id="content2">
-                                <table class="table table-striped table-hover" id="assessment" style="text-align: left; border: 0px;">
-                                    <thead>
-                                        <tr class="table100-head">
-                                            <th class="column1" style="border:0px; color:#80b434;">Remarks</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Date Assessed</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Assessed By</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Prescription</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Clinic</th>
-                                            <!-- <th class="column1">Edit/Delete</th> -->
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $ret = mysqli_query($con, "SELECT * FROM petassessment WHERE PetID='$petid'");
-                                        $cnt = 1;
-                                        $row = mysqli_num_rows($ret);
-                                        if ($row > 0) {
-                                            while ($row = mysqli_fetch_array($ret)) {
-
-                                        ?>
-                                                <!--Fetch the Records -->
-                                                <tr>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['Remarks'] ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['DateAssessed']; ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['AssessedBy']; ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['Prescription']; ?>
-                                                    </td>
-
-                                                    <?php
-                                                    $clinic = $row['ClinicID'];
-                                                    $ret1 = mysqli_query($con, "SELECT * FROM clinics WHERE ClinicID='$clinic'");
-                                                    $cnt1 = 1;
-                                                    $row1 = mysqli_num_rows($ret1);
-                                                    if ($row1 > 0) {
-                                                        while ($row1 = mysqli_fetch_array($ret1)) {
-
-                                                    ?>
-
-                                                            <td style="border:0px;">
-                                                                <?php echo $row1['ClinicName']; ?>
-                                                            </td>
-
-
-                                                    <?php }
-                                                    } ?>
-                                                    
-                                                </tr>
+                                        </thead>
+                                        <tbody>
                                             <?php
-                                                $cnt = $cnt + 1;
-                                            }
-                                        } else { ?>
-                                            <tr>
-                                                <th style="text-align:center; border:0; color:red;" colspan="5">No Record Found</th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                            </tr>
-                                        <?php } ?>
+                                            $ret = mysqli_query($con, "SELECT * FROM petvaccine WHERE PetID='$petid'");
+                                            $cnt = 1;
+                                            $row = mysqli_num_rows($ret);
+                                            if ($row > 0) {
+                                                while ($row = mysqli_fetch_array($ret)) {
 
-                                    </tbody>
-                                </table>
+                                            ?>
+                                                    <!--Fetch the Records -->
+                                                    <tr>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['VaccineName'] ?>
+                                                        </td>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['Brand']; ?>
+                                                        </td>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['Dosage']; ?>
+                                                        </td>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['LotNo']; ?>
+                                                        </td>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['DateVaccinated']; ?>
+                                                        </td>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['ExpirationDate']; ?>
+                                                        </td>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['Vaccinator']; ?>
+                                                        </td>
+                                                        <?php
+                                                        $clinic = $row['ClinicID'];
+                                                        $ret1 = mysqli_query($con, "SELECT * FROM clinics WHERE ClinicID='$clinic'");
+                                                        $cnt1 = 1;
+                                                        $row1 = mysqli_num_rows($ret1);
+                                                        if ($row1 > 0) {
+                                                            while ($row1 = mysqli_fetch_array($ret1)) {
+
+                                                        ?>
+
+                                                                <td style="border:0px;">
+                                                                    <?php echo $row1['ClinicName']; ?>
+                                                                </td>
+                                                        <?php }
+                                                        } ?>
+                                                    </tr>
+                                                <?php
+                                                    $cnt = $cnt + 1;
+                                                }
+                                            } else { ?>
+                                                <tr>
+                                                    <th style="text-align:center; border:0; color:red;" colspan="8">No Record Found</th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                </tr>
+                                            <?php } ?>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- END OF VACCINE RECORD -->
+
+                                <!-- START OF HEALTH ASSESSMENT RECORD -->
+                                <div class="card-body text-center" id="content2">
+                                    <table class="table table-striped table-hover" id="assessment" style="text-align: left; border: 0px;">
+                                        <thead>
+                                            <tr class="table100-head">
+                                                <th class="column1" style="border:0px; color:#80b434;">Remarks</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Date Assessed</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Assessed By</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Prescription</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Clinic</th>
+                                                <!-- <th class="column1">Edit/Delete</th> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $ret = mysqli_query($con, "SELECT * FROM petassessment WHERE PetID='$petid'");
+                                            $cnt = 1;
+                                            $row = mysqli_num_rows($ret);
+                                            if ($row > 0) {
+                                                while ($row = mysqli_fetch_array($ret)) {
+
+                                            ?>
+                                                    <!--Fetch the Records -->
+                                                    <tr>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['Remarks'] ?>
+                                                        </td>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['DateAssessed']; ?>
+                                                        </td>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['AssessedBy']; ?>
+                                                        </td>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['Prescription']; ?>
+                                                        </td>
+
+                                                        <?php
+                                                        $clinic = $row['ClinicID'];
+                                                        $ret1 = mysqli_query($con, "SELECT * FROM clinics WHERE ClinicID='$clinic'");
+                                                        $cnt1 = 1;
+                                                        $row1 = mysqli_num_rows($ret1);
+                                                        if ($row1 > 0) {
+                                                            while ($row1 = mysqli_fetch_array($ret1)) {
+
+                                                        ?>
+
+                                                                <td style="border:0px;">
+                                                                    <?php echo $row1['ClinicName']; ?>
+                                                                </td>
+
+
+                                                        <?php }
+                                                        } ?>
+
+                                                    </tr>
+                                                <?php
+                                                    $cnt = $cnt + 1;
+                                                }
+                                            } else { ?>
+                                                <tr>
+                                                    <th style="text-align:center; border:0; color:red;" colspan="5">No Record Found</th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                </tr>
+                                            <?php } ?>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- END OF HEALTH ASSESSMENT RECORD -->
+
                             </div>
-                        <!-- END OF HEALTH ASSESSMENT RECORD -->
+
 
                         </div>
-                        
-
                     </div>
-                </div>
-                <br>
-                <a class="btn btn-primary py-2" style="width:10%; border-radius: 15px;" href="petsearch.php">Go Back</a>
+                    <br>
+                    <a class="btn btn-primary py-2" style="width:10%; border-radius: 15px;" href="petsearch.php">Go Back</a>
                 </div>
             </div>
             <!-- END OF PET HEALTH RECORD -->
@@ -624,205 +627,205 @@ $_SESSION['petid'] = $petid;
             <br>
             <div class="main_container">
                 <div style="padding-right:30px; padding-left:30px; padding-top:10px;">
-                <div class="row">
-                    <div class="col-xl-12">
+                    <div class="row">
+                        <div class="col-xl-12">
 
-                        <!-- START OF VACCINE RECORD -->
-                        <div class="card mb-4 mb-xl-0" style="border-radius: 15px;" id="vaccine_tab" name="tab">
-                            <!-- <div class="card-header userProfile-font"><b>💉 Vaccine Record</b>
+                            <!-- START OF VACCINE RECORD -->
+                            <div class="card mb-4 mb-xl-0" style="border-radius: 15px;" id="vaccine_tab" name="tab">
+                                <!-- <div class="card-header userProfile-font"><b>💉 Vaccine Record</b>
                             </div> -->
-                            <div class="tab">
-                                <button id="v_tab" class="tablinks active" onclick="showContent('content1', this)">Vaccine</button>
-                                <button id="ha_tab" class="tablinks" onclick="showContent('content2', this)">Health Assessment</button>
-                            </div>
-                            <div class="card-body text-center" id="content1">
-                                <div style="padding-bottom:70px;"><button class="btn" type="button" data-toggle="modal" data-target="#vaccine_modal" style="float:right; background-color: #80b434; color: white; border-radius: 15px;">Add</button></div>
-                                <table class="table table-striped table-hover" id="vaccine" style="text-align: left; border: 0;">
-                                    <thead>
-                                        <tr class="table100-head">
-                                            <th class="column1" style="border:0px; color:#80b434;">Vaccine Name</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Brand</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Dosage</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Lot #</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Date Vaccinated</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Expiration Date</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Vaccinator</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Clinic</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Action</th>
-                                            <!-- <th class="column1">Edit/Delete</th> -->
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $ret = mysqli_query($con, "SELECT * FROM petvaccine WHERE PetID='$petid'");
-                                        $cnt = 1;
-                                        $row = mysqli_num_rows($ret);
-                                        if ($row > 0) {
-                                            while ($row = mysqli_fetch_array($ret)) {
-
-                                        ?>
-                                                <!--Fetch the Records -->
-                                                <tr>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['VaccineName'] ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['Brand']; ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['Dosage']; ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['LotNo']; ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['DateVaccinated']; ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['ExpirationDate']; ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['Vaccinator']; ?>
-                                                    </td>
-
-
-                                                    <?php
-                                                    $clinic = $row['ClinicID'];
-                                                    $ret1 = mysqli_query($con, "SELECT * FROM clinics WHERE ClinicID='$clinic'");
-                                                    $cnt1 = 1;
-                                                    $row1 = mysqli_num_rows($ret1);
-                                                    if ($row1 > 0) {
-                                                        while ($row1 = mysqli_fetch_array($ret1)) {
-
-                                                    ?>
-
-                                                            <td style="border:0px;">
-                                                                <?php echo $row1['ClinicName']; ?>
-                                                            </td>
-
-
-                                                    <?php }
-                                                    } ?>
-
-                                                    <td style="border:0px;">
-                                                    <?php if ($clinicID == $clinic) { ?>
-                                                        <a href="" vacc_id="<?php echo $row['VaccineID'] ?>" vacc_name="<?php echo $row['VaccineName'] ?>" vacc_brand="<?php echo $row['Brand'] ?>" vacc_desc="<?php echo $row['Description'] ?>" vacc_dos="<?php echo $row['Dosage'] ?>" vacc_lot="<?php echo $row['LotNo'] ?>" vacc_date="<?php echo $row['DateVaccinated'] ?>" vacc_expiry="<?php echo $row['ExpirationDate'] ?>" vacc_by="<?php echo $row['Vaccinator'] ?>" class="edit" data-toggle="modal" data-target="#edit_vaccine"><i class="fa fa-edit"></i></a>
-                                                    <?php } ?>
-                                                    </td>
-                                                </tr>
-                                            <?php
-                                                $cnt = $cnt + 1;
-                                            }
-                                        } else { ?>
-                                            <tr>
-                                                <th style="text-align:center; border:0; color:red;" colspan="9">No Record Found</th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
+                                <div class="tab">
+                                    <button id="v_tab" class="tablinks active" onclick="showContent('content1', this)">Vaccine</button>
+                                    <button id="ha_tab" class="tablinks" onclick="showContent('content2', this)">Health Assessment</button>
+                                </div>
+                                <div class="card-body text-center" id="content1">
+                                    <div style="padding-bottom:70px;"><button class="btn" type="button" data-toggle="modal" data-target="#vaccine_modal" style="float:right; background-color: #80b434; color: white; border-radius: 15px;">Add</button></div>
+                                    <table class="table table-striped table-hover" id="vaccine" style="text-align: left; border: 0;">
+                                        <thead>
+                                            <tr class="table100-head">
+                                                <th class="column1" style="border:0px; color:#80b434;">Vaccine Name</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Brand</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Dosage</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Lot #</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Date Vaccinated</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Expiration Date</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Vaccinator</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Clinic</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Action</th>
+                                                <!-- <th class="column1">Edit/Delete</th> -->
                                             </tr>
-                                        <?php } ?>
-
-                                    </tbody>
-                                </table>        
-                            </div>
-                            <!-- END OF VACCINE RECORD -->
-
-                            <!-- START OF HEALTH ASSESSMENT RECORD -->
-                        <div class="card-body text-center" id="content2">
-                                <div style="padding-bottom:70px;"><button class="btn" type="button" data-toggle="modal" data-target="#assess_modal" style="float:right; background-color: #80b434; color: white; border-radius: 15px;">Add</button></div>
-                                <table class="table table-striped table-hover" id="assessment" style="text-align: left; border: 0px;">
-                                    <thead>
-                                        <tr class="table100-head">
-                                            <th class="column1" style="border:0px; color:#80b434;">Remarks</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Date Assessed</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Assessed By</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Prescription</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Clinic</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Action</th>
-                                            <!-- <th class="column1">Edit/Delete</th> -->
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $ret = mysqli_query($con, "SELECT * FROM petassessment WHERE PetID='$petid'");
-                                        $cnt = 1;
-                                        $row = mysqli_num_rows($ret);
-                                        if ($row > 0) {
-                                            while ($row = mysqli_fetch_array($ret)) {
-
-                                        ?>
-                                                <!--Fetch the Records -->
-                                                <tr>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['Remarks'] ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['DateAssessed']; ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['AssessedBy']; ?>
-                                                    </td>
-                                                    <td style="border:0px;">
-                                                        <?php echo $row['Prescription']; ?>
-                                                    </td>
-
-                                                    <?php
-                                                    $clinic = $row['ClinicID'];
-                                                    $ret1 = mysqli_query($con, "SELECT * FROM clinics WHERE ClinicID='$clinic'");
-                                                    $cnt1 = 1;
-                                                    $row1 = mysqli_num_rows($ret1);
-                                                    if ($row1 > 0) {
-                                                        while ($row1 = mysqli_fetch_array($ret1)) {
-
-                                                    ?>
-
-                                                            <td style="border:0px;">
-                                                                <?php echo $row1['ClinicName']; ?>
-                                                            </td>
-
-
-                                                    <?php }
-                                                    } ?>
-                                                     <td style="text-align: center; border:0px;">
-                                                     <?php if ($clinicID == $clinic) { ?>
-                                                        <a href="" ass_id="<?php echo $row['AssessmentID'] ?>" ass_remarks="<?php echo $row['Remarks'] ?>" ass_date="<?php echo $row['DateAssessed'] ?>" ass_by="<?php echo $row['AssessedBy'] ?>" ass_prescription="<?php echo $row['Prescription'] ?>" class="edit" data-toggle="modal" data-target="#edit_assessment"><i class="fa fa-edit"></i></a>
-                                                     <?php } ?>   
-                                                    </td>
-                                                </tr>
+                                        </thead>
+                                        <tbody>
                                             <?php
-                                                $cnt = $cnt + 1;
-                                            }
-                                        } else { ?>
-                                            <tr>
-                                                <th style="text-align:center; border:0; color:red;" colspan="6">No Record Found</th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                                <th style="text-align:center; border:0; display:none;"></th>
-                                            </tr>
-                                        <?php } ?>
+                                            $ret = mysqli_query($con, "SELECT * FROM petvaccine WHERE PetID='$petid'");
+                                            $cnt = 1;
+                                            $row = mysqli_num_rows($ret);
+                                            if ($row > 0) {
+                                                while ($row = mysqli_fetch_array($ret)) {
 
-                                    </tbody>
-                                </table>
+                                            ?>
+                                                    <!--Fetch the Records -->
+                                                    <tr>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['VaccineName'] ?>
+                                                        </td>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['Brand']; ?>
+                                                        </td>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['Dosage']; ?>
+                                                        </td>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['LotNo']; ?>
+                                                        </td>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['DateVaccinated']; ?>
+                                                        </td>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['ExpirationDate']; ?>
+                                                        </td>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['Vaccinator']; ?>
+                                                        </td>
+
+
+                                                        <?php
+                                                        $clinic = $row['ClinicID'];
+                                                        $ret1 = mysqli_query($con, "SELECT * FROM clinics WHERE ClinicID='$clinic'");
+                                                        $cnt1 = 1;
+                                                        $row1 = mysqli_num_rows($ret1);
+                                                        if ($row1 > 0) {
+                                                            while ($row1 = mysqli_fetch_array($ret1)) {
+
+                                                        ?>
+
+                                                                <td style="border:0px;">
+                                                                    <?php echo $row1['ClinicName']; ?>
+                                                                </td>
+
+
+                                                        <?php }
+                                                        } ?>
+
+                                                        <td style="border:0px; text-align:center;">
+                                                            <?php if ($clinicID == $clinic) { ?>
+                                                                <a href="" vacc_id="<?php echo $row['VaccineID'] ?>" vacc_name="<?php echo $row['VaccineName'] ?>" vacc_brand="<?php echo $row['Brand'] ?>" vacc_desc="<?php echo $row['Description'] ?>" vacc_dos="<?php echo $row['Dosage'] ?>" vacc_lot="<?php echo $row['LotNo'] ?>" vacc_date="<?php echo $row['DateVaccinated'] ?>" vacc_expiry="<?php echo $row['ExpirationDate'] ?>" vacc_by="<?php echo $row['Vaccinator'] ?>" class="edit" data-toggle="modal" data-target="#edit_vaccine"><i class="fa fa-edit"></i></a>
+                                                            <?php } ?>
+                                                        </td>
+                                                    </tr>
+                                                <?php
+                                                    $cnt = $cnt + 1;
+                                                }
+                                            } else { ?>
+                                                <tr>
+                                                    <th style="text-align:center; border:0; color:red;" colspan="9">No Record Found</th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                </tr>
+                                            <?php } ?>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- END OF VACCINE RECORD -->
+
+                                <!-- START OF HEALTH ASSESSMENT RECORD -->
+                                <div class="card-body text-center" id="content2">
+                                    <div style="padding-bottom:70px;"><button class="btn" type="button" data-toggle="modal" data-target="#assess_modal" style="float:right; background-color: #80b434; color: white; border-radius: 15px;">Add</button></div>
+                                    <table class="table table-striped table-hover" id="assessment" style="text-align: left; border: 0px;">
+                                        <thead>
+                                            <tr class="table100-head">
+                                                <th class="column1" style="border:0px; color:#80b434;">Remarks</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Date Assessed</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Assessed By</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Prescription</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Clinic</th>
+                                                <th class="column1" style="border:0px; color:#80b434; text-align: center;">Action</th>
+                                                <!-- <th class="column1">Edit/Delete</th> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $ret = mysqli_query($con, "SELECT * FROM petassessment WHERE PetID='$petid'");
+                                            $cnt = 1;
+                                            $row = mysqli_num_rows($ret);
+                                            if ($row > 0) {
+                                                while ($row = mysqli_fetch_array($ret)) {
+
+                                            ?>
+                                                    <!--Fetch the Records -->
+                                                    <tr>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['Remarks'] ?>
+                                                        </td>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['DateAssessed']; ?>
+                                                        </td>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['AssessedBy']; ?>
+                                                        </td>
+                                                        <td style="border:0px;">
+                                                            <?php echo $row['Prescription']; ?>
+                                                        </td>
+
+                                                        <?php
+                                                        $clinic = $row['ClinicID'];
+                                                        $ret1 = mysqli_query($con, "SELECT * FROM clinics WHERE ClinicID='$clinic'");
+                                                        $cnt1 = 1;
+                                                        $row1 = mysqli_num_rows($ret1);
+                                                        if ($row1 > 0) {
+                                                            while ($row1 = mysqli_fetch_array($ret1)) {
+
+                                                        ?>
+
+                                                                <td style="border:0px;">
+                                                                    <?php echo $row1['ClinicName']; ?>
+                                                                </td>
+
+
+                                                        <?php }
+                                                        } ?>
+                                                        <td style="text-align: center; border:0px;">
+                                                            <?php if ($clinicID == $clinic) { ?>
+                                                                <a href="" ass_id="<?php echo $row['AssessmentID'] ?>" ass_remarks="<?php echo $row['Remarks'] ?>" ass_date="<?php echo $row['DateAssessed'] ?>" ass_by="<?php echo $row['AssessedBy'] ?>" ass_prescription="<?php echo $row['Prescription'] ?>" class="edit" data-toggle="modal" data-target="#edit_assessment"><i class="fa fa-edit"></i></a>
+                                                            <?php } ?>
+                                                        </td>
+                                                    </tr>
+                                                <?php
+                                                    $cnt = $cnt + 1;
+                                                }
+                                            } else { ?>
+                                                <tr>
+                                                    <th style="text-align:center; border:0; color:red;" colspan="6">No Record Found</th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                    <th style="text-align:center; border:0; display:none;"></th>
+                                                </tr>
+                                            <?php } ?>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- END OF HEALTH ASSESSMENT RECORD -->
+
+
+                            </div>
                         </div>
-                        <!-- END OF HEALTH ASSESSMENT RECORD -->
-                        
-
                     </div>
+                    <br>
+                    <a class="btn btn-primary py-2" style="width:10%; border-radius: 15px;" href="petsearch.php">Go Back</a>
                 </div>
-                </div>
-                <br>
-                <a class="btn btn-primary py-2" style="width:10%; border-radius: 15px;" href="petsearch.php">Go Back</a>
-            </div>
             </div>
             <!-- END OF PET HEALTH RECORD -->
-                                                                        
+
         <?php } ?>
 
         <!-- START OF MODAL FOR ADDING NEW VACCINE RECORD -->
@@ -934,19 +937,19 @@ $_SESSION['petid'] = $petid;
         <!-- END OF MODAL FOR ADDING NEW PET ASSESSMENT -->
 
         <!-- START OF MODAL FOR EDIT PET ASSESSMENT -->
-    <div class="modal fade" id="edit_assessment" aria-hidden="true" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content" style="border-radius: 15px;">
-                <form method="POST" enctype="multipart/form-data" runat="server" id="form_edit_assess">
-                    <div class="modal-header modal-header-success">
-                        <h3 class="modal-title">Edit Health Assessment Record</h3>
+        <div class="modal fade" id="edit_assessment" aria-hidden="true" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" style="border-radius: 15px;">
+                    <form method="POST" enctype="multipart/form-data" runat="server" id="form_edit_assess">
+                        <div class="modal-header modal-header-success">
+                            <h3 class="modal-title">Edit Health Assessment Record</h3>
                             <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="col-md-12">
                                 <div class="form-group" style="display:none;">
                                     <label>Assessment ID</label>
-                                    <input type="text" name="AssessmentID" id="AssessmentID" class="form-control" required >
+                                    <input type="text" name="AssessmentID" id="AssessmentID" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Remarks</label>
@@ -985,31 +988,31 @@ $_SESSION['petid'] = $petid;
                         <div style="clear:both;"></div>
                         <div class="modal-footer">
                             <button name="save_assessment" class="btn btn-primary" style="border-radius: 15px;"><span class="glyphicon glyphicon-save"></span>Save</button>
-                        <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                            <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
 
-                    </div>
-                </form>
+                        </div>
+                    </form>
+                </div>
+
             </div>
-
         </div>
-    </div>
-    <!-- END OF MODAL FOR EDIT ASSESSMENT -->
+        <!-- END OF MODAL FOR EDIT ASSESSMENT -->
 
-    <!-- START OF MODAL FOR VACCINE RECORD -->
-    <div class="modal fade" id="edit_vaccine" aria-hidden="true" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content" style="border-radius: 15px;">
-                <form method="POST" enctype="multipart/form-data" runat="server" id="form_edit_vaccine">
-                    <div class="modal-header modal-header-success">
-                        <h3 class="modal-title">Edit Vaccine Record</h3>
+        <!-- START OF MODAL FOR VACCINE RECORD -->
+        <div class="modal fade" id="edit_vaccine" aria-hidden="true" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" style="border-radius: 15px;">
+                    <form method="POST" enctype="multipart/form-data" runat="server" id="form_edit_vaccine">
+                        <div class="modal-header modal-header-success">
+                            <h3 class="modal-title">Edit Vaccine Record</h3>
                             <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="col-md-12">
                                 <div class="form-group" style="display:none;">
-                                            <label>Vaccine ID</label>
-                                            <input type="text" name="VaccineID" id="VaccineID" class="form-control" required="required" />
-                                        </div>
+                                    <label>Vaccine ID</label>
+                                    <input type="text" name="VaccineID" id="VaccineID" class="form-control" required="required" />
+                                </div>
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="form-group">
@@ -1054,17 +1057,17 @@ $_SESSION['petid'] = $petid;
                         <div style="clear:both;"></div>
                         <div class="modal-footer">
                             <button name="save_vaccine" class="btn btn-primary" style="border-radius: 15px;"><span class="glyphicon glyphicon-save"></span>Save</button>
-                        <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                            <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
 
-                    </div>
-                </form>
+                        </div>
+                    </form>
+                </div>
+
             </div>
-
         </div>
-    </div>
-    <!-- END OF MODAL FOR EDIT VACCINE RECORD -->
+        <!-- END OF MODAL FOR EDIT VACCINE RECORD -->
 
-     </div>                                         
+    </div>
 
 
 
@@ -1083,8 +1086,8 @@ $_SESSION['petid'] = $petid;
 
         if ($query) {
             echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
-                echo '<script>';
-                echo 'swal({
+            echo '<script>';
+            echo 'swal({
                                             title: "Success",
                                             text: "You have successfully added a vaccine record",
                                             icon: "success",
@@ -1094,10 +1097,10 @@ $_SESSION['petid'] = $petid;
                                                 .then((willDelete) => {
                                                     if (willDelete) {
                                                          event.preventDefault();
-                                                         document.location ="petHealthRecord_admin.php?petid='. $petid . '";
+                                                         document.location ="petHealthRecord_admin.php?petid=' . $petid . '";
                                                     }
                                                 })';
-                echo '</script>';
+            echo '</script>';
         } else {
             echo "<script>alert('Error adding new record.');</script>";
         }
@@ -1119,8 +1122,8 @@ $_SESSION['petid'] = $petid;
 
         if ($query) {
             echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
-                echo '<script>';
-                echo 'swal({
+            echo '<script>';
+            echo 'swal({
                                             title: "Success",
                                             text: "You have successfully added an assessment",
                                             icon: "success",
@@ -1130,11 +1133,11 @@ $_SESSION['petid'] = $petid;
                                                 .then((willDelete) => {
                                                     if (willDelete) {
                                                          event.preventDefault();
-                                                         document.location ="petHealthRecord_admin.php?petid='. $petid . '";
+                                                         document.location ="petHealthRecord_admin.php?petid=' . $petid . '";
                                                     }
                                                 })';
-                echo '</script>';        
-            } else {
+            echo '</script>';
+        } else {
             echo "<script>alert('Error adding new record.');</script>";
         }
     }
@@ -1155,30 +1158,7 @@ $_SESSION['petid'] = $petid;
 
         if ($file1 != "") {
             $query = mysqli_query($con, "UPDATE petassessment SET Remarks='$remarks1', DateAssessed='$d_assessed1', AssessedBy='$assessed_by1', Prescription='$file1' WHERE AssessmentID='$assessmentID'");
-            
-            if ($query) {
-              echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
-                echo '<script>';
-                echo 'swal({
-                                            title: "Success",
-                                            text: "You have successfully updated an assessment",
-                                            icon: "success",
-                                            html: true,
-                                            showCancelButton: true,
-                                            })
-                                                .then((willDelete) => {
-                                                    if (willDelete) {
-                                                         event.preventDefault();
-                                                         document.location ="petHealthRecord_admin.php?petid='. $petid . '";
-                                                    }
-                                                })';
-                echo '</script>';
-            } else {
-                echo "<script>alert('Error updating a record.');</script>";
-            }
-        } else {
-            $query = mysqli_query($con, "UPDATE petassessment SET Remarks='$remarks1', DateAssessed='$d_assessed1', AssessedBy='$assessed_by1' WHERE AssessmentID='$assessmentID'");
-            
+
             if ($query) {
                 echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
                 echo '<script>';
@@ -1192,7 +1172,30 @@ $_SESSION['petid'] = $petid;
                                                 .then((willDelete) => {
                                                     if (willDelete) {
                                                          event.preventDefault();
-                                                         document.location ="petHealthRecord_admin.php?petid='. $petid . '";
+                                                         document.location ="petHealthRecord_admin.php?petid=' . $petid . '";
+                                                    }
+                                                })';
+                echo '</script>';
+            } else {
+                echo "<script>alert('Error updating a record.');</script>";
+            }
+        } else {
+            $query = mysqli_query($con, "UPDATE petassessment SET Remarks='$remarks1', DateAssessed='$d_assessed1', AssessedBy='$assessed_by1' WHERE AssessmentID='$assessmentID'");
+
+            if ($query) {
+                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                echo '<script>';
+                echo 'swal({
+                                            title: "Success",
+                                            text: "You have successfully updated an assessment",
+                                            icon: "success",
+                                            html: true,
+                                            showCancelButton: true,
+                                            })
+                                                .then((willDelete) => {
+                                                    if (willDelete) {
+                                                         event.preventDefault();
+                                                         document.location ="petHealthRecord_admin.php?petid=' . $petid . '";
                                                     }
                                                 })';
                 echo '</script>';
@@ -1200,7 +1203,6 @@ $_SESSION['petid'] = $petid;
                 echo "<script>alert('Error updating a record.');</script>";
             }
         }
-        
     }
 
     if (isset($_POST['save_vaccine'])) {
@@ -1218,9 +1220,9 @@ $_SESSION['petid'] = $petid;
         $query = mysqli_query($con, "UPDATE petvaccine SET VaccineName='$vname1', Brand='$brand1', Description='$desc1', Dosage='$dosage1', LotNo='$lot_no1', DateVaccinated='$d_vacc1', ExpirationDate='$exp_date1', Vaccinator='$vaccinator1' WHERE VaccineID='$vaccineID'");
 
         if ($query) {
-           echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
-                echo '<script>';
-                echo 'swal({
+            echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+            echo '<script>';
+            echo 'swal({
                                             title: "Success",
                                             text: "You have successfully updated a vaccine record",
                                             icon: "success",
@@ -1230,10 +1232,10 @@ $_SESSION['petid'] = $petid;
                                                 .then((willDelete) => {
                                                     if (willDelete) {
                                                          event.preventDefault();
-                                                         document.location ="petHealthRecord_admin.php?petid='. $petid . '";
+                                                         document.location ="petHealthRecord_admin.php?petid=' . $petid . '";
                                                     }
                                                 })';
-                echo '</script>';
+            echo '</script>';
         } else {
             echo "<script>alert('Error updating a record.');</script>";
         }
@@ -1269,10 +1271,12 @@ $_SESSION['petid'] = $petid;
             var ass_by = $(opener).attr('ass_by');
             var ass_prescription = $(opener).attr('ass_prescription');
 
+            var prescriptionName = jQuery.trim(ass_prescription).substring(0, 20) + "...";
+
             $('#form_edit_assess').find('[name="AssessmentID"]').val(ass_id);
             $('#form_edit_assess').find('[name="Remarks"]').val(ass_remarks);
             $('#form_edit_assess').find('[name="DateAssessed"]').val(ass_date);
-            $('#form_edit_assess').find('[id="prescription"]').html(ass_prescription);
+            $('#form_edit_assess').find('[id="prescription"]').html(prescriptionName);
             $('#form_edit_assess').find('[id="DL_Prescription"]').prop('href', 'image_upload/' + ass_prescription);
             $('#form_edit_assess').find('[name="AssessedBy"]').val(ass_by);
 
@@ -1291,7 +1295,7 @@ $_SESSION['petid'] = $petid;
             var vacc_date = $(opener).attr('vacc_date');
             var vacc_expiry = $(opener).attr('vacc_expiry');
             var vacc_by = $(opener).attr('vacc_by');
-          
+
             $('#form_edit_vaccine').find('[name="VaccineID"]').val(vacc_id);
             $('#form_edit_vaccine').find('[name="VaccineName"]').val(vacc_name);
             $('#form_edit_vaccine').find('[name="VaccineBrand"]').val(vacc_brand);
@@ -1305,6 +1309,14 @@ $_SESSION['petid'] = $petid;
             endResize();
         });
 
+        $('#vaccine_modal').on('show.bs.modal', function(e) {
+            endResize();
+        });
+
+        $('#assess_modal').on('show.bs.modal', function(e) {
+            endResize();
+        });
+
         function endResize() {
             $(window).off("resize", resizer);
         }
@@ -1315,32 +1327,31 @@ $_SESSION['petid'] = $petid;
         }
     </script>
     <script>
-
-    // FOR TAB LINKS
-    function showContent(contentId) {
-        // Hide all content elements
-        var contentElements = document.getElementsByClassName('card-body');
-        for (var i = 0; i < contentElements.length; i++) {
-        contentElements[i].style.display = 'none';
+        // FOR TAB LINKS
+        function showContent(contentId) {
+            // Hide all content elements
+            var contentElements = document.getElementsByClassName('card-body');
+            for (var i = 0; i < contentElements.length; i++) {
+                contentElements[i].style.display = 'none';
+            }
+            // Show the selected content element
+            var selectedContent = document.getElementById(contentId);
+            if (selectedContent) {
+                selectedContent.style.display = 'block';
+                selectedContent.add('active');
+            }
+            // Add active class to the clicked tab
+            tabElement.classList.add('active');
         }
-        // Show the selected content element
-        var selectedContent = document.getElementById(contentId);
-        if (selectedContent) {
-        selectedContent.style.display = 'block';
-        selectedContent.add('active');
-        }
-        // Add active class to the clicked tab
-        tabElement.classList.add('active');
-    }
 
-    document.getElementById('content1').style.display = 'block';
+        document.getElementById('content1').style.display = 'block';
 
-    $(document).ready(function(){
-        $('.tablinks').on('click', function(){
-            $('.tablinks').removeClass('active');
-            $(this).addClass('active');
-        })
-    });
+        $(document).ready(function() {
+            $('.tablinks').on('click', function() {
+                $('.tablinks').removeClass('active');
+                $(this).addClass('active');
+            })
+        });
     </script>
 
 

@@ -232,7 +232,7 @@ $clinicID = $row_ca['ClinicID'];
         $(document).ready(function() {
             var table = $('#supplies').DataTable({
                 order: [
-                    [2, 'asc']
+                    [3, 'asc']
                 ],
             });
         });
@@ -255,6 +255,25 @@ $clinicID = $row_ca['ClinicID'];
 
                 reader.readAsDataURL(file);
             }
+        }
+    </script>
+
+    <script type="text/javascript">
+        function isNumberKey(txt, evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode == 46) {
+                //Check if the text already contains the . character
+                if (txt.value.indexOf('.') === -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                if (charCode > 31 &&
+                    (charCode < 48 || charCode > 57))
+                    return false;
+            }
+            return true;
         }
     </script>
 
@@ -436,9 +455,9 @@ $clinicID = $row_ca['ClinicID'];
                                     ?>
                                             <!--Fetch the Records -->
                                             <tr border:0px;>
-                                                <td style="border:0px;"><a href="" asupply-id="<?php echo $row['SupplyID'] ?>" asupply-clinic="<?php echo $row['ClinicName'] ?>" asupply-image="<?php echo $row['SupplyImage'] ?>" asupply-name="<?php echo $row['SupplyName'] ?>" asupply-desc="<?php echo $row['SupplyDescription'] ?>" asupply-price="<?php echo $row['SupplyPrice'] ?>" astocks="<?php echo $row['Stocks'] ?>" aneed-presc="<?php echo $row['NeedPrescription'] ?>" class="edit" data-toggle="modal" data-target="#view_modal"><?php echo $row['SupplyName']; ?></a></td>
+                                                <td style="border:0px; width: 30%;"><a href="" asupply-id="<?php echo $row['SupplyID'] ?>" asupply-clinic="<?php echo $row['ClinicName'] ?>" asupply-image="<?php echo $row['SupplyImage'] ?>" asupply-name="<?php echo $row['SupplyName'] ?>" asupply-desc="<?php echo $row['SupplyDescription'] ?>" asupply-price="<?php echo $row['SupplyPrice'] ?>" astocks="<?php echo $row['Stocks'] ?>" aneed-presc="<?php echo $row['NeedPrescription'] ?>" class="edit" data-toggle="modal" data-target="#view_modal"><?php echo $row['SupplyName']; ?></a></td>
                                                 <td style="border:0px;"><?php echo $row['ClinicName']; ?></td>
-                                                <td style="border:0px;">₱ <?php echo $row['SupplyPrice']; ?></td>
+                                                <td style="border:0px; width: 20%;">₱ <?php echo $row['SupplyPrice']; ?></td>
                                                 <td style="border:0px;"><?php echo $row['Stocks']; ?></td>
                                                 <td style="border:0px;"><?php echo $row['NeedPrescription']; ?></td>
                                             </tr>
@@ -498,8 +517,8 @@ $clinicID = $row_ca['ClinicID'];
                                             <!--Fetch the Records -->
                                             <tr border:0px;>
                                                 <td style="border:0px; display:none;" name="SupplyID" id="SupplyID"><?php echo $row['SupplyID']; ?></td>
-                                                <td style="border:0px;"><?php echo $row['SupplyName']; ?></td>
-                                                <td style="border:0px;">₱ <?php echo $row['SupplyPrice']; ?></td>
+                                                <td style="border:0px; width: 40%;"><?php echo $row['SupplyName']; ?></td>
+                                                <td style="border:0px; width: 20%">₱ <?php echo $row['SupplyPrice']; ?></td>
                                                 <td style="border:0px;"><?php echo $row['Stocks']; ?></td>
                                                 <td style="border:0px;"><?php echo $row['NeedPrescription']; ?></td>
                                                 <td style="text-align: center; border:0px;">
@@ -554,15 +573,17 @@ $clinicID = $row_ca['ClinicID'];
 
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" name="name" class="form-control" required="required" />
+                                <input type="text" name="name" class="form-control" required="required" maxlength="500" />
+                                <div id="name-counter"></div>
                             </div>
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea name="description" class="form-control" style="width: 100%; height: 150px;" required="required"></textarea>
+                                <textarea name="description" class="form-control" style="width: 100%; height: 150px;" required="required" maxlength="5000" oninput="updateCharacterCount(this)"></textarea>
+                                <div id="description-counter"></div>
                             </div>
                             <div class="form-group">
                                 <label>Price</label>
-                                <input type="text" name="price" class="form-control" required="required" />
+                                <input type="text" name="price" class="form-control" onkeypress="return isNumberKey(this, event);" required="required" />
                             </div>
                             <div class="form-group">
                                 <label>Stocks</label>
@@ -618,17 +639,19 @@ $clinicID = $row_ca['ClinicID'];
                                     </div>
                                     <div class="form-group">
                                         <label>Product Name</label>
-                                        <input type="text" name="SupplyName" id="SupplyName" class="form-control" />
+                                        <input type="text" name="SupplyName" id="SupplyName" class="form-control" maxlength="500" />
+                                        <div id="name-counter"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <textarea name="SupplyDescription" id="SupplyDescription" class="form-control" style=" width: 100%;" rows="8"></textarea>
+                                        <textarea name="SupplyDescription" id="SupplyDescription" class="form-control" style=" width: 100%;" rows="8" maxlength="5000" oninput="updateCharacterCount(this)"></textarea>
+                                        <div id="description-counter"></div>
                                     </div>
                                     <div class="form-group">
                                         <label>Price</label>
-                                        <input type="text" name="SupplyPrice" id="SupplyPrice" class="form-control" />
+                                        <input type="text" name="SupplyPrice" id="SupplyPrice" onkeypress="return isNumberKey(this, event);" class="form-control" />
                                     </div>
                                     <div class="form-group">
                                         <label>Stocks</label>
@@ -662,6 +685,52 @@ $clinicID = $row_ca['ClinicID'];
         </div>
     </div>
     <!-- END OF MODAL FOR EDIT PRODUCT -->
+
+
+
+    <script>
+        function updateCharacterCount(textarea) {
+            const counter = textarea.parentElement.querySelector("#description-counter");
+            const maxLength = textarea.maxLength;
+            const currentLength = textarea.value.length;
+
+            counter.textContent = `${currentLength}/${maxLength}`;
+
+            if (currentLength > maxLength) {
+                counter.style.color = 'red';
+                textarea.setCustomValidity('Description exceeds the maximum character limit.');
+            } else {
+                counter.style.color = '';
+                textarea.setCustomValidity('');
+            }
+        }
+
+        // Function to check the length of the name inputs
+        function checkNameLength(input) {
+            const maxLength = input.getAttribute('maxlength');
+            const currentLength = input.value.length;
+            const counter = input.parentElement.querySelector("#name-counter");
+
+            counter.textContent = `${currentLength}/${maxLength}`;
+        }
+
+        // Add event listeners to the name inputs
+        const nameInputs = document.querySelectorAll("input[name='name']");
+        nameInputs.forEach((input) => {
+            input.addEventListener('input', () => {
+                checkNameLength(input);
+            });
+        });
+
+        const nameInputs2 = document.querySelectorAll("input[name='SupplyName']");
+        nameInputs2.forEach((input) => {
+            input.addEventListener('input', () => {
+                checkNameLength(input);
+            });
+        });
+    </script>
+
+
 
     <!-- START OF MODAL FOR VIEWING PRODUCT -->
     <div class="modal fade" id="view_modal" aria-hidden="true" role="dialog">

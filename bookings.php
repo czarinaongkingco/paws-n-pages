@@ -386,6 +386,7 @@ $clinicID = $row_ca['ClinicID'];
                                         <th class="column1" style="border:0px;">Customer</th>
                                         <th class="column1" style="border:0px;">Date & Time Booked</th>
                                         <th class="column1" style="border:0px; text-align:center;">Status</th>
+                                        <th class="column1" style="border:0px; text-align:center;">View</th>
                                     </tr>
                                 </thead>
                                 <tbody style="border:0px;">
@@ -441,14 +442,20 @@ $clinicID = $row_ca['ClinicID'];
                                                     <?php echo $row['AppointmentStatus'];
                                                     } ?>
                                                 </td>
+                                                <td style="border:0px; text-align: center;">
+                                                    <a href="" aappid="<?php echo $row['AppointmentID'] ?>" arefno="<?php echo $row['Appointment_RefNo'] ?>" aclinic="<?php echo $row['ClinicName'] ?>" apdate="<?php echo $row['PreferredDate']; ?>" aptime="<?php echo $row['PreferredTime']; ?>" anotes="<?php echo $row['Notes']; ?>" aservices="<?php echo $row['AvailedServices'] ?>" acustomer="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" aastatus="<?php echo $row['AppointmentStatus']; ?>" aaremarks="<?php echo $row['Remarks']; ?>" aadtboooked="<?php echo $date->format('Y-m-d h:i A'); ?>" class="edit" title="Edit" data-toggle="modal" data-target="#view_modal">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         <?php
                                             $cnt = $cnt + 1;
                                         }
                                     } else { ?>
                                         <tr style="border:0px;">
-                                            <td style="text-align:center; color:red; border:0px;" colspan="9">No Record Found
+                                            <td style="text-align:center; color:red; border:0px;" colspan="10">No Record Found
                                             </td>
+                                            <td style="text-align:center; color:red; border:0px;" colspan="0"></td>
                                             <td style="text-align:center; color:red; border:0px;" colspan="0"></td>
                                             <td style="text-align:center; color:red; border:0px;" colspan="0"></td>
                                             <td style="text-align:center; color:red; border:0px;" colspan="0"></td>
@@ -484,8 +491,8 @@ $clinicID = $row_ca['ClinicID'];
                                         <th class="column1" style="border:0px; color:#80b434;">Services</th>
                                         <th class="column1" style="border:0px; color:#80b434;">Customer</th>
                                         <th class="column1" style="border:0px; color:#80b434;">Date & Time Booked</th>
-                                        <th class="column1" style="border:0px; color:#80b434; text-align:center;">Status
-                                        </th>
+                                        <th class="column1" style="border:0px; color:#80b434; text-align:center;">Status</th>
+                                        <th class="column1" style="border:0px; color:#80b434; text-align:center;">View/Update</th>
                                     </tr>
                                 </thead>
                                 <tbody style="border:0px;">
@@ -553,14 +560,20 @@ $clinicID = $row_ca['ClinicID'];
                                                     <?php echo $row['AppointmentStatus'];
                                                     } ?>
                                                 </td>
+                                                <td style="border:0px; text-align: center;">
+                                                    <a href="" appid="<?php echo $row['AppointmentID'] ?>" refno="<?php echo $row['Appointment_RefNo'] ?>" pdate="<?php echo $row['PreferredDate'] ?>" ptime="<?php echo $row['PreferredTime'] ?>" notes="<?php echo $row['Notes'] ?>" services="<?php echo $row['AvailedServices'] ?>" customer="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" cust_email="<?php echo $row['Email'] ?>" cust_num="<?php echo $row['ContactNo'] ?>" astatus="<?php echo $row['AppointmentStatus'] ?>" aremarks="<?php echo $row['Remarks'] ?>" adtboooked="<?php echo $date->format('Y-m-d h:i A') ?>" class="edit" title="Edit" data-toggle="modal" data-target="#edit_modal">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         <?php
                                             $cnt = $cnt + 1;
                                         }
                                     } else { ?>
                                         <tr style="border:0px;">
-                                            <td style="text-align:center; color:red; border:0px;" colspan="9">No Record Found
+                                            <td style="text-align:center; color:red; border:0px;" colspan="10">No Record Found
                                             </td>
+                                            <td style="text-align:center; color:red; border:0px;" colspan="0"></td>
                                             <td style="text-align:center; color:red; border:0px;" colspan="0"></td>
                                             <td style="text-align:center; color:red; border:0px;" colspan="0"></td>
                                             <td style="text-align:center; color:red; border:0px;" colspan="0"></td>

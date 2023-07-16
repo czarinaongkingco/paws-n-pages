@@ -239,19 +239,29 @@ $clinicID = $row_ca['ClinicID'];
                     [2, 'asc']
                 ],
 
-                "columns": [
-                    null,
-                    {
-                        "width": "50%"
-                    },
-                    null,
-                    null
-                ],
-
                 lengthMenu: [5, 10, 20, 50],
 
             });
         });
+    </script>
+
+    <script type="text/javascript">
+        function isNumberKey(txt, evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode == 46) {
+                //Check if the text already contains the . character
+                if (txt.value.indexOf('.') === -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                if (charCode > 31 &&
+                    (charCode < 48 || charCode > 57))
+                    return false;
+            }
+            return true;
+        }
     </script>
 </head>
 
@@ -272,7 +282,7 @@ $clinicID = $row_ca['ClinicID'];
     <div class="wrapper">
         <div class="side_bar">
 
-            <div class="side_bar_bottom">
+            <div class="side_bar_bottom" style="height: 100%;">
                 <ul>
                     <li>
                         <span class="top_curve"></span>
@@ -393,10 +403,10 @@ $clinicID = $row_ca['ClinicID'];
                             <table class="table table-striped table-hover" style="border:0px; text-align:left;" id="orders">
                                 <thead style="border:0px;">
                                     <tr class="table100-head" style="border:0px;">
-                                        <th class="column1" style="border:0px; color:#80b434;">Name</th>
+                                        <th class="column1" style="border:0px; color:#80b434;">Service</th>
                                         <th class="column1" style="border:0px; color:#80b434;">Description</th>
                                         <th class="column1" style="border:0px; color:#80b434;">Price</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Action</th>
+                                        <th class="column1" style="border:0px; color:#80b434; text-align: center;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody style="border:0px;">
@@ -413,13 +423,13 @@ $clinicID = $row_ca['ClinicID'];
                                                 <td style="border:0px;">
                                                     <?php echo $row['ServiceName'] ?>
                                                 </td>
-                                                <td style="border:0px;">
+                                                <td style="border:0px; width: 50%;">
                                                     <?php echo $row['ServiceDescription'] ?>
                                                 </td>
-                                                <td style="border:0px;">₱
+                                                <td style="border:0px; width: 20%;">₱
                                                     <?php echo $row['ServicePrice']; ?>
                                                 </td>
-                                                <td style="border:0px;">
+                                                <td style="border:0px; text-align: center;">
                                                     <a href="" serviceid="<?php echo $row['ServiceID'] ?>" servicename="<?php echo $row['ServiceName'] ?>" servicedescription="<?php echo $row['ServiceDescription'] ?>" serviceprice="<?php echo $row['ServicePrice']; ?>" class="edit" title="edit" data-toggle="modal" data-target="#edit_service"><i class="fa fa-edit"></i></a>
                                                     <button class="delete_service" name="delete_service" value="<?php echo $row['ServiceID'] ?>" style="border:0px; background-color:inherit;"><i class="fa fa-trash" style="color:red;"></i></button>
                                                 </td>
@@ -459,7 +469,7 @@ $clinicID = $row_ca['ClinicID'];
                                 <thead style="border:0px;">
                                     <tr class="table100-head" style="border:0px;">
                                         <th class="column1" style="border:0px; color:#80b434;">Clinic</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Name</th>
+                                        <th class="column1" style="border:0px; color:#80b434;">Service</th>
                                         <th class="column1" style="border:0px; color:#80b434;">Description</th>
                                         <th class="column1" style="border:0px; color:#80b434;">Price</th>
                                     </tr>
@@ -481,10 +491,10 @@ $clinicID = $row_ca['ClinicID'];
                                                 <td style="border:0px;">
                                                     <?php echo $row['ServiceName'] ?>
                                                 </td>
-                                                <td style="border:0px;">
+                                                <td style="border:0px; width: 50%;">
                                                     <?php echo $row['ServiceDescription'] ?>
                                                 </td>
-                                                <td style="border:0px;">₱
+                                                <td style="border:0px; width: 20%;">₱
                                                     <?php echo $row['ServicePrice']; ?>
                                                 </td>
                                             </tr>
@@ -523,15 +533,18 @@ $clinicID = $row_ca['ClinicID'];
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" name="name" class="form-control" required="required" />
+                                    <input type="text" name="name" class="form-control" required="required" maxlength="500" />
+                                    <div id="name-counter"></div>
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea name="description" class="form-control" style="width: 100%; height: 150px;" required="required"></textarea>
+                                    <textarea name="description" class="form-control" style="width: 100%; height: 150px;" required="required" maxlength="5000" oninput="checkDescriptionLength(this)"></textarea>
+                                    <div id="description-counter"></div>
+                                    <span id="description-warning" style="color: red; display: none;">Exceeded maximum character limit</span>
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label>
-                                    <input type="text" name="price" class="form-control" required="required" />
+                                    <input type="text" name="price" class="form-control" onkeypress="return isNumberKey(this, event);" required="required" />
                                 </div>
                             </div>
                         </div>
@@ -564,15 +577,18 @@ $clinicID = $row_ca['ClinicID'];
                                 </div>
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" name="ServiceName" id="ServiceName" class="form-control" required />
+                                    <input type="text" name="ServiceName" id="ServiceName" class="form-control" required maxlength="500" />
+                                    <div id="name-counter"></div>
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea name="ServiceDescription" id="ServiceDescription" class="form-control" style=" width: 100%; height: 150px;" required></textarea>
+                                    <textarea name="ServiceDescription" id="ServiceDescription" class="form-control" style=" width: 100%; height: 150px;" required maxlength="5000" required oninput="checkDescriptionLength(this)"></textarea>
+                                    <div id="description-counter"></div>
+                                    <span id="description-warning" style="color: red; display: none;">Exceeded maximum character limit</span>
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label>
-                                    <input type="text" name="Price" id="Price" class="form-control" required />
+                                    <input type="text" name="Price" id="Price" onkeypress="return isNumberKey(this, event);" class="form-control" required />
                                 </div>
                             </div>
                         </div>
@@ -591,6 +607,53 @@ $clinicID = $row_ca['ClinicID'];
             </div>
         </div>
         <!--  START OF MODAL FOR EDITING SERVICES -->
+
+
+
+        <script>
+            function checkDescriptionLength(textarea) {
+                const maxLength = textarea.getAttribute('maxlength');
+                const currentLength = textarea.value.length;
+                const counter = textarea.parentElement.querySelector("#description-counter");
+                const warningMessage = textarea.parentElement.querySelector("#description-warning");
+
+                counter.textContent = `${currentLength}/${maxLength}`;
+
+                if (currentLength > maxLength) {
+                    warningMessage.style.display = 'block';
+                    textarea.setCustomValidity('Description exceeds the maximum character limit.');
+                } else {
+                    warningMessage.style.display = 'none';
+                    textarea.setCustomValidity('');
+                }
+            }
+
+            // Function to check the length of the name inputs
+            function checkNameLength(input) {
+                const maxLength = input.getAttribute('maxlength');
+                const currentLength = input.value.length;
+                const counter = input.parentElement.querySelector("#name-counter");
+
+                counter.textContent = `${currentLength}/${maxLength}`;
+            }
+
+            // Add event listeners to the name inputs
+            const nameInputs = document.querySelectorAll("input[name='name']");
+            nameInputs.forEach((input) => {
+                input.addEventListener('input', () => {
+                    checkNameLength(input);
+                });
+            });
+
+            const nameInputs2 = document.querySelectorAll("input[name='ServiceName']");
+            nameInputs2.forEach((input) => {
+                input.addEventListener('input', () => {
+                    checkNameLength(input);
+                });
+            });
+        </script>
+
+
 
         <!-- FOR INSERTING DATA -->
         <?php

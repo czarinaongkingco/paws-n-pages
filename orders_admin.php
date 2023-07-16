@@ -237,8 +237,10 @@ $clinicID = $row_ca['ClinicID'];
         $(document).ready(function() {
             var table = $('#orders').DataTable({
                 order: [
-                    [4, 'desc']
+                    [3, 'desc']
                 ],
+
+                lengthMenu: [5, 10, 20, 50],
 
             });
         });
@@ -262,7 +264,7 @@ $clinicID = $row_ca['ClinicID'];
     <div class="wrapper">
         <div class="side_bar">
 
-            <div class="side_bar_bottom">
+            <div class="side_bar_bottom" style="height: 100%;">
                 <ul>
                     <li>
                         <span class="top_curve"></span>
@@ -384,6 +386,8 @@ $clinicID = $row_ca['ClinicID'];
                                         <th class="column1" style="border:0px; color:#80b434;">Customer</th>
                                         <th class="column1" style="border:0px; color:#80b434;">Date & Time Checked Out</th>
                                         <th class="column1" style="border:0px; color:#80b434;">Status</th>
+                                        <th class="column1" style="border:0px; color:#80b434; text-align: center;">View/Update</th>
+
                                     </tr>
                                 </thead>
                                 <tbody style="border:0px;">
@@ -438,14 +442,24 @@ $clinicID = $row_ca['ClinicID'];
                                                     <?php echo $row['OrderStatus'];
                                                     } ?>
                                                 </td>
+                                                <td style="border:0px; text-align: center;">
+                                                    <a href="" orderid="<?php echo $row['OrderID'] ?>" refno="<?php echo $row['Order_RefNo'] ?>" products="<?php $prod = $row['OrderedProducts'];
+                                                                                                                                                            $explodedArray = explode(', ', $prod);
+                                                                                                                                                            foreach ($explodedArray as $element) {
+                                                                                                                                                                echo $element . "\n";
+                                                                                                                                                            } ?>" user="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" totalprice="<?php echo "₱ " . $row['TotalPrice']; ?>" dtcout="<?php echo $date->format('Y-m-d h:i A'); ?>" address="<?php echo $row['ShippingTo'] ?>" proofpayment="<?php echo $row['ProofOfPayment']; ?>" proofrefno="<?php echo $row['Proof_RefNo']; ?>" prescription="<?php echo $row['OrderPrescription'] ?>" orderstatus="<?php echo $row['OrderStatus']; ?>" odremarks="<?php echo $row['OrderRemarks']; ?>" class="edit" title="View" data-toggle="modal" data-target="#view_order">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         <?php
                                             $cnt = $cnt + 1;
                                         }
                                     } else { ?>
                                         <tr style="border:0px;">
-                                            <td style="text-align:center; color:red; border:0px;" colspan="5">No Record Found
+                                            <td style="text-align:center; color:red; border:0px;" colspan="6">No Record Found
                                             </td>
+                                            <td style="text-align:center; color:red; border:0px;" colspan="0"></td>
                                             <td style="text-align:center; color:red; border:0px;" colspan="0"></td>
                                             <td style="text-align:center; color:red; border:0px;" colspan="0"></td>
                                             <td style="text-align:center; color:red; border:0px;" colspan="0"></td>
@@ -478,6 +492,7 @@ $clinicID = $row_ca['ClinicID'];
                                         <th class="column1" style="border:0px; color:#80b434;">Customer</th>
                                         <th class="column1" style="border:0px; color:#80b434;">Date & Time Checked Out</th>
                                         <th class="column1" style="border:0px; color:#80b434;">Status</th>
+                                        <th class="column1" style="border:0px; color:#80b434; text-align: center;">View</th>
                                     </tr>
                                 </thead>
                                 <tbody style="border:0px;">
@@ -534,6 +549,13 @@ $clinicID = $row_ca['ClinicID'];
                                                     if ($status === 'Completed') { ?>
                                                     <?php echo $row['OrderStatus'];
                                                     } ?>
+                                                </td>
+                                                <td style="border:0px; text-align: center;">
+                                                    <a href="" aorderid="<?php echo $row['OrderID'] ?>" aclinic="<?php echo $row['ClinicName'] ?>" arefno="<?php echo $row['Order_RefNo'] ?>" aproducts="<?php $prod = $row['OrderedProducts'];
+                                                                                                                                                                                                            $explodedArray = explode(', ', $prod);
+                                                                                                                                                                                                            foreach ($explodedArray as $element) {
+                                                                                                                                                                                                                echo $element . "\n";
+                                                                                                                                                                                                            } ?>" auser="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" atotalprice="<?php echo "₱ " . $row['TotalPrice']; ?>" adtcout="<?php echo $date->format('Y-m-d h:i A'); ?>" aaddress="<?php echo $row['ShippingTo'] ?>" aproofpayment="<?php echo $row['ProofOfPayment']; ?>" aproofrefno="<?php echo $row['Proof_RefNo']; ?>" aprescription="<?php echo $row['OrderPrescription'] ?>" aorderstatus="<?php echo $row['OrderStatus']; ?>" aodremarks="<?php echo $row['OrderRemarks']; ?>" class="edit" title="View" data-toggle="modal" data-target="#admin_order"><i class="fa fa-eye"></i></a>
                                                 </td>
                                             </tr>
                                         <?php
