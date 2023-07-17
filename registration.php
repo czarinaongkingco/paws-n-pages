@@ -403,31 +403,65 @@ include("connection.php");
         $province = $_POST['province'];
         $zipcode = $_POST['zipcode'];
 
-        $con->begin_Transaction();
+        // To check if user credentials already exists
+        $un_query = "SELECT * FROM users WHERE Username = ?";
+        $un_stmt = $con->prepare($un_query);
+        $un_stmt->bind_param("s", $uname);
+        $un_stmt->execute();
+        $un_result = $un_stmt->get_result();
 
-        $sqlTable1 = "INSERT INTO users (FirstName, MiddleName, LastName, ContactNo, Birth_Date, UserType, Username, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $stmtTable1 = $con->prepare($sqlTable1);
-        $stmtTable1->bind_param("sssssssss", $fname, $mname, $lname, $contactno, $bdate, $utype, $uname, $email, $h_pword);
-        $stmtTable1->execute();
+        $em_query = "SELECT * FROM users WHERE Email = ?";
+        $em_stmt = $con->prepare($em_query);
+        $em_stmt->bind_param("s", $email);
+        $em_stmt->execute();
+        $em_result = $em_stmt->get_result();
 
-        $primaryKey = $con->insert_id;
 
-        $sqlTable2 = "INSERT INTO address (LotNo_Street, Barangay, City, Province, ZIPCode, UserID) VALUES (?, ?, ?, ?, ?, ?)";
-        $stmtTable2 = $con->prepare($sqlTable2);
-        $stmtTable2->bind_param("sssssi", $lotno_street, $barangay, $city, $province, $zipcode, $primaryKey);
-        $stmtTable2->execute();
+        if ($un_result->num_rows > 0 || $em_result->num_rows > 0) {
+            echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+            echo '<script>';
+            echo 'swal({
+                                            title: "Error",
+                                            text: "Username or email is already taken",
+                                            icon: "error",
+                                            html: true,
+                                            showCancelButton: true,
+                                            })
+                                                .then((willDelete) => {
+                                                    if (willDelete) {
 
-        if ($stmtTable1->error || $stmtTable2->error) {
-            $con->rollback();
+                                                        document.location ="registration.php";
+                                                    }
+                                                })';
+            echo '</script>';
+            
         } else {
-            $con->commit();
-        }
 
-        $con->close();
+            $con->begin_Transaction();
 
-        echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
-        echo '<script>';
-        echo 'swal({
+            $sqlTable1 = "INSERT INTO users (FirstName, MiddleName, LastName, ContactNo, Birth_Date, UserType, Username, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmtTable1 = $con->prepare($sqlTable1);
+            $stmtTable1->bind_param("sssssssss", $fname, $mname, $lname, $contactno, $bdate, $utype, $uname, $email, $h_pword);
+            $stmtTable1->execute();
+
+            $primaryKey = $con->insert_id;
+
+            $sqlTable2 = "INSERT INTO address (LotNo_Street, Barangay, City, Province, ZIPCode, UserID) VALUES (?, ?, ?, ?, ?, ?)";
+            $stmtTable2 = $con->prepare($sqlTable2);
+            $stmtTable2->bind_param("sssssi", $lotno_street, $barangay, $city, $province, $zipcode, $primaryKey);
+            $stmtTable2->execute();
+
+            if ($stmtTable1->error || $stmtTable2->error) {
+                $con->rollback();
+            } else {
+                $con->commit();
+            }
+
+            $con->close();
+
+            echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+            echo '<script>';
+            echo 'swal({
                                             title: "Success",
                                             text: "Registration successful",
                                             icon: "success",
@@ -440,7 +474,10 @@ include("connection.php");
                                                         document.location ="login.php";
                                                     }
                                                 })';
-        echo '</script>';
+            echo '</script>';
+        }
+
+        
     }
     ?>
     <script>
