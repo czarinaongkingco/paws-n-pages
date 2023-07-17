@@ -22,7 +22,8 @@ $_SESSION['petid'] = $petid;
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="https://media.discordapp.net/attachments/1112075552669581332/1113455947420024832/icon.png" type="image/x-icon">
+    <link rel="icon" href="https://media.discordapp.net/attachments/1112075552669581332/1113455947420024832/icon.png"
+        type="image/x-icon">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -77,7 +78,7 @@ $_SESSION['petid'] = $petid;
 
         .side_bar {
             width: 250px;
-
+            background: #80b434;
         }
 
 
@@ -256,7 +257,7 @@ $_SESSION['petid'] = $petid;
                 hou = hou - 12;
             }
 
-            Number.prototype.pad = function(digits) {
+            Number.prototype.pad = function (digits) {
                 for (var n = this.toString(); n.length < digits; n = 0 + n);
                 return n;
             }
@@ -275,7 +276,7 @@ $_SESSION['petid'] = $petid;
         }
     </script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             var table = $('#vaccine').DataTable({
                 order: [
                     [2, 'asc']
@@ -283,7 +284,7 @@ $_SESSION['petid'] = $petid;
             });
         });
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             var table = $('#assessment').DataTable({
                 order: [
                     [2, 'asc']
@@ -303,7 +304,7 @@ $_SESSION['petid'] = $petid;
             if (file) {
                 var reader = new FileReader();
 
-                reader.onload = function() {
+                reader.onload = function () {
                     $("#image").attr("src", reader.result);
                 }
 
@@ -316,14 +317,21 @@ $_SESSION['petid'] = $petid;
 
 <body onload="initClock()">
     <div style="width:100%; height:50px; background-color:#73a22e;">
-        <p style="color:white; font-size:23px; padding-left:10px;"><img src="img/logo_white.png" height="50px">&nbsp;PawsNPages
+        <p style="color:white; font-size:23px; padding-left:10px;"><img src="img/logo_white.png"
+                height="50px">&nbsp;PawsNPages
             <?php
             $ret = mysqli_query($con, "SELECT * FROM users WHERE UserID='$userID'");
             while ($row = mysqli_fetch_array($ret)) {
-            ?>
-                <a href="logout.php" style="color:white; font-size:20px; padding-top:10px; float:right; padding-right:15px;"><i class="fa fa-sign-out"></i></a><a style="color:white; font-size:15px; padding-top:13px; float:right; padding-left:10px; padding-right:10px;">Logged in as, <i><?php echo $row['Username'] ?></i></a>&nbsp;&nbsp;
-        </p>
-    <?php } ?>
+                ?>
+                <a href="logout.php"
+                    style="color:white; font-size:20px; padding-top:10px; float:right; padding-right:15px;"><i
+                        class="fa fa-sign-out"></i></a><a
+                    style="color:white; font-size:15px; padding-top:13px; float:right; padding-left:10px; padding-right:10px;">Logged
+                    in as, <i>
+                        <?php echo $row['Username'] ?>
+                    </i></a>&nbsp;&nbsp;
+            </p>
+        <?php } ?>
     </div>
     <div class="wrapper">
         <div class="side_bar">
@@ -448,11 +456,14 @@ $_SESSION['petid'] = $petid;
                                 <!-- <div class="card-header userProfile-font"><b>💉 Vaccine Record</b>
                             </div> -->
                                 <div class="tab">
-                                    <button id="v_tab" class="tablinks active" onclick="showContent('content1', this)">Vaccine</button>
-                                    <button id="ha_tab" class="tablinks" onclick="showContent('content2', this)">Health Assessment</button>
+                                    <button id="v_tab" class="tablinks active"
+                                        onclick="showContent('content1', this)">Vaccine</button>
+                                    <button id="ha_tab" class="tablinks" onclick="showContent('content2', this)">Health
+                                        Assessment</button>
                                 </div>
                                 <div class="card-body text-center" id="content1">
-                                    <table class="table table-striped table-hover" id="vaccine" style="text-align: left; border: 0;">
+                                    <table class="table table-striped table-hover" id="vaccine"
+                                        style="text-align: left; border: 0;">
                                         <thead>
                                             <tr class="table100-head">
                                                 <th class="column1" style="border:0px; color:#80b434;">Vaccine Name</th>
@@ -474,7 +485,7 @@ $_SESSION['petid'] = $petid;
                                             if ($row > 0) {
                                                 while ($row = mysqli_fetch_array($ret)) {
 
-                                            ?>
+                                                    ?>
                                                     <!--Fetch the Records -->
                                                     <tr>
                                                         <td style="border:0px;">
@@ -506,29 +517,30 @@ $_SESSION['petid'] = $petid;
                                                         if ($row1 > 0) {
                                                             while ($row1 = mysqli_fetch_array($ret1)) {
 
-                                                        ?>
+                                                                ?>
 
                                                                 <td style="border:0px;">
                                                                     <?php echo $row1['ClinicName']; ?>
                                                                 </td>
-                                                        <?php }
+                                                            <?php }
                                                         } ?>
                                                     </tr>
-                                                <?php
+                                                    <?php
                                                     $cnt = $cnt + 1;
                                                 }
                                             } else { ?>
-                                                <tr>
-                                                    <th style="text-align:center; border:0; color:red;" colspan="8">No Record Found</th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                </tr>
-                                            <?php } ?>
+                                            <tr>
+                                                <th style="text-align:center; border:0; color:red;" colspan="8">No Record
+                                                    Found</th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                            </tr>
+                                        <?php } ?>
 
                                         </tbody>
                                     </table>
@@ -537,7 +549,8 @@ $_SESSION['petid'] = $petid;
 
                                 <!-- START OF HEALTH ASSESSMENT RECORD -->
                                 <div class="card-body text-center" id="content2">
-                                    <table class="table table-striped table-hover" id="assessment" style="text-align: left; border: 0px;">
+                                    <table class="table table-striped table-hover" id="assessment"
+                                        style="text-align: left; border: 0px;">
                                         <thead>
                                             <tr class="table100-head">
                                                 <th class="column1" style="border:0px; color:#80b434;">Remarks</th>
@@ -556,7 +569,7 @@ $_SESSION['petid'] = $petid;
                                             if ($row > 0) {
                                                 while ($row = mysqli_fetch_array($ret)) {
 
-                                            ?>
+                                                    ?>
                                                     <!--Fetch the Records -->
                                                     <tr>
                                                         <td style="border:0px;">
@@ -569,7 +582,8 @@ $_SESSION['petid'] = $petid;
                                                             <?php echo $row['AssessedBy']; ?>
                                                         </td>
                                                         <td style="border:0px;">
-                                                            <a href="image_upload/<?php echo $row['Prescription']; ?>" download><?php echo $row['Prescription']; ?></a>
+                                                            <a href="image_upload/<?php echo $row['Prescription']; ?>"
+                                                                download><?php echo $row['Prescription']; ?></a>
                                                         </td>
 
                                                         <?php
@@ -580,29 +594,30 @@ $_SESSION['petid'] = $petid;
                                                         if ($row1 > 0) {
                                                             while ($row1 = mysqli_fetch_array($ret1)) {
 
-                                                        ?>
+                                                                ?>
 
                                                                 <td style="border:0px;">
                                                                     <?php echo $row1['ClinicName']; ?>
                                                                 </td>
 
 
-                                                        <?php }
+                                                            <?php }
                                                         } ?>
 
                                                     </tr>
-                                                <?php
+                                                    <?php
                                                     $cnt = $cnt + 1;
                                                 }
                                             } else { ?>
-                                                <tr>
-                                                    <th style="text-align:center; border:0; color:red;" colspan="5">No Record Found</th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                </tr>
-                                            <?php } ?>
+                                            <tr>
+                                                <th style="text-align:center; border:0; color:red;" colspan="5">No Record
+                                                    Found</th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                            </tr>
+                                        <?php } ?>
 
                                         </tbody>
                                     </table>
@@ -636,12 +651,18 @@ $_SESSION['petid'] = $petid;
                                 <!-- <div class="card-header userProfile-font"><b>💉 Vaccine Record</b>
                             </div> -->
                                 <div class="tab">
-                                    <button id="v_tab" class="tablinks active" onclick="showContent('content1', this)">Vaccine</button>
-                                    <button id="ha_tab" class="tablinks" onclick="showContent('content2', this)">Health Assessment</button>
+                                    <button id="v_tab" class="tablinks active"
+                                        onclick="showContent('content1', this)">Vaccine</button>
+                                    <button id="ha_tab" class="tablinks" onclick="showContent('content2', this)">Health
+                                        Assessment</button>
                                 </div>
                                 <div class="card-body text-center" id="content1">
-                                    <div style="padding-bottom:70px;"><button class="btn" type="button" data-toggle="modal" data-target="#vaccine_modal" style="float:right; background-color: #80b434; color: white; border-radius: 15px;">Add</button></div>
-                                    <table class="table table-striped table-hover" id="vaccine" style="text-align: left; border: 0;">
+                                    <div style="padding-bottom:70px;"><button class="btn" type="button" data-toggle="modal"
+                                            data-target="#vaccine_modal"
+                                            style="float:right; background-color: #80b434; color: white; border-radius: 15px;">Add</button>
+                                    </div>
+                                    <table class="table table-striped table-hover" id="vaccine"
+                                        style="text-align: left; border: 0;">
                                         <thead>
                                             <tr class="table100-head">
                                                 <th class="column1" style="border:0px; color:#80b434;">Vaccine Name</th>
@@ -664,7 +685,7 @@ $_SESSION['petid'] = $petid;
                                             if ($row > 0) {
                                                 while ($row = mysqli_fetch_array($ret)) {
 
-                                            ?>
+                                                    ?>
                                                     <!--Fetch the Records -->
                                                     <tr>
                                                         <td style="border:0px;">
@@ -698,38 +719,49 @@ $_SESSION['petid'] = $petid;
                                                         if ($row1 > 0) {
                                                             while ($row1 = mysqli_fetch_array($ret1)) {
 
-                                                        ?>
+                                                                ?>
 
                                                                 <td style="border:0px;">
                                                                     <?php echo $row1['ClinicName']; ?>
                                                                 </td>
 
 
-                                                        <?php }
+                                                            <?php }
                                                         } ?>
 
                                                         <td style="border:0px; text-align:center;">
                                                             <?php if ($clinicID == $clinic) { ?>
-                                                                <a href="" vacc_id="<?php echo $row['VaccineID'] ?>" vacc_name="<?php echo $row['VaccineName'] ?>" vacc_brand="<?php echo $row['Brand'] ?>" vacc_desc="<?php echo $row['Description'] ?>" vacc_dos="<?php echo $row['Dosage'] ?>" vacc_lot="<?php echo $row['LotNo'] ?>" vacc_date="<?php echo $row['DateVaccinated'] ?>" vacc_expiry="<?php echo $row['ExpirationDate'] ?>" vacc_by="<?php echo $row['Vaccinator'] ?>" class="edit" data-toggle="modal" data-target="#edit_vaccine"><i class="fa fa-edit"></i></a>
+                                                                <a href="" vacc_id="<?php echo $row['VaccineID'] ?>"
+                                                                    vacc_name="<?php echo $row['VaccineName'] ?>"
+                                                                    vacc_brand="<?php echo $row['Brand'] ?>"
+                                                                    vacc_desc="<?php echo $row['Description'] ?>"
+                                                                    vacc_dos="<?php echo $row['Dosage'] ?>"
+                                                                    vacc_lot="<?php echo $row['LotNo'] ?>"
+                                                                    vacc_date="<?php echo $row['DateVaccinated'] ?>"
+                                                                    vacc_expiry="<?php echo $row['ExpirationDate'] ?>"
+                                                                    vacc_by="<?php echo $row['Vaccinator'] ?>" class="edit"
+                                                                    data-toggle="modal" data-target="#edit_vaccine"><i
+                                                                        class="fa fa-edit"></i></a>
                                                             <?php } ?>
                                                         </td>
                                                     </tr>
-                                                <?php
+                                                    <?php
                                                     $cnt = $cnt + 1;
                                                 }
                                             } else { ?>
-                                                <tr>
-                                                    <th style="text-align:center; border:0; color:red;" colspan="9">No Record Found</th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                </tr>
-                                            <?php } ?>
+                                            <tr>
+                                                <th style="text-align:center; border:0; color:red;" colspan="9">No Record
+                                                    Found</th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                            </tr>
+                                        <?php } ?>
 
                                         </tbody>
                                     </table>
@@ -738,8 +770,12 @@ $_SESSION['petid'] = $petid;
 
                                 <!-- START OF HEALTH ASSESSMENT RECORD -->
                                 <div class="card-body text-center" id="content2">
-                                    <div style="padding-bottom:70px;"><button class="btn" type="button" data-toggle="modal" data-target="#assess_modal" style="float:right; background-color: #80b434; color: white; border-radius: 15px;">Add</button></div>
-                                    <table class="table table-striped table-hover" id="assessment" style="text-align: left; border: 0px;">
+                                    <div style="padding-bottom:70px;"><button class="btn" type="button" data-toggle="modal"
+                                            data-target="#assess_modal"
+                                            style="float:right; background-color: #80b434; color: white; border-radius: 15px;">Add</button>
+                                    </div>
+                                    <table class="table table-striped table-hover" id="assessment"
+                                        style="text-align: left; border: 0px;">
                                         <thead>
                                             <tr class="table100-head">
                                                 <th class="column1" style="border:0px; color:#80b434;">Remarks</th>
@@ -747,7 +783,8 @@ $_SESSION['petid'] = $petid;
                                                 <th class="column1" style="border:0px; color:#80b434;">Assessed By</th>
                                                 <th class="column1" style="border:0px; color:#80b434;">Prescription</th>
                                                 <th class="column1" style="border:0px; color:#80b434;">Clinic</th>
-                                                <th class="column1" style="border:0px; color:#80b434; text-align: center;">Action</th>
+                                                <th class="column1" style="border:0px; color:#80b434; text-align: center;">
+                                                    Action</th>
                                                 <!-- <th class="column1">Edit/Delete</th> -->
                                             </tr>
                                         </thead>
@@ -759,7 +796,7 @@ $_SESSION['petid'] = $petid;
                                             if ($row > 0) {
                                                 while ($row = mysqli_fetch_array($ret)) {
 
-                                            ?>
+                                                    ?>
                                                     <!--Fetch the Records -->
                                                     <tr>
                                                         <td style="border:0px;">
@@ -772,7 +809,8 @@ $_SESSION['petid'] = $petid;
                                                             <?php echo $row['AssessedBy']; ?>
                                                         </td>
                                                         <td style="border:0px;">
-                                                            <a href="image_upload/<?php echo $row['Prescription']; ?>" download><?php echo $row['Prescription']; ?></a>
+                                                            <a href="image_upload/<?php echo $row['Prescription']; ?>"
+                                                                download><?php echo $row['Prescription']; ?></a>
                                                         </td>
 
                                                         <?php
@@ -783,34 +821,41 @@ $_SESSION['petid'] = $petid;
                                                         if ($row1 > 0) {
                                                             while ($row1 = mysqli_fetch_array($ret1)) {
 
-                                                        ?>
+                                                                ?>
 
                                                                 <td style="border:0px;">
                                                                     <?php echo $row1['ClinicName']; ?>
                                                                 </td>
 
 
-                                                        <?php }
+                                                            <?php }
                                                         } ?>
                                                         <td style="text-align: center; border:0px;">
                                                             <?php if ($clinicID == $clinic) { ?>
-                                                                <a href="" ass_id="<?php echo $row['AssessmentID'] ?>" ass_remarks="<?php echo $row['Remarks'] ?>" ass_date="<?php echo $row['DateAssessed'] ?>" ass_by="<?php echo $row['AssessedBy'] ?>" ass_prescription="<?php echo $row['Prescription'] ?>" class="edit" data-toggle="modal" data-target="#edit_assessment"><i class="fa fa-edit"></i></a>
+                                                                <a href="" ass_id="<?php echo $row['AssessmentID'] ?>"
+                                                                    ass_remarks="<?php echo $row['Remarks'] ?>"
+                                                                    ass_date="<?php echo $row['DateAssessed'] ?>"
+                                                                    ass_by="<?php echo $row['AssessedBy'] ?>"
+                                                                    ass_prescription="<?php echo $row['Prescription'] ?>" class="edit"
+                                                                    data-toggle="modal" data-target="#edit_assessment"><i
+                                                                        class="fa fa-edit"></i></a>
                                                             <?php } ?>
                                                         </td>
                                                     </tr>
-                                                <?php
+                                                    <?php
                                                     $cnt = $cnt + 1;
                                                 }
                                             } else { ?>
-                                                <tr>
-                                                    <th style="text-align:center; border:0; color:red;" colspan="6">No Record Found</th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                    <th style="text-align:center; border:0; display:none;"></th>
-                                                </tr>
-                                            <?php } ?>
+                                            <tr>
+                                                <th style="text-align:center; border:0; color:red;" colspan="6">No Record
+                                                    Found</th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                                <th style="text-align:center; border:0; display:none;"></th>
+                                            </tr>
+                                        <?php } ?>
 
                                         </tbody>
                                     </table>
@@ -852,7 +897,8 @@ $_SESSION['petid'] = $petid;
                                         </div>
                                         <div class="form-group">
                                             <label>Description</label>
-                                            <textarea name="desc" class="form-control" style=" width: 100%;" rows="5"></textarea>
+                                            <textarea name="desc" class="form-control" style=" width: 100%;"
+                                                rows="5"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Dosage</label>
@@ -866,15 +912,18 @@ $_SESSION['petid'] = $petid;
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label>Date Vaccinated</label>
-                                            <input type="date" name="datevacc" class="form-control" required="required" />
+                                            <input type="date" name="datevacc" class="form-control"
+                                                required="required" />
                                         </div>
                                         <div class="form-group">
                                             <label>Expiry Date</label>
-                                            <input type="date" name="expdate" class="form-control" required="required" />
+                                            <input type="date" name="expdate" class="form-control"
+                                                required="required" />
                                         </div>
                                         <div class="form-group">
                                             <label>Vaccinator</label>
-                                            <input type="text" name="vaccinator" class="form-control" required="required" />
+                                            <input type="text" name="vaccinator" class="form-control"
+                                                required="required" />
                                         </div>
                                     </div>
                                 </div>
@@ -883,7 +932,8 @@ $_SESSION['petid'] = $petid;
                         </div>
                         <div style="clear:both;"></div>
                         <div class="modal-footer">
-                            <button name="add_vaccine" class="btn btn-primary" style="border-radius: 15px;"><span class="glyphicon glyphicon-save"></span>
+                            <button name="add_vaccine" class="btn btn-primary" style="border-radius: 15px;"><span
+                                    class="glyphicon glyphicon-save"></span>
                                 Add
                             </button>
 
@@ -908,7 +958,8 @@ $_SESSION['petid'] = $petid;
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Remarks</label>
-                                    <textarea name="remarks" class="form-control" style=" width: 100%;" rows="5" required></textarea>
+                                    <textarea name="remarks" class="form-control" style=" width: 100%;" rows="5"
+                                        required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Date Assessed</label>
@@ -926,7 +977,8 @@ $_SESSION['petid'] = $petid;
                         </div>
                         <div style="clear:both;"></div>
                         <div class="modal-footer">
-                            <button name="add_assessment" class="btn btn-primary" style="border-radius: 15px;"><span class="glyphicon glyphicon-save"></span>
+                            <button name="add_assessment" class="btn btn-primary" style="border-radius: 15px;"><span
+                                    class="glyphicon glyphicon-save"></span>
                                 Add
                             </button>
 
@@ -950,19 +1002,23 @@ $_SESSION['petid'] = $petid;
                             <div class="col-md-12">
                                 <div class="form-group" style="display:none;">
                                     <label>Assessment ID</label>
-                                    <input type="text" name="AssessmentID" id="AssessmentID" class="form-control" required>
+                                    <input type="text" name="AssessmentID" id="AssessmentID" class="form-control"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label>Remarks</label>
-                                    <textarea name="Remarks" id="Remarks" class="form-control" style=" width: 100%;" rows="5" required></textarea>
+                                    <textarea name="Remarks" id="Remarks" class="form-control" style=" width: 100%;"
+                                        rows="5" required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Date Assessed</label>
-                                    <input type="date" name="DateAssessed" id="DateAssessed" class="form-control" required />
+                                    <input type="date" name="DateAssessed" id="DateAssessed" class="form-control"
+                                        required />
                                 </div>
                                 <div class="form-group">
                                     <label>Assessed By</label>
-                                    <input type="text" name="AssessedBy" id="AssessedBy" class="form-control" required />
+                                    <input type="text" name="AssessedBy" id="AssessedBy" class="form-control"
+                                        required />
                                 </div>
                                 <div class="form-group">
                                     <label>Current Prescription</label>
@@ -988,8 +1044,11 @@ $_SESSION['petid'] = $petid;
                         </div>
                         <div style="clear:both;"></div>
                         <div class="modal-footer">
-                            <button name="save_assessment" class="btn btn-primary" style="border-radius: 15px;"><span class="glyphicon glyphicon-save"></span>Save</button>
-                            <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                            <button name="save_assessment" class="btn btn-primary" style="border-radius: 15px;"><span
+                                    class="glyphicon glyphicon-save"></span>Save</button>
+                            <button class="btn btn-danger" type="button" data-dismiss="modal"
+                                style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
+                                Cancel</button>
 
                         </div>
                     </form>
@@ -1012,43 +1071,52 @@ $_SESSION['petid'] = $petid;
                             <div class="col-md-12">
                                 <div class="form-group" style="display:none;">
                                     <label>Vaccine ID</label>
-                                    <input type="text" name="VaccineID" id="VaccineID" class="form-control" required="required" />
+                                    <input type="text" name="VaccineID" id="VaccineID" class="form-control"
+                                        required="required" />
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label>Vaccine Name</label>
-                                            <input type="text" name="VaccineName" id="VaccineName" class="form-control" required="required" />
+                                            <input type="text" name="VaccineName" id="VaccineName" class="form-control"
+                                                required="required" />
                                         </div>
                                         <div class="form-group">
                                             <label>Brand</label>
-                                            <input type="text" name="VaccineBrand" id="VaccineBrand" class="form-control" required="required" />
+                                            <input type="text" name="VaccineBrand" id="VaccineBrand"
+                                                class="form-control" required="required" />
                                         </div>
                                         <div class="form-group">
                                             <label>Description</label>
-                                            <textarea name="VaccineDescription" id="VaccineDescription" class="form-control" style=" width: 100%;" rows="5"></textarea>
+                                            <textarea name="VaccineDescription" id="VaccineDescription"
+                                                class="form-control" style=" width: 100%;" rows="5"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Dosage</label>
-                                            <input type="text" name="VaccineDosage" id="VaccineDosage" class="form-control" required="required" />
+                                            <input type="text" name="VaccineDosage" id="VaccineDosage"
+                                                class="form-control" required="required" />
                                         </div>
                                         <div class="form-group">
                                             <label>Lot #</label>
-                                            <input type="text" name="VaccineLotNo" id="VaccineLotNo" class="form-control" required="required" />
+                                            <input type="text" name="VaccineLotNo" id="VaccineLotNo"
+                                                class="form-control" required="required" />
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label>Date Vaccinated</label>
-                                            <input type="date" name="DateVaccinated" id="DateVaccinated" class="form-control" required="required" />
+                                            <input type="date" name="DateVaccinated" id="DateVaccinated"
+                                                class="form-control" required="required" />
                                         </div>
                                         <div class="form-group">
                                             <label>Expiry Date</label>
-                                            <input type="date" name="ExpirationDate" id="ExpirationDate" class="form-control" required="required" />
+                                            <input type="date" name="ExpirationDate" id="ExpirationDate"
+                                                class="form-control" required="required" />
                                         </div>
                                         <div class="form-group">
                                             <label>Vaccinator</label>
-                                            <input type="text" name="Vaccinator" id="Vaccinator" class="form-control" required="required" />
+                                            <input type="text" name="Vaccinator" id="Vaccinator" class="form-control"
+                                                required="required" />
                                         </div>
                                     </div>
                                 </div>
@@ -1057,8 +1125,11 @@ $_SESSION['petid'] = $petid;
                         </div>
                         <div style="clear:both;"></div>
                         <div class="modal-footer">
-                            <button name="save_vaccine" class="btn btn-primary" style="border-radius: 15px;"><span class="glyphicon glyphicon-save"></span>Save</button>
-                            <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                            <button name="save_vaccine" class="btn btn-primary" style="border-radius: 15px;"><span
+                                    class="glyphicon glyphicon-save"></span>Save</button>
+                            <button class="btn btn-danger" type="button" data-dismiss="modal"
+                                style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
+                                Cancel</button>
 
                         </div>
                     </form>
@@ -1259,11 +1330,13 @@ $_SESSION['petid'] = $petid;
     <script src="js/main.js"></script>
 
     <!-- Latest compiled and minified JavaScript (needed for editing details on a tabled list of data) -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 
     <!-- To show details when editing -->
     <script>
-        $('#edit_assessment').on('show.bs.modal', function(e) {
+        $('#edit_assessment').on('show.bs.modal', function (e) {
             var opener = e.relatedTarget;
 
             var ass_id = $(opener).attr('ass_id');
@@ -1284,7 +1357,7 @@ $_SESSION['petid'] = $petid;
             endResize();
         });
 
-        $('#edit_vaccine').on('show.bs.modal', function(e) {
+        $('#edit_vaccine').on('show.bs.modal', function (e) {
             var opener = e.relatedTarget;
 
             var vacc_id = $(opener).attr('vacc_id');
@@ -1310,11 +1383,11 @@ $_SESSION['petid'] = $petid;
             endResize();
         });
 
-        $('#vaccine_modal').on('show.bs.modal', function(e) {
+        $('#vaccine_modal').on('show.bs.modal', function (e) {
             endResize();
         });
 
-        $('#assess_modal').on('show.bs.modal', function(e) {
+        $('#assess_modal').on('show.bs.modal', function (e) {
             endResize();
         });
 
@@ -1347,8 +1420,8 @@ $_SESSION['petid'] = $petid;
 
         document.getElementById('content1').style.display = 'block';
 
-        $(document).ready(function() {
-            $('.tablinks').on('click', function() {
+        $(document).ready(function () {
+            $('.tablinks').on('click', function () {
                 $('.tablinks').removeClass('active');
                 $(this).addClass('active');
             })
