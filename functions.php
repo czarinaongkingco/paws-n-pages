@@ -99,15 +99,15 @@ require 'src/SMTP.php';
             //Content
             $mail->isHTML(true);
             $mail->Subject = 'Pet Booklet Confirmation Notification';
-            $mail->Body = '<p>Greetings, <b>Paws N Pages</b>! 
-                        </br>This is an automated email to inform you that a pet owner has purchased a pet booklet that is yet to be confirmed by our team.           
+            $mail->Body = '<p>Greetings, Paws N Pages! <br/>
+                        <br/>This is an automated email to inform you that a pet owner has purchased a pet booklet that is yet to be confirmed by our team.           
 
-                        <br/>Name of Pet Owner: <b>' . $name . '</b>' .
+                        <br/><br/>Name of Pet Owner: <b>' . $name . '</b>' .
                 '<br/> No. of Pet Booklet(s) Purchased: <b>' . $num_pb . '</b>' .
                 '<br/> Amount: <b>' . $amount . '</b>' .
 
                 '<br/> <br/> Best Regards, <br/>
-                        <b>Paws N Pages Notification Team</b></p>';
+                        Paws N Pages Notification Team</p>';
             $mail->send();
 
             // Set success message
