@@ -15,8 +15,7 @@ $userID = $_SESSION["id"];
 <head>
     <meta charset="utf-8">
     <title>Paws N Pages | Appointments</title>
-    <link rel="icon" href="https://media.discordapp.net/attachments/1112075552669581332/1113455947420024832/icon.png"
-        type="image/x-icon">
+    <link rel="icon" href="https://media.discordapp.net/attachments/1112075552669581332/1113455947420024832/icon.png" type="image/x-icon">
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -65,7 +64,7 @@ $userID = $_SESSION["id"];
             if (file) {
                 var reader = new FileReader();
 
-                reader.onload = function () {
+                reader.onload = function() {
                     $("#image").attr("src", reader.result);
                 }
 
@@ -75,7 +74,7 @@ $userID = $_SESSION["id"];
     </script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             var table = $('#appointments').DataTable({
                 order: [
                     [6, 'desc']
@@ -134,8 +133,7 @@ $userID = $_SESSION["id"];
         <div class="card mb-4 mb-xl-0" style="border-radius: 15px;">
             <div class="card-header userProfile-font"><b>⏳ Appointments</b></div>
             <div class="card-body">
-                <table class="table table-striped table-hover" name="appointments" id="appointments"
-                    style="border:0px;">
+                <table class="table table-striped table-hover" name="appointments" id="appointments" style="border:0px;">
                     <thead>
                         <tr class="table100-head">
                             <th class="column1" style="border:0px; color: #80B434;">Reference No.</th>
@@ -159,19 +157,10 @@ $userID = $_SESSION["id"];
                         if ($row1 > 0) {
                             while ($row1 = mysqli_fetch_array($ret1)) {
                                 $date = new DateTime($row1['DateTimeBooked']);
-                                ?>
+                        ?>
                                 <!--Fetch the Records -->
                                 <tr>
-                                    <td style="border:0px;"><a href="" appid="<?php echo $row1['AppointmentID'] ?>"
-                                            refno="<?php echo $row1['Appointment_RefNo'] ?>"
-                                            pdate="<?php echo $row1['PreferredDate'] ?>"
-                                            ptime="<?php echo $row1['PreferredTime'] ?>" notes="<?php echo $row1['Notes']; ?>"
-                                            services="<?php echo $row1['AvailedServices'] ?>"
-                                            customer="<?php echo $row1['FirstName'] . ' ' . $row1['MiddleName'] . ' ' . $row1['LastName'] ?>"
-                                            astatus="<?php echo $row1['AppointmentStatus']; ?>"
-                                            aremarks="<?php echo $row1['Remarks']; ?>"
-                                            adtboooked="<?php echo $date->format('Y-m-d h:i A'); ?>" class="edit" title="Edit"
-                                            data-toggle="modal" data-target="#edit_modal"><?php echo $row1['Appointment_RefNo'] ?></a></td>
+                                    <td style="border:0px;"><a href="" appid="<?php echo $row1['AppointmentID'] ?>" refno="<?php echo $row1['Appointment_RefNo'] ?>" pdate="<?php echo $row1['PreferredDate'] ?>" ptime="<?php echo $row1['PreferredTime'] ?>" notes="<?php echo $row1['Notes']; ?>" services="<?php echo $row1['AvailedServices'] ?>" customer="<?php echo $row1['FirstName'] . ' ' . $row1['MiddleName'] . ' ' . $row1['LastName'] ?>" astatus="<?php echo $row1['AppointmentStatus']; ?>" aremarks="<?php echo $row1['Remarks']; ?>" adtboooked="<?php echo $date->format('Y-m-d h:i A'); ?>" reasoncancel="<?php echo $row1['ReasonCancel'] ?>" class="edit" title="Edit" data-toggle="modal" data-target="#edit_modal"><?php echo $row1['Appointment_RefNo'] ?></a></td>
                                     <td style="border:0px;">
                                         <?php echo $row1['PreferredDate'] ?>
                                     </td>
@@ -187,20 +176,17 @@ $userID = $_SESSION["id"];
                                     <td style="border:0px;">
                                         <?php $status = $row1['AppointmentStatus'];
                                         if ($status === 'Processing') { ?>
-                                            <a
-                                                style="color:white; font-size:12px; padding: 5px 5px; border-radius:10px; background-color:#F4BB44;">
+                                            <a style="color:white; font-size:12px; padding: 5px 5px; border-radius:10px; background-color:#F4BB44;">
                                                 <?php echo $row1['AppointmentStatus']; ?>
                                             </a>
                                         <?php }
                                         if ($status === 'Confirmed') { ?>
-                                            <a
-                                                style="color:white; font-size:12px; padding: 5px 7px; border-radius:10px; background-color:#228B22;">
+                                            <a style="color:white; font-size:12px; padding: 5px 7px; border-radius:10px; background-color:#228B22;">
                                                 <?php echo $row1['AppointmentStatus']; ?>
                                             </a>
                                         <?php }
                                         if ($status === 'Denied') { ?>
-                                            <a
-                                                style="color:white; font-size:12px; padding: 5px 15px;  border-radius:10px; background-color:#A52A2A;">
+                                            <a style="color:white; font-size:12px; padding: 5px 15px;  border-radius:10px; background-color:#A52A2A;">
                                                 <?php echo $row1['AppointmentStatus']; ?>
                                             </a>
                                         <?php }
@@ -208,8 +194,7 @@ $userID = $_SESSION["id"];
                                             <?php echo $row1['AppointmentStatus']; ?>
                                         <?php }
                                         if ($status === 'Cancelled') { ?>
-                                            <a
-                                                style="color:white; font-size:12px; padding: 5px 7px;  border-radius:10px; background-color:#000000;">
+                                            <a style="color:white; font-size:12px; padding: 5px 7px;  border-radius:10px; background-color:#000000;">
                                                 <?php echo $row1['AppointmentStatus']; ?>
                                             </a>
                                         <?php } ?>
@@ -219,32 +204,23 @@ $userID = $_SESSION["id"];
                                         <?php echo $date->format('Y-m-d h:i A'); ?>
                                     </td>
                                     <td style="border:0px; text-align:center;">
-                                        <a href="" appid="<?php echo $row1['AppointmentID'] ?>"
-                                            refno="<?php echo $row1['Appointment_RefNo'] ?>"
-                                            pdate="<?php echo $row1['PreferredDate'] ?>"
-                                            ptime="<?php echo $row1['PreferredTime'] ?>" notes="<?php echo $row1['Notes']; ?>"
-                                            services="<?php echo $row1['AvailedServices'] ?>"
-                                            customer="<?php echo $row1['FirstName'] . ' ' . $row1['MiddleName'] . ' ' . $row1['LastName'] ?>"
-                                            astatus="<?php echo $row1['AppointmentStatus']; ?>"
-                                            aremarks="<?php echo $row1['Remarks']; ?>"
-                                            adtboooked="<?php echo $date->format('Y-m-d h:i A'); ?>" class="edit" title="Edit"
-                                            data-toggle="modal" data-target="#edit_modal"><i class="fa fa-eye"></i></a>
+                                        <a href="" appid="<?php echo $row1['AppointmentID'] ?>" refno="<?php echo $row1['Appointment_RefNo'] ?>" pdate="<?php echo $row1['PreferredDate'] ?>" ptime="<?php echo $row1['PreferredTime'] ?>" notes="<?php echo $row1['Notes']; ?>" services="<?php echo $row1['AvailedServices'] ?>" customer="<?php echo $row1['FirstName'] . ' ' . $row1['MiddleName'] . ' ' . $row1['LastName'] ?>" astatus="<?php echo $row1['AppointmentStatus']; ?>" aremarks="<?php echo $row1['Remarks']; ?>" adtboooked="<?php echo $date->format('Y-m-d h:i A'); ?>" class="edit" title="Edit" data-toggle="modal" data-target="#edit_modal"><i class="fa fa-eye"></i></a>
                                     </td>
                                 </tr>
-                                <?php
+                            <?php
                                 $cnt = $cnt + 1;
                             }
                         } else { ?>
-                        <tr>
-                            <th style="text-align:center; color:red; border:0px;" colspan="8">No Record Found</th>
-                            <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
-                            <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
-                            <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
-                            <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
-                            <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
-                            <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
-                            <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
-                        </tr>
+                            <tr>
+                                <th style="text-align:center; color:red; border:0px;" colspan="8">No Record Found</th>
+                                <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
+                                <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
+                                <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
+                                <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
+                                <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
+                                <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
+                                <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
+                            </tr>
                         <?php } ?>
 
                     </tbody>
@@ -268,10 +244,8 @@ $userID = $_SESSION["id"];
                 <div class="col-lg-4 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Get In Touch</h5>
                     <p class="mb-4">If you have inquiries feel free to contact us below</p>
-                    <a class="mb-2" href="https://goo.gl/maps/nGdbiDamK7MP9L5z5"><i
-                            class="bi bi-geo-alt text-primary me-2"></i>Manila, PH</br></a>
-                    <a class="mb-2" href="mailto:pawsnpages.site@gmail.com"><i
-                            class="bi bi-envelope-open text-primary me-2"></i>pawsnpages.site@gmail.com</a>
+                    <a class="mb-2" href="https://goo.gl/maps/nGdbiDamK7MP9L5z5"><i class="bi bi-geo-alt text-primary me-2"></i>Manila, PH</br></a>
+                    <a class="mb-2" href="mailto:pawsnpages.site@gmail.com"><i class="bi bi-envelope-open text-primary me-2"></i>pawsnpages.site@gmail.com</a>
                     <a class="mb-0" href="tel:+6396176261"></br><i class="bi bi-telephone text-primary me-2"></i>+63 961
                         762 6162</a>
                 </div>
@@ -279,14 +253,10 @@ $userID = $_SESSION["id"];
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Quick Links</h5>
                     <div class="d-flex flex-column justify-content-start">
                         <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                        <a class="text-body mb-2" href="clinics.php"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Vet Clinics</a>
-                        <a class="text-body mb-2" href="#services"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
-                        <a class="text-body mb-2" href="#founders"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Meet The Team</a>
-                        <a class="text-body" href="contact.php"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                        <a class="text-body mb-2" href="clinics.php"><i class="bi bi-arrow-right text-primary me-2"></i>Vet Clinics</a>
+                        <a class="text-body mb-2" href="#services"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
+                        <a class="text-body mb-2" href="#founders"><i class="bi bi-arrow-right text-primary me-2"></i>Meet The Team</a>
+                        <a class="text-body" href="contact.php"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
                     </div>
                 </div>
 
@@ -334,8 +304,7 @@ $userID = $_SESSION["id"];
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Reference Number</label>
-                                        <input type="text" name="ReferenceNo" id="ReferenceNo" class="form-control"
-                                            readonly />
+                                        <input type="text" name="ReferenceNo" id="ReferenceNo" class="form-control" readonly />
                                     </div>
                                     <div class="form-group">
                                         <label>Preferred Date</label>
@@ -347,35 +316,33 @@ $userID = $_SESSION["id"];
                                     </div>
                                     <div class="form-group">
                                         <label>Services</label>
-                                        <textarea name="Services" id="Services" class="form-control"
-                                            style=" width: 100%;" rows="3" readonly></textarea>
+                                        <textarea name="Services" id="Services" class="form-control" style=" width: 100%;" rows="3" readonly></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Notes</label>
-                                        <textarea name="Notes" id="Notes" class="form-control" style=" width: 100%;"
-                                            rows="4" readonly></textarea>
+                                        <textarea name="Notes" id="Notes" class="form-control" style=" width: 100%;" rows="4" readonly></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Customer</label>
-                                        <input type="text" name="Customer" id="Customer" class="form-control"
-                                            readonly />
+                                        <input type="text" name="Customer" id="Customer" class="form-control" readonly />
                                     </div>
                                     <div class="form-group">
                                         <label>Date & Time Booked</label>
-                                        <input type="text" name="DTBooked" id="DTBooked" class="form-control"
-                                            readonly />
+                                        <input type="text" name="DTBooked" id="DTBooked" class="form-control" readonly />
                                     </div>
                                     <div class="form-group">
                                         <label>Status</label>
-                                        <input type="text" name="Status" id="Status" class="form-control"
-                                            style="height: 100%;" readonly />
+                                        <input type="text" name="Status" id="Status" class="form-control" style="height: 100%;" readonly />
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="remarks">
                                         <label>Remarks</label>
-                                        <textarea name="Remarks" id="Remarks" class="form-control"
-                                            style=" width: 100%; height: 150px;" readonly></textarea>
+                                        <textarea name="Remarks" id="Remarks" class="form-control" style=" width: 100%; height: 150px;" readonly></textarea>
+                                    </div>
+                                    <div class="form-group" id="reason" style="display: none;">
+                                        <label>Reason for Cancellation</label>
+                                        <textarea name="Reason" id="Reason" class="form-control" style=" width: 100%; height: 150px;" readonly></textarea>
                                     </div>
 
                                 </div>
@@ -385,10 +352,14 @@ $userID = $_SESSION["id"];
                         </div>
                     </div>
 
-                    <div class="modal-footer">
-                        <a class="btn btn-danger" style="border-radius: 15px; color: white;" data-toggle="modal"
-                            data-target="#confirm_cancel" data-dismiss="modal">
+                    <div class="modal-footer" id="cancel">
+                        <a class="btn btn-danger" style="border-radius: 15px; color: white;" data-toggle="modal" data-target="#confirm_cancel" data-dismiss="modal">
                             Cancel Booking
+                        </a>
+                    </div>
+                    <div class="modal-footer" id="close" style="display: none;">
+                        <a class="btn btn-danger" style="border-radius: 15px; color: white;" data-dismiss="modal">
+                            Close
                         </a>
                     </div>
                 </form>
@@ -427,8 +398,7 @@ $userID = $_SESSION["id"];
                     </div>
 
                     <div class="modal-footer">
-                        <button type="submit" name="cancel" class="btn btn-primary"
-                            style="border-radius: 15px; color: white; ">
+                        <button type="submit" name="cancel" class="btn btn-primary" style="border-radius: 15px; color: white; ">
                             Submit
                         </button>
                         <a class="btn btn-danger" style="border-radius: 15px; color: white;" data-dismiss="modal">
@@ -462,13 +432,11 @@ $userID = $_SESSION["id"];
     <script src="js/main.js"></script>
 
     <!-- Latest compiled and minified JavaScript (needed for editing details on a tabled list of data) -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <!-- To show details when editing -->
     <script>
-        $('#edit_modal').on('show.bs.modal', function (e) {
+        $('#edit_modal').on('show.bs.modal', function(e) {
             var opener = e.relatedTarget;
 
             var appid = $(opener).attr('appid');
@@ -481,6 +449,21 @@ $userID = $_SESSION["id"];
             var astatus = $(opener).attr('astatus');
             var aremarks = $(opener).attr('aremarks');
             var adtboooked = $(opener).attr('adtboooked');
+            var reasoncancel = $(opener).attr('reasoncancel');
+
+            if (astatus == 'Cancelled') {
+                $('#cancel').hide();
+                $('#close').show();
+
+                $('#remarks').hide();
+                $('#reason').show();
+            } else {
+                $('#cancel').show();
+                $('#close').hide();
+
+                $('#remarks').show();
+                $('#reason').hide();
+            }
 
             $('#form_edit_booking').find('[name="AppointmentID"]').val(appid);
             $('#form_edit_booking').find('[name="ReferenceNo"]').val(refno);
@@ -492,8 +475,10 @@ $userID = $_SESSION["id"];
             $('#form_edit_booking').find('[name="Status"]').val(astatus);
             $('#form_edit_booking').find('[name="Remarks"]').val(aremarks);
             $('#form_edit_booking').find('[name="DTBooked"]').val(adtboooked);
+            $('#form_edit_booking').find('[name="Reason"]').val(reasoncancel);
 
-            $('#confirm_cancel').on('show.bs.modal', function (e) {
+
+            $('#confirm_cancel').on('show.bs.modal', function(e) {
                 $('#form_cancel_booking').find('[name="AppointmentID_2"]').val(appid);
                 $('#form_cancel_booking').find('[name="PDate_2"]').val(pdate);
 
