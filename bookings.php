@@ -401,7 +401,7 @@ $clinicID = $row_ca['ClinicID'];
                                     ?>
                                             <!--Fetch the Records -->
                                             <tr style="border:0px;">
-                                                <td style="border:0px;"><a href="" aappid="<?php echo $row['AppointmentID'] ?>" arefno="<?php echo $row['Appointment_RefNo'] ?>" aclinic="<?php echo $row['ClinicName'] ?>" apdate="<?php echo $row['PreferredDate']; ?>" aptime="<?php echo $row['PreferredTime']; ?>" anotes="<?php echo $row['Notes']; ?>" aservices="<?php echo $row['AvailedServices'] ?>" acustomer="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" aastatus="<?php echo $row['AppointmentStatus']; ?>" aaremarks="<?php echo $row['Remarks']; ?>" aadtboooked="<?php echo $date->format('Y-m-d h:i A'); ?>" class="edit" title="Edit" data-toggle="modal" data-target="#view_modal"><?php echo $row['Appointment_RefNo'] ?></a></td>
+                                                <td style="border:0px;"><a href="" aappid="<?php echo $row['AppointmentID'] ?>" arefno="<?php echo $row['Appointment_RefNo'] ?>" aclinic="<?php echo $row['ClinicName'] ?>" apdate="<?php echo $row['PreferredDate']; ?>" aptime="<?php echo $row['PreferredTime']; ?>" anotes="<?php echo $row['Notes']; ?>" aservices="<?php echo $row['AvailedServices'] ?>" acustomer="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" aastatus="<?php echo $row['AppointmentStatus']; ?>" aaremarks="<?php echo $row['Remarks']; ?>" aadtboooked="<?php echo $date->format('Y-m-d h:i A'); ?>" areasoncancel="<?php echo $row['ReasonCancel'] ?>" class="edit" title="Edit" data-toggle="modal" data-target="#view_modal"><?php echo $row['Appointment_RefNo'] ?></a></td>
                                                 <td style="border:0px;">
                                                     <?php echo $row['ClinicName'] ?>
                                                 </td>
@@ -444,7 +444,7 @@ $clinicID = $row_ca['ClinicID'];
                                                     } ?>
                                                 </td>
                                                 <td style="border:0px; text-align: center;">
-                                                    <a href="" aappid="<?php echo $row['AppointmentID'] ?>" arefno="<?php echo $row['Appointment_RefNo'] ?>" aclinic="<?php echo $row['ClinicName'] ?>" apdate="<?php echo $row['PreferredDate']; ?>" aptime="<?php echo $row['PreferredTime']; ?>" anotes="<?php echo $row['Notes']; ?>" aservices="<?php echo $row['AvailedServices'] ?>" acustomer="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" aastatus="<?php echo $row['AppointmentStatus']; ?>" aaremarks="<?php echo $row['Remarks']; ?>" aadtboooked="<?php echo $date->format('Y-m-d h:i A'); ?>" class="edit" title="Edit" data-toggle="modal" data-target="#view_modal">
+                                                    <a href="" aappid="<?php echo $row['AppointmentID'] ?>" arefno="<?php echo $row['Appointment_RefNo'] ?>" aclinic="<?php echo $row['ClinicName'] ?>" apdate="<?php echo $row['PreferredDate']; ?>" aptime="<?php echo $row['PreferredTime']; ?>" anotes="<?php echo $row['Notes']; ?>" aservices="<?php echo $row['AvailedServices'] ?>" acustomer="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" aastatus="<?php echo $row['AppointmentStatus']; ?>" aaremarks="<?php echo $row['Remarks']; ?>" aadtboooked="<?php echo $date->format('Y-m-d h:i A'); ?>" areasoncancel="<?php echo $row['ReasonCancel'] ?>" class="edit" title="Edit" data-toggle="modal" data-target="#view_modal">
                                                         <i class="fa fa-eye"></i>
                                                     </a>
                                                 </td>
@@ -508,7 +508,7 @@ $clinicID = $row_ca['ClinicID'];
                                     ?>
                                             <!--Fetch the Records -->
                                             <tr style="border:0px;">
-                                                <td style="border:0px;"><a href="" appid="<?php echo $row['AppointmentID'] ?>" refno="<?php echo $row['Appointment_RefNo'] ?>" pdate="<?php echo $row['PreferredDate'] ?>" ptime="<?php echo $row['PreferredTime'] ?>" notes="<?php echo $row['Notes'] ?>" services="<?php echo $row['AvailedServices'] ?>" customer="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" cust_email="<?php echo $row['Email'] ?>" cust_num="<?php echo $row['ContactNo'] ?>" astatus="<?php echo $row['AppointmentStatus'] ?>" aremarks="<?php echo $row['Remarks'] ?>" adtboooked="<?php echo $date->format('Y-m-d h:i A') ?>" class="edit" title="Edit" data-toggle="modal" data-target="#edit_modal"><?php echo $row['Appointment_RefNo'] ?></a></td>
+                                                <td style="border:0px;"><a href="" appid="<?php echo $row['AppointmentID'] ?>" refno="<?php echo $row['Appointment_RefNo'] ?>" pdate="<?php echo $row['PreferredDate'] ?>" ptime="<?php echo $row['PreferredTime'] ?>" notes="<?php echo $row['Notes'] ?>" services="<?php echo $row['AvailedServices'] ?>" customer="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" cust_email="<?php echo $row['Email'] ?>" cust_num="<?php echo $row['ContactNo'] ?>" astatus="<?php echo $row['AppointmentStatus'] ?>" aremarks="<?php echo $row['Remarks'] ?>" adtboooked="<?php echo $date->format('Y-m-d h:i A') ?>" reasoncancel="<?php echo $row['ReasonCancel'] ?>" class="edit" title="Edit" data-toggle="modal" data-target="#edit_modal"><?php echo $row['Appointment_RefNo'] ?></a></td>
                                                 <td style="border:0px;">
                                                     <?php echo $row['PreferredDate'] ?>
                                                 </td>
@@ -562,7 +562,7 @@ $clinicID = $row_ca['ClinicID'];
                                                     } ?>
                                                 </td>
                                                 <td style="border:0px; text-align: center;">
-                                                    <a href="" appid="<?php echo $row['AppointmentID'] ?>" refno="<?php echo $row['Appointment_RefNo'] ?>" pdate="<?php echo $row['PreferredDate'] ?>" ptime="<?php echo $row['PreferredTime'] ?>" notes="<?php echo $row['Notes'] ?>" services="<?php echo $row['AvailedServices'] ?>" customer="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" cust_email="<?php echo $row['Email'] ?>" cust_num="<?php echo $row['ContactNo'] ?>" astatus="<?php echo $row['AppointmentStatus'] ?>" aremarks="<?php echo $row['Remarks'] ?>" adtboooked="<?php echo $date->format('Y-m-d h:i A') ?>" class="edit" title="Edit" data-toggle="modal" data-target="#edit_modal">
+                                                    <a href="" appid="<?php echo $row['AppointmentID'] ?>" refno="<?php echo $row['Appointment_RefNo'] ?>" pdate="<?php echo $row['PreferredDate'] ?>" ptime="<?php echo $row['PreferredTime'] ?>" notes="<?php echo $row['Notes'] ?>" services="<?php echo $row['AvailedServices'] ?>" customer="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" cust_email="<?php echo $row['Email'] ?>" cust_num="<?php echo $row['ContactNo'] ?>" astatus="<?php echo $row['AppointmentStatus'] ?>" aremarks="<?php echo $row['Remarks'] ?>" adtboooked="<?php echo $date->format('Y-m-d h:i A') ?>" reasoncancel="<?php echo $row['ReasonCancel'] ?>" class="edit" title="Edit" data-toggle="modal" data-target="#edit_modal">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
                                                 </td>
@@ -665,9 +665,13 @@ $clinicID = $row_ca['ClinicID'];
 
 
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="rem">
                                             <label>Remarks</label>
                                             <textarea name="Remarks" id="Remarks" class="form-control" style=" width: 100%; height: 150px;"></textarea>
+                                        </div>
+                                        <div class="form-group" id="reason" style="display: none;">
+                                            <label>Reason for Cancellation</label>
+                                            <textarea name="Reason" id="Reason" class="form-control" style=" width: 100%; height: 150px;"></textarea>
                                         </div>
 
                                     </div>
@@ -746,9 +750,13 @@ $clinicID = $row_ca['ClinicID'];
                                             <label>Status</label>
                                             <input type="text" name="AStatus" id="AStatus" class="form-control" style="height: 100%;" readonly />
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="arem">
                                             <label>Remarks</label>
                                             <textarea name="ARemarks" id="ARemarks" class="form-control" style=" width: 100%; height: 150px;" readonly></textarea>
+                                        </div>
+                                        <div class="form-group" id="areason" style="display: none;">
+                                            <label>Reason for Cancellation</label>
+                                            <textarea name="AReason" id="AReason" class="form-control" style=" width: 100%; height: 150px;" readonly></textarea>
                                         </div>
 
                                     </div>
@@ -880,6 +888,15 @@ $clinicID = $row_ca['ClinicID'];
                 var astatus = $(opener).attr('astatus');
                 var aremarks = $(opener).attr('aremarks');
                 var adtboooked = $(opener).attr('adtboooked');
+                var reasoncancel = $(opener).attr('reasoncancel');
+
+                if (astatus == 'Cancelled') {
+                    $('#rem').hide();
+                    $('#reason').show();
+                } else {
+                    $('#rem').show();
+                    $('#reason').hide();
+                }
 
                 $('#form_edit_booking').find('[name="AppointmentID"]').val(appid);
                 $('#form_edit_booking').find('[name="ReferenceNo"]').val(refno);
@@ -893,6 +910,7 @@ $clinicID = $row_ca['ClinicID'];
                 $('#form_edit_booking').find('[name="Status"]').val(astatus);
                 $('#form_edit_booking').find('[name="Remarks"]').val(aremarks);
                 $('#form_edit_booking').find('[name="DTBooked"]').val(adtboooked);
+                $('#form_edit_booking').find('[name="Reason"]').val(reasoncancel);
 
                 endResize();
             });
@@ -911,6 +929,15 @@ $clinicID = $row_ca['ClinicID'];
                 var aastatus = $(opener).attr('aastatus');
                 var aaremarks = $(opener).attr('aaremarks');
                 var aadtboooked = $(opener).attr('aadtboooked');
+                var areasoncancel = $(opener).attr('areasoncancel');
+
+                if (aastatus == 'Cancelled') {
+                    $('#arem').hide();
+                    $('#areason').show();
+                } else {
+                    $('#arem').show();
+                    $('#areason').hide();
+                }
 
                 $('#form_view_booking').find('[name="AAppointmentID"]').val(aappid);
                 $('#form_view_booking').find('[name="AReferenceNo"]').val(arefno);
@@ -923,6 +950,7 @@ $clinicID = $row_ca['ClinicID'];
                 $('#form_view_booking').find('[name="AStatus"]').val(aastatus);
                 $('#form_view_booking').find('[name="ARemarks"]').val(aaremarks);
                 $('#form_view_booking').find('[name="ADTBooked"]').val(aadtboooked);
+                $('#form_view_booking').find('[name="AReason"]').val(areasoncancel);
 
                 endResize();
             });
