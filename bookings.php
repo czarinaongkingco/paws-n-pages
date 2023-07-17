@@ -772,7 +772,7 @@ $clinicID = $row_ca['ClinicID'];
         <?php
         if (isset($_POST['update_booking'])) {
             $a_status = $_POST['Status2'];
-            $a_remarks = $_POST['Remarks'];
+            $a_remarks = mysqli_real_escape_string($con, $_POST['Remarks']);
             $a_id = $_POST['AppointmentID'];
 
             // Get customer info

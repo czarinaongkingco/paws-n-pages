@@ -660,6 +660,7 @@ $clinicID = $row_ca['ClinicID'];
         if (isset($_POST['update_service'])) {
             $name = $_POST['ServiceName'];
             $description = $_POST['ServiceDescription'];
+            $description = mysqli_real_escape_string($con, $_POST['ServiceDescription']);
             $price = $_POST['Price'];
             $a_id = $_POST['ServiceID'];
 
@@ -692,6 +693,7 @@ $clinicID = $row_ca['ClinicID'];
         if (isset($_POST['save_service'])) {
             $name = $_POST['name'];
             $description = $_POST['description'];
+            $description = mysqli_real_escape_string($con, $_POST['description']);
             $price = $_POST['price'];
 
             $query = mysqli_query($con, "INSERT INTO services (ServiceName, ServiceDescription, ServicePrice, ClinicID) VALUES ('$name', '$description', '$price', '$clinicID')");

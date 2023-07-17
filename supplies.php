@@ -820,7 +820,7 @@ $clinicID = $row_ca['ClinicID'];
         move_uploaded_file($tempfile, $folder);
 
         $name = $_POST['name'];
-        $description = $_POST['description'];
+        $description = mysqli_real_escape_string($con, $_POST['description']);
         $price = $_POST['price'];
         $stocks = $_POST['stocks'];
         $prescription = $_POST['prescription'];
@@ -860,7 +860,7 @@ $clinicID = $row_ca['ClinicID'];
         move_uploaded_file($tempfile1, $folder1);
 
         $Uname = $_POST['SupplyName'];
-        $Udescription = $_POST['SupplyDescription'];
+        $Udescription = mysqli_real_escape_string($con, $_POST['SupplyDescription']);
         $Uprice = $_POST['SupplyPrice'];
         $Ustocks = $_POST['Stocks'];
         $Uprescription = $_POST['NeedPrescription'];
