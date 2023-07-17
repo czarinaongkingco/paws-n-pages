@@ -21,13 +21,13 @@ require 'src/SMTP.php';
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'lmb.ownerr@gmail.com';                     //SMTP username
-            $mail->Password   = 'oqirivqhyojsejxe';                               //SMTP password
+            $mail->Username   = 'pawsnpages.site@gmail.com';                     //SMTP username
+            $mail->Password   = 'zbytxxyfahbtjojr';                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
-            $mail->setFrom('lmb.ownerr@gmail.com', 'Paws N Pages');
+            $mail->setFrom('pawsnpages.site@gmail.com', 'Paws N Pages');
             $mail->addAddress($email, $name);     //Add a recipient
 
             //Content
@@ -75,6 +75,47 @@ require 'src/SMTP.php';
 
         //Show the server response
         // echo $output;
+    }
+
+
+    function sendNotification_PB($name, $num_pb, $amount) {
+
+        $mail = new PHPMailer(true);
+        try {
+
+            //Server settings
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = 'lmb.ownerr@gmail.com';                     //SMTP username
+            $mail->Password   = 'oqirivqhyojsejxe';                               //SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+            //Recipients
+            $mail->setFrom('lmb.ownerr@gmail.com', 'Paws N Pages Notification Team');
+            $mail->addAddress('pawsnpages.site@gmail.com', 'Paws N Pages');     //Add a recipient
+
+            //Content
+            $mail->isHTML(true);
+            $mail->Subject = 'Pet Booklet Confirmation Notification';
+            $mail->Body = '<p>Greetings, <b>Paws N Pages</b>! 
+                        </br>This is an automated email to inform you that a pet owner has purchased a pet booklet that is yet to be confirmed by our team.           
+
+                        <br/>Name of Pet Owner: <b>' . $name . '</b>' .
+                '<br/> No. of Pet Booklet(s) Purchased: <b>' . $num_pb . '</b>' .
+                '<br/> Amount: <b>' . $amount . '</b>' .
+
+                '<br/> <br/> Best Regards, <br/>
+                        <b>Paws N Pages Notification Team</b></p>';
+            $mail->send();
+
+            // Set success message
+            $message = "Your message has been sent. We'll get back to you as soon as possible.";
+        } catch (Exception $e) {
+            // Set error message
+            $message = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
     }
 
 ?>

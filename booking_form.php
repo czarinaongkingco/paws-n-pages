@@ -325,6 +325,12 @@ $clinic_id = $_SESSION['clinic_id'];
                                     information</em> while booking appointments, including your contact details, pet
                                 information, and service requirements.
                             </p>
+                            <p>
+                                <strong>Changes in Appointment Details:</strong> Should you have any changes whatsoever with
+                                regards to your appointment details such as: changing of appointment schedule, services, notes,
+                                and the like, you must cancel your booking first and book once more along with the changes you
+                                wish you have made during the past appointment you have cancelled.
+                            </p>
 
                             <h5>3. Appointment Cancellation Policy</h5>
                             <p>
@@ -394,7 +400,7 @@ $clinic_id = $_SESSION['clinic_id'];
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" style="border-radius: 15px;">Close</button>
                     </div>
                 </div>
             </div>
@@ -413,7 +419,7 @@ $clinic_id = $_SESSION['clinic_id'];
             $listofservices = implode(', ', $_REQUEST['service']);
             $appointmentDate = $_POST['appointmentDate'];
             $appointmentTime = $_POST['appointmentTime'];
-            $notes = $_POST['notes'];
+            $notes = mysqli_real_escape_string($con, $_POST['notes']);
             $status = $_POST['status'];
             $code = 'PNP';
             $ymd = date('ymd');
@@ -434,7 +440,7 @@ $clinic_id = $_SESSION['clinic_id'];
                 echo '<script>';
                 echo 'swal({
                                             title: "Success",
-                                            text: "You have successfully booked an appointment",
+                                            text: "You have successfully booked an appointment. You will be notified once the booking is confirmed.",
                                             icon: "success",
                                             html: true,
                                             showCancelButton: true,

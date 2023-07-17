@@ -3,6 +3,7 @@
 session_start();
 include('config.php');
 include('connection.php');
+include('functions.php');
 
 $userID = $_SESSION["id"];
 
@@ -10,6 +11,10 @@ $userID = $_SESSION["id"];
 // $ret_a = mysqli_query($con, "SELECT * FROM petbooklet WHERE UserID='$userID' AND NoOfPets > 0 AND PaymentStatus != 'Pending' ORDER BY BookletID DESC LIMIT 1");
 $ret_a = mysqli_query($con, "SELECT * FROM petbooklet WHERE UserID='$userID' ORDER BY BookletID DESC LIMIT 1");
 $row_a = mysqli_fetch_array($ret_a);
+
+
+$sql_u = mysqli_query($con, "SELECT * FROM users WHERE UserID='$userID'");
+$row_u = mysqli_fetch_array($sql_u);
 
 ?>
 
@@ -171,11 +176,11 @@ $row_a = mysqli_fetch_array($ret_a);
 
                 <?php } else { ?>
 
-                        <a href="login.php" class="nav-item nav-link">Login</a>
-                        <a href="vet-or-pet.php" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">JOIN
-                            US
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
+                    <a href="login.php" class="nav-item nav-link">Login</a>
+                    <a href="vet-or-pet.php" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">JOIN
+                        US
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
 
                 <?php } ?>
 
@@ -195,7 +200,7 @@ $row_a = mysqli_fetch_array($ret_a);
             <!-- START OF PET OWNER PROFILE -->
             <div class="col-xl-5">
                 <div class="card mb-4 mb-xl-0" style="border-radius: 15px;">
-                    <div class="card-header userProfile-font">👤 Pet Owner Profile &nbsp; 
+                    <div class="card-header userProfile-font">👤 Pet Owner Profile &nbsp;
                         <button class="delete_user" name="delete_user" value="<?php echo $row['UserID'] ?>" style="border:0px; background-color:inherit; float:right;display:none;"><i class="fa fa-trash" style="color:red;"></i></button>
                         <a href="" data-toggle="modal" title="Delete" style="float:right;" data-target="#update_modal"><i class="fa fa-pencil"></i></a>
                     </div>
@@ -208,7 +213,7 @@ $row_a = mysqli_fetch_array($ret_a);
                                         <?php
                                         $ret = mysqli_query($con, "SELECT * FROM users WHERE UserID='$userID'");
                                         while ($row = mysqli_fetch_array($ret)) {
-                                            ?>
+                                        ?>
                                             <tr>
                                                 <td><b>Name: &nbsp;&nbsp;</b></td>
                                                 <td>
@@ -264,7 +269,7 @@ $row_a = mysqli_fetch_array($ret_a);
                                         <?php
                                         $ret = mysqli_query($con, "SELECT * FROM petbooklet WHERE UserID='$userID' ORDER BY BookletID DESC LIMIT 1");
                                         while ($row = mysqli_fetch_array($ret)) {
-                                            ?>
+                                        ?>
                                             <tr>
                                                 <td><b>Status: &nbsp;&nbsp;</b></td>
                                                 <td>
@@ -306,16 +311,16 @@ $row_a = mysqli_fetch_array($ret_a);
 
                                 <?php
                                 if ($row_a['NoOfPets'] > 0 && $row_a['PaymentStatus'] != 'Pending') {
-                                    ?>
+                                ?>
 
-                                        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#form_modal" style="float:right; width:100%; border-radius: 15px;"><span class="glyphicon glyphicon-plus"></span>Add Pet</button>
-                                        <br>
-                                    <?php
+                                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#form_modal" style="float:right; width:100%; border-radius: 15px;"><span class="glyphicon glyphicon-plus"></span>Add Pet</button>
+                                    <br>
+                                <?php
                                 } else {
-                                    ?>
-                                        <?php if ($row_a['PaymentStatus'] != 'Pending') { ?>
-                                            <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#booklet_modal" style="float:right; width:100%; border-radius: 15px;"><span class="glyphicon glyphicon-plus"></span>Buy a Pet Booklet</button>
-                                            <br>
+                                ?>
+                                    <?php if ($row_a['PaymentStatus'] != 'Pending') { ?>
+                                        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#booklet_modal" style="float:right; width:100%; border-radius: 15px;"><span class="glyphicon glyphicon-plus"></span>Buy a Pet Booklet</button>
+                                        <br>
                                 <?php }
                                 } ?>
 
@@ -333,7 +338,7 @@ $row_a = mysqli_fetch_array($ret_a);
                 <?php
                 $ret = mysqli_query($con, "SELECT * FROM pets WHERE UserID='$userID' ORDER BY PetID DESC ");
                 while ($row = mysqli_fetch_array($ret)) {
-                    ?>
+                ?>
                     <div class="card mb-4" style="border-radius: 15px;">
 
                         <!-- <div class="card-header userProfile-font">🐾 Pet Profile &nbsp;<a href="userprofile.php?delid=<?php echo ($row['PetID']); ?>" style="float:right;" class="delete" title="Delete" data-toggle="tooltip" onclick="return confirm('Delete item?');"><i class="material-icons" style="color:firebrick;">&#xE872;</i></a></div> -->
@@ -431,7 +436,7 @@ $row_a = mysqli_fetch_array($ret_a);
                             <?php
                             $ret = mysqli_query($con, "SELECT * FROM users WHERE UserID='$userID'");
                             while ($row = mysqli_fetch_array($ret)) {
-                                ?>
+                            ?>
                                 <div class="row gx-3 mb-3">
                                     <div class="col-md-6">
                                         <label>First Name</label>
@@ -510,7 +515,7 @@ $row_a = mysqli_fetch_array($ret_a);
 
                             <div class="form-group">
                                 <label>Pet Image</label>
-                                <input type="file" name="image" class="form-control" accept="image/*"/>
+                                <input type="file" name="image" class="form-control" accept="image/*" />
                             </div>
                             <div class="form-group">
                                 <label>Pet Name</label>
@@ -633,7 +638,7 @@ $row_a = mysqli_fetch_array($ret_a);
                                     </div>
                                     <div class="form-group">
                                         <label>Update Pet Image</label>
-                                        <input type="file" id="petimage2" name="petimage2" style="border-radius: 15px;" class="form-control" accept="image/*"/>
+                                        <input type="file" id="petimage2" name="petimage2" style="border-radius: 15px;" class="form-control" accept="image/*" />
                                     </div>
                                     <div class="form-group">
                                         <label>Pet Name</label>
@@ -675,7 +680,7 @@ $row_a = mysqli_fetch_array($ret_a);
     <!-- START OF INSERTING DATA -->
     <?php
     ///////////////////// FOR UPDATING PET OWNER PROFILE ////////////////////////////
-    
+
     if (isset($_POST['update'])) {
 
         $userID = $_POST['userID'];
@@ -724,7 +729,7 @@ $row_a = mysqli_fetch_array($ret_a);
     }
 
     ///////////////////// FOR ADDING NEW PET ////////////////////////////  
-    
+
     if (isset($_POST['save_pet'])) {
 
         $file = $_FILES['image']['name'];
@@ -809,6 +814,11 @@ $row_a = mysqli_fetch_array($ret_a);
         $query = mysqli_query($con, "INSERT INTO petbooklet (Payment_Proof, RefNo_Input, NoOfPets, AmountToPay, PaymentStatus, UserID) VALUES ('$file1', '$ref_no', '$noOfPets', '$amountToPay', '$paymentStatus', '$userID')");
 
         if ($query) {
+
+            $name = $row_u['FirstName'] . ' ' . $row_u['MiddleName'] . ' ' . $row_u['LastName'];
+
+            sendNotification_PB($name, $noOfPets, $amountToPay);
+
             echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
             echo '<script>';
             echo 'swal({
