@@ -285,7 +285,7 @@ $row_a = mysqli_fetch_array($ret_a);
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td><b>For How Many Pets: &nbsp;&nbsp;</b></td>
+                                                <td><b>No. of Pet Booklet Available: &nbsp;&nbsp;</b></td>
                                                 <td>
                                                     <?php echo $row['NoOfPets'] ?>
                                                 </td>

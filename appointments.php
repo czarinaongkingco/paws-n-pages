@@ -77,7 +77,7 @@ $userID = $_SESSION["id"];
         $(document).ready(function() {
             var table = $('#appointments').DataTable({
                 order: [
-                    [8, 'desc']
+                    [6, 'desc']
                 ],
             });
         });
@@ -128,8 +128,7 @@ $userID = $_SESSION["id"];
     <br>
     <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
         <h1 class="text-primary text-uppercase">Appointments</h1>
-    </div>
-
+    </div>           
     <div style="padding-right:30px; padding-left:30px;">
         <div class="card mb-4 mb-xl-0" style="border-radius: 15px;">
             <div class="card-header userProfile-font"><b>⏳ Appointments</b></div>
@@ -137,15 +136,14 @@ $userID = $_SESSION["id"];
                 <table class="table table-striped table-hover" name="appointments" id="appointments" style="border:0px;">
                     <thead>
                         <tr class="table100-head">
-                            <th class="column1" style="border:0px;">Reference No.</th>
-                            <th class="column1" style="border:0px;">Preferred Date</th>
-                            <th class="column1" style="border:0px;">Preferred Time</th>
-                            <th class="column1" style="border:0px;">Availed Services</th>
-                            <th class="column1" style="border:0px;">Notes</th>
-                            <th class="column1" style="border:0px;">Clinic</th>
-                            <th class="column1" style="border:0px;">Status</th>
-                            <th class="column1" style="border:0px;">Remarks</th>
-                            <th class="column1" style="border:0px;">Date and Time Booked</th>
+                            <th class="column1" style="border:0px; color: #80B434;">Reference No.</th>
+                            <th class="column1" style="border:0px; color: #80B434;">Preferred Date</th>
+                            <th class="column1" style="border:0px; color: #80B434;">Preferred Time</th>
+                            <th class="column1" style="border:0px; color: #80B434;">Availed Services</th>
+                            <th class="column1" style="border:0px; color: #80B434;">Clinic</th>
+                            <th class="column1" style="border:0px; color: #80B434;">Status</th>
+                            <th class="column1" style="border:0px; color: #80B434;">Date and Time Booked</th>
+                            <th class="column1" style="border:0px; color: #80B434; text-align:center;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -158,7 +156,7 @@ $userID = $_SESSION["id"];
                         $row1 = mysqli_num_rows($ret1);
                         if ($row1 > 0) {
                             while ($row1 = mysqli_fetch_array($ret1)) {
-                                $date = new DateTime($row['DateTimeBooked']);
+                                $date = new DateTime($row1['DateTimeBooked']);
                         ?>
                                 <!--Fetch the Records -->
                                 <tr>
@@ -171,9 +169,6 @@ $userID = $_SESSION["id"];
                                     </td>
                                     <td style="border:0px;">
                                         <?php echo $row1['AvailedServices']; ?>
-                                    </td>
-                                    <td style="border:0px;">
-                                        <?php echo $row1['Notes']; ?>
                                     </td>
                                     <td style="border:0px;">
                                         <?php echo $row1['ClinicName']; ?>
@@ -206,10 +201,10 @@ $userID = $_SESSION["id"];
 
                                     </td>
                                     <td style="border:0px;">
-                                        <?php echo $row1['Remarks']; ?>
-                                    </td>
-                                    <td style="border:0px;">
                                         <?php echo $date->format('Y-m-d h:i A'); ?>
+                                    </td>
+                                    <td style="border:0px; text-align:center;">
+                                        <a href="" appid="<?php echo $row1['AppointmentID'] ?>" refno="<?php echo $row1['Appointment_RefNo'] ?>" pdate="<?php echo $row1['PreferredDate'] ?>" ptime="<?php echo $row1['PreferredTime'] ?>" notes="<?php echo $row1['Notes']; ?>" services="<?php echo $row1['AvailedServices'] ?>" customer="<?php echo $row1['FirstName'] . ' ' . $row1['MiddleName'] . ' ' . $row1['LastName'] ?>" astatus="<?php echo $row1['AppointmentStatus']; ?>" aremarks="<?php echo $row1['Remarks']; ?>" adtboooked="<?php echo $date->format('Y-m-d h:i A'); ?>" class="edit" title="Edit" data-toggle="modal" data-target="#edit_modal"><i class="fa fa-eye"></i></a>
                                     </td>
                                 </tr>
                             <?php
@@ -217,8 +212,7 @@ $userID = $_SESSION["id"];
                             }
                         } else { ?>
                             <tr>
-                                <th style="text-align:center; color:red; border:0px;" colspan="9">No Record Found</th>
-                                <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
+                                <th style="text-align:center; color:red; border:0px;" colspan="8">No Record Found</th>
                                 <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
                                 <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
                                 <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>

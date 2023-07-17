@@ -55,25 +55,27 @@ $clinicID = $_GET['clinicid'];
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
+
     <style>
         .rating {
             display: inline-block;
             font-size: 55px;
             cursor: pointer;
-        }
-
+            float:left;
+            flex-direction: row-reverse;
+                }
         .rating-star {
-            color: #ddd;
+            cursor: pointer;
+            color: grey; /* Default star color */
         }
 
-        .rating-star:hover,
-        .rating-star:hover~.rating-star {
-            color: orange;
+        .rating-star:hover {
+            color: orange; /* Star color on hover */
         }
 
-        .rating-star.checked {
-            color: orange;
-        }
     </style>
     <script>
         function handleStarClick(star) {
@@ -174,12 +176,13 @@ $clinicID = $_GET['clinicid'];
                 <table class="table table-striped table-hover" name="order" id="order" style="border:0px;">
                     <thead>
                         <tr class="table100-head">
-                            <th class="column1" style="border:0px;">Reference No.</th>
-                            <th class="column1" style="border:0px;">Total Price</th>
-                            <th class="column1" style="border:0px;">Clinic</th>
-                            <th class="column1" style="border:0px;">Checkout Date & Time</th>
-                            <th class="column1" style="border:0px;">Status</th>
-                            <th class="column1" style="border:0px;">Feedback</th>
+                            <th class="column1" style="border:0px; color: #80B434;">Reference No.</th>
+                            <th class="column1" style="border:0px; color: #80B434;">Total Price</th>
+                            <th class="column1" style="border:0px; color: #80B434;">Clinic</th>
+                            <th class="column1" style="border:0px; color: #80B434;">Checkout Date & Time</th>
+                            <th class="column1" style="border:0px; color: #80B434;">Status</th>
+                            <th class="column1" style="border:0px; color: #80B434;">Feedback</th>
+                            <th class="column1" style="border:0px; color: #80B434; text-align:center;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -269,6 +272,12 @@ $clinicID = $_GET['clinicid'];
                                         <?php } ?>
 
                                     <?php } ?>
+
+                                    <td style="border:0px; text-align:center;"><a href="" orderid="<?php echo $row1['OrderID'] ?>" refno="<?php echo $row1['Order_RefNo'] ?>" products="<?php $prod = $row1['OrderedProducts'];
+                                                                                                                                                                        $explodedArray = explode(', ', $prod);
+                                                                                                                                                                        foreach ($explodedArray as $element) {
+                                                                                                                                                                            echo $element . "\n";
+                                                                                                                                                                        } ?>" user="<?php echo $row1['FirstName'] . ' ' . $row1['MiddleName'] . ' ' . $row1['LastName'] ?>" totalprice="<?php echo "₱ " . $row1['TotalPrice']; ?>" dtcout="<?php echo $row1['DateTimeCheckedOut'] ?>" address="<?php echo $row1['ShippingTo'] ?>" proofpayment="<?php echo $row1['ProofOfPayment']; ?>" proofrefno="<?php echo $row1['Proof_RefNo']; ?>" prescription="<?php echo $row1['OrderPrescription'] ?>" orderstatus="<?php echo $row1['OrderStatus']; ?>" odremarks="<?php echo $row1['OrderRemarks']; ?>" class="edit" title="View" data-toggle="modal" data-target="#view_order"><i class="fa fa-eye"></i></a></td>
 
                                 </tr>
                             <?php
@@ -469,12 +478,14 @@ $clinicID = $_GET['clinicid'];
 
                                 <h5>How's your experience?</h5>
                                 <div style="text-align: center;">
-                                    <span style="font-size: 75px;" class="rating-star" data-value="1" onclick="handleStarClick(this)">☆</span>
+                                   
+                                  <span style="font-size: 75px;" class="rating-star" data-value="1" onclick="handleStarClick(this)">☆</span>
                                     <span style="font-size: 75px;" class="rating-star" data-value="2" onclick="handleStarClick(this)">☆</span>
                                     <span style="font-size: 75px;" class="rating-star" data-value="3" onclick="handleStarClick(this)">☆</span>
                                     <span style="font-size: 75px;" class="rating-star" data-value="4" onclick="handleStarClick(this)">☆</span>
                                     <span style="font-size: 75px;" class="rating-star" data-value="5" onclick="handleStarClick(this)">☆</span>
                                     <input type="hidden" id="ratingInput" name="rating" value="">
+
                                 </div>
                             </div>
                             <br><br>
@@ -621,6 +632,53 @@ $clinicID = $_GET['clinicid'];
             endResize();
         });
     </script>
+
+<script>
+  function handleStarClick(star) {
+    const ratingValue = star.getAttribute("data-value");
+    document.getElementById("ratingInput").value = ratingValue;
+
+    // Reset the color of all stars to grey
+    const allStars = document.querySelectorAll(".rating-star");
+    allStars.forEach((star) => {
+      star.style.color = "grey";
+    });
+
+    // Set the color of stars up to the clicked one to orange
+    for (let i = 1; i <= ratingValue; i++) {
+      document.querySelector(`.rating-star[data-value="${i}"]`).style.color = "orange";
+    }
+  }
+
+  // Hover effect when mouse enters a star
+  const allStars = document.querySelectorAll(".rating-star");
+  allStars.forEach((star) => {
+    star.addEventListener("mouseenter", () => {
+      const ratingValue = star.getAttribute("data-value");
+
+      // Set the color of stars up to the hovered one to orange
+      for (let i = 1; i <= ratingValue; i++) {
+        document.querySelector(`.rating-star[data-value="${i}"]`).style.color = "orange";
+      }
+    });
+
+    star.addEventListener("mouseleave", () => {
+      // Reset the color of all stars to grey when not hovered
+      allStars.forEach((star) => {
+        star.style.color = "grey";
+      });
+
+      // Set the color of stars up to the selected one to orange (if applicable)
+      const selectedRating = document.getElementById("ratingInput").value;
+      if (selectedRating !== "") {
+        for (let i = 1; i <= selectedRating; i++) {
+          document.querySelector(`.rating-star[data-value="${i}"]`).style.color = "orange";
+        }
+      }
+    });
+  });
+</script>
+
 
 </body>
 

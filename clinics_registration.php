@@ -119,6 +119,13 @@ include("connection.php");
             left: -3px;
             content: "✖";
         }
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+        .small {
+            font-size: 10px;
+        }
     </style>
 </head>
 
@@ -132,6 +139,7 @@ include("connection.php");
                 <div class="col-lg-10">
                     <div class="row g-3 bg-light" style=" border-radius: 15px; width: 100%;">
 
+   
                         <form id="regForm" method="POST" enctype="multipart/form-data" runat="server">
                             <br>
                             <div class="samples row g-3 bg-light" id="content1" style=" border-radius: 15px; padding-left:30px; padding-right:10px;">
@@ -160,8 +168,10 @@ include("connection.php");
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-6">
                                         <p>&nbsp;&nbsp;Contact Number</p>
-                                        <input type="text" name="contactno" pattern="^(09|\+639)\d{9}$" minlength="11" maxlength="11" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="09XX XXX XXXX" required>
-                                    </div>
+                                        <input type="text" name="contactno" pattern="^(09|\+639)\d{9}$" minlength="11" maxlength="11" class="form-control bg-light border-3 px-4 py-3" style="border-radius: 15px;" placeholder="09XXXXXXXXX" required oninput="validateContactNumber(this)">
+                                        <span class="error small" id="contactno-error"></span>
+                                
+                                </div>
                                     <div class="col-6">
                                         <p>&nbsp;&nbsp;Birthdate</p>
                                         <input type="date" name="bdate" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Birthdate" required>
@@ -169,15 +179,16 @@ include("connection.php");
                                 </div>
 
 
-
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-5">
                                         <p>&nbsp;&nbsp;Username</p>
-                                        <input type="text" name="uname" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter Username" required>
+                                        <input type="text" name="uname" class="form-control bg-light border-3 px-4 py-3" style="border-radius: 15px;" placeholder="Enter Username" required oninput="validateUsername(this)">
+                                        <span class="error small" id="uname-error"></span>
                                     </div>
                                     <div class="col-7">
-                                        <p>&nbsp;&nbsp;Username</p>
-                                        <input type="email" name="email" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter Email" required>
+                                        <p>&nbsp;&nbsp;Email</p>
+                                        <input type="email" name="email" class="form-control bg-light border-3 px-4 py-3" style="border-radius: 15px;" placeholder="Enter Email" required oninput="validateEmail(this)">
+                                        <span class="error small" id="email-error"></span>
                                     </div>
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
@@ -188,7 +199,7 @@ include("connection.php");
                                             <input type="password" id="pword" name="pword" data-toggle="tooltip" title="Minimum of (8) characters, at least (1) uppercase letter, (1) lowercase letter and (1) number" minlength="8" maxlength="16" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter Password" required>
                                             <i class="fa-solid fa-eye" id="eye"></i>
                                         </div>
-                                        <p id="message" style="display: none;font-style: italic; font-size: 15px; padding-top: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;<span id="length" class="invalid">*Minimum of (8) characters</span>, <span id="capital" class="invalid">at least (1) uppercase letter</span>, <span id="letter" class="invalid">(1) lowercase letter</span> and <span id="number" class="invalid">(1) number</span></p>
+                                        <p id="message" style="display: none; font-size: 15px; padding-top: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;<span id="length" class="invalid">*Minimum of (8) characters</span>, <span id="capital" class="invalid">at least (1) uppercase letter</span>, <span id="letter" class="invalid">(1) lowercase letter</span> and <span id="number" class="invalid">(1) number</span></p>
                                     </div>
                                 </div>
                                 <div class="row" style="padding-top: 10px; padding-bottom:30px; padding-left:10px; padding-right:10px;">
@@ -590,7 +601,43 @@ include("connection.php");
         echo '</script>';
     }
     ?>
+<script>
+    function validateContactNumber(input) {
+    var contactNumber = input.value;
+    var numberRegex = /^[0-9]+$/;
+    var contactNoError = document.getElementById('contactno-error');
 
+    if (contactNumber.length !== 11 || !numberRegex.test(contactNumber)) {
+        contactNoError.textContent = "Contact Number should be 11 digits and contain only numbers.";
+    } else {
+        contactNoError.textContent = "";
+    }
+}
+
+function validateUsername(input) {
+    var username = input.value;
+    var unameError = document.getElementById('uname-error');
+
+    if (username.length < 4) {
+        unameError.textContent = "Username should be at least 4 characters.";
+    } else {
+        unameError.textContent = "";
+    }
+}
+
+function validateEmail(input) {
+    var email = input.value;
+    var emailRegex = /^\S+@\S+\.\S+$/;
+    var emailError = document.getElementById('email-error');
+
+    if (!emailRegex.test(email)) {
+        emailError.textContent = "Invalid Email format.";
+    } else {
+        emailError.textContent = "";
+    }
+}
+
+</script>
 
 </body>
 

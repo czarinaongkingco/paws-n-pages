@@ -114,6 +114,14 @@ include("connection.php");
             left: -3px;
             content: "✖";
         }
+
+                .error {
+            color: red;
+            font-size: 12px;
+        }
+        .small {
+            font-size: 10px;
+        }
     </style>
 </head>
 
@@ -153,7 +161,8 @@ include("connection.php");
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-6">
                                         <p>&nbsp;&nbsp;Phone No.</p>
-                                        <input type="text" name="phone" pattern="^(09|\+639)\d{9}$" minlength="11" maxlength="11" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="09XX XXX XXXX" required>
+                                        <input type="text" name="phone" minlength="11" maxlength="11" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="09XXXXXXXXX" required oninput="validateContactNumber(this)">
+                                        <span class="error small" id="contactno-error"></span>
                                     </div>
                                     <div class="col-6">
                                         <p>&nbsp;&nbsp;Birthdate</p>
@@ -163,11 +172,13 @@ include("connection.php");
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-5">
                                         <p>&nbsp;&nbsp;Username</p>
-                                        <input type="text" name="username" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter Username" required>
+                                        <input type="text" name="username" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter Username" required  oninput="validateUsername(this)">
+                                        <span class="error small" id="uname-error"></span>
                                     </div>
                                     <div class="col-7">
                                         <p>&nbsp;&nbsp;Email</p>
-                                        <input type="email" name="email" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter Email" required>
+                                        <input type="email" name="email" class="form-control bg-light border-3 px-4 py-3" style="border-radius: 15px;" placeholder="Enter Email" required oninput="validateEmail(this)">
+                                        <span class="error small" id="email-error"></span>
                                     </div>
                                 </div>
                                 <div class="col-12" style="display: none;">
@@ -183,7 +194,7 @@ include("connection.php");
                                             <input type="password" name="password" id="pword" minlength="8" maxlength="16" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter Password" required>
                                             <i class="fa-solid fa-eye" id="eye"></i>
                                         </div>
-                                        <p id="message" style="display: none;font-style: italic; font-size: 15px; padding-top: 10px;">
+                                        <p id="message" style="display: none; font-size: 15px; padding-top: 10px;">
                                             &nbsp;&nbsp;&nbsp;&nbsp;<span id="length" class="invalid">*Minimum of (8)
                                                 characters</span>, <span id="capital" class="invalid">at least (1)
                                                 uppercase letter</span>, <span id="letter" class="invalid">(1) lowercase
@@ -432,6 +443,43 @@ include("connection.php");
         echo '</script>';
     }
     ?>
+    <script>
+    function validateContactNumber(input) {
+    var contactNumber = input.value;
+    var numberRegex = /^[0-9]+$/;
+    var contactNoError = document.getElementById('contactno-error');
+
+    if (contactNumber.length !== 11 || !numberRegex.test(contactNumber)) {
+        contactNoError.textContent = "Contact Number should be 11 digits and contain only numbers.";
+    } else {
+        contactNoError.textContent = "";
+    }
+}
+
+function validateUsername(input) {
+    var username = input.value;
+    var unameError = document.getElementById('uname-error');
+
+    if (username.length < 4) {
+        unameError.textContent = "Username should be at least 4 characters.";
+    } else {
+        unameError.textContent = "";
+    }
+}
+
+function validateEmail(input) {
+    var email = input.value;
+    var emailRegex = /^\S+@\S+\.\S+$/;
+    var emailError = document.getElementById('email-error');
+
+    if (!emailRegex.test(email)) {
+        emailError.textContent = "Invalid Email format.";
+    } else {
+        emailError.textContent = "";
+    }
+}
+
+</script>
 
 </body>
 
