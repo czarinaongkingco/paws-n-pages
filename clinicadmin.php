@@ -62,7 +62,6 @@ $row_cb = mysqli_num_rows($ret_cb);
     <link href="css/style.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
         * {
             margin: 0;
             padding: 0;
@@ -76,18 +75,19 @@ $row_cb = mysqli_num_rows($ret_cb);
         .wrapper {
             background: white;
             display: flex;
+            
         }
 
         .side_bar {
             width: 250px;
-            height: 100vh;
+            background: #80b434;
         }
 
 
         .main_container {
             width: calc(100% - 250px);
             padding: 30px;
-            height: 100vh;
+            min-height: 100vh;
         }
 
 
@@ -190,6 +190,7 @@ $row_cb = mysqli_num_rows($ret_cb);
             list-style-type: none;
             padding-bottom: 5.5em;
         }
+
     </style>
 
     <!-- FOR DIGITAL TIME AND DATE -->
@@ -256,6 +257,7 @@ $row_cb = mysqli_num_rows($ret_cb);
                 ],
             });
         });
+        $(".side_bar").css("min-height", $(".main_container").height());
     </script>
 
     <script type="text/javascript">
@@ -475,13 +477,13 @@ $row_cb = mysqli_num_rows($ret_cb);
                                                 <tr>
                                                     <td style="color:#80b434;"><b>Subscription No.: &nbsp;&nbsp;</b></td>
                                                     <td>
-                                                        <?php echo $row['subscriptionNo'] ?><br />
+                                                        <?php echo $row['SubscriptionNo'] ?><br />
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="color:#80b434;"><b>Date of Subscription &nbsp;&nbsp;</b></td>
                                                     <td>
-                                                        <?php echo $row['DateOSubscription'] ?>
+                                                        <?php echo $row['DateOfSubscription'] ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -493,7 +495,15 @@ $row_cb = mysqli_num_rows($ret_cb);
                                                 <tr>
                                                     <td style="color:#80b434;"><b>Subscription Status: &nbsp;&nbsp;</b></td>
                                                     <td>
-                                                        <?php echo $row['SubscriptionStatus'] ?>
+                                                        <?php $status = $row['SubscriptionStatus'];
+                                                        if ($status === 'Inactive') { ?><a style="color:white; font-size:12px; padding: 5px 10px;  border-radius:10px; background-color:#A52A2A;">
+                                                                <?php echo $row['SubscriptionStatus']; ?>
+                                                            </a>
+                                                        <?php }
+                                                        if ($status === 'Active') { ?><a style="color:white; font-size:12px; padding: 5px 15px;  border-radius:10px; background-color:#228B22;">
+                                                                <?php echo $row['SubscriptionStatus']; ?>
+                                                            </a>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                                 <tr>

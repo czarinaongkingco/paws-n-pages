@@ -82,14 +82,14 @@ $subExp = $row_ca['ExpiryDateOfSub'];
 
         .side_bar {
             width: 250px;
-            height: 100vh;
+            background: #80b434;
         }
 
 
         .main_container {
             width: calc(100% - 250px);
             padding: 30px;
-            height: 100vh;
+            min-height: 100vh;
         }
 
         .expired {
@@ -477,6 +477,7 @@ $subExp = $row_ca['ExpiryDateOfSub'];
 
             });
         });
+        $(".side_bar").css("min-height", $(".main_container").height());
     </script>
 </head>
 
