@@ -524,7 +524,7 @@ $clinicID = $_GET['clinicid'];
         $rating = $_POST['rating'];
 
         date_default_timezone_set("Asia/Hong_Kong");
-        $currentDateTime = date('y-m-d h:i:s A');
+        $currentDateTime = date('Y-m-d H:i:s');
 
         if ($feedback != null)
             $query = mysqli_query($con, "INSERT INTO feedback (Rating, OverallFeedback, DateTimeRated, ClinicID, UserID, OrderID) VALUES ('$rating', '$feedback', '$currentDateTime', '$clinicID', '$userID', '$orderID')");

@@ -410,7 +410,7 @@ $sum_q = $row_q['total_items'];
     $totalPrice = $_POST['totalprice'];
     $od_products = $_POST['od_product'];
     date_default_timezone_set("Asia/Hong_Kong");
-    $currentDateTime = date('y-m-d h:i:sa');
+    $currentDateTime = date('Y-m-d H:i:s');
     $ship_to_address = $_POST['address'];
     $orderStatus = 'Pending';
 

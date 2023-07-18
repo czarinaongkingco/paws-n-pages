@@ -430,7 +430,7 @@ $clinic_id = $_SESSION['clinic_id'];
             $clinicid = $_POST['clinicID'];
 
             date_default_timezone_set("Asia/Hong_Kong");
-            $currentDateTime = date('y-m-d h:i:s A');
+            $currentDateTime = date('Y-m-d H:i:s');
 
             // foreach ($services as $listofservices) {
             // Query for data insertion

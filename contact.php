@@ -236,8 +236,8 @@ require 'src/SMTP.php';
             $subject = $_POST['subject'];
             $message = $_POST['message'];
             date_default_timezone_set("Asia/Hong_Kong");
-            $dateupdated = date('y-m-d h:i:sa');
-            $datetime = date('Y-m-d h:i A');
+            $dateupdated = date('Y-m-d H:i:s');
+            $datetime = date('Y-m-d H:i:s');
 
             //Server settings
             $mail->isSMTP();                                            //Send using SMTP
