@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2023 at 05:08 PM
+-- Generation Time: Jul 18, 2023 at 05:37 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -95,7 +95,7 @@ INSERT INTO `appointments` (`AppointmentID`, `Notes`, `PreferredDate`, `Preferre
 (40, '', '2023-07-26', '17:00:00', 'Processing', NULL, 'Grooming Services', 35, 'PNP23071711071', 20, '2023-07-18 04:43:43', ''),
 (41, 'i will bring some foods and treat of my dog', '2023-07-23', '08:30:00', 'Processing', NULL, 'Pet Boarding', 35, 'PNP23071734259', 20, '2023-07-18 04:44:32', ''),
 (42, 'for anti rabies shot', '2023-07-31', '10:00:00', 'Processing', NULL, 'Vaccination', 35, 'PNP23071716094', 19, '2023-07-18 04:45:15', ''),
-(44, '', '2023-07-22', '10:00:00', 'Processing', NULL, 'Preventive Care', 35, 'PNP23071823446', 1, '2023-07-18 18:11:47', ''),
+(44, '', '2023-07-22', '10:00:00', 'Cancelled', NULL, 'Preventive Care', 35, 'PNP23071823446', 1, '2023-07-18 18:11:47', 'Change services'),
 (45, '', '2023-07-21', '10:00:00', 'Confirmed', 'Booking is confirmed!', 'Grooming, Vaccination', 35, 'PNP23071896574', 1, '2023-07-18 21:25:07', '');
 
 -- --------------------------------------------------------
@@ -925,13 +925,13 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`UserID`, `FirstName`, `MiddleName`, `LastName`, `ContactNo`, `Birth_Date`, `UserType`, `Username`, `Email`, `Password`, `DateTimeModified`) VALUES
 (2, 'John Gilbert', 'M', 'Coquilla', '09064254917', '2000-08-22', 'Clinic Administrator', 'gilbertcoquilla', 'jhnglbrt1922@gmail.com', '$2y$10$KqGmBRecL.tApsoVi/m66Oo17M14Yz3qTq/Uuz8OhuU.qK8VlnUHK', '2023-07-13 04:42:51'),
 (3, 'Czarina Bianca', 'Pagdonsolan', 'Ongkingco', '09151879481', '2001-04-09', 'Administrator', 'czarinabianca', 'czarinabianca.ongkingco@benilde.edu.ph', '$2y$10$94LZeWWctM5jntI9IX1xQ.CX0A2sgjEE0M0w6zxeXgHpjkeJZNlK2', '2023-07-13 04:44:09'),
-(7, 'Bryan', 'Coki', 'Phil', '09151879411', '2002-11-27', 'Pet Owner', 'brycoki', 'karinskiee@gmail.com', '$2y$10$IzWQbz5arucUEJEh6dyTeO29Rfi0H95LTgYPXe62NSYF2uIYBAcDq', '2023-07-14 00:20:44'),
+(7, 'Bryan', 'Coki', 'Phil', '09151879411', '2002-11-27', 'Pet Owner', 'brycoki', 'johngilbert.coquilla@benilde.edu.ph', '$2y$10$IzWQbz5arucUEJEh6dyTeO29Rfi0H95LTgYPXe62NSYF2uIYBAcDq', '2023-07-14 00:20:44'),
 (35, 'Bert', 'Jani', 'Cabs', '09151879481', '1994-12-01', 'Pet Owner', 'bertjani', 'okcbia@gmail.com', '$2y$10$PLcOx4yI0JnpFmr.Rrjb1.09WtLh8RxIyPEhQlP6o4ATDdSf5c2eG', '2023-07-13 02:32:48'),
 (36, 'shir', 'paz', 'paz', '09617626162', '2023-06-08', 'Pet Owner', 'shirpaz', 'shirpaz@gmail.com', '$2y$10$eZHU8VSM6L8yOW7sdIsqNOBwjRkIRFMhcSNUE8ci6YNRZRLh.pzTG', NULL),
 (37, 'shir', 'may', 'paz', '09617626162', '2021-03-03', 'Clinic Administrator', 'thullah', 'shirleymaypaz@gmail.com', '$2y$10$DNKb62OV9TCrSnf.SqqYduScCP95d/0EGGa0U5HZV3dMwbf0EW34K', NULL),
-(38, 'Ferds', 'D', 'Chu', '09089353352', '2002-02-01', 'Clinic Administrator', 'docferds', 'bigben911respond@gmail.com', '$2y$10$47jhfKOdtmN6gjGruTX6I.jZ853W1erpYIm.L3xv3cxU6zTcI7MkS', NULL),
+(38, 'Ferds', 'D', 'Chu', '09089353352', '2002-02-01', 'Clinic Administrator', 'docferds', 'coquilla.gilbert123@gmail.com', '$2y$10$47jhfKOdtmN6gjGruTX6I.jZ853W1erpYIm.L3xv3cxU6zTcI7MkS', NULL),
 (39, 'Karina', 'Alexa', 'Ongkingco', '09151879481', '2002-09-07', 'Pet Owner', 'karina', 'karinskieee@gmail.com', '$2y$10$t417trZTk1JAjFW32EGWZ.bh0J5XG6OLp6XESDEjRiYETO0lVt.sK', '2023-07-18 12:47:08'),
-(40, 'Beth', 'M', 'Monforte', '09617626162', '2006-06-06', 'Pet Owner', 'bethm', 'bigben911respond@gmail.com', '$2y$10$8S4IMCX0oFfmJLne9ebrFuJmMb9GYm7IgqYHjiNIPXEVJ5z/HdHqu', '2023-07-17 14:22:32'),
+(40, 'Beth', 'M', 'Monforte', '09617626162', '2006-06-06', 'Pet Owner', 'bethm', 'biaaancakes@gmail.com', '$2y$10$8S4IMCX0oFfmJLne9ebrFuJmMb9GYm7IgqYHjiNIPXEVJ5z/HdHqu', '2023-07-17 14:22:32'),
 (44, 'Juan', 'Dela', 'Cruz', '09457783455', '1989-09-02', 'Clinic Administrator', 'juandelacruz', 'juandelacruz@gmail.com', '$2y$10$Ts.ahpNXjn0Vo0o6lOaB7uz9aTWYb78SwTLInP1FnLPYQR57fUNC2', NULL);
 
 --
