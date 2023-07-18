@@ -861,7 +861,7 @@ $subExp = $row_ca['ExpiryDateOfSub'];
                         <div class="col-5 text-center" style="padding-top:220px;">
                             <h1 class="text-uppercase" style="color: #FF914D;">account is inactive</h1>
                             <p style="color:gray; padding-top:15px;">Your account is still inactive. Please reach out to <b>
-                                    pawsnpages.site@gmail.com </b> or send a message through <br> the <b> <a href="contact.php" style="color: #FF914D;">Contact Us</a> </b> form to process your subscription.</p><br>
+                                    pawsnpages.site@gmail.com </b> to process your subscription.</p><br>
                         </div>
                         <div class="col-7"></div>
                     </div>
