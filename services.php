@@ -429,7 +429,7 @@ $clinicID = $row_ca['ClinicID'];
                                                 </td>
                                                 <td style="border:0px; text-align: center;">
                                                     <a href="" serviceid="<?php echo $row['ServiceID'] ?>" servicename="<?php echo $row['ServiceName'] ?>" servicedescription="<?php echo $row['ServiceDescription'] ?>" serviceprice="<?php echo $row['ServicePrice']; ?>" class="edit" title="edit" data-toggle="modal" data-target="#edit_service"><i class="fa fa-edit"></i></a>
-                                                    <button class="delete_service" name="delete_service" value="<?php echo $row['ServiceID'] ?>" style="border:0px; background-color:inherit;"><i class="fa fa-trash" style="color:red;"></i></button>
+                                                    <button class="delete_service" name="delete_service" value="<?php echo $row['ServiceID'] ?>" style="border:0px; background-color:inherit; display: none;"><i class="fa fa-trash" style="color:red;"></i></button>
                                                 </td>
 
 

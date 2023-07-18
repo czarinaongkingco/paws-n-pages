@@ -530,7 +530,7 @@ $clinicID = $row_ca['ClinicID'];
                                                 <td style="border:0px;"><?php echo $row['NeedPrescription']; ?></td>
                                                 <td style="text-align: center; border:0px;">
                                                     <a href="" supply-id="<?php echo $row['SupplyID'] ?>" supply-image="<?php echo $row['SupplyImage'] ?>" supply-name="<?php echo $row['SupplyName'] ?>" supply-desc="<?php echo $row['SupplyDescription'] ?>" supply-price="<?php echo $row['SupplyPrice'] ?>" stocks="<?php echo $row['Stocks'] ?>" need-presc="<?php echo $row['NeedPrescription'] ?>" class="edit" data-toggle="modal" data-target="#edit_modal"><i class="fa fa-edit"></i></a>
-                                                    <button class="delete_product" name="delete_product" value="<?php echo $row['SupplyID'] ?>" style="border:0px; background-color:inherit;"><i class="fa fa-trash" style="color:red;"></i></button>
+                                                    <button class="delete_product" name="delete_product" value="<?php echo $row['SupplyID'] ?>" style="border:0px; background-color:inherit; display: none;"><i class="fa fa-trash" style="color:red;"></i></button>
                                                 </td>
                                             </tr>
                                         <?php
