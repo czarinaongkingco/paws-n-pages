@@ -285,7 +285,8 @@ $clinicID = $_GET['clinicid'];
                             }
                         } else { ?>
                             <tr>
-                                <th style="text-align:center; color:red; border:0px;" colspan="6">No Record Found</th>
+                                <th style="text-align:center; color:red; border:0px;" colspan="7">No Record Found</th>
+                                <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
                                 <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
                                 <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
                                 <th style="text-align:center; color:red; border:0px; display:none;">No Record Found</th>
