@@ -204,7 +204,7 @@ $userID = $_SESSION["id"];
                                         <?php echo $date->format('Y-m-d h:i A'); ?>
                                     </td>
                                     <td style="border:0px; text-align:center;">
-                                        <a href="" appid="<?php echo $row1['AppointmentID'] ?>" refno="<?php echo $row1['Appointment_RefNo'] ?>" pdate="<?php echo $row1['PreferredDate'] ?>" ptime="<?php echo $row1['PreferredTime'] ?>" notes="<?php echo $row1['Notes']; ?>" services="<?php echo $row1['AvailedServices'] ?>" customer="<?php echo $row1['FirstName'] . ' ' . $row1['MiddleName'] . ' ' . $row1['LastName'] ?>" astatus="<?php echo $row1['AppointmentStatus']; ?>" aremarks="<?php echo $row1['Remarks']; ?>" adtboooked="<?php echo $date->format('Y-m-d h:i A'); ?>" class="edit" title="Edit" data-toggle="modal" data-target="#edit_modal"><i class="fa fa-eye"></i></a>
+                                        <a href="" appid="<?php echo $row1['AppointmentID'] ?>" refno="<?php echo $row1['Appointment_RefNo'] ?>" pdate="<?php echo $row1['PreferredDate'] ?>" ptime="<?php echo $row1['PreferredTime'] ?>" notes="<?php echo $row1['Notes']; ?>" services="<?php echo $row1['AvailedServices'] ?>" customer="<?php echo $row1['FirstName'] . ' ' . $row1['MiddleName'] . ' ' . $row1['LastName'] ?>" astatus="<?php echo $row1['AppointmentStatus']; ?>" aremarks="<?php echo $row1['Remarks']; ?>" adtboooked="<?php echo $date->format('Y-m-d h:i A'); ?>" reasoncancel="<?php echo $row1['ReasonCancel'] ?>" class="edit" title="Edit" data-toggle="modal" data-target="#edit_modal"><i class="fa fa-eye"></i></a>
                                     </td>
                                 </tr>
                             <?php
@@ -244,7 +244,8 @@ $userID = $_SESSION["id"];
                 <div class="col-lg-4 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Get In Touch</h5>
                     <p class="mb-4">If you have inquiries feel free to contact us below<br>
-                    <a href="contact.php">Contact Us </a></p>
+                        <a href="contact.php">Contact Us </a>
+                    </p>
                     <a class="mb-2" href="https://goo.gl/maps/nGdbiDamK7MP9L5z5"><i class="bi bi-geo-alt text-primary me-2"></i>Manila, PH</br></a>
                     <a class="mb-2" href="mailto:pawsnpages.site@gmail.com"><i class="bi bi-envelope-open text-primary me-2"></i>pawsnpages.site@gmail.com</a>
                     <a class="mb-0" href="tel:+6396176261"></br><i class="bi bi-telephone text-primary me-2"></i>+63 961
