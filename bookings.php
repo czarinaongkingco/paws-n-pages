@@ -237,8 +237,7 @@ $clinicID = $row_ca['ClinicID'];
             var table = $('#bookings').DataTable({
                 order: [
                     [5, 'desc']
-                ],
-                lengthMenu: [5, 10, 20, 50],
+                ]
 
             });
         });
@@ -380,14 +379,14 @@ $clinicID = $row_ca['ClinicID'];
                             <table class="table table-striped table-hover" style="border:0px; text-align:left;" id="bookings">
                                 <thead style="border:0px;">
                                     <tr class="table100-head" style="border:0px;">
-                                        <th class="column1" style="border:0px;">Reference No.</th>
-                                        <th class="column1" style="border:0px;">Clinic Name</th>
-                                        <th class="column1" style="border:0px;">Preferred Date</th>
-                                        <th class="column1" style="border:0px;">Preferred Time</th>
-                                        <th class="column1" style="border:0px;">Customer</th>
-                                        <th class="column1" style="border:0px;">Date & Time Booked</th>
-                                        <th class="column1" style="border:0px; text-align:center;">Status</th>
-                                        <th class="column1" style="border:0px; text-align:center;">View</th>
+                                        <th class="column1" style="border:0px; color:#80b434;">Reference No.</th>
+                                        <th class="column1" style="border:0px; color:#80b434;">Clinic Name</th>
+                                        <th class="column1" style="border:0px; color:#80b434;">Preferred Date</th>
+                                        <th class="column1" style="border:0px; color:#80b434;">Preferred Time</th>
+                                        <th class="column1" style="border:0px; color:#80b434;">Customer</th>
+                                        <th class="column1" style="border:0px; color:#80b434;">Date & Time Booked</th>
+                                        <th class="column1" style="border:0px; color:#80b434; text-align:center;">Status</th>
+                                        <th class="column1" style="border:0px; color:#80b434; text-align:center;">View</th>
                                     </tr>
                                 </thead>
                                 <tbody style="border:0px;">
@@ -652,7 +651,7 @@ $clinicID = $row_ca['ClinicID'];
                                                 <div class="col-4">
                                                     <input type="text" name="Status" id="Status" class="form-control" style="height: 100%;" readonly />
                                                 </div>
-                                                <div class="col-8">
+                                                <div class="col-8" id="ustat" style="display:none;">
                                                     <select name="Status2" id="Status2" style="border-radius: 5px; width: 100%;" class="bg-light border-0 px-4 py-3">
                                                         <option selected disabled>-- Update Status --</option>
                                                         <option value="Processing">Processing</option>
@@ -665,13 +664,13 @@ $clinicID = $row_ca['ClinicID'];
 
 
                                         </div>
-                                        <div class="form-group" id="rem">
+                                        <div class="form-group" id="rem" >
                                             <label>Remarks</label>
                                             <textarea name="Remarks" id="Remarks" class="form-control" style=" width: 100%; height: 150px;"></textarea>
                                         </div>
                                         <div class="form-group" id="reason" style="display: none;">
                                             <label>Reason for Cancellation</label>
-                                            <textarea name="Reason" id="Reason" class="form-control" style=" width: 100%; height: 150px;"></textarea>
+                                            <textarea name="Reason" id="Reason" class="form-control" style=" width: 100%; height: 150px;" readonly></textarea>
                                         </div>
 
                                     </div>
@@ -682,11 +681,13 @@ $clinicID = $row_ca['ClinicID'];
                         </div>
 
                         <div class="modal-footer">
-                            <button name="update_booking" style="border-radius: 15px;" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span>
+                            <button name="update_booking" id="btnupdate" style="border-radius: 15px;" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span>
                                 Update
                             </button>
-                            <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
+                            <button class="btn btn-danger" id="btncancel" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
                                 Cancel</button>
+                            <button class="btn btn-danger" id="btnclose" type="button" data-dismiss="modal" style="border-radius: 15px; display: none;"><span class="glyphicon glyphicon-remove"></span>
+                                Close</button>
                         </div>
                     </form>
                 </div>
@@ -893,9 +894,19 @@ $clinicID = $row_ca['ClinicID'];
                 if (astatus == 'Cancelled') {
                     $('#rem').hide();
                     $('#reason').show();
+                    $('#btnclose').show();
+                    $('#reason').show();
+                    $('#ustat').hide();
+                    $('#btncancel').hide();
+                    $('#btnupdate').hide();
                 } else {
                     $('#rem').show();
+                    $('#ustat').show();
+                    $('#btnclose').show();
+                    $('#btnupdate').show();
                     $('#reason').hide();
+                    $('#btnclose').show();
+                    $('#btncancel').hide();
                 }
 
                 $('#form_edit_booking').find('[name="AppointmentID"]').val(appid);

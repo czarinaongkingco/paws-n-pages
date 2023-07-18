@@ -463,54 +463,54 @@ $clinic_id = $_SESSION['clinic_id'];
 
 
 
-    <!-- Feedback Start -->
-    <div class="container-fluid bg-testimonial py-5" style="margin: 90px 0;">
-        <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
-            <h1 class="text-dark text-uppercase">Feedbacks</h1>
-        </div>
-        <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-7">
-                    <div class="owl-carousel testimonial-carousel bg-white p-5">
+<!-- FINAL Footer Start -->
+    <div class="container-fluid bg-light mt-5 py-5">
+        <div class="container pt-5">
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Get In Touch</h5>
+                    <p class="mb-4">If you have inquiries feel free to contact us below<br>
+                    <a href="contact.php">Contact Us </a></p>
+                    <a class="mb-2" href="https://goo.gl/maps/nGdbiDamK7MP9L5z5"><i class="bi bi-geo-alt text-primary me-2"></i>Manila, PH</br></a>
+                    <a class="mb-2" href="mailto:pawsnpages.site@gmail.com"><i class="bi bi-envelope-open text-primary me-2"></i>pawsnpages.site@gmail.com</a>
+                    <a class="mb-0" href="tel:+6396176261"></br><i class="bi bi-telephone text-primary me-2"></i>+63 961
+                        762 6162</a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Quick Links</h5>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-body mb-2" href="index.php"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                        <a class="text-body mb-2" href="clinics.php"><i class="bi bi-arrow-right text-primary me-2"></i>Vet Clinics</a>
+                        <a class="text-body mb-2" href="index.php#services"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
+                        <a class="text-body mb-2" href="pricing.php"><i class="bi bi-arrow-right text-primary me-2"></i>Pricing</a>
+                        <a class="text-body mb-2" href="about.php"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                        <a class="text-body mb-2" href="about.php#faqs"><i class="bi bi-arrow-right text-primary me-2"></i>FAQs</a>
+                        <a class="text-body" href="contact.php"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                    </div>
+                </div>
 
-                        <?php
-                        $ret = mysqli_query($con, "SELECT * FROM feedback, users WHERE feedback.UserID = users.UserID AND feedback.ClinicID = '$clinic_id'");
-                        $cnt = 1;
-                        $row = mysqli_num_rows($ret);
-                        if ($row > 0) {
-                            while ($row = mysqli_fetch_array($ret)) {
-                        ?>
-
-                                <div class="testimonial-item text-center">
-                                    <div class="position-relative mb-4">
-                                    </div>
-                                    <p><?php echo $row['OverallFeedback'] ?></p>
-                                    <hr class="w-25 mx-auto">
-                                    <h5 class="text-uppercase"><?php echo $row['Rating'] ?>/5</h5>
-                                    <span>- <?php echo $row['FirstName'] ?></span>
-                                </div>
-
-                            <?php
-                            }
-                        } else { ?>
-
-                            <div class="testimonial-item text-center">
-                                <div class="position-relative mb-4">
-                                </div>
-                                <p>No ratings or feedback yet on this veterinary clinic.</p>
-                                <hr class="w-25 mx-auto">
-                                <h5 class="text-uppercase"></h5>
-                                <span></span>
-                            </div>
-
-                        <?php } ?>
-
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="text-uppercase mt-4 mb-3">Follow Us</h6>
+                    <div class="d-flex">
+                        <a class="btn btn-outline-primary btn-square me-2" href="#"><i class="bi bi-twitter"></i></a>
+                        <a class="btn btn-outline-primary btn-square me-2" href="#"><i class="bi bi-facebook"></i></a>
+                        <a class="btn btn-outline-primary btn-square me-2" href="#"><i class="bi bi-linkedin"></i></a>
+                        <a class="btn btn-outline-primary btn-square" href="#"><i class="bi bi-instagram"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Feedback End -->
+    <div class="container-fluid bg-dark text-white-50 py-4">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-md-0">&copy; <a class="text-white" href="#">2023 Paws n Pages</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FINAL Footer End -->
 
 
 

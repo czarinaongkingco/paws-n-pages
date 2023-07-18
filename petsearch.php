@@ -421,11 +421,11 @@ $clinicID = $row_ca['ClinicID'];
                             <table class="table table-striped table-hover" id="pets" style="border:0px;">
                                 <thead>
                                     <tr class="table100-head">
-                                        <th class="column1" style="border:0px;">ID</th>
-                                        <th class="column1" style="border:0px;">Owner</th>
-                                        <th class="column1" style="border:0px;">Name</th>
-                                        <th class="column1" style="border:0px;">Birthdate</th>
-                                        <th class="column1" style="border:0px;">Health Record</th>
+                                        <th class="column1" style="border:0px; color:#80b434;">ID</th>
+                                        <th class="column1" style="border:0px; color:#80b434;">Owner</th>
+                                        <th class="column1" style="border:0px; color:#80b434;">Name</th>
+                                        <th class="column1" style="border:0px; color:#80b434;">Birthdate</th>
+                                        <th class="column1" style="border:0px; color:#80b434;">Health Record</th>
                                     </tr>
                                 </thead>
 
@@ -451,10 +451,7 @@ $clinicID = $row_ca['ClinicID'];
                                         }
                                     } else { ?>
                                         <tr style="border:0px;">
-                                            <td style="text-align:center; color:red; border:0px;" colspan="8">No Record Found</td>
-                                            <td style="text-align:center; color:red; border:0px; display:none;" colspan="0"></td>
-                                            <td style="text-align:center; color:red; border:0px; display:none;" colspan="0"></td>
-                                            <td style="text-align:center; color:red; border:0px; display:none;" colspan="0"></td>
+                                            <td style="text-align:center; color:red; border:0px;" colspan="5">No Record Found</td>
                                             <td style="text-align:center; color:red; border:0px; display:none;" colspan="0"></td>
                                             <td style="text-align:center; color:red; border:0px; display:none;" colspan="0"></td>
                                             <td style="text-align:center; color:red; border:0px; display:none;" colspan="0"></td>
@@ -516,13 +513,13 @@ $clinicID = $row_ca['ClinicID'];
                                     <table class="table table-striped table-hover" style="border: 0px; text-align: left;">
                                         <thead>
                                             <tr class="table100-head">
-                                                <th class="column1" style="border:0px;">Pet ID</th>
-                                                <th class="column1" style="border:0px;">Pet Name</th>
-                                                <th class="column1" style="border:0px;">Species</th>
-                                                <th class="column1" style="border:0px;">Breed</th>
-                                                <th class="column1" style="border:0px;">Birthdate</th>
-                                                <th class="column1" style="border:0px;">Owner</th>
-                                                <th class="column1" style="border:0px; text-align: center;">Action</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Pet ID</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Pet Name</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Species</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Breed</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Birthdate</th>
+                                                <th class="column1" style="border:0px; color:#80b434;">Owner</th>
+                                                <th class="column1" style="border:0px; color:#80b434; text-align: center;">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>

@@ -32,6 +32,33 @@ include('connection.php');
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <style>
+    
+.faq-list {
+  flex: 1;
+}
+
+.faq-item {
+
+  cursor: pointer;
+}
+
+.faq-question {
+  margin: 0;
+}
+
+.faq-answer {
+  display: none;
+}
+
+.show-answer .faq-answer {
+  display: block;
+}
+
+#searchInput {
+  margin-bottom: 10px;
+}
+    </style>
 </head>
 
 <body>
@@ -289,13 +316,356 @@ include('connection.php');
     </div>
     <!-- Services End -->
 
-    <!-- Footer Start -->
+<!-- FAQS Start -->
+    <div class="container-fluid py-5" id="faqs">
+        <div class="container">
+            <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
+                <h6 class="text-primary text-uppercase">Frequently Asked Questions</h6>
+                <h1 class="display-5 text-uppercase mb-0">Our FAQs</h1>
+                                <!-- Search Form Start -->
+                                <div class="mb-5">
+                                            <input type="text" id="searchInput" name="search" class="form-control p-3" placeholder="Search FAQ..." style="border-radius: 15px 15px 15px 15px;">
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- Search Form End -->
+            </div>
+            <!-- Row start-->
+        </br>
+            <div class="row g-6">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <div class="service-item bg-light d-flex p-4" style="border-radius: 15px;">
+                        <i class="flaticon-location display-1 text-primary me-4"></i>
+                        <div>
+                            <!-- FAQs start-->
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                  <h5 class="faq-question">How do I register and create an account on the website?</h5>
+                                  <div class="faq-answer">
+                                    <p>To register and create an account, you can click on the 
+                                        <a href="vet-or-pet.php">"Join US"</a> on the website's upper right hand corner. 
+                                        Fill out the required fields. Follow the instructions provided and submit the registration form. 
+                                        Once completed, you will be able to log in to your account.</p>
+                                  </div>
+                                </div>
+                            </div>
+                            <!-- FAQs end-->
+                         
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-item bg-light d-flex p-4" style="border-radius: 15px;">
+                        <i class="display-1 text-primary me-4"></i>
+                            <!-- FAQs start-->
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                <h5 class="faq-question">Is my personal information secure and protected on this website?</h5>
+                                <div class="faq-answer">
+                                    <p>Yes, we prioritize the security and protection of your personal information. 
+                                        We employ various security measures, such as encryption protocols and secure storage, 
+                                        to safeguard your data. Additionally, we adhere to data privacy regulations and guidelines 
+                                        to ensure the confidentiality of your information. </p>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- FAQs end-->
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+
+                </div>
+            <!-- Row end-->
+            <!-- Row start-->
+        </br>
+            <div class="row g-6">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <div class="service-item bg-light d-flex p-4" style="border-radius: 15px;">
+                        <i class="flaticon-location display-1 text-primary me-4"></i>
+                        <div>
+                            <!-- FAQs start-->
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                  <h5 class="faq-question">How can I add a new pet to my record?</h5>
+                                  <div class="faq-answer">
+                                    <strong></strong>
+                                    <p>Once logged into your account, navigate to your <a  href="userProfile.php"><strong>profile</strong></a>, 
+                                        click on the <strong>"Buy a pet booklet"</strong> option, <strong>make the payment, </strong>
+                                        and then click the <strong>"Add New Pet"</strong> button to provide the required information 
+                                        and create a digital pet booklet for storing your pet's health assessments and vaccination records.</p>
+                                  </div>
+                                </div>
+                            </div>
+                            <!-- FAQs end-->
+                         
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-item bg-light d-flex p-4" style="border-radius: 15px;">
+                        <i class="display-1 text-primary me-4"></i>
+                            <!-- FAQs start-->
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                <h5 class="faq-question">Can I manage multiple pets under one account?</h5>
+                                <div class="faq-answer">
+                                <strong></strong>
+                                    <p><strong>Yes</strong>, you can manage multiple pets under one account. 
+                                    Paws N Pages provide functionality to add, view, and manage multiple pet records. 
+                                    You can repeat the process of adding a new pet to include all your pets in your account's record.</p>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- FAQs end-->
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <!-- Row end-->
+            <!-- Row start-->
+        </br>
+            <div class="row g-6">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <div class="service-item bg-light d-flex p-4" style="border-radius: 15px;">
+                        <i class="flaticon-location display-1 text-primary me-4"></i>
+                        <div>
+                            <!-- FAQs start-->
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                  <h5 class="faq-question">How can I edit or update the information for my pet?</h5>
+                                  <div class="faq-answer">
+                                    <p>To edit or update the information for a pet, go to your <a  href="userProfile.php"><strong>profile</strong></a>. 
+                                        Locate the specific pet you wish to modify and click the pen on its upper 
+                                        right corner to update its details. Click on it, make the necessary changes, 
+                                        and save the updated information.
+                                    </p>
+                                  </div>
+                                </div>
+                            </div>
+                            <!-- FAQs end-->
+                         
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-item bg-light d-flex p-4" style="border-radius: 15px;">
+                        <i class="display-1 text-primary me-4"></i>
+                            <!-- FAQs start-->
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                <h5 class="faq-question">Is there a limit to the number of pet records I can add?</h5>
+                                <div class="faq-answer">
+                                    <p>There is <strong>no limit</strong> to the number of pet records you can add. </p>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- FAQs end-->
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <!-- Row end-->
+        <!-- Row start-->
+        </br>
+            <div class="row g-6">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <div class="service-item bg-light d-flex p-4" style="border-radius: 15px;">
+                        <i class="flaticon-location display-1 text-primary me-4"></i>
+                        <div>
+                            <!-- FAQs start-->
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                  <h5 class="faq-question">How do I book an appointment with a veterinary clinic?</h5>
+                                  <div class="faq-answer">
+                                  <strong></strong>
+                                    <p>To book an appointment with a veterinary clinic, navigate to the <strong>Clinics</strong> page,
+                                    <strong>search for a clinic</strong> based on location or services offered, select a clinic, 
+                                         choose your desired service, preferred date and time slot, and <strong>once confirmed, 
+                                         you will receive a text and email notification.</strong> </p>
+                                  </div>
+                                </div>
+                            </div>
+                            <!-- FAQs end-->
+                         
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-item bg-light d-flex p-4" style="border-radius: 15px;">
+                        <i class="display-1 text-primary me-4"></i>
+                            <!-- FAQs start-->
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                <h5 class="faq-question">Can I search for clinics based on location or services offered?</h5>
+                                <div class="faq-answer">
+                                    <p><strong>Yes,</strong> Paws N Pages provide a search functionality where you can search for
+                                         veterinary clinics based on location or specific services offered. </p>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- FAQs end-->
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <!-- Row end-->
+            <!-- Row start-->
+        </br>
+            <div class="row g-6">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <div class="service-item bg-light d-flex p-4" style="border-radius: 15px;">
+                        <i class="flaticon-location display-1 text-primary me-4"></i>
+                        <div>
+                            <!-- FAQs start-->
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                  <h5 class="faq-question">What should I do if I need to reschedule or cancel an appointment?</h5>
+                                  <div class="faq-answer">
+                                  <strong></strong>
+                                    <p>If you need to reschedule or cancel an appointment, go to your profile, 
+                                        the appointment section of your account. Click the eye icon to cancel the booking.  <strong> Once an appointment is confirmed, 
+                                            cancellation is NOT allowed within three (3) days prior to the scheduled appointment date. </strong>
+                                       </p>
+                                  </div>
+                                </div>
+                            </div>
+                            <!-- FAQs end-->
+                         
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-item bg-light d-flex p-4" style="border-radius: 15px;">
+                        <i class="display-1 text-primary me-4"></i>
+                            <!-- FAQs start-->
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                <h5 class="faq-question">How will I receive confirmation of my appointment booking?</h5>
+                                <div class="faq-answer">
+                                <strong></strong>
+                                    <p>After the booking has been confirmed by the clinic, you should receive a  <strong>text and email notification.</strong>
+                                         The confirmation will include details such as the clinic's name, service you wish to avail, date, 
+                                         and time of the appointment. Make sure to check your registered email address and notification settings to ensure you receive the confirmation. </p>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- FAQs end-->
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <!-- Row end-->
+            <!-- Row start-->
+        </br>
+            <div class="row g-6">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <div class="service-item bg-light d-flex p-4" style="border-radius: 15px;">
+                        <i class="flaticon-location display-1 text-primary me-4"></i>
+                        <div>
+                            <!-- FAQs start-->
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                  <h5 class="faq-question">Can I view my appointment details for reference?</h5>
+                                  <div class="faq-answer">
+                                    <p>Yes, Paws N Pages provide a feature to view and access your appointment details. 
+                                        Navigate to your <strong>profile</strong> and select <strong>appointments</strong>, locate the specific appointment, 
+                                        and <strong>click on its reference number</strong> to view the details. </p>
+                                  </div>
+                                </div>
+                            </div>
+                            <!-- FAQs end-->
+                         
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-item bg-light d-flex p-4" style="border-radius: 15px;">
+                        <i class="display-1 text-primary me-4"></i>
+                            <!-- FAQs start-->
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                <h5 class="faq-question">Are there any fees or charges associated with using this web application?</h5>
+                                <div class="faq-answer">
+                                <strong></strong>
+                                    <p>The application is free to use; however, if you would like to digitize your pet booklet, there is a cost of<strongPhp 49.00 per booklet></strong>.
+</p>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- FAQs end-->
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <!-- Row end-->
+            <!-- Row start-->
+        </br>
+            <div class="row g-6">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <div class="service-item bg-light d-flex p-4" style="border-radius: 15px;">
+                        <i class="flaticon-location display-1 text-primary me-4"></i>
+                        <div>
+                            <!-- FAQs start-->
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                  <h5 class="faq-question">How can I contact customer support or report an issue with the system?</h5>
+                                  <div class="faq-answer">
+                                  <strong></strong>
+                                    <p>To provide feedback or report an issue with the system, click the <a href="contact.php">"Contact Us"</a> option on the menu. 
+                                        Provide your details, describe the feedback or issue in detail, and submit the form. 
+                                        Alternatively, you may find a dedicated support email or phone number for communication.</p>
+                                  </div>
+                                </div>
+                            </div>
+                            <!-- FAQs end-->
+                         
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-item bg-light d-flex p-4" style="border-radius: 15px;">
+                        <i class="display-1 text-primary me-4"></i>
+                            <!-- FAQs start-->
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                <h5 class="faq-question">What should I do if I forget my account password?</h5>
+                                <div class="faq-answer">
+                                    <p>If you forget your account password, click the <strong>"Forgot Password"</strong> option on the <strong>login</strong> page. 
+                                        Click on this option and follow the instructions to reset your password. 
+                                        You will receive an <strong>email with a password reset link</strong>. Clicking on the link will allow you to create a new password for your account.
+</p>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- FAQs end-->
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <!-- Row end-->
+          
+
+            </div>
+        </div>
+    </div>
+    <!-- FAQS End -->
+
+
+<!-- FINAL Footer Start -->
     <div class="container-fluid bg-light mt-5 py-5">
         <div class="container pt-5">
             <div class="row g-5">
                 <div class="col-lg-4 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Get In Touch</h5>
-                    <p class="mb-4">If you have inquiries feel free to contact us below</p>
+                    <p class="mb-4">If you have inquiries feel free to contact us below<br>
+                    <a href="contact.php">Contact Us </a></p>
                     <a class="mb-2" href="https://goo.gl/maps/nGdbiDamK7MP9L5z5"><i class="bi bi-geo-alt text-primary me-2"></i>Manila, PH</br></a>
                     <a class="mb-2" href="mailto:pawsnpages.site@gmail.com"><i class="bi bi-envelope-open text-primary me-2"></i>pawsnpages.site@gmail.com</a>
                     <a class="mb-0" href="tel:+6396176261"></br><i class="bi bi-telephone text-primary me-2"></i>+63 961
@@ -304,10 +674,12 @@ include('connection.php');
                 <div class="col-lg-4 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Quick Links</h5>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-body mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                        <a class="text-body mb-2" href="index.php"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
                         <a class="text-body mb-2" href="clinics.php"><i class="bi bi-arrow-right text-primary me-2"></i>Vet Clinics</a>
-                        <a class="text-body mb-2" href="#services"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
+                        <a class="text-body mb-2" href="index.php#services"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
+                        <a class="text-body mb-2" href="pricing.php"><i class="bi bi-arrow-right text-primary me-2"></i>Pricing</a>
                         <a class="text-body mb-2" href="about.php"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                        <a class="text-body mb-2" href="about.php#faqs"><i class="bi bi-arrow-right text-primary me-2"></i>FAQs</a>
                         <a class="text-body" href="contact.php"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
                     </div>
                 </div>
@@ -333,7 +705,7 @@ include('connection.php');
             </div>
         </div>
     </div>
-    <!-- Footer End -->
+    <!-- FINAL Footer End -->
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
@@ -348,6 +720,34 @@ include('connection.php');
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+const faqItems = document.getElementsByClassName('faq-item');
+
+searchInput.addEventListener('input', () => {
+  const searchValue = searchInput.value.toLowerCase();
+
+  for (const item of faqItems) {
+    const question = item.querySelector('.faq-question').textContent.toLowerCase();
+    const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+
+    if (question.includes(searchValue) || answer.includes(searchValue)) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  }
+});
+
+document.addEventListener('click', (event) => {
+  if (event.target.classList.contains('faq-question')) {
+    event.target.parentNode.classList.toggle('show-answer');
+  }
+});
+
+    </script>
+      <script src="script.js"></script>
 </body>
 
 </html>

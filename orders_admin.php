@@ -239,9 +239,6 @@ $clinicID = $row_ca['ClinicID'];
                 order: [
                     [3, 'desc']
                 ],
-
-                lengthMenu: [5, 10, 20, 50],
-
             });
         });
 
@@ -250,8 +247,6 @@ $clinicID = $row_ca['ClinicID'];
                 order: [
                     [4, 'desc']
                 ],
-
-                lengthMenu: [5, 10, 20, 50],
 
             });
         });

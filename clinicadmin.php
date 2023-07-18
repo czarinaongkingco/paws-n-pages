@@ -410,7 +410,7 @@ $row_cb = mysqli_num_rows($ret_cb);
 
                         <div class="col-xl-6">
                             <div class="card mb-4 mb-xl-0" style="border-radius: 15px;">
-                                <div class="card-header userProfile-font">👤 <b>User Details</b> &nbsp; <a href="" data-toggle="modal" title="Delete" style="float:right;" data-target="#update_modal<?php echo $row['userID'] ?>"><i class="material-icons" style="color:dodgerblue;">&#xE254;</i></a></div>
+                                <div class="card-header userProfile-font">👤 <b>User Details</b> &nbsp; <a href="" data-toggle="modal" title="Delete" style="float:right;" data-target="#update_modal<?php echo $row['userID'] ?>"><i class="fa fa-pencil"></i></a></div>
                                 <div class="card-body text-center">
 
                                     <div class="userProfile">
@@ -422,31 +422,31 @@ $row_cb = mysqli_num_rows($ret_cb);
                                                     while ($row = mysqli_fetch_array($ret)) {
                                                     ?>
                                                         <tr>
-                                                            <td style="color:#80b434;"><b>Name: &nbsp;&nbsp;</b></td>
+                                                            <td><b>Name: &nbsp;&nbsp;</b></td>
                                                             <td>
                                                                 <?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="color:#80b434;"><b>Contact No: &nbsp;&nbsp;</b></td>
+                                                            <td><b>Contact No: &nbsp;&nbsp;</b></td>
                                                             <td>
                                                                 <?php echo $row['ContactNo'] ?>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="color:#80b434;"><b>Birthdate: &nbsp;&nbsp;</b></td>
+                                                            <td><b>Birthdate: &nbsp;&nbsp;</b></td>
                                                             <td>
                                                                 <?php echo $row['Birth_Date'] ?>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="color:#80b434;"><b>Username: &nbsp;&nbsp;</b></td>
+                                                            <td><b>Username: &nbsp;&nbsp;</b></td>
                                                             <td>
                                                                 <?php echo $row['Username'] ?>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="color:#80b434;"><b>Email: &nbsp;&nbsp;</b></td>
+                                                            <td><b>Email: &nbsp;&nbsp;</b></td>
                                                             <td>
                                                                 <?php echo $row['Email'] ?>
                                                             </td>
@@ -475,25 +475,25 @@ $row_cb = mysqli_num_rows($ret_cb);
                                         <table class="table">
                                             <tbody>
                                                 <tr>
-                                                    <td style="color:#80b434;"><b>Subscription No.: &nbsp;&nbsp;</b></td>
+                                                    <td><b>Subscription No.: &nbsp;&nbsp;</b></td>
                                                     <td>
                                                         <?php echo $row['SubscriptionNo'] ?><br />
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="color:#80b434;"><b>Date of Subscription &nbsp;&nbsp;</b></td>
+                                                    <td><b>Date of Subscription &nbsp;&nbsp;</b></td>
                                                     <td>
                                                         <?php echo $row['DateOfSubscription'] ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="color:#80b434;"><b>Expiry Date of Subscription &nbsp;&nbsp;</b></td>
+                                                    <td><b>Expiry Date of Subscription &nbsp;&nbsp;</b></td>
                                                     <td>
                                                         <?php echo $row['ExpiryDateOfSub'] ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="color:#80b434;"><b>Subscription Status: &nbsp;&nbsp;</b></td>
+                                                    <td><b>Subscription Status: &nbsp;&nbsp;</b></td>
                                                     <td>
                                                         <?php $status = $row['SubscriptionStatus'];
                                                         if ($status === 'Inactive') { ?><a style="color:white; font-size:12px; padding: 5px 10px;  border-radius:10px; background-color:#A52A2A;">
@@ -507,7 +507,7 @@ $row_cb = mysqli_num_rows($ret_cb);
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="color:#80b434;"><b>Subscription Type: &nbsp;&nbsp;</b></td>
+                                                    <td><b>Subscription Type: &nbsp;&nbsp;</b></td>
                                                     <td>
                                                         <?php echo $row['SubscriptionType'] ?>
                                                     </td>
@@ -524,7 +524,7 @@ $row_cb = mysqli_num_rows($ret_cb);
                     <div class="row">
                         <div class="col-md-7">
                             <div class="card mb-4 mb-xl-0" style="border-radius: 15px;">
-                                <div class="card-header userProfile-font">🏥 <b>Clinic Details</b> &nbsp; <a href="" data-toggle="modal" title="Edit" style="float:right;" data-target="#clinic_modal<?php echo $row['userID'] ?>"><i class="material-icons" style="color:dodgerblue;">&#xE254;</i></a></div>
+                                <div class="card-header userProfile-font">🏥 <b>Clinic Details</b> &nbsp; <a href="" data-toggle="modal" title="Edit" style="float:right;" data-target="#clinic_modal<?php echo $row['userID'] ?>"><i class="fa fa-pencil"></i></a></div>
                                 <div class="card-body text-center">
                                     <div class="userProfile">
                                         <center>
@@ -543,31 +543,31 @@ $row_cb = mysqli_num_rows($ret_cb);
                                                         <br />
                                                         <br />
                                                         <tr>
-                                                            <td style="color:#80b434;"><b>Clinic Profile Picture: &nbsp;&nbsp;</b></td>
+                                                            <td><b>Clinic Profile Picture: &nbsp;&nbsp;</b></td>
                                                             <td>
                                                                 <a href="image_upload/<?php echo $row['ClinicImage'] ?>" target="_blank"><img src='image_upload/<?php echo $row['ClinicImage'] ?>' style="max-width: 300px; " /></a>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="color:#80b434;"><b>Clinic Name: &nbsp;&nbsp;</b></td>
+                                                            <td><b>Clinic Name: &nbsp;&nbsp;</b></td>
                                                             <td>
                                                                 <?php echo $row['ClinicName'] ?>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="color:#80b434;"><b>Clinic Address: &nbsp;&nbsp;</b></td>
+                                                            <td><b>Clinic Address: &nbsp;&nbsp;</b></td>
                                                             <td>
                                                                 <?php echo $row['LotNo_Street'] . ', Brgy. ' . $row['Barangay'] . ',  ' . $row['City'] . '<br/>' . $row['Province'] . ',' . $row['ZIPCode'] ?>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="color:#80b434;"><b>Operating Hours: &nbsp;&nbsp;</b></td>
+                                                            <td><b>Operating Hours: &nbsp;&nbsp;</b></td>
                                                             <td>
                                                                 <?php echo date('h:i A', strtotime($row['OpeningTime'])) . ' - ' . date('h:i A', strtotime($row['ClosingTime'])) ?>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td style="color:#80b434;"><b>Operating Days: &nbsp;&nbsp;</b></td>
+                                                            <td><b>Operating Days: &nbsp;&nbsp;</b></td>
                                                             <td>
                                                                 <?php echo $row['OperatingDays'] ?>
                                                             </td>
@@ -587,7 +587,7 @@ $row_cb = mysqli_num_rows($ret_cb);
                                     <?php if ($row_cb < 1) { ?>
                                         <button class="btn btn-primary" style="float:right; border-radius:15px;" data-toggle="modal" data-target="#billing_upload">Add</button>
                                     <?php } else { ?>
-                                        <a href="" data-toggle="modal" title="Edit" style="float:right;" data-target="#billing_modal"><i class="material-icons" style="color:dodgerblue;">&#xE254;</i></a>
+                                        <a href="" data-toggle="modal" title="Edit" style="float:right;" data-target="#billing_modal"><i class="fa fa-pencil"></i></a>
                                     <?php } ?>
                                 </div>
                                 <div class="card-body text-center">
@@ -623,7 +623,7 @@ $row_cb = mysqli_num_rows($ret_cb);
                 <div style="padding-right:30px; padding-left:30px; padding-top:10px;">
                     <div class="col-xl-12">
                         <div class="card mb-4 mb-xl-0" style="border-radius: 15px;">
-                            <div class="card-header userProfile-font">👤 <b>User Details</b> &nbsp; <a href="" data-toggle="modal" title="Delete" style="float:right;" data-target="#admin_modal<?php echo $row['userID'] ?>"><i class="material-icons" style="color:dodgerblue;">&#xE254;</i></a></div>
+                            <div class="card-header userProfile-font">👤 <b>User Details</b> &nbsp; <a href="" data-toggle="modal" title="Delete" style="float:right;" data-target="#admin_modal<?php echo $row['userID'] ?>"><i class="fa fa-pencil"></i></a></div>
                             <div class="card-body text-center">
                                 <div class="userProfile">
                                     <center>
@@ -634,31 +634,31 @@ $row_cb = mysqli_num_rows($ret_cb);
                                                 while ($row = mysqli_fetch_array($ret)) {
                                                 ?>
                                                     <tr>
-                                                        <td style="color:#80b434;"><b>Name: &nbsp;&nbsp;</b></td>
+                                                        <td><b>Name: &nbsp;&nbsp;</b></td>
                                                         <td>
                                                             <?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="color:#80b434;"><b>Contact No: &nbsp;&nbsp;</b></td>
+                                                        <td><b>Contact No: &nbsp;&nbsp;</b></td>
                                                         <td>
                                                             <?php echo $row['ContactNo'] ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="color:#80b434;"><b>Birthdate: &nbsp;&nbsp;</b></td>
+                                                        <td><b>Birthdate: &nbsp;&nbsp;</b></td>
                                                         <td>
                                                             <?php echo $row['Birth_Date'] ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="color:#80b434;"><b>Username: &nbsp;&nbsp;</b></td>
+                                                        <td><b>Username: &nbsp;&nbsp;</b></td>
                                                         <td>
                                                             <?php echo $row['Username'] ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="color:#80b434;"><b>Email: &nbsp;&nbsp;</b></td>
+                                                        <td><b>Email: &nbsp;&nbsp;</b></td>
                                                         <td>
                                                             <?php echo $row['Email'] ?>
                                                         </td>

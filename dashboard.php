@@ -783,7 +783,7 @@ $subExp = $row_ca['ExpiryDateOfSub'];
 
         <!-- For Admin -->
         <?php
-        $ret = mysqli_query($con, "SELECT  SUM(orders.TotalPrice) AS TotalSales, clinics.ClinicName FROM orders, clinics WHERE orders.ClinicID = clinics.ClinicID GROUP BY clinics.ClinicName");
+        $ret = mysqli_query($con, "SELECT  SUM(orders.TotalPrice) AS TotalSales, clinics.ClinicName FROM orders, clinics WHERE orders.ClinicID = clinics.ClinicID AND orders.OrderStatus='Completed' GROUP BY clinics.ClinicName");
         $row = mysqli_num_rows($ret);
         if ($row > 0) {
 

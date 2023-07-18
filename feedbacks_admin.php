@@ -194,8 +194,6 @@ $clinicID = $row_ca['ClinicID'];
                 order: [
                     [2, 'desc']
                 ],
-                lengthMenu: [5, 10, 20, 50],
-
             });
         });
     </script>

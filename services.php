@@ -238,9 +238,6 @@ $clinicID = $row_ca['ClinicID'];
                 order: [
                     [2, 'asc']
                 ],
-
-                lengthMenu: [5, 10, 20, 50],
-
             });
         });
         $(".side_bar").css("min-height", $(".main_container").height());

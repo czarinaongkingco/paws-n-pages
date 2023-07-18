@@ -126,6 +126,10 @@ include("connection.php");
         .small {
             font-size: 10px;
         }
+        .required:after {
+            content:" *";
+            color: red;
+        }
     </style>
 </head>
 
@@ -153,27 +157,27 @@ include("connection.php");
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-4 ">
-                                        <p>&nbsp;&nbsp;First Name</p>
+                                        <p class="required">&nbsp;&nbsp;First Name</p>
                                         <input type="text" name="fname" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter First Name" required>
                                     </div>
                                     <div class="col-4 ">
-                                        <p>&nbsp;&nbsp;Middle Name</p>
+                                        <p class="required">&nbsp;&nbsp;Middle Name</p>
                                         <input type="text" name="mname" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter Middle Name" required>
                                     </div>
                                     <div class="col-4">
-                                        <p>&nbsp;&nbsp;Last Name</p>
+                                        <p class="required">&nbsp;&nbsp;Last Name</p>
                                         <input type="text" name="lname" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter Last Name" required>
                                     </div>
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-6">
-                                        <p>&nbsp;&nbsp;Contact Number</p>
+                                        <p class="required">&nbsp;&nbsp;Contact Number</p>
                                         <input type="text" name="contactno" pattern="^(09|\+639)\d{9}$" minlength="11" maxlength="11" class="form-control bg-light border-3 px-4 py-3" style="border-radius: 15px;" placeholder="09XXXXXXXXX" required oninput="validateContactNumber(this)">
                                         <span class="error small" id="contactno-error"></span>
                                 
                                 </div>
                                     <div class="col-6">
-                                        <p>&nbsp;&nbsp;Birthdate</p>
+                                        <p class="required">&nbsp;&nbsp;Birthdate</p>
                                         <input type="date" name="bdate" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Birthdate" required>
                                     </div>
                                 </div>
@@ -181,19 +185,19 @@ include("connection.php");
 
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-5">
-                                        <p>&nbsp;&nbsp;Username</p>
+                                        <p class="required">&nbsp;&nbsp;Username</p>
                                         <input type="text" name="uname" class="form-control bg-light border-3 px-4 py-3" style="border-radius: 15px;" placeholder="Enter Username" required oninput="validateUsername(this)">
                                         <span class="error small" id="uname-error"></span>
                                     </div>
                                     <div class="col-7">
-                                        <p>&nbsp;&nbsp;Email</p>
+                                        <p class="required">&nbsp;&nbsp;Email</p>
                                         <input type="email" name="email" class="form-control bg-light border-3 px-4 py-3" style="border-radius: 15px;" placeholder="Enter Email" required oninput="validateEmail(this)">
                                         <span class="error small" id="email-error"></span>
                                     </div>
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-12">
-                                        <p>&nbsp;&nbsp;Password</p>
+                                        <p class="required">&nbsp;&nbsp;Password</p>
                                         <div class="password-container">
                                             <!-- Minimum eight characters, at least one uppercase letter, one lowercase letter and one number: -->
                                             <input type="password" id="pword" name="pword" data-toggle="tooltip" title="Minimum of (8) characters, at least (1) uppercase letter, (1) lowercase letter and (1) number" minlength="8" maxlength="16" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter Password" required>
@@ -221,13 +225,13 @@ include("connection.php");
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-12 ">
-                                        <p>&nbsp;&nbsp;House/Lot No. & Street</p>
+                                        <p class="required">&nbsp;&nbsp;House/Lot No. & Street</p>
                                         <input type="text" name="lotno_street" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter House/Lot No. & Street" required>
                                     </div>
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-6">
-                                        <p>&nbsp;&nbsp;Barangay</p>
+                                        <p class="required">&nbsp;&nbsp;Barangay</p>
                                         <?php
                                         $sql = mysqli_query($con, "SELECT BarangayName FROM Barangay");
                                         $data = $sql->fetch_all(MYSQLI_ASSOC);
@@ -253,7 +257,7 @@ include("connection.php");
                                         <input type="text" name="province" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" value="NCR" readonly>
                                     </div>
                                     <div class="col-6">
-                                        <p>&nbsp;&nbsp;ZIP Code</p>
+                                        <p class="required">&nbsp;&nbsp;ZIP Code</p>
                                         <input type="text" name="zipcode" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter ZIP Code" required>
                                     </div>
                                 </div>
@@ -281,23 +285,23 @@ include("connection.php");
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-12">
-                                        <p>Clinic Name</p>
+                                        <p class="required">Clinic Name</p>
                                         <input type="text" name="clinicname" class="form-control bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Clinic Name" required>
                                     </div>
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-6">
-                                        <p>Opening Hours</p>
+                                        <p class="required">Opening Hours</p>
                                         <input type="time" name="openhours" class="form-control bg-light border-3 px-4 py-3" style="border-radius:15px;" required>
                                     </div>
                                     <div class="col-6">
-                                        <p>Closing Hours</p>
+                                        <p class="required">Closing Hours</p>
                                         <input type="time" name="closehours" class="form-control bg-light border-3 px-4 py-3" style="border-radius:15px;" required>
                                     </div>
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-6">
-                                        <p>Operating Days</p>
+                                        <p class="required">Operating Days</p>
                                         <div class="row">
                                             <div class="col-6" style="padding-left: 20px;">
                                                 <input type="checkbox" name="opendays[]" value="Sunday"> Sunday <br>
@@ -313,7 +317,7 @@ include("connection.php");
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        <p>Subscription Type</p>
+                                        <p class="required">Subscription Type</p>
                                         <select name="subtype" id="subtype" class="bg-light border-3 px-4 py-3" style="border-radius:15px; border-color:#ced4da; height:40%; width: 100%;">
                                             <option disabled selected>-- Select an option --</option>
                                             <option value="Monthly">Monthly</option>
@@ -343,22 +347,22 @@ include("connection.php");
                                 </div>
                                 <div class="row" style="padding-bottom:20px;">
                                     <div class="col-6">
-                                        <p> Clinic Profile Picture </p>
+                                        <p class="required"> Clinic Profile Picture </p>
                                         <!-- <img id="cliniclogo" src="" width="100px" /> -->
-                                        <input type="file" name="cliniclogo" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" />
+                                        <input type="file" name="cliniclogo" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" accept="image/*"/>
                                     </div>
                                     <div class="col-6">
-                                        <p> Upload DTI Certificate of Registration </p>
+                                        <p class="required"> Upload DTI Certificate of Registration </p>
                                         <input type="file" name="dticert" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="DTI Certificate of Registration" required>
                                     </div>
                                 </div>
                                 <div class="row" style="padding-bottom:20px;">
                                     <div class="col-6">
-                                        <p>Upload Business Permit</p>
+                                        <p class="required">Upload Business Permit</p>
                                         <input type="file" name="businesspermit" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Business Permit" required>
                                     </div>
                                     <div class="col-6">
-                                        <p>Upload DTI Registered Business Name</p>
+                                        <p class="required">Upload DTI Registered Business Name</p>
                                         <input type="file" name="businessname" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Business Name" required>
                                     </div>
                                 </div>

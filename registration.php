@@ -122,6 +122,10 @@ include("connection.php");
         .small {
             font-size: 10px;
         }
+        .required:after {
+            content:" *";
+            color: red;
+        }
     </style>
 </head>
 
@@ -146,37 +150,37 @@ include("connection.php");
                                 </ul>
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-4 ">
-                                        <p>&nbsp;&nbsp;First Name</p>
+                                        <p class="required">&nbsp;&nbsp;First Name</p>
                                         <input type="text" name="fname" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter First Name" required>
                                     </div>
                                     <div class="col-4 ">
-                                        <p>&nbsp;&nbsp;Middle Name</p>
+                                        <p class="required">&nbsp;&nbsp;Middle Name</p>
                                         <input type="text" name="mname" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter Middle Name" required>
                                     </div>
                                     <div class="col-4">
-                                        <p>&nbsp;&nbsp;Last Name</p>
+                                        <p class="required">&nbsp;&nbsp;Last Name</p>
                                         <input type="text" name="lname" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter Last Name" required>
                                     </div>
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-6">
-                                        <p>&nbsp;&nbsp;Phone No.</p>
+                                        <p class="required">&nbsp;&nbsp;Phone No.</p>
                                         <input type="text" name="phone" minlength="11" maxlength="11" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="09XXXXXXXXX" required oninput="validateContactNumber(this)">
                                         <span class="error small" id="contactno-error"></span>
                                     </div>
                                     <div class="col-6">
-                                        <p>&nbsp;&nbsp;Birthdate</p>
+                                        <p class="required">&nbsp;&nbsp;Birthdate</p>
                                         <input type="date" name="birthdate" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Birthdate" required>
                                     </div>
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-5">
-                                        <p>&nbsp;&nbsp;Username</p>
+                                        <p class="required">&nbsp;&nbsp;Username</p>
                                         <input type="text" name="username" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter Username" required  oninput="validateUsername(this)">
                                         <span class="error small" id="uname-error"></span>
                                     </div>
                                     <div class="col-7">
-                                        <p>&nbsp;&nbsp;Email</p>
+                                        <p class="required">&nbsp;&nbsp;Email</p>
                                         <input type="email" name="email" class="form-control bg-light border-3 px-4 py-3" style="border-radius: 15px;" placeholder="Enter Email" required oninput="validateEmail(this)">
                                         <span class="error small" id="email-error"></span>
                                     </div>
@@ -187,7 +191,7 @@ include("connection.php");
                                     </select>
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
-                                    <p>&nbsp;&nbsp;Password</p>
+                                    <p class="required">&nbsp;&nbsp;Password</p>
                                     <div class="col-12">
                                         <!-- Minimum eight characters, at least one uppercase letter, one lowercase letter and one number: -->
                                         <div class="password-container">
@@ -224,14 +228,14 @@ include("connection.php");
                                 </ul>
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-12">
-                                        <p>&nbsp;&nbsp;House/Lot No. & Street</p>
+                                        <p class="required">&nbsp;&nbsp;House/Lot No. & Street</p>
                                         <input type="text" name="lotno_street" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter House/Lot No. & Street" required>
                                     </div>
                                 </div>
 
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-6">
-                                        <p>&nbsp;&nbsp;Barangay</p>
+                                        <p class="required">&nbsp;&nbsp;Barangay</p>
                                         <?php
                                         $sql = mysqli_query($con, "SELECT BarangayName FROM Barangay");
                                         $data = $sql->fetch_all(MYSQLI_ASSOC);
@@ -256,7 +260,7 @@ include("connection.php");
                                         <input type="text" name="province" class="form-control bg-light border-3 px-4 py-3" style="border-radius:15px;" value="NCR" readonly>
                                     </div>
                                     <div class="col-6">
-                                        <p>&nbsp;&nbsp;ZIP Code</p>
+                                        <p class="required">&nbsp;&nbsp;ZIP Code</p>
                                         <input type="text" name="zipcode" class="form-control bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter ZIP Code" required>
                                     </div>
                                 </div>
