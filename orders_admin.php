@@ -412,7 +412,7 @@ $clinicID = $row_ca['ClinicID'];
                                                                                                                                                                                 $explodedArray = explode(', ', $prod);
                                                                                                                                                                                 foreach ($explodedArray as $element) {
                                                                                                                                                                                     echo $element . "\n";
-                                                                                                                                                                                } ?>" user="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" totalprice="<?php echo "₱ " . $row['TotalPrice']; ?>" dtcout="<?php echo $date->format('Y-m-d h:i A'); ?>" address="<?php echo $row['ShippingTo'] ?>" proofpayment="<?php echo $row['ProofOfPayment']; ?>" proofrefno="<?php echo $row['Proof_RefNo']; ?>" prescription="<?php echo $row['OrderPrescription'] ?>" orderstatus="<?php echo $row['OrderStatus']; ?>" odremarks="<?php echo $row['OrderRemarks']; ?>" class="edit" title="View" data-toggle="modal" data-target="#view_order"><?php echo $row['Order_RefNo'] ?></a></td>
+                                                                                                                                                                                } ?>" user="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" totalprice="<?php echo "₱ " . $row['TotalPrice']; ?>" dtcout="<?php echo $date->format('Y-m-d h:i A'); ?>" address="<?php echo $row['ShippingTo'] ?>" proofpayment="<?php echo $row['ProofOfPayment']; ?>" proofrefno="<?php echo $row['Proof_RefNo']; ?>" prescription="<?php echo $row['OrderPrescription'] ?>" orderstatus="<?php echo $row['OrderStatus']; ?>" odremarks="<?php echo $row['OrderRemarks']; ?>" odnotes="<?php echo $row['OrderNotes'] ?>" class="edit" title="View" data-toggle="modal" data-target="#view_order"><?php echo $row['Order_RefNo'] ?></a></td>
 
                                                 <td style="border:0px;">₱
                                                     <?php echo $row['TotalPrice'] ?>
@@ -454,7 +454,7 @@ $clinicID = $row_ca['ClinicID'];
                                                                                                                                                             $explodedArray = explode(', ', $prod);
                                                                                                                                                             foreach ($explodedArray as $element) {
                                                                                                                                                                 echo $element . "\n";
-                                                                                                                                                            } ?>" user="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" totalprice="<?php echo "₱ " . $row['TotalPrice']; ?>" dtcout="<?php echo $date->format('Y-m-d h:i A'); ?>" address="<?php echo $row['ShippingTo'] ?>" proofpayment="<?php echo $row['ProofOfPayment']; ?>" proofrefno="<?php echo $row['Proof_RefNo']; ?>" prescription="<?php echo $row['OrderPrescription'] ?>" orderstatus="<?php echo $row['OrderStatus']; ?>" odremarks="<?php echo $row['OrderRemarks']; ?>" class="edit" title="View" data-toggle="modal" data-target="#view_order">
+                                                                                                                                                            } ?>" user="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" totalprice="<?php echo "₱ " . $row['TotalPrice']; ?>" dtcout="<?php echo $date->format('Y-m-d h:i A'); ?>" address="<?php echo $row['ShippingTo'] ?>" proofpayment="<?php echo $row['ProofOfPayment']; ?>" proofrefno="<?php echo $row['Proof_RefNo']; ?>" prescription="<?php echo $row['OrderPrescription'] ?>" orderstatus="<?php echo $row['OrderStatus']; ?>" odremarks="<?php echo $row['OrderRemarks']; ?>" odnotes="<?php echo $row['OrderNotes'] ?>" class="edit" title="View" data-toggle="modal" data-target="#view_order">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
                                                 </td>
@@ -517,7 +517,7 @@ $clinicID = $row_ca['ClinicID'];
                                                                                                                                                                                                                                 $explodedArray = explode(', ', $prod);
                                                                                                                                                                                                                                 foreach ($explodedArray as $element) {
                                                                                                                                                                                                                                     echo $element . "\n";
-                                                                                                                                                                                                                                } ?>" auser="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" atotalprice="<?php echo "₱ " . $row['TotalPrice']; ?>" adtcout="<?php echo $date->format('Y-m-d h:i A'); ?>" aaddress="<?php echo $row['ShippingTo'] ?>" aproofpayment="<?php echo $row['ProofOfPayment']; ?>" aproofrefno="<?php echo $row['Proof_RefNo']; ?>" aprescription="<?php echo $row['OrderPrescription'] ?>" aorderstatus="<?php echo $row['OrderStatus']; ?>" aodremarks="<?php echo $row['OrderRemarks']; ?>" class="edit" title="View" data-toggle="modal" data-target="#admin_order"><?php echo $row['Order_RefNo'] ?></a></td>
+                                                                                                                                                                                                                                } ?>" auser="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" atotalprice="<?php echo "₱ " . $row['TotalPrice']; ?>" adtcout="<?php echo $date->format('Y-m-d h:i A'); ?>" aaddress="<?php echo $row['ShippingTo'] ?>" aproofpayment="<?php echo $row['ProofOfPayment']; ?>" aproofrefno="<?php echo $row['Proof_RefNo']; ?>" aprescription="<?php echo $row['OrderPrescription'] ?>" aorderstatus="<?php echo $row['OrderStatus']; ?>" aodremarks="<?php echo $row['OrderRemarks']; ?>" aodnotes="<?php echo $row['OrderNotes'] ?>" class="edit" title="View" data-toggle="modal" data-target="#admin_order"><?php echo $row['Order_RefNo'] ?></a></td>
 
                                                 <td style="border:0px;">
                                                     <?php echo $row['ClinicName'] ?>
@@ -562,7 +562,7 @@ $clinicID = $row_ca['ClinicID'];
                                                                                                                                                                                                             $explodedArray = explode(', ', $prod);
                                                                                                                                                                                                             foreach ($explodedArray as $element) {
                                                                                                                                                                                                                 echo $element . "\n";
-                                                                                                                                                                                                            } ?>" auser="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" atotalprice="<?php echo "₱ " . $row['TotalPrice']; ?>" adtcout="<?php echo $date->format('Y-m-d h:i A'); ?>" aaddress="<?php echo $row['ShippingTo'] ?>" aproofpayment="<?php echo $row['ProofOfPayment']; ?>" aproofrefno="<?php echo $row['Proof_RefNo']; ?>" aprescription="<?php echo $row['OrderPrescription'] ?>" aorderstatus="<?php echo $row['OrderStatus']; ?>" aodremarks="<?php echo $row['OrderRemarks']; ?>" class="edit" title="View" data-toggle="modal" data-target="#admin_order"><i class="fa fa-eye"></i></a>
+                                                                                                                                                                                                            } ?>" auser="<?php echo $row['FirstName'] . ' ' . $row['MiddleName'] . ' ' . $row['LastName'] ?>" atotalprice="<?php echo "₱ " . $row['TotalPrice']; ?>" adtcout="<?php echo $date->format('Y-m-d h:i A'); ?>" aaddress="<?php echo $row['ShippingTo'] ?>" aproofpayment="<?php echo $row['ProofOfPayment']; ?>" aproofrefno="<?php echo $row['Proof_RefNo']; ?>" aprescription="<?php echo $row['OrderPrescription'] ?>" aorderstatus="<?php echo $row['OrderStatus']; ?>" aodremarks="<?php echo $row['OrderRemarks']; ?>" aodnotes="<?php echo $row['OrderNotes'] ?>" class="edit" title="View" data-toggle="modal" data-target="#admin_order"><i class="fa fa-eye"></i></a>
                                                 </td>
                                             </tr>
                                         <?php
@@ -659,6 +659,10 @@ $clinicID = $row_ca['ClinicID'];
                                     <div class="form-group">
                                         <label>Reference No. (For Proof of Payment)</label>
                                         <input type="text" name="Proof_RefNo" id="Proof_RefNo" class="form-control" readonly />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Notes</label>
+                                        <textarea name="Notes" id="Notes" class="form-control" style=" width: 100%; height: 150px;" readonly></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -788,6 +792,10 @@ $clinicID = $row_ca['ClinicID'];
                                     <div class="form-group">
                                         <label>Reference No. (For Proof of Payment)</label>
                                         <input type="text" name="Proof_RefNo" id="Proof_RefNo" class="form-control" readonly />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Notes</label>
+                                        <textarea name="Notes" id="Notes" class="form-control" style=" width: 100%; height: 150px;" readonly></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -958,6 +966,7 @@ $clinicID = $row_ca['ClinicID'];
 
             var orderstatus = $(opener).attr('orderstatus');
             var odremarks = $(opener).attr('odremarks');
+            var odnotes = $(opener).attr('odnotes');
 
             $('#view_order_form').find('[name="OrderID"]').val(orderid);
             $('#view_order_form').find('[name="Order_RefNo"]').val(refno);
@@ -976,6 +985,7 @@ $clinicID = $row_ca['ClinicID'];
             $('#view_order_form').find('[name="Proof_RefNo"]').val(proofrefno);
             $('#view_order_form').find('[name="OrderStatus"]').val(orderstatus);
             $('#view_order_form').find('[name="OrderRemarks"]').val(odremarks);
+            $('#view_order_form').find('[name="Notes"]').val(odnotes);
 
             endResize();
         });
@@ -1001,6 +1011,7 @@ $clinicID = $row_ca['ClinicID'];
 
             var aorderstatus = $(opener).attr('aorderstatus');
             var aodremarks = $(opener).attr('aodremarks');
+            var aodnotes = $(opener).attr('aodnotes');
 
             $('#admin_order_form').find('[name="OrderID"]').val(aorderid);
             $('#admin_order_form').find('[name="ClinicName"]').val(aclinic);
@@ -1020,6 +1031,7 @@ $clinicID = $row_ca['ClinicID'];
             $('#admin_order_form').find('[name="Proof_RefNo"]').val(aproofrefno);
             $('#admin_order_form').find('[name="OrderStatus"]').val(aorderstatus);
             $('#admin_order_form').find('[name="OrderRemarks"]').val(aodremarks);
+            $('#admin_order_form').find('[name="Notes"]').val(aodnotes);
 
             endResize();
         });

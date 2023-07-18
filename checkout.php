@@ -225,9 +225,9 @@ $sum_q = $row_q['total_items'];
                             $row_cb = mysqli_fetch_array($sql_cb);
                             ?>
 
-<?php if ($row_cb['BillingImage'] != "") { ?>
-    <img src="image_upload/<?php echo $row_cb['BillingImage'] ?>" alt="Italian Trulli" style="max-width: 300px; ">
-<?php } ?>
+                            <?php if ($row_cb['BillingImage'] != "") { ?>
+                                <img src="image_upload/<?php echo $row_cb['BillingImage'] ?>" alt="Italian Trulli" style="max-width: 300px; ">
+                            <?php } ?>
 
                         </div>
                     </div>
@@ -375,6 +375,11 @@ $sum_q = $row_q['total_items'];
                                                 <input type="file" style="border-radius: 15px;" name="orderPrescription" class="form-control bg-light border-1 px-4 py-3">
                                             </div>
 
+                                            <div class="col-12">
+                                                <label for="notes" style="float:left; padding-bottom:15px; padding-left:23px;">Notes</label>
+                                                <input type="text" style="border-radius: 15px;" name="notes" class="form-control  bg-light border-0 px-4 py-3" placeholder="e.g. I want to book my own delivery">
+                                            </div>
+
                                             <br />
 
                                             <div class="col-6">
@@ -436,9 +441,7 @@ $sum_q = $row_q['total_items'];
 
     $shipToOtherAddress = $_POST['different'];
 
-    // Still lacking:
-    // 1) decrease number of stocks depending on the number of items ordered
-    // 2) delete items in cart after placing order
+    $od_notes = $_POST['notes'];
 
     // Insert data to DB
     if ($row_a > 0) {
@@ -446,7 +449,7 @@ $sum_q = $row_q['total_items'];
             if (isset($_POST['order'])) {
 
                 // Insert to orders table
-                $query = mysqli_query($con, "INSERT INTO orders (Order_RefNo, OrderedProducts, UserID, TotalPrice, DateTimeCheckedOut, ShippingTo, ProofOfPayment, Proof_RefNo, OrderPrescription, OrderStatus, ClinicID) VALUES ('$order_refno', '$od_products', $userID, '$totalPrice', '$currentDateTime', '$ship_to_address', '$file', '$reference_no' , '$file1', '$orderStatus', '$clinic_id')");
+                $query = mysqli_query($con, "INSERT INTO orders (Order_RefNo, OrderedProducts, UserID, TotalPrice, DateTimeCheckedOut, ShippingTo, ProofOfPayment, Proof_RefNo, OrderPrescription, OrderStatus, ClinicID, OrderNotes) VALUES ('$order_refno', '$od_products', $userID, '$totalPrice', '$currentDateTime', '$ship_to_address', '$file', '$reference_no' , '$file1', '$orderStatus', '$clinic_id', '$od_notes')");
 
                 // To update stocks
                 $stocks_query = mysqli_query($con, "SELECT SupplyID FROM orderdetails WHERE UserID='$userID' AND ClinicID='$clinic_id'");

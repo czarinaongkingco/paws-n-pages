@@ -55,8 +55,8 @@ $clinicID = $_GET['clinicid'];
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
 
 
     <style>
@@ -64,18 +64,20 @@ $clinicID = $_GET['clinicid'];
             display: inline-block;
             font-size: 55px;
             cursor: pointer;
-            float:left;
+            float: left;
             flex-direction: row-reverse;
-                }
+        }
+
         .rating-star {
             cursor: pointer;
-            color: grey; /* Default star color */
+            color: grey;
+            /* Default star color */
         }
 
         .rating-star:hover {
-            color: orange; /* Star color on hover */
+            color: orange;
+            /* Star color on hover */
         }
-
     </style>
     <script>
         function handleStarClick(star) {
@@ -203,7 +205,7 @@ $clinicID = $_GET['clinicid'];
                                                                                                                                                                         $explodedArray = explode(', ', $prod);
                                                                                                                                                                         foreach ($explodedArray as $element) {
                                                                                                                                                                             echo $element . "\n";
-                                                                                                                                                                        } ?>" user="<?php echo $row1['FirstName'] . ' ' . $row1['MiddleName'] . ' ' . $row1['LastName'] ?>" totalprice="<?php echo "₱ " . $row1['TotalPrice']; ?>" dtcout="<?php echo $row1['DateTimeCheckedOut'] ?>" address="<?php echo $row1['ShippingTo'] ?>" proofpayment="<?php echo $row1['ProofOfPayment']; ?>" proofrefno="<?php echo $row1['Proof_RefNo']; ?>" prescription="<?php echo $row1['OrderPrescription'] ?>" orderstatus="<?php echo $row1['OrderStatus']; ?>" odremarks="<?php echo $row1['OrderRemarks']; ?>" class="edit" title="View" data-toggle="modal" data-target="#view_order"><?php echo $row1['Order_RefNo'] ?></a>
+                                                                                                                                                                        } ?>" user="<?php echo $row1['FirstName'] . ' ' . $row1['MiddleName'] . ' ' . $row1['LastName'] ?>" totalprice="<?php echo "₱ " . $row1['TotalPrice']; ?>" dtcout="<?php echo $row1['DateTimeCheckedOut'] ?>" address="<?php echo $row1['ShippingTo'] ?>" proofpayment="<?php echo $row1['ProofOfPayment']; ?>" proofrefno="<?php echo $row1['Proof_RefNo']; ?>" prescription="<?php echo $row1['OrderPrescription'] ?>" orderstatus="<?php echo $row1['OrderStatus']; ?>" odremarks="<?php echo $row1['OrderRemarks']; ?>" odnotes="<?php echo $row1['OrderNotes']; ?>" class="edit" title="View" data-toggle="modal" data-target="#view_order"><?php echo $row1['Order_RefNo'] ?></a>
                                     </td>
                                     <td style="border:0px;">
                                         ₱
@@ -274,10 +276,10 @@ $clinicID = $_GET['clinicid'];
                                     <?php } ?>
 
                                     <td style="border:0px; text-align:center;"><a href="" orderid="<?php echo $row1['OrderID'] ?>" refno="<?php echo $row1['Order_RefNo'] ?>" products="<?php $prod = $row1['OrderedProducts'];
-                                                                                                                                                                        $explodedArray = explode(', ', $prod);
-                                                                                                                                                                        foreach ($explodedArray as $element) {
-                                                                                                                                                                            echo $element . "\n";
-                                                                                                                                                                        } ?>" user="<?php echo $row1['FirstName'] . ' ' . $row1['MiddleName'] . ' ' . $row1['LastName'] ?>" totalprice="<?php echo "₱ " . $row1['TotalPrice']; ?>" dtcout="<?php echo $row1['DateTimeCheckedOut'] ?>" address="<?php echo $row1['ShippingTo'] ?>" proofpayment="<?php echo $row1['ProofOfPayment']; ?>" proofrefno="<?php echo $row1['Proof_RefNo']; ?>" prescription="<?php echo $row1['OrderPrescription'] ?>" orderstatus="<?php echo $row1['OrderStatus']; ?>" odremarks="<?php echo $row1['OrderRemarks']; ?>" class="edit" title="View" data-toggle="modal" data-target="#view_order"><i class="fa fa-eye"></i></a></td>
+                                                                                                                                                                                        $explodedArray = explode(', ', $prod);
+                                                                                                                                                                                        foreach ($explodedArray as $element) {
+                                                                                                                                                                                            echo $element . "\n";
+                                                                                                                                                                                        } ?>" user="<?php echo $row1['FirstName'] . ' ' . $row1['MiddleName'] . ' ' . $row1['LastName'] ?>" totalprice="<?php echo "₱ " . $row1['TotalPrice']; ?>" dtcout="<?php echo $row1['DateTimeCheckedOut'] ?>" address="<?php echo $row1['ShippingTo'] ?>" proofpayment="<?php echo $row1['ProofOfPayment']; ?>" proofrefno="<?php echo $row1['Proof_RefNo']; ?>" prescription="<?php echo $row1['OrderPrescription'] ?>" orderstatus="<?php echo $row1['OrderStatus']; ?>" odremarks="<?php echo $row1['OrderRemarks']; ?>" odnotes="<?php echo $row1['OrderNotes']; ?>" class="edit" title="View" data-toggle="modal" data-target="#view_order"><i class="fa fa-eye"></i></a></td>
 
                                 </tr>
                             <?php
@@ -306,14 +308,15 @@ $clinicID = $_GET['clinicid'];
     </div>
     <!-- END OF ORDER HISTORY -->
 
-<!-- FINAL Footer Start -->
+    <!-- FINAL Footer Start -->
     <div class="container-fluid bg-light mt-5 py-5">
         <div class="container pt-5">
             <div class="row g-5">
                 <div class="col-lg-4 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Get In Touch</h5>
                     <p class="mb-4">If you have inquiries feel free to contact us below<br>
-                    <a href="contact.php">Contact Us </a></p>
+                        <a href="contact.php">Contact Us </a>
+                    </p>
                     <a class="mb-2" href="https://goo.gl/maps/nGdbiDamK7MP9L5z5"><i class="bi bi-geo-alt text-primary me-2"></i>Manila, PH</br></a>
                     <a class="mb-2" href="mailto:pawsnpages.site@gmail.com"><i class="bi bi-envelope-open text-primary me-2"></i>pawsnpages.site@gmail.com</a>
                     <a class="mb-0" href="tel:+6396176261"></br><i class="bi bi-telephone text-primary me-2"></i>+63 961
@@ -423,6 +426,10 @@ $clinicID = $_GET['clinicid'];
                                         <label>Reference No. (For Proof of Payment)</label>
                                         <input type="text" name="Proof_RefNo" id="Proof_RefNo" class="form-control" readonly />
                                     </div>
+                                    <div class="form-group">
+                                        <label>Notes</label>
+                                        <textarea name="Notes" id="Notes" class="form-control" style=" width: 100%; height: 150px;" readonly></textarea>
+                                    </div>
 
                                 </div>
                                 <div class="col-md-6">
@@ -482,8 +489,8 @@ $clinicID = $_GET['clinicid'];
 
                                 <h5>How's your experience?</h5>
                                 <div style="text-align: center;">
-                                   
-                                  <span style="font-size: 75px;" class="rating-star" data-value="1" onclick="handleStarClick(this)">☆</span>
+
+                                    <span style="font-size: 75px;" class="rating-star" data-value="1" onclick="handleStarClick(this)">☆</span>
                                     <span style="font-size: 75px;" class="rating-star" data-value="2" onclick="handleStarClick(this)">☆</span>
                                     <span style="font-size: 75px;" class="rating-star" data-value="3" onclick="handleStarClick(this)">☆</span>
                                     <span style="font-size: 75px;" class="rating-star" data-value="4" onclick="handleStarClick(this)">☆</span>
@@ -602,6 +609,7 @@ $clinicID = $_GET['clinicid'];
 
             var orderstatus = $(opener).attr('orderstatus');
             var odremarks = $(opener).attr('odremarks');
+            var odnotes = $(opener).attr('odnotes');
 
             $('#view_order_form').find('[name="OrderID"]').val(orderid);
             $('#view_order_form').find('[name="Order_RefNo"]').val(refno);
@@ -620,6 +628,7 @@ $clinicID = $_GET['clinicid'];
             $('#view_order_form').find('[name="Proof_RefNo"]').val(proofrefno);
             $('#view_order_form').find('[name="OrderStatus"]').val(orderstatus);
             $('#view_order_form').find('[name="OrderRemarks"]').val(odremarks);
+            $('#view_order_form').find('[name="Notes"]').val(odnotes);
 
             endResize();
         });
@@ -637,51 +646,51 @@ $clinicID = $_GET['clinicid'];
         });
     </script>
 
-<script>
-  function handleStarClick(star) {
-    const ratingValue = star.getAttribute("data-value");
-    document.getElementById("ratingInput").value = ratingValue;
+    <script>
+        function handleStarClick(star) {
+            const ratingValue = star.getAttribute("data-value");
+            document.getElementById("ratingInput").value = ratingValue;
 
-    // Reset the color of all stars to grey
-    const allStars = document.querySelectorAll(".rating-star");
-    allStars.forEach((star) => {
-      star.style.color = "grey";
-    });
+            // Reset the color of all stars to grey
+            const allStars = document.querySelectorAll(".rating-star");
+            allStars.forEach((star) => {
+                star.style.color = "grey";
+            });
 
-    // Set the color of stars up to the clicked one to orange
-    for (let i = 1; i <= ratingValue; i++) {
-      document.querySelector(`.rating-star[data-value="${i}"]`).style.color = "orange";
-    }
-  }
-
-  // Hover effect when mouse enters a star
-  const allStars = document.querySelectorAll(".rating-star");
-  allStars.forEach((star) => {
-    star.addEventListener("mouseenter", () => {
-      const ratingValue = star.getAttribute("data-value");
-
-      // Set the color of stars up to the hovered one to orange
-      for (let i = 1; i <= ratingValue; i++) {
-        document.querySelector(`.rating-star[data-value="${i}"]`).style.color = "orange";
-      }
-    });
-
-    star.addEventListener("mouseleave", () => {
-      // Reset the color of all stars to grey when not hovered
-      allStars.forEach((star) => {
-        star.style.color = "grey";
-      });
-
-      // Set the color of stars up to the selected one to orange (if applicable)
-      const selectedRating = document.getElementById("ratingInput").value;
-      if (selectedRating !== "") {
-        for (let i = 1; i <= selectedRating; i++) {
-          document.querySelector(`.rating-star[data-value="${i}"]`).style.color = "orange";
+            // Set the color of stars up to the clicked one to orange
+            for (let i = 1; i <= ratingValue; i++) {
+                document.querySelector(`.rating-star[data-value="${i}"]`).style.color = "orange";
+            }
         }
-      }
-    });
-  });
-</script>
+
+        // Hover effect when mouse enters a star
+        const allStars = document.querySelectorAll(".rating-star");
+        allStars.forEach((star) => {
+            star.addEventListener("mouseenter", () => {
+                const ratingValue = star.getAttribute("data-value");
+
+                // Set the color of stars up to the hovered one to orange
+                for (let i = 1; i <= ratingValue; i++) {
+                    document.querySelector(`.rating-star[data-value="${i}"]`).style.color = "orange";
+                }
+            });
+
+            star.addEventListener("mouseleave", () => {
+                // Reset the color of all stars to grey when not hovered
+                allStars.forEach((star) => {
+                    star.style.color = "grey";
+                });
+
+                // Set the color of stars up to the selected one to orange (if applicable)
+                const selectedRating = document.getElementById("ratingInput").value;
+                if (selectedRating !== "") {
+                    for (let i = 1; i <= selectedRating; i++) {
+                        document.querySelector(`.rating-star[data-value="${i}"]`).style.color = "orange";
+                    }
+                }
+            });
+        });
+    </script>
 
 
 </body>
