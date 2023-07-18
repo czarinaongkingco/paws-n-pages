@@ -405,7 +405,10 @@ $clinicID = $row_ca['ClinicID'];
                                                     if ($status === 'Inactive') { ?><a style="color:white; font-size:12px; padding: 5px 10px;  border-radius:10px; background-color:#A52A2A;"><?php echo $row['SubscriptionStatus']; ?></a>
                                                     <?php }
                                                     if ($status === 'Active') { ?><a style="color:white; font-size:12px; padding: 5px 15px;  border-radius:10px; background-color:#228B22;"><?php echo $row['SubscriptionStatus']; ?></a>
+                                                    <?php } 
+                                                    if ($status === 'Expired') { ?><a style="color:white; font-size:12px; padding: 5px 10px;  border-radius:10px; background-color:#000000;"><?php echo $row['SubscriptionStatus']; ?></a>
                                                     <?php } ?>
+
                                                 </td>
                                                 <td style="border:0px; text-align: center;">
                                                     <a href="" clinicid="<?php echo $row['ClinicID'] ?>" clinicname="<?php echo $row['ClinicName'] ?>" owner="<?php echo $row['FirstName'] . ' ' .  $row['MiddleName'] . ' ' . $row['LastName'] ?>" image="<?php echo $row['ClinicImage'] ?>" bpermit="<?php echo $row['BusinessPermit'] ?>" breg="<?php echo $row['BusinessNameReg'] ?>" creg="<?php echo $row['CertificateOfReg'] ?>" subno="<?php echo $row['SubscriptionNo'] ?>" subtype="<?php echo $row['SubscriptionType'] ?>" datesub="<?php echo $row['DateOfSubscription'] ?>" expiry="<?php echo $row['ExpiryDateOfSub'] ?>" substat="<?php echo $row['SubscriptionStatus'] ?>" time="<?php echo date('h:i A', strtotime($row['OpeningTime'])) . ' - ' . date('h:i A', strtotime($row['ClosingTime'])) ?>" days="<?php echo $row['OperatingDays'] ?>" address="<?php echo $row['LotNo_Street'] . ', Brgy. ' . $row['Barangay'] . ',  ' . $row['City']  . ',  ' . $row['Province'] . ' ' . $row['ZIPCode'] ?>" class="edit" title="Edit" data-toggle="modal" data-target="#view_clinic">
