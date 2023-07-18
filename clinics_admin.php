@@ -571,6 +571,7 @@ $clinicID = $row_ca['ClinicID'];
                                                         <option selected disabled>-- Status --</option>
                                                         <option value="Inactive">Inactive</option>
                                                         <option value="Active">Active</option>
+                                                        <option value="Expired">Expired</option>
                                                     </select>
                                                 </div>
                                             </div>
