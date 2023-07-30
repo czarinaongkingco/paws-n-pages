@@ -139,13 +139,14 @@ include("connection.php");
                 <div class="col-lg-8">
                     <div class="row g-3 bg-light" style=" border-radius: 15px; width: 100%; ">
                         <form id="regForm" method="POST" runat="server" enctype="multipart/form-data">
-                            <br>
 
+                            <br>
+                            <ul><h3>Pet Owner Registration</h3></ul><br>
                             <!-- Content 1 -->
                             <div class="samples row g-3 bg-light" id="content1" style=" border-radius: 15px;  padding-left:30px; padding-right:10px;">
                                 <ul id="tabs" role="tablist" class="nav nav-underline nav-fill " style="padding-bottom:30px;">
                                     <li class="nav-link active"><b><i class="fa fa-user"></i>&nbsp;&nbsp;Personal
-                                            Infromation</b></li>
+                                            Information</b></li>
                                     <li class="nav-link" disabled><b><i class="fa fa-map-pin"></i>&nbsp;&nbsp;Address</b></li>
                                 </ul>
                                 <div class="row" style="padding-bottom:10px;">
@@ -169,9 +170,11 @@ include("connection.php");
                                         <span class="error small" id="contactno-error"></span>
                                     </div>
                                     <div class="col-6">
-                                        <p class="required">&nbsp;&nbsp;Birthdate</p>
-                                        <input type="date" name="birthdate" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Birthdate" required>
-                                    </div>
+                                      <p class="required">&nbsp;&nbsp;Birthdate</p>
+                                      <input type="date" id="birthdate" name="birthdate" class="form-control bg-light border-3 px-4 py-3" style="border-radius: 15px;" placeholder="Birthdate" required>
+                                    <span class="error small" id="birthdateError"></span> 
+                                      </div>
+
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-5">
@@ -384,6 +387,31 @@ include("connection.php");
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
+
+<script>
+  // Get the birthdate input element and the error message container
+  const birthdateInput = document.getElementById('birthdate');
+  const birthdateError = document.getElementById('birthdateError');
+
+  // Function to validate the birthdate
+  function validateBirthdate() {
+    const selectedDate = new Date(birthdateInput.value);
+    const currentDate = new Date();
+    const age = currentDate.getFullYear() - selectedDate.getFullYear();
+
+    // Compare the age with the minimum allowed age (18 in this case)
+    if (age < 18) {
+      birthdateError.textContent = "You must be at least 18 years old to proceed.";
+      birthdateInput.value = ''; // Clear the input value
+    } else {
+      birthdateError.textContent = ""; // Clear the error message when the input is valid
+    }
+  }
+
+  // Add an event listener to the birthdate input to trigger the validation
+  birthdateInput.addEventListener('change', validateBirthdate);
+</script>
+
 
     <?php
     if (isset($_POST['submitbtn'])) {

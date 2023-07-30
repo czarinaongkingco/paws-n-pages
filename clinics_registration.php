@@ -146,10 +146,11 @@ include("connection.php");
    
                         <form id="regForm" method="POST" enctype="multipart/form-data" runat="server">
                             <br>
+                            <ul><h3>Clinic Registration</h3></ul>
                             <div class="samples row g-3 bg-light" id="content1" style=" border-radius: 15px; padding-left:30px; padding-right:10px;">
                                 <div class="row g-3 ">
                                     <ul id="tabs" role="tablist" class="nav nav-underline nav-fill " style="padding-bottom:30px;">
-                                        <li class="nav-link active"><b><i class="fa fa-user"></i>&nbsp;&nbsp;Personal Infromation</b></li>
+                                        <li class="nav-link active"><b><i class="fa fa-user"></i>&nbsp;&nbsp;Personal Information</b></li>
                                         <li class="nav-link" disabled><b><i class="fa fa-map-pin"></i>&nbsp;&nbsp;Address</b></li>
                                         <li class="nav-link" disabled><b><i class="fa fa-building"></i>&nbsp;&nbsp;Clinic Details</b></li>
                                         <li class="nav-link" disabled><b><i class="fa fa-folder"></i>&nbsp;&nbsp;Requirements</b></li>
@@ -345,27 +346,27 @@ include("connection.php");
                                         <li class="nav-link active"><b><i class="fa fa-folder"></i>&nbsp;&nbsp;Requirements</b></li>
                                     </ul>
                                 </div>
-                                <div class="row" style="padding-bottom:20px;">
-                                    <div class="col-6">
-                                        <p class="required"> Clinic Profile Picture </p>
-                                        <!-- <img id="cliniclogo" src="" width="100px" /> -->
-                                        <input type="file" name="cliniclogo" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" accept="image/*"/>
-                                    </div>
-                                    <div class="col-6">
-                                        <p class="required"> Upload DTI Certificate of Registration </p>
-                                        <input type="file" name="dticert" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="DTI Certificate of Registration" required>
-                                    </div>
-                                </div>
-                                <div class="row" style="padding-bottom:20px;">
-                                    <div class="col-6">
-                                        <p class="required">Upload Business Permit</p>
-                                        <input type="file" name="businesspermit" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Business Permit" required>
-                                    </div>
-                                    <div class="col-6">
-                                        <p class="required">Upload DTI Registered Business Name</p>
-                                        <input type="file" name="businessname" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Business Name" required>
-                                    </div>
-                                </div>
+                                <div class="row" style="padding-bottom: 20px;">
+  <div class="col-6">
+    <p class="required"> Clinic Profile Picture </p>
+    <input type="file" name="cliniclogo" class="form-control bg-light border-3 px-4 py-3" style="border-radius: 15px;" accept="image/png, image/jpeg, application/pdf"/>
+  </div>
+  <div class="col-6">
+    <p class="required"> Upload DTI Certificate of Registration </p>
+    <input type="file" name="dticert" class="form-control bg-light border-3 px-4 py-3" style="border-radius: 15px;" accept="application/pdf"/>
+  </div>
+</div>
+<div class="row" style="padding-bottom: 20px;">
+  <div class="col-6">
+    <p class="required">Upload Business Permit</p>
+    <input type="file" name="businesspermit" class="form-control bg-light border-3 px-4 py-3" style="border-radius: 15px;" accept="application/pdf"/>
+  </div>
+  <div class="col-6">
+    <p class="required">Upload DTI Registered Business Name</p>
+    <input type="file" name="businessname" class="form-control bg-light border-3 px-4 py-3" style="border-radius: 15px;" accept="application/pdf"/>
+  </div>
+</div>
+
                                 <div class="col-12" style="display: none;">
                                     <input type="text" name="subscriptionstatus" class="form-control  bg-light border-0 px-4 py-3" placeholder="Subscription Status" value="Inactive">
                                 </div>

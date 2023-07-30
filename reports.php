@@ -58,137 +58,7 @@ $clinicID = $row_ca['ClinicID'];
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            outline: none;
-            text-decoration: none;
-            list-style: none;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .wrapper {
-            background: white;
-            display: flex;
-        }
-
-        .side_bar {
-            width: 250px;
-            background: #80b434;
-        }
-
-
-        .main_container {
-            width: calc(100% - 250px);
-            padding: 30px;
-            min-height: 100vh;
-        }
-
-
-
-        .side_bar .side_bar_top .profile_pic {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .side_bar .side_bar_top .profile_pic img {
-            width: 100px;
-            height: 100px;
-            padding: 5px;
-            border: 2px solid white;
-            border-radius: 50%;
-        }
-
-        .side_bar .side_bar_top .profile_info {
-            text-align: center;
-            color: #fff;
-        }
-
-        .side_bar .side_bar_top .profile_info p {
-            margin-top: 5px;
-            font-size: 12px;
-        }
-
-        .side_bar .side_bar_bottom {
-            background: #80b434;
-            padding: 20px 0;
-            padding-left: 15px;
-        }
-
-        .side_bar .side_bar_bottom ul li {
-            position: relative;
-        }
-
-        .side_bar .side_bar_bottom ul li a {
-            display: block;
-            padding: 15px;
-            font-size: 14px;
-            color: white;
-            margin-bottom: 5px;
-        }
-
-        .side_bar .side_bar_bottom ul li a .icon {
-            margin-right: 8px;
-        }
-
-        .side_bar .side_bar_bottom ul li.active a {
-            background: white;
-            color: #80b434;
-            border-top-left-radius: 25px;
-            border-bottom-left-radius: 25px;
-        }
-
-        .side_bar .side_bar_bottom ul li.active .top_curve,
-        .side_bar .side_bar_bottom ul li.active .bottom_curve {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 20px;
-            background: white;
-        }
-
-        .side_bar .side_bar_bottom ul li.active .top_curve {
-            top: -20px;
-        }
-
-        .side_bar .side_bar_bottom ul li.active .bottom_curve {
-            bottom: -20px;
-        }
-
-        .side_bar .side_bar_bottom ul li.active .top_curve:before,
-        .side_bar .side_bar_bottom ul li.active .bottom_curve:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #80b434;
-        }
-
-        .side_bar .side_bar_bottom ul li.active .top_curve:before {
-            border-bottom-right-radius: 25px;
-        }
-
-        .side_bar .side_bar_bottom ul li.active .bottom_curve:before {
-            border-top-right-radius: 25px;
-        }
-
-        .side_bar .side_bar_bottom .sidebar-footer {
-            height: 50px;
-            position: absolute;
-            width: 100%;
-            bottom: 0;
-            list-style-type: none;
-            padding-bottom: 5.5em;
-        }
-    </style>
-
+   <link rel="stylesheet" type="text/css" href="css/admin.css">
     <!-- FOR DIGITAL TIME AND DATE -->
     <script type="text/javascript">
         function updateClock() {
@@ -244,7 +114,7 @@ $clinicID = $row_ca['ClinicID'];
 </head>
 
 <body onload="initClock()">
-    <div style="width:100%; height:50px; background-color:#73a22e;">
+    <div style="width:100%; height:50px;" class="aheader">
         <p style="color:white; font-size:23px; padding-left:10px;"><img src="img/logo_white.png" height="50px">&nbsp;PawsNPages
             <?php
             $ret = mysqli_query($con, "SELECT * FROM users WHERE UserID='$userID'");
