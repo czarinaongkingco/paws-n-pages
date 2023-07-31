@@ -906,25 +906,48 @@ $row_u = mysqli_fetch_array($sql_u);
         $folder1 = "image_upload/" . $file1;
         move_uploaded_file($tempfile1, $folder1);
 
+        $_allowedTypes1 = ['jpeg', 'png', 'jpg'];
+        $_fileType1 = pathinfo($file1, PATHINFO_EXTENSION);
+
         $ref_no = $_POST['ref_no'];
         $noOfPets = $_POST['noofpets'];
         $amountToPay = $_POST['amount'];
         $paymentStatus = 'Pending';
 
-        $query = mysqli_query($con, "INSERT INTO petbooklet (Payment_Proof, RefNo_Input, NoOfPets, AmountToPay, PaymentStatus, UserID) VALUES ('$file1', '$ref_no', '$noOfPets', '$amountToPay', '$paymentStatus', '$userID')");
+        if (in_array($_fileType1, $_allowedTypes1)) {
+            $query = mysqli_query($con, "INSERT INTO petbooklet (Payment_Proof, RefNo_Input, NoOfPets, AmountToPay, PaymentStatus, UserID) VALUES ('$file1', '$ref_no', '$noOfPets', '$amountToPay', '$paymentStatus', '$userID')");
+            if ($query) {
 
-        if ($query) {
+                $name = $row_u['FirstName'] . ' ' . $row_u['MiddleName'] . ' ' . $row_u['LastName'];
 
-            $name = $row_u['FirstName'] . ' ' . $row_u['MiddleName'] . ' ' . $row_u['LastName'];
+                sendNotification_PB($name, $noOfPets, $amountToPay);
 
-            sendNotification_PB($name, $noOfPets, $amountToPay);
-
+                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                echo '<script>';
+                echo 'swal({
+                                                title: "Success",
+                                                text: "You have successfully paid for (a) new Pet Booklet",
+                                                icon: "success",
+                                                html: true,
+                                                showCancelButton: true,
+                                                })
+                                                    .then((willDelete) => {
+                                                        if (willDelete) {
+                                                        
+                                                            document.location ="userprofile.php";
+                                                        }
+                                                    })';
+                echo '</script>';
+            } else {
+                echo "<script>alert('Error buying new pet booklet.');</script>";
+            }
+        } else {
             echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
             echo '<script>';
             echo 'swal({
-                                            title: "Success",
-                                            text: "You have successfully paid for (a) new Pet Booklet",
-                                            icon: "success",
+                                            title: "Error",
+                                            text: "Invalid file type. Please upload .jpg or .png file only.",
+                                            icon: "error",
                                             html: true,
                                             showCancelButton: true,
                                             })
@@ -935,9 +958,10 @@ $row_u = mysqli_fetch_array($sql_u);
                                                     }
                                                 })';
             echo '</script>';
-        } else {
-            echo "<script>alert('Error buying new pet booklet.');</script>";
         }
+
+
+        
     }
 
     if (isset($_POST['edit_pet_details'])) {
