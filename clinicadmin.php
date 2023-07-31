@@ -604,40 +604,40 @@ $row_cb = mysqli_num_rows($ret_cb);
                                     <div class="col-md-4">
                                         <label>First Name</label>
                                         <input type="hidden" name="userID" value="<?php echo $row['UserID'] ?>" />
-                                        <input type="text" name="fname" value="<?php echo $row['FirstName'] ?>"
+                                        <input type="text" name="afname" value="<?php echo $row['FirstName'] ?>"
                                             class="form-control" />
                                     </div>
                                     <div class="col-md-4">
                                         <label>Middle Name</label>
-                                        <input type="text" name="mname" value="<?php echo $row['MiddleName'] ?>"
+                                        <input type="text" name="amname" value="<?php echo $row['MiddleName'] ?>"
                                             class="form-control" />
                                     </div>
                                     <div class="col-md-4">
                                         <label>Last Name</label>
-                                        <input type="text" name="lname" value="<?php echo $row['LastName'] ?>"
+                                        <input type="text" name="alname" value="<?php echo $row['LastName'] ?>"
                                             class="form-control" />
                                     </div>
                                 </div>
                                 <div class="row gx-3 mb-3">
                                     <div class="col-md-6">
                                         <label>Contact No.</label>
-                                        <input type="text" name="cnum" value="<?php echo $row['ContactNo'] ?>"
+                                        <input type="text" name="acnum" value="<?php echo $row['ContactNo'] ?>"
                                             class="form-control" />
                                     </div>
                                     <div class="col-md-6">
                                         <label>Birthdate</label>
-                                        <input type="date" name="bdate" id="bdate" value="<?php echo $row['Birth_Date'] ?>"
+                                        <input type="date" name="abdate" id="bdate" value="<?php echo $row['Birth_Date'] ?>"
                                             class="form-control" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <input type="text" name="username" value="<?php echo $row['Username'] ?>"
+                                    <input type="text" name="ausername" value="<?php echo $row['Username'] ?>"
                                         class="form-control" />
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" name="email" value="<?php echo $row['Email'] ?>" class="form-control"
+                                    <input type="text" name="aemail" value="<?php echo $row['Email'] ?>" class="form-control"
                                         readonly />
                                 </div>
                                 <div class="form-group">
@@ -647,7 +647,7 @@ $row_cb = mysqli_num_rows($ret_cb);
                                 </div>
                                 <div class="form-group">
                                     <label>New Password</label>
-                                    <input type="password" name="newpassword" class="form-control" />
+                                    <input type="password" name="anewpassword" class="form-control" />
                                 </div>
                             <?php } ?>
                         </div>
@@ -1133,8 +1133,14 @@ $row_cb = mysqli_num_rows($ret_cb);
         $ausername = $_POST['ausername'];
         $aemail = $_POST['aemail'];
 
+        $afname = $_POST['afname'];
+        $amname = $_POST['amname'];
+        $alname = $_POST['alname'];
+        $acnum = $_POST['acnum'];
+        $abdate = $_POST['abdate'];
 
-        $query = mysqli_query($con, "UPDATE users SET  Username='$ausername', Password='$ah_pword', Email='$aemail' WHERE UserID='$userID'");
+
+        $query = mysqli_query($con, "UPDATE users SET FirstName='$afname', MiddleName='$amname', LastName='$alname', ContactNo='$acnum', Birth_Date='$abdate', Username='$ausername', Password='$ah_pword', Email='$aemail' WHERE UserID='$userID'");
 
         if ($query) {
             echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
@@ -1159,10 +1165,16 @@ $row_cb = mysqli_num_rows($ret_cb);
     }
     if (isset($_POST['update_admin']) && $anewpass == "") {
 
-        $username = $_POST['ausername'];
+        $ausername = $_POST['ausername'];
         $aemail = $_POST['aemail'];
 
-        $query = mysqli_query($con, "UPDATE users SET Username='$username', Email='$aemail' WHERE UserID='$userID'");
+        $afname = $_POST['afname'];
+        $amname = $_POST['amname'];
+        $alname = $_POST['alname'];
+        $acnum = $_POST['acnum'];
+        $abdate = $_POST['abdate'];
+
+        $query = mysqli_query($con, "UPDATE users SET FirstName='$afname', MiddleName='$amname', LastName='$alname', ContactNo='$acnum', Birth_Date='$abdate', Username='$ausername', Email='$aemail' WHERE UserID='$userID'");
 
         if ($query) {
             echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
