@@ -945,10 +945,10 @@ $row_u = mysqli_fetch_array($sql_u);
         $_file = $_FILES['petimage2']['name'];
         $_tempfile = $_FILES['petimage2']['tmp_name'];
         $_folder = "image_upload/" . $_file;
-        $_allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
-        $_fileType = mime_content_type($_tempfile);
-
         move_uploaded_file($_tempfile, $_folder);
+        
+        $_allowedTypes = ['jpeg', 'png', 'jpg'];
+        $_fileType = pathinfo($_file, PATHINFO_EXTENSION);
 
         $_petID = $_POST['petid1'];
         $_petname = $_POST['petname1'];
