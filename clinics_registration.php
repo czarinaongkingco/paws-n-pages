@@ -462,7 +462,7 @@ include("connection.php");
                                     </div>
                                     <div class="col-6">
                                         <p class="required"> Upload DTI Certificate of Registration </p>
-                                        <input type="file" name="dticert"
+                                        <input type="file" name="dticert" accept=".jpg, .jpeg, .png, .pdf"
                                             class="form-control  bg-light border-3 px-4 py-3"
                                             style="border-radius:15px;" placeholder="DTI Certificate of Registration"
                                             required>
@@ -471,13 +471,13 @@ include("connection.php");
                                 <div class="row" style="padding-bottom:20px;">
                                     <div class="col-6">
                                         <p class="required">Upload Business Permit</p>
-                                        <input type="file" name="businesspermit"
+                                        <input type="file" name="businesspermit" accept=".jpg, .jpeg, .png, .pdf"
                                             class="form-control  bg-light border-3 px-4 py-3"
                                             style="border-radius:15px;" placeholder="Business Permit" required>
                                     </div>
                                     <div class="col-6">
                                         <p class="required">Upload DTI Registered Business Name</p>
-                                        <input type="file" name="businessname"
+                                        <input type="file" name="businessname" accept=".jpg, .jpeg, .png, .pdf"
                                             class="form-control  bg-light border-3 px-4 py-3"
                                             style="border-radius:15px;" placeholder="Business Name" required>
                                     </div>
