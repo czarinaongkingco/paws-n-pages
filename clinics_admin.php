@@ -2,6 +2,7 @@
 session_start();
 include('config.php');
 include('connection.php');
+include('functions.php');
 
 $userID = $_SESSION["id"];
 $usertype = $_SESSION['usertype'];
@@ -11,6 +12,16 @@ $cnt_ca = 1;
 $row_ca = mysqli_fetch_array($ret_ca);
 
 $clinicID = $row_ca['ClinicID'];
+
+
+// Test
+
+// date_default_timezone_set("Asia/Hong_Kong");
+// $currentDate = date('Y-m-d');
+// $nextMonthDate = date('Y-m-d', strtotime("+1 month $currentDate"));
+// $nextYearDate = date('Y-m-d', strtotime("+12 months $currentDate"));
+
+// echo "Current Date: " . $currentDate . ", Next Month: " . $nextMonthDate . ", Next Year: " . $nextYearDate;
 
 ?>
 
@@ -57,7 +68,8 @@ $clinicID = $row_ca['ClinicID'];
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-   <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+
     <!-- FOR DIGITAL TIME AND DATE -->
     <script type="text/javascript">
         function updateClock() {
@@ -265,7 +277,7 @@ $clinicID = $row_ca['ClinicID'];
                                             <!--Fetch the Records -->
                                             <tr style="border:0px;">
                                                 <td style="border:0px;">
-                                                    <a href="" clinicid="<?php echo $row['ClinicID'] ?>" clinicname="<?php echo $row['ClinicName'] ?>" owner="<?php echo $row['FirstName'] . ' ' .  $row['MiddleName'] . ' ' . $row['LastName'] ?>" image="<?php echo $row['ClinicImage'] ?>" bpermit="<?php echo $row['BusinessPermit'] ?>" breg="<?php echo $row['BusinessNameReg'] ?>" creg="<?php echo $row['CertificateOfReg'] ?>" subno="<?php echo $row['SubscriptionNo'] ?>" subtype="<?php echo $row['SubscriptionType'] ?>" datesub="<?php echo $row['DateOfSubscription'] ?>" expiry="<?php echo $row['ExpiryDateOfSub'] ?>" substat="<?php echo $row['SubscriptionStatus'] ?>" time="<?php echo date('h:i A', strtotime($row['OpeningTime'])) . ' - ' . date('h:i A', strtotime($row['ClosingTime'])) ?>" days="<?php echo $row['OperatingDays'] ?>" address="<?php echo $row['LotNo_Street'] . ', Brgy. ' . $row['Barangay'] . ',  ' . $row['City']  . ',  ' . $row['Province'] . ' ' . $row['ZIPCode'] ?>" class="edit" title="Edit" data-toggle="modal" data-target="#view_clinic"><?php echo $row['SubscriptionNo'] ?></a>
+                                                    <a href="" clinicid="<?php echo $row['ClinicID'] ?>" clinicname="<?php echo $row['ClinicName'] ?>" owner="<?php echo $row['FirstName'] . ' ' .  $row['MiddleName'] . ' ' . $row['LastName'] ?>" image="<?php echo $row['ClinicImage'] ?>" bpermit="<?php echo $row['BusinessPermit'] ?>" breg="<?php echo $row['BusinessNameReg'] ?>" creg="<?php echo $row['CertificateOfReg'] ?>" subno="<?php echo $row['SubscriptionNo'] ?>" subtype="<?php echo $row['SubscriptionType'] ?>" datesub="<?php echo $row['DateOfSubscription'] ?>" expiry="<?php echo $row['ExpiryDateOfSub'] ?>" substat="<?php echo $row['SubscriptionStatus'] ?>" time="<?php echo date('h:i A', strtotime($row['OpeningTime'])) . ' - ' . date('h:i A', strtotime($row['ClosingTime'])) ?>" days="<?php echo $row['OperatingDays'] ?>" address="<?php echo $row['LotNo_Street'] . ', Brgy. ' . $row['Barangay'] . ',  ' . $row['City']  . ',  ' . $row['Province'] . ' ' . $row['ZIPCode'] ?>" proofOfPayment="<?php echo $row['Sub_ProofPayment'] ?>" referenceNo="<?php echo $row['Sub_ProofRefNo'] ?>" subRemarks="<?php echo $row['Sub_Remarks'] ?>" class="edit" title="Edit" data-toggle="modal" data-target="#view_clinic"><?php echo $row['SubscriptionNo'] ?></a>
                                                 </td>
                                                 <td style="border:0px;"><?php echo $row['ClinicName'] ?></td>
                                                 <td style="border:0px;"><?php echo $row['FirstName'] . ' ' .  $row['MiddleName'] . ' ' . $row['LastName'] ?></td>
@@ -275,13 +287,15 @@ $clinicID = $row_ca['ClinicID'];
                                                     if ($status === 'Inactive') { ?><a style="color:white; font-size:12px; padding: 5px 10px;  border-radius:10px; background-color:#A52A2A;"><?php echo $row['SubscriptionStatus']; ?></a>
                                                     <?php }
                                                     if ($status === 'Active') { ?><a style="color:white; font-size:12px; padding: 5px 15px;  border-radius:10px; background-color:#228B22;"><?php echo $row['SubscriptionStatus']; ?></a>
-                                                    <?php } 
+                                                    <?php }
                                                     if ($status === 'Expired') { ?><a style="color:white; font-size:12px; padding: 5px 10px;  border-radius:10px; background-color:#000000;"><?php echo $row['SubscriptionStatus']; ?></a>
+                                                    <?php }
+                                                    if ($status === 'Evaluated') { ?><a style="color:white; font-size:12px; padding: 5px 10px;  border-radius:10px; background-color:#f4bb44;"><?php echo $row['SubscriptionStatus']; ?></a>
                                                     <?php } ?>
 
                                                 </td>
                                                 <td style="border:0px; text-align: center;">
-                                                    <a href="" clinicid="<?php echo $row['ClinicID'] ?>" clinicname="<?php echo $row['ClinicName'] ?>" owner="<?php echo $row['FirstName'] . ' ' .  $row['MiddleName'] . ' ' . $row['LastName'] ?>" image="<?php echo $row['ClinicImage'] ?>" bpermit="<?php echo $row['BusinessPermit'] ?>" breg="<?php echo $row['BusinessNameReg'] ?>" creg="<?php echo $row['CertificateOfReg'] ?>" subno="<?php echo $row['SubscriptionNo'] ?>" subtype="<?php echo $row['SubscriptionType'] ?>" datesub="<?php echo $row['DateOfSubscription'] ?>" expiry="<?php echo $row['ExpiryDateOfSub'] ?>" substat="<?php echo $row['SubscriptionStatus'] ?>" time="<?php echo date('h:i A', strtotime($row['OpeningTime'])) . ' - ' . date('h:i A', strtotime($row['ClosingTime'])) ?>" days="<?php echo $row['OperatingDays'] ?>" address="<?php echo $row['LotNo_Street'] . ', Brgy. ' . $row['Barangay'] . ',  ' . $row['City']  . ',  ' . $row['Province'] . ' ' . $row['ZIPCode'] ?>" class="edit" title="Edit" data-toggle="modal" data-target="#view_clinic">
+                                                    <a href="" clinicid="<?php echo $row['ClinicID'] ?>" clinicname="<?php echo $row['ClinicName'] ?>" owner="<?php echo $row['FirstName'] . ' ' .  $row['MiddleName'] . ' ' . $row['LastName'] ?>" image="<?php echo $row['ClinicImage'] ?>" bpermit="<?php echo $row['BusinessPermit'] ?>" breg="<?php echo $row['BusinessNameReg'] ?>" creg="<?php echo $row['CertificateOfReg'] ?>" subno="<?php echo $row['SubscriptionNo'] ?>" subtype="<?php echo $row['SubscriptionType'] ?>" datesub="<?php echo $row['DateOfSubscription'] ?>" expiry="<?php echo $row['ExpiryDateOfSub'] ?>" substat="<?php echo $row['SubscriptionStatus'] ?>" time="<?php echo date('h:i A', strtotime($row['OpeningTime'])) . ' - ' . date('h:i A', strtotime($row['ClosingTime'])) ?>" days="<?php echo $row['OperatingDays'] ?>" address="<?php echo $row['LotNo_Street'] . ', Brgy. ' . $row['Barangay'] . ',  ' . $row['City']  . ',  ' . $row['Province'] . ' ' . $row['ZIPCode'] ?>" proofOfPayment="<?php echo $row['Sub_ProofPayment'] ?>" referenceNo="<?php echo $row['Sub_ProofRefNo'] ?>" subRemarks="<?php echo $row['Sub_Remarks'] ?>" class="edit" title="Edit" data-toggle="modal" data-target="#view_clinic">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
                                                 </td>
@@ -318,7 +332,7 @@ $clinicID = $row_ca['ClinicID'];
                 <div class="modal-content" style="border-radius: 15px;">
                     <form method="POST" runat="server" enctype="multipart/form-data" id="view_clinic_form">
                         <div class="modal-header modal-header-success">
-                            <h3 class="modal-title">Order Details</h3>
+                            <h3 class="modal-title">Clinic Details</h3>
                             <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -329,6 +343,35 @@ $clinicID = $row_ca['ClinicID'];
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <!-- START OF TABLE -->
+                                                <div class="card mb-4 mb-xl-0" style="border-radius: 15px;">
+                                                    <div class="card-header userProfile-font"><b>Requirements</b></div>
+                                                    <div class="card-body text-center">
+                                                        <table class="table table-striped table-hover" style="border:0px; text-align: left;" id="orders">
+                                                            <thead style="border:0px;">
+                                                            </thead>
+                                                            <tbody style="border:0px;">
+                                                                <tr style="border:0px;">
+                                                                    <td style="border:0px;">Business Permit</td>
+                                                                    <td style="border:0px;"> <a href="" id="DL_BPermit" target="_blank" download>Download</a></td>
+                                                                </tr>
+                                                                <tr style="border:0px;">
+                                                                    <td style="border:0px;">Bussiness Name Registration</td>
+                                                                    <td style="border:0px;"> <a href="" id="DL_BReg" target="_blank" download>Download</a></td>
+                                                                </tr>
+                                                                <tr style="border:0px;">
+                                                                    <td style="border:0px;">Certificate of Registration</td>
+                                                                    <td style="border:0px;"> <a href="" id="DL_CReg" target="_blank" download>Download</a></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END OF TABLE -->
+                                        </div>
                                         <div class="form-group">
                                             <label>Clinic Image (Current)</label>
                                             <!-- <input type="text" name="SupplyImage_c" id="SupplyImage_c" class="form-control" readonly /> -->
@@ -373,29 +416,26 @@ $clinicID = $row_ca['ClinicID'];
                                             <textarea name="OrderedProducts" id="OrderedProducts" class="form-control" style="width: 100%;" rows="4" readonly></textarea>
                                         </div>
 
+
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <!-- START OF TABLE -->
                                                 <div class="card mb-4 mb-xl-0" style="border-radius: 15px;">
-                                                    <div class="card-header userProfile-font"><b>Requirements</b></div>
+                                                    <div class="card-header userProfile-font"><b>Payment for Subscription</b></div>
                                                     <div class="card-body text-center">
                                                         <table class="table table-striped table-hover" style="border:0px; text-align: left;" id="orders">
                                                             <thead style="border:0px;">
                                                             </thead>
                                                             <tbody style="border:0px;">
                                                                 <tr style="border:0px;">
-                                                                    <td style="border:0px;">Business Permit</td>
-                                                                    <td style="border:0px;"> <a href="" id="DL_BPermit" target="_blank" download>Download</a></td>
+                                                                    <td style="border:0px;">Proof of Payment</td>
+                                                                    <td style="border:0px;"><a href="" id="proofOfPayment" target="_blank" download>Download</a></td>
                                                                 </tr>
                                                                 <tr style="border:0px;">
-                                                                    <td style="border:0px;">Bussiness Name Registration</td>
-                                                                    <td style="border:0px;"> <a href="" id="DL_BReg" target="_blank" download>Download</a></td>
-                                                                </tr>
-                                                                <tr style="border:0px;">
-                                                                    <td style="border:0px;">Certificate of Registration</td>
-                                                                    <td style="border:0px;"> <a href="" id="DL_CReg" target="_blank" download>Download</a></td>
+                                                                    <td style="border:0px;">Reference Number</td>
+                                                                    <td style="border:0px;"><span id="referenceNo"></span></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -404,7 +444,6 @@ $clinicID = $row_ca['ClinicID'];
                                             </div>
                                             <!-- END OF TABLE -->
                                         </div>
-
                                         <div class="form-group">
                                             <label>Subscription No.</label>
                                             <input type="text" name="SubNo" id="SubNo" class="form-control" readonly />
@@ -423,14 +462,15 @@ $clinicID = $row_ca['ClinicID'];
                                                     </select>
                                                 </div>
                                             </div>
+
                                         </div>
                                         <div class="form-group">
                                             <label>Date of Subscription</label>
-                                            <input type="date" name="SubDate" id="SubDate" class="form-control" />
+                                            <input type="text" name="SubDate" id="SubDate" class="form-control" readonly />
                                         </div>
                                         <div class="form-group">
                                             <label>Expiration Date of Subscription</label>
-                                            <input type="date" name="SubExp" id="SubExp" class="form-control" />
+                                            <input type="text" name="SubExp" id="SubExp" class="form-control" readonly />
                                         </div>
                                         <div class="form-group">
                                             <label>Subscription Status</label>
@@ -442,12 +482,18 @@ $clinicID = $row_ca['ClinicID'];
                                                     <select name="SubStatus2" id="SubStatus2" style="border-radius: 5px; width: 100%;" class="bg-light border-0 px-4 py-3">
                                                         <option selected disabled>-- Status --</option>
                                                         <option value="Inactive">Inactive</option>
+                                                        <option value="Evaluated">Evaluated</option>
                                                         <option value="Active">Active</option>
                                                         <option value="Expired">Expired</option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label>Subscription Remarks</label>
+                                            <textarea name="subRemarks" id="subRemarks" class="form-control" style="width: 100%;" rows="5"></textarea>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -465,62 +511,34 @@ $clinicID = $row_ca['ClinicID'];
         </div>
         <!--  END OF MODAL FOR VIEWING CLINIC DETAILS -->
 
-        <script>
-    // Add event listener to "SubStatus2" select element
-    document.getElementById('SubStatus2').addEventListener('change', function () {
-        // Get the selected value
-        var subStatus = this.value;
 
-        // Set the "SubStatus" input value
-        document.getElementById('SubStatus').value = subStatus;
-
-        // If "Active" is selected, set "SubDate" to the current date
-        if (subStatus === 'Active') {
-            var today = new Date();
-            var dd = String(today.getDate()).padStart(2, '0');
-            var mm = String(today.getMonth() + 1).padStart(2, '0');
-            var yyyy = today.getFullYear();
-            var currentDate = yyyy + '-' + mm + '-' + dd;
-            document.getElementById('SubDate').value = currentDate;
-        }
-
-        // Trigger the "SubType2" change event to recalculate the "SubExp" date
-        document.getElementById('SubType2').dispatchEvent(new Event('change'));
-    });
-
-    // Add event listener to "SubType2" select element
-    document.getElementById('SubType2').addEventListener('change', function () {
-        // Get the selected value
-        var subType = this.value;
-
-        // Set the "SubType" input value
-        document.getElementById('SubType').value = subType;
-
-        // If "Monthly" is selected, set "SubExp" to 31 days after "SubDate"
-        if (subType === 'Monthly') {
-            var subDate = new Date(document.getElementById('SubDate').value);
-            var subExp = new Date(subDate);
-            subExp.setDate(subExp.getDate() + 31);
-            document.getElementById('SubExp').value = subExp.toISOString().split('T')[0];
-        }
-        // If "Annually" is selected, set "SubExp" to 1 year after "SubDate"
-        else if (subType === 'Annually') {
-            var subDate = new Date(document.getElementById('SubDate').value);
-            var subExp = new Date(subDate);
-            subExp.setFullYear(subExp.getFullYear() + 1);
-            document.getElementById('SubExp').value = subExp.toISOString().split('T')[0];
-        }
-    });
-</script>
         <?php
         if (isset($_POST['edit'])) {
 
             $clinic_ID = $_POST['ClinicID'];
+            $clinic_name = $_POST['ClinicName'];
+
+            // Start - get user details based on clinic id
+            $sql_cl = mysqli_query($con, "SELECT UserID FROM clinics WHERE ClinicID='$clinic_ID'");
+            $rows_cl = mysqli_fetch_array($sql_cl);
+
+            $cl_user = $rows_cl['UserID'];
+            $sql_u = mysqli_query($con, "SELECT * FROM users WHERE UserID='$cl_user'");
+            $rows_u = mysqli_fetch_array($sql_u);
+
+            $cl_email = $rows_u['Email'];
+            // End - get user details based on clinic id
 
             $subType = $_POST['SubType2'];
             $dateSub = $_POST['SubDate'];
             $expirySub = $_POST['SubExp'];
             $subStatus = $_POST['SubStatus2'];
+            $subRemarks = $_POST['subRemarks'];
+
+            date_default_timezone_set("Asia/Hong_Kong");
+            $currentDate = date('Y-m-d');
+            $nextMonthDate = date('Y-m-d', strtotime("+1 month $currentDate"));
+            $nextYearDate = date('Y-m-d', strtotime("+12 months $currentDate"));
 
             if ($subType == "")
                 $subType = $_POST['SubType'];
@@ -528,13 +546,22 @@ $clinicID = $row_ca['ClinicID'];
             if ($subStatus == "")
                 $subStatus = $_POST['SubStatus'];
 
+            if ($subType == "Monthly")
+                $exp_Date = $nextMonthDate;
 
-            $query = mysqli_query($con, "UPDATE clinics SET SubscriptionType='$subType', DateOfSubscription='$dateSub', ExpiryDateOfSub='$expirySub', SubscriptionStatus='$subStatus' WHERE ClinicID='$clinic_ID'");
+            if ($subType == "Annually")
+                $exp_Date = $nextYearDate;
 
-            if ($query) {
-                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
-                echo '<script>';
-                echo 'swal({
+
+            if ($subStatus == "Active") {
+                $query = mysqli_query($con, "UPDATE clinics SET SubscriptionType='$subType', DateOfSubscription='$currentDate', ExpiryDateOfSub='$exp_Date', SubscriptionStatus='$subStatus', Sub_Remarks='$subRemarks' WHERE ClinicID='$clinic_ID'");
+
+                sendNotification_Active($cl_email, $clinic_name);
+
+                if ($query) {
+                    echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                    echo '<script>';
+                    echo 'swal({
                                             title: "Success",
                                             text: "You have successfully updated a clinic subscription",
                                             icon: "success",
@@ -547,15 +574,65 @@ $clinicID = $row_ca['ClinicID'];
                                                         document.location ="clinics_admin.php";
                                                     }
                                                 })';
-                echo '</script>';
-            } else {
-                echo "<script> alert('Error updating a clinic subscription.'); </script>";
+                    echo '</script>';
+                } else {
+                    echo "<script> alert('Error updating a clinic subscription.'); </script>";
+                }
+            }
+
+            if ($subStatus == "Evaluated") {
+                $query = mysqli_query($con, "UPDATE clinics SET SubscriptionType='$subType', SubscriptionStatus='$subStatus', Sub_Remarks='$subRemarks' WHERE ClinicID='$clinic_ID'");
+
+                sendNotification_BusinessReq($cl_email, $clinic_name);
+
+                if ($query) {
+                    echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                    echo '<script>';
+                    echo 'swal({
+                                            title: "Success",
+                                            text: "You have successfully updated a clinic subscription",
+                                            icon: "success",
+                                            html: true,
+                                            showCancelButton: true,
+                                            })
+                                                .then((willDelete) => {
+                                                    if (willDelete) {
+                                                    
+                                                        document.location ="clinics_admin.php";
+                                                    }
+                                                })';
+                    echo '</script>';
+                } else {
+                    echo "<script> alert('Error updating a clinic subscription.'); </script>";
+                }
+            }
+
+            if ($subStatus == "Inactive" || $subStatus == "Expired") {
+                $query = mysqli_query($con, "UPDATE clinics SET SubscriptionType='$subType', SubscriptionStatus='$subStatus', Sub_Remarks='$subRemarks' WHERE ClinicID='$clinic_ID'");
+
+                if ($query) {
+                    echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                    echo '<script>';
+                    echo 'swal({
+                                            title: "Success",
+                                            text: "You have successfully updated a clinic subscription",
+                                            icon: "success",
+                                            html: true,
+                                            showCancelButton: true,
+                                            })
+                                                .then((willDelete) => {
+                                                    if (willDelete) {
+                                                    
+                                                        document.location ="clinics_admin.php";
+                                                    }
+                                                })';
+                    echo '</script>';
+                } else {
+                    echo "<script> alert('Error updating a clinic subscription.'); </script>";
+                }
             }
         }
         ?>
-
-
-
 
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -599,6 +676,10 @@ $clinicID = $row_ca['ClinicID'];
                 var time = $(opener).attr('time');
                 var days = $(opener).attr('days');
 
+                var proofOfPayment = $(opener).attr('proofOfPayment');
+                var referenceNo = $(opener).attr('referenceNo');
+                var subRemarks = $(opener).attr('subRemarks');
+
                 $('#view_clinic_form').find('[name="ClinicID"]').val(clinicid);
                 $('#view_clinic_form').find('[name="ClinicName"]').val(clinicname);
                 $('#view_clinic_form').find('[name="Owner"]').val(owner);
@@ -606,10 +687,14 @@ $clinicID = $row_ca['ClinicID'];
                 // $('#view_clinic_form').find('[name="ClinicImage_c"]').prop('src', 'image_upload/' + image);
                 $('#view_clinic_form').find('[id="ClinicImage_current"]').prop('href', 'image_upload/' + image);
                 $('#view_clinic_form').find('[id="view_clinicImage"]').html(image);
-
                 $('#view_clinic_form').find('[id="DL_BPermit"]').prop('href', 'clinic_verification/' + bpermit);
                 $('#view_clinic_form').find('[id="DL_BReg"]').prop('href', 'clinic_verification/' + breg);
                 $('#view_clinic_form').find('[id="DL_CReg"]').prop('href', 'clinic_verification/' + creg);
+
+                $('#view_clinic_form').find('[id="proofOfPayment"]').prop('href', 'clinic_verification/' + proofOfPayment);
+                $('#view_clinic_form').find('[id="referenceNo"]').html(referenceNo);
+                $('#view_clinic_form').find('[name="subRemarks"]').val(subRemarks);
+
                 $('#view_clinic_form').find('[name="SubNo"]').val(subno);
                 $('#view_clinic_form').find('[name="SubType"]').val(subtype);
                 $('#view_clinic_form').find('[name="SubDate"]').val(datesub);
@@ -618,6 +703,14 @@ $clinicID = $row_ca['ClinicID'];
                 $('#view_clinic_form').find('[name="OrderedProducts"]').val(address);
                 $('#view_clinic_form').find('[name="OHours"]').val(time);
                 $('#view_clinic_form').find('[name="ODays"]').val(days);
+
+                $('#SubStatus2').on('change', function() {
+                    if ($(this).val() === "Inactive") {
+                        $('#subRemarks').attr('required', true);
+                    } else {
+                        $('#subRemarks').attr('required', false);
+                    }
+                });
 
                 endResize();
             });
