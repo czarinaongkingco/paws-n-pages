@@ -462,7 +462,7 @@ include("connection.php");
                                     </div>
                                     <div class="col-6">
                                         <p class="required"> Upload DTI Certificate of Registration </p>
-                                        <input type="file" name="dticert" accept=".jpg, .jpeg, .png, .pdf"
+                                        <input type="file" name="dticert"
                                             class="form-control  bg-light border-3 px-4 py-3"
                                             style="border-radius:15px;" placeholder="DTI Certificate of Registration"
                                             required>
@@ -471,13 +471,13 @@ include("connection.php");
                                 <div class="row" style="padding-bottom:20px;">
                                     <div class="col-6">
                                         <p class="required">Upload Business Permit</p>
-                                        <input type="file" name="businesspermit" accept=".jpg, .jpeg, .png, .pdf"
+                                        <input type="file" name="businesspermit"
                                             class="form-control  bg-light border-3 px-4 py-3"
                                             style="border-radius:15px;" placeholder="Business Permit" required>
                                     </div>
                                     <div class="col-6">
                                         <p class="required">Upload DTI Registered Business Name</p>
-                                        <input type="file" name="businessname" accept=".jpg, .jpeg, .png, .pdf"
+                                        <input type="file" name="businessname"
                                             class="form-control  bg-light border-3 px-4 py-3"
                                             style="border-radius:15px;" placeholder="Business Name" required>
                                     </div>
@@ -663,6 +663,22 @@ include("connection.php");
 
         move_uploaded_file($tempfile4, $folder4);
 
+        // 1
+        $_allowedTypes1 = ['jpeg', 'png', 'jpg'];
+        $_fileType1 = pathinfo($file1, PATHINFO_EXTENSION);
+
+        // 2
+        $_allowedTypes2 = ['jpeg', 'png', 'jpg'];
+        $_fileType2 = pathinfo($file2, PATHINFO_EXTENSION);
+
+        // 3
+        $_allowedTypes3 = ['jpeg', 'png', 'jpg'];
+        $_fileType3 = pathinfo($file3, PATHINFO_EXTENSION);
+
+        // 4
+        $_allowedTypes4 = ['jpeg', 'png', 'jpg'];
+        $_fileType4 = pathinfo($file4, PATHINFO_EXTENSION);
+
         // Other Fields
         $clinicName = $_POST['clinicname'];
         $subscriptionType = $_POST['subtype'];
@@ -714,36 +730,38 @@ include("connection.php");
                                                 })';
             echo '</script>';
         } else {
-            $con->begin_Transaction();
 
-            $sqlTable1 = "INSERT INTO users (FirstName, MiddleName, LastName, ContactNo, Birth_Date, UserType, Username, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $stmtTable1 = $con->prepare($sqlTable1);
-            $stmtTable1->bind_param("sssssssss", $fname, $mname, $lname, $contactno, $bdate, $utype, $uname, $email, $h_pword);
-            $stmtTable1->execute();
+            if (in_array($_fileType1, $_allowedTypes1) && in_array($_fileType2, $_allowedTypes2) && in_array($_fileType3, $_allowedTypes3) && in_array($_fileType4, $_allowedTypes4)) {
+                $con->begin_Transaction();
 
-            $primaryKey = $con->insert_id;
+                $sqlTable1 = "INSERT INTO users (FirstName, MiddleName, LastName, ContactNo, Birth_Date, UserType, Username, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $stmtTable1 = $con->prepare($sqlTable1);
+                $stmtTable1->bind_param("sssssssss", $fname, $mname, $lname, $contactno, $bdate, $utype, $uname, $email, $h_pword);
+                $stmtTable1->execute();
 
-            $sqlTable2 = "INSERT INTO address (LotNo_Street, Barangay, City, Province, ZIPCode, UserID) VALUES (?, ?, ?, ?, ?, ?)";
-            $stmtTable2 = $con->prepare($sqlTable2);
-            $stmtTable2->bind_param("sssssi", $lotno_street, $barangay, $city, $province, $zipcode, $primaryKey);
-            $stmtTable2->execute();
+                $primaryKey = $con->insert_id;
 
-            $sqlTable3 = "INSERT INTO clinics (ClinicName, ClinicImage, BusinessPermit, BusinessNameReg, CertificateOfReg, SubscriptionNo, SubscriptionType, SubscriptionStatus, OpeningTime, ClosingTime, OperatingDays, UserID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $stmtTable3 = $con->prepare($sqlTable3);
-            $stmtTable3->bind_param("sssssssssssi", $clinicName, $file1, $file3, $file4, $file2, $sub_no, $subscriptionType, $subscriptionStatus, $otime, $ctime, $days_Opened, $primaryKey);
-            $stmtTable3->execute();
+                $sqlTable2 = "INSERT INTO address (LotNo_Street, Barangay, City, Province, ZIPCode, UserID) VALUES (?, ?, ?, ?, ?, ?)";
+                $stmtTable2 = $con->prepare($sqlTable2);
+                $stmtTable2->bind_param("sssssi", $lotno_street, $barangay, $city, $province, $zipcode, $primaryKey);
+                $stmtTable2->execute();
 
-            if ($stmtTable1->error || $stmtTable2->error || $stmtTable3->error) {
-                $con->rollback();
-            } else {
-                $con->commit();
-            }
+                $sqlTable3 = "INSERT INTO clinics (ClinicName, ClinicImage, BusinessPermit, BusinessNameReg, CertificateOfReg, SubscriptionNo, SubscriptionType, SubscriptionStatus, OpeningTime, ClosingTime, OperatingDays, UserID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $stmtTable3 = $con->prepare($sqlTable3);
+                $stmtTable3->bind_param("sssssssssssi", $clinicName, $file1, $file3, $file4, $file2, $sub_no, $subscriptionType, $subscriptionStatus, $otime, $ctime, $days_Opened, $primaryKey);
+                $stmtTable3->execute();
 
-            $con->close();
+                if ($stmtTable1->error || $stmtTable2->error || $stmtTable3->error) {
+                    $con->rollback();
+                } else {
+                    $con->commit();
+                }
 
-            echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
-            echo '<script>';
-            echo 'swal({
+                $con->close();
+
+                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                echo '<script>';
+                echo 'swal({
                                             title: "Success",
                                             text: "Registration successful",
                                             icon: "success",
@@ -756,7 +774,25 @@ include("connection.php");
                                                         document.location ="login.php";
                                                     }
                                                 })';
-            echo '</script>';
+                echo '</script>';
+            } else {
+                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                echo '<script>';
+                echo 'swal({
+                                            title: "Error",
+                                            text: "Invalid file type. Please upload .jpg or .png file only.",
+                                            icon: "error",
+                                            html: true,
+                                            showCancelButton: true,
+                                            })
+                                                .then((willDelete) => {
+                                                    if (willDelete) {
+                                                    
+                                                        document.location ="clinics_registration.php";
+                                                    }
+                                                })';
+                echo '</script>';
+            }
         }
 
 

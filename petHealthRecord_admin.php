@@ -810,7 +810,7 @@ $_SESSION['petid'] = $petid;
                                                         </td>
                                                         <td style="border:0px;">
                                                             <a href="image_upload/<?php echo $row['Prescription']; ?>"
-                                                                download><?php echo $row['Prescription']; ?></a>
+                                                                download><?php echo substr($row['Prescription'], 0, 20); ?></a>
                                                         </td>
 
                                                         <?php
@@ -1190,28 +1190,51 @@ $_SESSION['petid'] = $petid;
 
         move_uploaded_file($tempfile, $folder);
 
-        $query = mysqli_query($con, "INSERT INTO petassessment (Remarks, DateAssessed, AssessedBy, Prescription, PetID, ClinicID) VALUES ('$remarks', '$date_assessed', '$assessed_by', '$file', '$petid', '$clinicID')");
+        $_allowedTypes = ['jpeg', 'png', 'jpg'];
+        $_fileType = pathinfo($file, PATHINFO_EXTENSION);
 
-        if ($query) {
+        if (in_array($_fileType, $_allowedTypes)) {
+            $query = mysqli_query($con, "INSERT INTO petassessment (Remarks, DateAssessed, AssessedBy, Prescription, PetID, ClinicID) VALUES ('$remarks', '$date_assessed', '$assessed_by', '$file', '$petid', '$clinicID')");
+    
+            if ($query) {
+                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                echo '<script>';
+                echo 'swal({
+                                                title: "Success",
+                                                text: "You have successfully added an assessment",
+                                                icon: "success",
+                                                html: true,
+                                                showCancelButton: true,
+                                                })
+                                                    .then((willDelete) => {
+                                                        if (willDelete) {
+                                                             event.preventDefault();
+                                                             document.location ="petHealthRecord_admin.php?petid=' . $petid . '";
+                                                        }
+                                                    })';
+                echo '</script>';
+            } else {
+                echo "<script>alert('Error adding new record.');</script>";
+            }
+        } else {
             echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
             echo '<script>';
             echo 'swal({
-                                            title: "Success",
-                                            text: "You have successfully added an assessment",
-                                            icon: "success",
+                                            title: "Error",
+                                            text: "Invalid file type. Please upload .jpg or .png file only.",
+                                            icon: "error",
                                             html: true,
                                             showCancelButton: true,
                                             })
                                                 .then((willDelete) => {
                                                     if (willDelete) {
-                                                         event.preventDefault();
-                                                         document.location ="petHealthRecord_admin.php?petid=' . $petid . '";
+                                                    
+                                                        document.location ="petHealthRecord_admin.php?petid=' . $petid . '";
                                                     }
                                                 })';
             echo '</script>';
-        } else {
-            echo "<script>alert('Error adding new record.');</script>";
         }
+
     }
 
     if (isset($_POST['save_assessment'])) {
@@ -1228,29 +1251,52 @@ $_SESSION['petid'] = $petid;
 
         move_uploaded_file($tempfile1, $folder1);
 
-        if ($file1 != "") {
-            $query = mysqli_query($con, "UPDATE petassessment SET Remarks='$remarks1', DateAssessed='$d_assessed1', AssessedBy='$assessed_by1', Prescription='$file1' WHERE AssessmentID='$assessmentID'");
+        $_allowedTypes1 = ['jpeg', 'png', 'jpg'];
+        $_fileType1 = pathinfo($file1, PATHINFO_EXTENSION);
 
-            if ($query) {
+        if ($file1 != "") {
+            if (in_array($_fileType1, $_allowedTypes1)) {
+                $query = mysqli_query($con, "UPDATE petassessment SET Remarks='$remarks1', DateAssessed='$d_assessed1', AssessedBy='$assessed_by1', Prescription='$file1' WHERE AssessmentID='$assessmentID'");
+    
+                if ($query) {
+                    echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                    echo '<script>';
+                    echo 'swal({
+                                                title: "Success",
+                                                text: "You have successfully updated an assessment",
+                                                icon: "success",
+                                                html: true,
+                                                showCancelButton: true,
+                                                })
+                                                    .then((willDelete) => {
+                                                        if (willDelete) {
+                                                             event.preventDefault();
+                                                             document.location ="petHealthRecord_admin.php?petid=' . $petid . '";
+                                                        }
+                                                    })';
+                    echo '</script>';
+                } else {
+                    echo "<script>alert('Error updating a record.');</script>";
+                }
+            } else {
                 echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
                 echo '<script>';
                 echo 'swal({
-                                            title: "Success",
-                                            text: "You have successfully updated an assessment",
-                                            icon: "success",
+                                            title: "Error",
+                                            text: "Invalid file type. Please upload .jpg or .png file only.",
+                                            icon: "error",
                                             html: true,
                                             showCancelButton: true,
                                             })
                                                 .then((willDelete) => {
                                                     if (willDelete) {
-                                                         event.preventDefault();
-                                                         document.location ="petHealthRecord_admin.php?petid=' . $petid . '";
+                                                    
+                                                        document.location ="petHealthRecord_admin.php?petid=' . $petid . '";
                                                     }
                                                 })';
                 echo '</script>';
-            } else {
-                echo "<script>alert('Error updating a record.');</script>";
             }
+
         } else {
             $query = mysqli_query($con, "UPDATE petassessment SET Remarks='$remarks1', DateAssessed='$d_assessed1', AssessedBy='$assessed_by1' WHERE AssessmentID='$assessmentID'");
 

@@ -995,14 +995,18 @@ $row_cb = mysqli_num_rows($ret_cb);
         $ufolder_cb = "image_upload/" . $ufile_cb;
         move_uploaded_file($utempfile_cb, $ufolder_cb);
 
+        $_allowedTypes = ['jpeg', 'png', 'jpg'];
+        $_fileType = pathinfo($ufile_cb, PATHINFO_EXTENSION);
+
         if ($ufile_cb != "") {
 
-            $uquery_cb = mysqli_query($con, "UPDATE clinic_billing set BillingImage='$ufile_cb' WHERE ClinicID='$clinicID'");
+            if (in_array($_fileType, $_allowedTypes)) {
+                $uquery_cb = mysqli_query($con, "UPDATE clinic_billing set BillingImage='$ufile_cb' WHERE ClinicID='$clinicID'");
 
-            if ($uquery_cb) {
-                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
-                echo '<script>';
-                echo 'swal({
+                if ($uquery_cb) {
+                    echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                    echo '<script>';
+                    echo 'swal({
                                                 title: "Success",
                                                 text: "You have successfully updated your QR",
                                                 icon: "success",
@@ -1015,10 +1019,29 @@ $row_cb = mysqli_num_rows($ret_cb);
                                                             document.location ="clinicadmin.php";
                                                         }
                                                     })';
-                echo '</script>';
+                    echo '</script>';
+                } else {
+                    echo "<script>alert('Something Went Wrong. Please try again');</script>";
+                }
             } else {
-                echo "<script>alert('Something Went Wrong. Please try again');</script>";
+                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                echo '<script>';
+                echo 'swal({
+                                            title: "Error",
+                                            text: "Invalid file type. Please upload .jpg or .png file only.",
+                                            icon: "error",
+                                            html: true,
+                                            showCancelButton: true,
+                                            })
+                                                .then((willDelete) => {
+                                                    if (willDelete) {
+                                                    
+                                                        document.location ="clinicadmin.php";
+                                                    }
+                                                })';
+                echo '</script>';
             }
+            
         } else {
             echo "<script>alert('Something Went Wrong. Please try again');</script>";
         }
@@ -1031,28 +1054,51 @@ $row_cb = mysqli_num_rows($ret_cb);
         $folder_cb = "image_upload/" . $file_cb;
         move_uploaded_file($tempfile_cb, $folder_cb);
 
-        $query_cb = mysqli_query($con, "INSERT INTO clinic_billing(BillingImage, ClinicID) VALUES ('$file_cb', '$clinicID')");
+        $_allowedTypes = ['jpeg', 'png', 'jpg'];
+        $_fileType = pathinfo($file_cb, PATHINFO_EXTENSION);
 
-        if ($query_cb) {
+        if (in_array($_fileType, $_allowedTypes)) {
+            $query_cb = mysqli_query($con, "INSERT INTO clinic_billing(BillingImage, ClinicID) VALUES ('$file_cb', '$clinicID')");
+    
+            if ($query_cb) {
+                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                echo '<script>';
+                echo 'swal({
+                                                title: "Success",
+                                                text: "You have successfully added your QR",
+                                                icon: "success",
+                                                html: true,
+                                                showCancelButton: true,
+                                                })
+                                                    .then((willDelete) => {
+                                                        if (willDelete) {
+    
+                                                            document.location ="clinicadmin.php";
+                                                        }
+                                                    })';
+                echo '</script>';
+            } else {
+                echo "<script>alert('Something Went Wrong. Please try again');</script>";
+            }
+        } else {
             echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
             echo '<script>';
             echo 'swal({
-                                            title: "Success",
-                                            text: "You have successfully added your QR",
-                                            icon: "success",
+                                            title: "Error",
+                                            text: "Invalid file type. Please upload .jpg or .png file only.",
+                                            icon: "error",
                                             html: true,
                                             showCancelButton: true,
                                             })
                                                 .then((willDelete) => {
                                                     if (willDelete) {
-
+                                                    
                                                         document.location ="clinicadmin.php";
                                                     }
                                                 })';
             echo '</script>';
-        } else {
-            echo "<script>alert('Something Went Wrong. Please try again');</script>";
         }
+
     }
 
     if (isset($_POST['update_clinic'])) {
@@ -1087,34 +1133,58 @@ $row_cb = mysqli_num_rows($ret_cb);
             $op_days = $_POST['opendays_1'];
 
 
-        if ($file != "")
-            $query = mysqli_query($con, "UPDATE clinics SET ClinicImage='$file', ClinicName='$cname', OpeningTime='$op_hours', ClosingTime='$cl_hours', OperatingDays='$op_days' WHERE ClinicID='$clinicID'");
-        else
-            $query = mysqli_query($con, "UPDATE clinics SET ClinicName='$cname', OpeningTime='$op_hours', ClosingTime='$cl_hours', OperatingDays='$op_days' WHERE ClinicID='$clinicID'");
+        // Limit uploadable file type
+        $_allowedTypes = ['jpeg', 'png', 'jpg'];
+        $_fileType = pathinfo($file, PATHINFO_EXTENSION);
 
-        // $query = mysqli_query($con, "UPDATE clinics SET ClinicImage='$file', ClinicName='$cname', OpeningTime='$op_hours', ClosingTime='$cl_hours', OperatingDays='$op_days' WHERE ClinicID='$clinicID'");
-        $query_a = mysqli_query($con, "UPDATE address SET LotNo_Street='$lotno_street1', Barangay='$barangay', ZIPCode='$zipcode' WHERE UserID='$userID'");
-
-        if ($query && $query_a) {
+        if (in_array($_fileType, $_allowedTypes)) {
+            if ($file != "")
+                $query = mysqli_query($con, "UPDATE clinics SET ClinicImage='$file', ClinicName='$cname', OpeningTime='$op_hours', ClosingTime='$cl_hours', OperatingDays='$op_days' WHERE ClinicID='$clinicID'");
+            else
+                $query = mysqli_query($con, "UPDATE clinics SET ClinicName='$cname', OpeningTime='$op_hours', ClosingTime='$cl_hours', OperatingDays='$op_days' WHERE ClinicID='$clinicID'");
+    
+            // $query = mysqli_query($con, "UPDATE clinics SET ClinicImage='$file', ClinicName='$cname', OpeningTime='$op_hours', ClosingTime='$cl_hours', OperatingDays='$op_days' WHERE ClinicID='$clinicID'");
+            $query_a = mysqli_query($con, "UPDATE address SET LotNo_Street='$lotno_street1', Barangay='$barangay', ZIPCode='$zipcode' WHERE UserID='$userID'");
+    
+            if ($query && $query_a) {
+                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                echo '<script>';
+                echo 'swal({
+                                                title: "Success",
+                                                text: "You have successfully updated your clinic details",
+                                                icon: "success",
+                                                html: true,
+                                                showCancelButton: true,
+                                                })
+                                                    .then((willDelete) => {
+                                                        if (willDelete) {
+    
+                                                            document.location ="clinicadmin.php";
+                                                        }
+                                                    })';
+                echo '</script>';
+            } else {
+                echo "<script>alert('Something Went Wrong. Please try again');</script>";
+            }
+        } else {
             echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
             echo '<script>';
             echo 'swal({
-                                            title: "Success",
-                                            text: "You have successfully updated your clinic details",
-                                            icon: "success",
+                                            title: "Error",
+                                            text: "Invalid file type. Please upload .jpg or .png file only.",
+                                            icon: "error",
                                             html: true,
                                             showCancelButton: true,
                                             })
                                                 .then((willDelete) => {
                                                     if (willDelete) {
-
+                                                    
                                                         document.location ="clinicadmin.php";
                                                     }
                                                 })';
             echo '</script>';
-        } else {
-            echo "<script>alert('Something Went Wrong. Please try again');</script>";
         }
+
     }
 
     ?>

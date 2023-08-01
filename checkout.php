@@ -116,7 +116,7 @@ $sum_q = $row_q['total_items'];
     <!-- Orders Start -->
     <br>
     <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
-        <h1 class="text-primary text-uppercase">CHECKOUT</h1>
+        <h1 class="text-uppercase" style="color: #80b434;">CHECKOUT</h1>
     </div>
 
     <!-- Start of form -->
@@ -362,7 +362,7 @@ $sum_q = $row_q['total_items'];
 
                                             <div class="col-6">
                                                 <label for="proof" style="float:left; padding-bottom:15px; padding-left:23px;">Upload Proof of Payment</label>
-                                                <input type="file" style="border-radius: 15px;" name="proofOfPayment" class="form-control bg-light border-1 px-4 py-3" accept=".jpg, .jpeg, .png, .pdf" required>
+                                                <input type="file" style="border-radius: 15px;" name="proofOfPayment" class="form-control bg-light border-1 px-4 py-3" required>
                                             </div>
 
                                             <div class="col-6" style="padding-top: 15px;">
@@ -372,7 +372,7 @@ $sum_q = $row_q['total_items'];
 
                                             <div class="col-12">
                                                 <label for="proof" style="float:left; padding-bottom:15px; padding-left:23px;">Upload Prescription</label>
-                                                <input type="file" style="border-radius: 15px;" name="orderPrescription" class="form-control bg-light border-1 px-4 py-3" accept=".jpg, .jpeg, .png, .pdf">
+                                                <input type="file" style="border-radius: 15px;" name="orderPrescription" class="form-control bg-light border-1 px-4 py-3">
                                             </div>
 
                                             <div class="col-12">
@@ -443,52 +443,80 @@ $sum_q = $row_q['total_items'];
 
     $od_notes = $_POST['notes'];
 
+    // 1
+    $_allowedTypes = ['jpeg', 'png', 'jpg'];
+    $_fileType = pathinfo($file, PATHINFO_EXTENSION);
+
+    // 2
+    $_allowedTypes1 = ['jpeg', 'png', 'jpg'];
+    $_fileType1 = pathinfo($file1, PATHINFO_EXTENSION);
+
     // Insert data to DB
     if ($row_a > 0) {
         if ($shipToOtherAddress == "") {
             if (isset($_POST['order'])) {
 
-                // Insert to orders table
-                $query = mysqli_query($con, "INSERT INTO orders (Order_RefNo, OrderedProducts, UserID, TotalPrice, DateTimeCheckedOut, ShippingTo, ProofOfPayment, Proof_RefNo, OrderPrescription, OrderStatus, ClinicID, OrderNotes) VALUES ('$order_refno', '$od_products', $userID, '$totalPrice', '$currentDateTime', '$ship_to_address', '$file', '$reference_no' , '$file1', '$orderStatus', '$clinic_id', '$od_notes')");
-
-                // To update stocks
-                $stocks_query = mysqli_query($con, "SELECT SupplyID FROM orderdetails WHERE UserID='$userID' AND ClinicID='$clinic_id'");
-                $data = $stocks_query->fetch_all(MYSQLI_ASSOC);
-                foreach ($data as $stock) {
-                    $conv_stock = implode($stock);
-                    $a = mysqli_query($con, "SELECT Stocks - (SELECT Quantity FROM orderdetails WHERE SupplyID='$conv_stock' AND UserID='$userID') AS UpdatedStock FROM petsupplies WHERE SupplyID='$conv_stock'");
-                    $a_row = mysqli_fetch_array($a);
-
-                    $updatedStock = $a_row['UpdatedStock'];
-                    $b = mysqli_query($con, "UPDATE petsupplies SET Stocks='$updatedStock' WHERE SupplyID='$conv_stock'");
-                }
-
-                // To remove item from cart
-                $del_query = mysqli_query($con, "DELETE FROM orderdetails WHERE UserID='$userID' AND ClinicID='$clinic_id'");
-
-                // if ($query && $stocks_query && $del_query) {
-                if ($query) {
-                    // if ($query) {  
-
+                if (in_array($_fileType, $_allowedTypes) && in_array($_fileType1, $_allowedTypes1)) {
+                    // Insert to orders table
+                    $query = mysqli_query($con, "INSERT INTO orders (Order_RefNo, OrderedProducts, UserID, TotalPrice, DateTimeCheckedOut, ShippingTo, ProofOfPayment, Proof_RefNo, OrderPrescription, OrderStatus, ClinicID, OrderNotes) VALUES ('$order_refno', '$od_products', $userID, '$totalPrice', '$currentDateTime', '$ship_to_address', '$file', '$reference_no' , '$file1', '$orderStatus', '$clinic_id', '$od_notes')");
+    
+                    // To update stocks
+                    $stocks_query = mysqli_query($con, "SELECT SupplyID FROM orderdetails WHERE UserID='$userID' AND ClinicID='$clinic_id'");
+                    $data = $stocks_query->fetch_all(MYSQLI_ASSOC);
+                    foreach ($data as $stock) {
+                        $conv_stock = implode($stock);
+                        $a = mysqli_query($con, "SELECT Stocks - (SELECT Quantity FROM orderdetails WHERE SupplyID='$conv_stock' AND UserID='$userID') AS UpdatedStock FROM petsupplies WHERE SupplyID='$conv_stock'");
+                        $a_row = mysqli_fetch_array($a);
+    
+                        $updatedStock = $a_row['UpdatedStock'];
+                        $b = mysqli_query($con, "UPDATE petsupplies SET Stocks='$updatedStock' WHERE SupplyID='$conv_stock'");
+                    }
+    
+                    // To remove item from cart
+                    $del_query = mysqli_query($con, "DELETE FROM orderdetails WHERE UserID='$userID' AND ClinicID='$clinic_id'");
+    
+                    // if ($query && $stocks_query && $del_query) {
+                    if ($query) {
+                        // if ($query) {  
+    
+                        echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                        echo '<script>';
+                        echo 'swal({
+                                                title: "Success",
+                                                text: "Your order was placed!",
+                                                icon: "success",
+                                                html: true,
+                                                showCancelButton: true,
+                                                })
+                                                    .then((willDelete) => {
+                                                        if (willDelete) {
+                                                        
+                                                            document.location ="orders.php";
+                                                        }
+                                                    })';
+                        echo '</script>';
+                    } else {
+                        echo "<script>alert('Something went wrong. Please try again');</script>";
+                    }
+                } else {
                     echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
                     echo '<script>';
                     echo 'swal({
-                                            title: "Success",
-                                            text: "Your order was placed!",
-                                            icon: "success",
+                                            title: "Error",
+                                            text: "Invalid file type. Please upload .jpg or .png file only.",
+                                            icon: "error",
                                             html: true,
                                             showCancelButton: true,
                                             })
                                                 .then((willDelete) => {
                                                     if (willDelete) {
                                                     
-                                                        document.location ="orders.php";
+                                                        document.location ="checkout.php";
                                                     }
                                                 })';
                     echo '</script>';
-                } else {
-                    echo "<script>alert('Something went wrong. Please try again');</script>";
                 }
+
             }
         } else {
 
@@ -502,51 +530,72 @@ $sum_q = $row_q['total_items'];
 
             if (isset($_POST['order'])) {
 
-                // Insert to address table
-                $a_query = mysqli_query($con, "INSERT INTO address (LotNo_Street, Barangay, City, Province, ZIPCode, UserID) VALUES ('$lotno_street_1', '$province_1', '$city_1', '$barangay_1', '$zipcode_1', '$userID')");
-
-                // Insert to orders table
-                $query = mysqli_query($con, "INSERT INTO orders (Order_RefNo, OrderedProducts, UserID, TotalPrice, DateTimeCheckedOut, ShippingTo, ProofOfPayment, Proof_RefNo, OrderPrescription, OrderStatus, ClinicID) VALUES ('$order_refno', '$od_products', $userID, '$totalPrice', '$currentDateTime', '$address_1', '$file', '$reference_no', '$file1', '$orderStatus', '$clinic_id')");
-
-                // To update stocks
-                $stocks_query = mysqli_query($con, "SELECT SupplyID FROM orderdetails WHERE UserID='$userID' AND ClinicID='$clinic_id'");
-                $data = $stocks_query->fetch_all(MYSQLI_ASSOC);
-                foreach ($data as $stock) {
-                    $conv_stock = implode($stock);
-                    $a = mysqli_query($con, "SELECT Stocks - (SELECT Quantity FROM orderdetails WHERE SupplyID='$conv_stock' AND UserID='$userID') AS UpdatedStock FROM petsupplies WHERE SupplyID='$conv_stock'");
-                    $a_row = mysqli_fetch_array($a);
-
-                    $updatedStock = $a_row['UpdatedStock'];
-                    $b = mysqli_query($con, "UPDATE petsupplies SET Stocks='$updatedStock' WHERE SupplyID='$conv_stock'");
-                }
-
-                // To remove item from cart
-                $del_query = mysqli_query($con, "DELETE FROM orderdetails WHERE UserID='$userID' AND ClinicID='$clinic_id'");
-
-                // if ($a_query && $query && $stocks_query && $del_query) {
-                if ($query) {
-                    // if ($query) {    
+                if (in_array($_fileType, $_allowedTypes) && in_array($_fileType1, $_allowedTypes1)) {
+                    // Insert to address table
+                    $a_query = mysqli_query($con, "INSERT INTO address (LotNo_Street, Barangay, City, Province, ZIPCode, UserID) VALUES ('$lotno_street_1', '$province_1', '$city_1', '$barangay_1', '$zipcode_1', '$userID')");
+    
+                    // Insert to orders table
+                    $query = mysqli_query($con, "INSERT INTO orders (Order_RefNo, OrderedProducts, UserID, TotalPrice, DateTimeCheckedOut, ShippingTo, ProofOfPayment, Proof_RefNo, OrderPrescription, OrderStatus, ClinicID) VALUES ('$order_refno', '$od_products', $userID, '$totalPrice', '$currentDateTime', '$address_1', '$file', '$reference_no', '$file1', '$orderStatus', '$clinic_id')");
+    
+                    // To update stocks
+                    $stocks_query = mysqli_query($con, "SELECT SupplyID FROM orderdetails WHERE UserID='$userID' AND ClinicID='$clinic_id'");
+                    $data = $stocks_query->fetch_all(MYSQLI_ASSOC);
+                    foreach ($data as $stock) {
+                        $conv_stock = implode($stock);
+                        $a = mysqli_query($con, "SELECT Stocks - (SELECT Quantity FROM orderdetails WHERE SupplyID='$conv_stock' AND UserID='$userID') AS UpdatedStock FROM petsupplies WHERE SupplyID='$conv_stock'");
+                        $a_row = mysqli_fetch_array($a);
+    
+                        $updatedStock = $a_row['UpdatedStock'];
+                        $b = mysqli_query($con, "UPDATE petsupplies SET Stocks='$updatedStock' WHERE SupplyID='$conv_stock'");
+                    }
+    
+                    // To remove item from cart
+                    $del_query = mysqli_query($con, "DELETE FROM orderdetails WHERE UserID='$userID' AND ClinicID='$clinic_id'");
+    
+                    // if ($a_query && $query && $stocks_query && $del_query) {
+                    if ($query) {
+                        // if ($query) {    
+                        echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                        echo '<script>';
+                        echo 'swal({
+                                                title: "Success",
+                                                text: "Your order was placed!",
+                                                icon: "success",
+                                                html: true,
+                                                showCancelButton: true,
+                                                })
+                                                    .then((willDelete) => {
+                                                        if (willDelete) {
+                                                        
+                                                            document.location ="orders.php";
+                                                        }
+                                                    })';
+                        echo '</script>';
+                    } else {
+                        echo "<script>alert('Something went wrong. Please try again');</script>";
+                    }
+                } else {
                     echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
                     echo '<script>';
                     echo 'swal({
-                                            title: "Success",
-                                            text: "Your order was placed!",
-                                            icon: "success",
+                                            title: "Error",
+                                            text: "Invalid file type. Please upload .jpg or .png file only.",
+                                            icon: "error",
                                             html: true,
                                             showCancelButton: true,
                                             })
                                                 .then((willDelete) => {
                                                     if (willDelete) {
                                                     
-                                                        document.location ="orders.php";
+                                                        document.location ="checkout.php";
                                                     }
                                                 })';
                     echo '</script>';
-                } else {
-                    echo "<script>alert('Something went wrong. Please try again');</script>";
                 }
+
             }
         }
+
     } else {
         echo "<script>alert('Please add a product first to continue');</script>";
     }

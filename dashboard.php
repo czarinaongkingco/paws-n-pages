@@ -524,11 +524,17 @@ $sub_Remarks = $row_ca['Sub_Remarks'];
                     <div class="row">
                         <div class="col-5 text-center" style="padding-top:220px;">
                             <h1 class="text-uppercase" style="color: #FF914D;">account is inactive</h1>
-                            <p style="color:gray; padding-top:15px;">Your account is still inactive. Please reach out to <b>
-                                    pawsnpages.site@gmail.com </b> to process your subscription.</p><br>
-                            <p style="color:gray; padding-top:15px; font-style: italic;">
-                                *** Account is inactive due to: <b><?php echo $sub_Remarks ?></b> ***
-                            </p>
+
+                            <?php if ($sub_Remarks != null) { ?>
+                                <p style="color:gray; padding-top:15px; font-style: italic;">
+                                    *** Your account is inactive due to: <b><?php echo $sub_Remarks ?></b> ***
+                                </p><br>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#renew_modal" style="height:60px; width:300px; font-size: 20px; border-radius:15px;">UPLOAD REQUIREMENTS
+                                </button>
+                            <?php } else {
+                            ?>
+                                <p style="color:gray; padding-top:15px;">Your account is inactive. Please be patient as the process of your subscription is now <b>ongoing</b>.</p><br>
+                            <?php } ?>
                         </div>
                         <div class="col-7"></div>
                     </div>
@@ -827,27 +833,59 @@ $sub_Remarks = $row_ca['Sub_Remarks'];
             $subType = $_POST['subtype'];
             $subStatus = 'Inactive';
 
-            $query = mysqli_query($con, "UPDATE clinics SET BusinessPermit='$file3', BusinessNameReg='$file4', CertificateOFReg='$file2', SubscriptionType='$subType', SubscriptionNo='$sub_no', SubscriptionStatus='$subStatus' WHERE ClinicID='$clinicID'");
+            // 1
+            $_allowedTypes1 = ['jpeg', 'png', 'jpg'];
+            $_fileType1 = pathinfo($file2, PATHINFO_EXTENSION);
 
-            if ($query) {
+            // 2
+            $_allowedTypes2 = ['jpeg', 'png', 'jpg'];
+            $_fileType2 = pathinfo($file3, PATHINFO_EXTENSION);
+
+            // 3
+            $_allowedTypes3 = ['jpeg', 'png', 'jpg'];
+            $_fileType3 = pathinfo($file4, PATHINFO_EXTENSION);
+
+
+            if (in_array($_fileType1, $_allowedTypes1) && in_array($_fileType2, $_allowedTypes2) && in_array($_fileType3, $_allowedTypes3)) {
+                $query = mysqli_query($con, "UPDATE clinics SET BusinessPermit='$file3', BusinessNameReg='$file4', CertificateOFReg='$file2', SubscriptionType='$subType', SubscriptionNo='$sub_no', SubscriptionStatus='$subStatus' WHERE ClinicID='$clinicID'");
+
+                if ($query) {
+                    echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                    echo '<script>';
+                    echo 'swal({
+                                                    title: "Success",
+                                                    text: "You have successfully applied for a renewal of your subscription",
+                                                    icon: "success",
+                                                    html: true,
+                                                    showCancelButton: true,
+                                                    })
+                                                        .then((willDelete) => {
+                                                            if (willDelete) {
+                                                            
+                                                                document.location ="dashboard.php";
+                                                            }
+                                                        })';
+                    echo '</script>';
+                } else {
+                    echo "<script>alert('Something Went Wrong. Please try again');</script>";
+                }
+            } else {
                 echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
                 echo '<script>';
                 echo 'swal({
-                                                title: "Success",
-                                                text: "You have successfully applied for a renewal of your subscription",
-                                                icon: "success",
-                                                html: true,
-                                                showCancelButton: true,
-                                                })
-                                                    .then((willDelete) => {
-                                                        if (willDelete) {
-                                                        
-                                                            document.location ="dashboard.php";
-                                                        }
-                                                    })';
+                                            title: "Error",
+                                            text: "Invalid file type. Please upload .jpg or .png file only.",
+                                            icon: "error",
+                                            html: true,
+                                            showCancelButton: true,
+                                            })
+                                                .then((willDelete) => {
+                                                    if (willDelete) {
+                                                    
+                                                        document.location ="dashboard.php";
+                                                    }
+                                                })';
                 echo '</script>';
-            } else {
-                echo "<script>alert('Something Went Wrong. Please try again');</script>";
             }
         }
 
@@ -860,27 +898,49 @@ $sub_Remarks = $row_ca['Sub_Remarks'];
 
             $ref_no = $_POST['ref_no'];
 
-            $query_p = mysqli_query($con, "UPDATE clinics SET Sub_ProofPayment='$proof_payment', Sub_ProofRefNo='$ref_no' WHERE ClinicID='$clinicID'");
+            $_allowedTypes = ['jpeg', 'png', 'jpg'];
+            $_fileType = pathinfo($proof_payment, PATHINFO_EXTENSION);
 
-            if ($query_p) {
+            if (in_array($_fileType, $_allowedTypes)) {
+                $query_p = mysqli_query($con, "UPDATE clinics SET Sub_ProofPayment='$proof_payment', Sub_ProofRefNo='$ref_no' WHERE ClinicID='$clinicID'");
+
+                if ($query_p) {
+                    echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                    echo '<script>';
+                    echo 'swal({
+                                                    title: "Success",
+                                                    text: "You have successfully paid for your subscription",
+                                                    icon: "success",
+                                                    html: true,
+                                                    showCancelButton: true,
+                                                    })
+                                                        .then((willDelete) => {
+                                                            if (willDelete) {
+                                                            
+                                                                document.location ="dashboard.php";
+                                                            }
+                                                        })';
+                    echo '</script>';
+                } else {
+                    echo "<script>alert('Something Went Wrong. Please try again');</script>";
+                }
+            } else {
                 echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
                 echo '<script>';
                 echo 'swal({
-                                                title: "Success",
-                                                text: "You have successfully paid for your subscription",
-                                                icon: "success",
-                                                html: true,
-                                                showCancelButton: true,
-                                                })
-                                                    .then((willDelete) => {
-                                                        if (willDelete) {
-                                                        
-                                                            document.location ="dashboard.php";
-                                                        }
-                                                    })';
+                                            title: "Error",
+                                            text: "Invalid file type. Please upload .jpg or .png file only.",
+                                            icon: "error",
+                                            html: true,
+                                            showCancelButton: true,
+                                            })
+                                                .then((willDelete) => {
+                                                    if (willDelete) {
+                                                    
+                                                        document.location ="dashboard.php";
+                                                    }
+                                                })';
                 echo '</script>';
-            } else {
-                echo "<script>alert('Something Went Wrong. Please try again');</script>";
             }
         }
         ?>

@@ -687,21 +687,45 @@ $clinicID = $row_ca['ClinicID'];
 
         move_uploaded_file($tempfile, $folder);
 
+        $_allowedTypes = ['jpeg', 'png', 'jpg'];
+        $_fileType = pathinfo($file, PATHINFO_EXTENSION);
+
         $name = $_POST['name'];
         $description = mysqli_real_escape_string($con, $_POST['description']);
         $price = $_POST['price'];
         $stocks = $_POST['stocks'];
         $prescription = $_POST['prescription'];
 
-        $query = mysqli_query($con, "INSERT INTO petsupplies (SupplyImage, SupplyName, SupplyDescription, SupplyPrice, Stocks, NeedPrescription, ClinicID) VALUES ('$file', '$name', '$description', '$price', '$stocks', '$prescription', '$clinicID')");
-
-        if ($query) {
+        if (in_array($_fileType, $_allowedTypes)) {
+            $query = mysqli_query($con, "INSERT INTO petsupplies (SupplyImage, SupplyName, SupplyDescription, SupplyPrice, Stocks, NeedPrescription, ClinicID) VALUES ('$file', '$name', '$description', '$price', '$stocks', '$prescription', '$clinicID')");
+    
+            if ($query) {
+                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                echo '<script>';
+                echo 'swal({
+                                                title: "Success",
+                                                text: "You have successfully added a new product",
+                                                icon: "success",
+                                                html: true,
+                                                showCancelButton: true,
+                                                })
+                                                    .then((willDelete) => {
+                                                        if (willDelete) {
+                                                        
+                                                            document.location ="supplies.php";
+                                                        }
+                                                    })';
+                echo '</script>';
+            } else {
+                echo "<script>alert('Error adding new product.');</script>";
+            }
+        } else {
             echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
             echo '<script>';
             echo 'swal({
-                                            title: "Success",
-                                            text: "You have successfully added a new product",
-                                            icon: "success",
+                                            title: "Error",
+                                            text: "Invalid file type. Please upload .jpg or .png file only.",
+                                            icon: "error",
                                             html: true,
                                             showCancelButton: true,
                                             })
@@ -712,9 +736,8 @@ $clinicID = $row_ca['ClinicID'];
                                                     }
                                                 })';
             echo '</script>';
-        } else {
-            echo "<script>alert('Error adding new product.');</script>";
         }
+
     }
 
     if (isset($_POST['update'])) {
@@ -727,6 +750,9 @@ $clinicID = $row_ca['ClinicID'];
 
         move_uploaded_file($tempfile1, $folder1);
 
+        $_allowedTypes1 = ['jpeg', 'png', 'jpg'];
+        $_fileType1 = pathinfo($file1, PATHINFO_EXTENSION);
+
         $Uname = $_POST['SupplyName'];
         $Udescription = mysqli_real_escape_string($con, $_POST['SupplyDescription']);
         $Uprice = $_POST['SupplyPrice'];
@@ -734,12 +760,14 @@ $clinicID = $row_ca['ClinicID'];
         $Uprescription = $_POST['NeedPrescription'];
 
         if ($file1 != "") {
-            $query = mysqli_query($con, "UPDATE petsupplies SET SupplyImage='$file1', SupplyName='$Uname', SupplyDescription='$Udescription', SupplyPrice='$Uprice', Stocks='$Ustocks', NeedPrescription='$Uprescription' WHERE SupplyID='$eid'");
 
-            if ($query) {
-                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
-                echo '<script>';
-                echo 'swal({
+            if (in_array($_fileType1, $_allowedTypes1)) {
+                $query = mysqli_query($con, "UPDATE petsupplies SET SupplyImage='$file1', SupplyName='$Uname', SupplyDescription='$Udescription', SupplyPrice='$Uprice', Stocks='$Ustocks', NeedPrescription='$Uprescription' WHERE SupplyID='$eid'");
+
+                if ($query) {
+                    echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                    echo '<script>';
+                    echo 'swal({
                                             title: "Success",
                                             text: "You have successfully updated a product",
                                             icon: "success",
@@ -752,11 +780,32 @@ $clinicID = $row_ca['ClinicID'];
                                                         document.location ="supplies.php";
                                                     }
                                                 })';
-                echo '</script>';
+                    echo '</script>';
+                } else {
+                    echo "<script>alert('Error updating data.');</script>";
+                }
             } else {
-                echo "<script>alert('Error updating data.');</script>";
+                echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
+                echo '<script>';
+                echo 'swal({
+                                            title: "Error",
+                                            text: "Invalid file type. Please upload .jpg or .png file only.",
+                                            icon: "error",
+                                            html: true,
+                                            showCancelButton: true,
+                                            })
+                                                .then((willDelete) => {
+                                                    if (willDelete) {
+                                                    
+                                                        document.location ="supplies.php";
+                                                    }
+                                                })';
+                echo '</script>';
             }
+
+            
         } else {
+            
             $e_query = mysqli_query($con, "UPDATE petsupplies SET SupplyName='$Uname', SupplyDescription='$Udescription', SupplyPrice='$Uprice', Stocks='$Ustocks', NeedPrescription='$Uprescription' WHERE SupplyID='$eid'");
 
             if ($e_query) {
