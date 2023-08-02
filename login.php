@@ -12,8 +12,7 @@ include('connection.php');
 <head>
     <meta charset="utf-8">
     <title>Paws N Pages | Login </title>
-    <link rel="icon" href="https://media.discordapp.net/attachments/1112075552669581332/1113455947420024832/icon.png"
-        type="image/x-icon">
+    <link rel="icon" href="https://media.discordapp.net/attachments/1112075552669581332/1113455947420024832/icon.png" type="image/x-icon">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -69,6 +68,10 @@ include('connection.php');
             cursor: pointer;
             color: lightgray;
         }
+
+        a {
+            color: #245e1c;
+        }
     </style>
 </head>
 
@@ -83,8 +86,7 @@ include('connection.php');
                 <div class="col-md-4">
                     <form method="post" action="">
                         <div class="row g-3 bg-light" style=" border-radius: 15px; padding:30px 30px;">
-                            <center><a href="index.php"><img src="img/logo_black.png"
-                                        style="height:150px; width:150px;"></a></center>
+                            <center><a href="index.php"><img src="img/logo_black.png" style="height:150px; width:150px;"></a></center>
 
                             <?php
 
@@ -126,15 +128,11 @@ include('connection.php');
 
 
                             <div class="col-12">
-                                <input type="text" name="username" id="username"
-                                    class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;"
-                                    placeholder="Username">
+                                <input type="text" name="username" id="username" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Username">
                             </div>
                             <div class="col-12">
                                 <div class="password-container">
-                                    <input type="password" name="password" id="password"
-                                        class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;"
-                                        placeholder="Password">
+                                    <input type="password" name="password" id="password" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Password">
                                     <i class="fa-solid fa-eye" id="eye"></i>
                                 </div>
                             </div>
@@ -142,12 +140,10 @@ include('connection.php');
                                 <a href="forgot_password.php">Forgot Password?</a>
                             </div>
                             <div class="col-12">
-                                <button type="submit" name="submit" class="btn btn-primary w-100 py-3"
-                                    style="border-radius:15px;">Submit</button>
+                                <button type="submit" name="submit" class="btn btn-primary w-100 py-3" style="border-radius:15px;">Submit</button>
                             </div>
                             <center>
-                                <div class="col-12" style="padding-top:30px;">Don't have an account? <a
-                                        href="vet-or-pet.php">Sign Up</a></div>
+                                <div class="col-12" style="padding-top:30px;">Don't have an account? <a href="vet-or-pet.php">Sign Up</a></div>
                             </center>
 
                         </div>
@@ -203,7 +199,7 @@ include('connection.php');
         const passwordInput = document.querySelector("#password");
         const eye = document.querySelector("#eye");
 
-        eye.addEventListener("click", function () {
+        eye.addEventListener("click", function() {
             this.classList.toggle("fa-eye-slash")
             const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
             passwordInput.setAttribute("type", type)
