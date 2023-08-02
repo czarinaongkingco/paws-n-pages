@@ -208,7 +208,7 @@ include('config.php');
                                                     if ($row2 > 0) {
                                                         while ($row2 = mysqli_fetch_array($ret2)) {
                                                     ?>
-                                                            <span style="background-color: rgb(102, 176, 50); border-radius: 6px; color:white; padding-top: 2px; padding-bottom: 3px;">
+                                                            <span style="background-color: rgb(36,94,28); border-radius: 6px; color:white; padding-top: 2px; padding-bottom: 3px;">
                                                                 &nbsp; <?php echo ' ' . $row2['ServiceName'] . ' ' ?> &nbsp;
                                                             </span>&nbsp;
                                                     <?php
@@ -282,7 +282,7 @@ include('config.php');
                                                         if ($row2 > 0) {
                                                             while ($row2 = mysqli_fetch_array($ret2)) {
                                                         ?>
-                                                                <span style="background-color: rgb(102, 176, 50); border-radius: 6px; color:white; padding-top: 2px; padding-bottom: 3px;">
+                                                                <span style="background-color: rgb(36,94,28); border-radius: 6px; color:white; padding-top: 2px; padding-bottom: 3px;">
                                                                     &nbsp; <?php echo ' ' . $row2['ServiceName'] . ' ' ?> &nbsp;
                                                                 </span>&nbsp;
                                                         <?php
@@ -358,7 +358,7 @@ include('config.php');
                                                     if ($row2 > 0) {
                                                         while ($row2 = mysqli_fetch_array($ret2)) {
                                                     ?>
-                                                            <span style="background-color: rgb(102, 176, 50); border-radius: 6px; color:white; padding-top: 2px; padding-bottom: 3px;">
+                                                            <span style="background-color: rgb(36,94,28); border-radius: 6px; color:white; padding-top: 2px; padding-bottom: 3px;">
                                                                 &nbsp; <?php echo ' ' . $row2['ServiceName'] . ' ' ?> &nbsp;
                                                             </span>&nbsp;
                                                     <?php
@@ -388,14 +388,15 @@ include('config.php');
     </div>
     <!-- Blog End -->
 
-<!-- FINAL Footer Start -->
+    <!-- FINAL Footer Start -->
     <div class="container-fluid bg-light mt-5 py-5">
         <div class="container pt-5">
             <div class="row g-5">
                 <div class="col-lg-4 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Get In Touch</h5>
                     <p class="mb-4">If you have inquiries feel free to contact us below<br>
-                    <a href="contact.php">Contact Us </a></p>
+                        <a href="contact.php">Contact Us </a>
+                    </p>
                     <a class="mb-2" href="https://goo.gl/maps/nGdbiDamK7MP9L5z5"><i class="bi bi-geo-alt text-primary me-2"></i>Manila, PH</br></a>
                     <a class="mb-2" href="mailto:pawsnpages.site@gmail.com"><i class="bi bi-envelope-open text-primary me-2"></i>pawsnpages.site@gmail.com</a>
                     <a class="mb-0" href="tel:+6396176261"></br><i class="bi bi-telephone text-primary me-2"></i>+63 961

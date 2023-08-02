@@ -78,6 +78,10 @@ $clinicID = $_GET['clinicid'];
             color: orange;
             /* Star color on hover */
         }
+
+        a {
+            color: rgb(36, 94, 28);
+        }
     </style>
     <script>
         function handleStarClick(star) {
@@ -178,13 +182,13 @@ $clinicID = $_GET['clinicid'];
                 <table class="table table-striped table-hover" name="order" id="order" style="border:0px;">
                     <thead>
                         <tr class="table100-head">
-                            <th class="column1" style="border:0px; color: #80B434;">Reference No.</th>
-                            <th class="column1" style="border:0px; color: #80B434;">Total Price</th>
-                            <th class="column1" style="border:0px; color: #80B434;">Clinic</th>
-                            <th class="column1" style="border:0px; color: #80B434;">Checkout Date & Time</th>
-                            <th class="column1" style="border:0px; color: #80B434;">Status</th>
-                            <th class="column1" style="border:0px; color: #80B434;">Feedback</th>
-                            <th class="column1" style="border:0px; color: #80B434; text-align:center;">Action</th>
+                            <th class="column1" style="border:0px; color: #245e1c;">Reference No.</th>
+                            <th class="column1" style="border:0px; color: #245e1c;">Total Price</th>
+                            <th class="column1" style="border:0px; color: #245e1c;">Clinic</th>
+                            <th class="column1" style="border:0px; color: #245e1c;">Checkout Date & Time</th>
+                            <th class="column1" style="border:0px; color: #245e1c;">Status</th>
+                            <th class="column1" style="border:0px; color: #245e1c;">Feedback</th>
+                            <th class="column1" style="border:0px; color: #245e1c; text-align:center;">Action</th>
                         </tr>
                     </thead>
                     <tbody>

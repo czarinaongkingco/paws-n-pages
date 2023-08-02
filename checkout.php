@@ -55,7 +55,8 @@ $sum_q = $row_q['total_items'];
 
     <style>
         body {
-            background: url(https://wallpapercave.com/wp/wp2514316.jpg) no-repeat center center fixed;
+            /* background: url(https://wallpapercave.com/wp/wp2514316.jpg) no-repeat center center fixed; */
+            background: url(img/checkout.jpg) no-repeat center center fixed;
             background-size: cover;
         }
     </style>
@@ -115,9 +116,13 @@ $sum_q = $row_q['total_items'];
 
     <!-- Orders Start -->
     <br>
-    <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
-        <h1 class="text-uppercase" style="color: #80b434;">CHECKOUT</h1>
+    <div class="border-5 ps-5 mb-5" id="borderid" style="max-width: 600px; border-style: solid; border-color: transparent transparent transparent #245e1c;">
+        <h1 class="text-uppercase" style="color: #245e1c;">CHECKOUT</h1>
     </div>
+
+    <!-- <div class="border-5 ps-5 mb-5" id="borderid" style="max-width: 600px; border-style: solid; border-color: transparent transparent transparent #80b434;">
+        <h1 class="text-uppercase" style="color: #80b434;">CHECKOUT</h1>
+    </div> -->
 
     <!-- Start of form -->
     <form method="post" enctype="multipart/form-data" runat="server">
@@ -145,7 +150,7 @@ $sum_q = $row_q['total_items'];
                                                                             ?>">
 
                             <div class="col-12" style="padding-bottom: 5px;">
-                                <h6 class="display-5  text-uppercase mb-0 text-center" style="color:white; background-color:#80b434; font-size:30px; border-radius: 15px; padding-bottom: 5px; padding-top: 5px;">
+                                <h6 class="display-5  text-uppercase mb-0 text-center" style="color:white; background-color:#245e1c; font-size:30px; border-radius: 15px; padding-bottom: 5px; padding-top: 5px;">
                                     order summary</h6>
                             </div>
                             <div class="row" style="padding-top:10px; font-size: 14px; font-weight: bold;">
@@ -216,7 +221,7 @@ $sum_q = $row_q['total_items'];
 
                             <?php } ?>
                             <div class="col-12">
-                                <h6 class="display-5  text-uppercase mb-0 text-center" style="color:white; background-color:#80b434; font-size:30px; border-radius: 15px; padding-bottom: 5px; padding-top: 5px;">
+                                <h6 class="display-5  text-uppercase mb-0 text-center" style="color:white; background-color:#245e1c; font-size:30px; border-radius: 15px; padding-bottom: 5px; padding-top: 5px;">
                                     SCAN TO PAY</h6><BR />
                             </div>
 
@@ -248,7 +253,7 @@ $sum_q = $row_q['total_items'];
 
                                         <div class="row g-3" style="background-color:#FFFFFF;">
                                             <div class="col-12">
-                                                <h6 class="display-5  text-uppercase mb-0 text-center" style="color:white; background-color:#80b434; font-size:30px; border-radius: 15px; padding-bottom: 5px; padding-top: 5px;">
+                                                <h6 class="display-5  text-uppercase mb-0 text-center" style="color:white; background-color:#245e1c; font-size:30px; border-radius: 15px; padding-bottom: 5px; padding-top: 5px;">
                                                     Details</h6>
                                             </div>
                                             <div class="col-6 ">
@@ -319,7 +324,7 @@ $sum_q = $row_q['total_items'];
                                             <div id="other" style="display:none;">
                                                 <div class="row g-3">
                                                     <div class="col-12">
-                                                        <h6 class="display-5 text-uppercase mb-0 text-center" style="color:white; background-color:#80b434; font-size:30px; border-radius: 15px; padding-bottom: 5px; padding-top: 5px;">
+                                                        <h6 class="display-5 text-uppercase mb-0 text-center" style="color:white; background-color:#245e1c; font-size:30px; border-radius: 15px; padding-bottom: 5px; padding-top: 5px;">
                                                             Other Address</h6>
                                                     </div>
                                                     <div class="col-12">
@@ -356,7 +361,7 @@ $sum_q = $row_q['total_items'];
                                             </div>
                                             <!-- END OF HIDDEN DIV IF SHIP TO OTHER ADDRESS -->
                                             <div class="col-12">
-                                                <h6 class="display-5  text-uppercase mb-0 text-center" style="color:white; background-color:#80b434; font-size:30px; border-radius: 15px; padding-bottom: 5px; padding-top: 5px;">
+                                                <h6 class="display-5  text-uppercase mb-0 text-center" style="color:white; background-color:#245e1c; font-size:30px; border-radius: 15px; padding-bottom: 5px; padding-top: 5px;">
                                                     PROOF OF PAYMENT</h6>
                                             </div>
 
@@ -459,7 +464,7 @@ $sum_q = $row_q['total_items'];
                 if (in_array($_fileType, $_allowedTypes) && in_array($_fileType1, $_allowedTypes1)) {
                     // Insert to orders table
                     $query = mysqli_query($con, "INSERT INTO orders (Order_RefNo, OrderedProducts, UserID, TotalPrice, DateTimeCheckedOut, ShippingTo, ProofOfPayment, Proof_RefNo, OrderPrescription, OrderStatus, ClinicID, OrderNotes) VALUES ('$order_refno', '$od_products', $userID, '$totalPrice', '$currentDateTime', '$ship_to_address', '$file', '$reference_no' , '$file1', '$orderStatus', '$clinic_id', '$od_notes')");
-    
+
                     // To update stocks
                     $stocks_query = mysqli_query($con, "SELECT SupplyID FROM orderdetails WHERE UserID='$userID' AND ClinicID='$clinic_id'");
                     $data = $stocks_query->fetch_all(MYSQLI_ASSOC);
@@ -467,18 +472,18 @@ $sum_q = $row_q['total_items'];
                         $conv_stock = implode($stock);
                         $a = mysqli_query($con, "SELECT Stocks - (SELECT Quantity FROM orderdetails WHERE SupplyID='$conv_stock' AND UserID='$userID') AS UpdatedStock FROM petsupplies WHERE SupplyID='$conv_stock'");
                         $a_row = mysqli_fetch_array($a);
-    
+
                         $updatedStock = $a_row['UpdatedStock'];
                         $b = mysqli_query($con, "UPDATE petsupplies SET Stocks='$updatedStock' WHERE SupplyID='$conv_stock'");
                     }
-    
+
                     // To remove item from cart
                     $del_query = mysqli_query($con, "DELETE FROM orderdetails WHERE UserID='$userID' AND ClinicID='$clinic_id'");
-    
+
                     // if ($query && $stocks_query && $del_query) {
                     if ($query) {
                         // if ($query) {  
-    
+
                         echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
                         echo '<script>';
                         echo 'swal({
@@ -516,7 +521,6 @@ $sum_q = $row_q['total_items'];
                                                 })';
                     echo '</script>';
                 }
-
             }
         } else {
 
@@ -533,10 +537,10 @@ $sum_q = $row_q['total_items'];
                 if (in_array($_fileType, $_allowedTypes) && in_array($_fileType1, $_allowedTypes1)) {
                     // Insert to address table
                     $a_query = mysqli_query($con, "INSERT INTO address (LotNo_Street, Barangay, City, Province, ZIPCode, UserID) VALUES ('$lotno_street_1', '$province_1', '$city_1', '$barangay_1', '$zipcode_1', '$userID')");
-    
+
                     // Insert to orders table
                     $query = mysqli_query($con, "INSERT INTO orders (Order_RefNo, OrderedProducts, UserID, TotalPrice, DateTimeCheckedOut, ShippingTo, ProofOfPayment, Proof_RefNo, OrderPrescription, OrderStatus, ClinicID) VALUES ('$order_refno', '$od_products', $userID, '$totalPrice', '$currentDateTime', '$address_1', '$file', '$reference_no', '$file1', '$orderStatus', '$clinic_id')");
-    
+
                     // To update stocks
                     $stocks_query = mysqli_query($con, "SELECT SupplyID FROM orderdetails WHERE UserID='$userID' AND ClinicID='$clinic_id'");
                     $data = $stocks_query->fetch_all(MYSQLI_ASSOC);
@@ -544,14 +548,14 @@ $sum_q = $row_q['total_items'];
                         $conv_stock = implode($stock);
                         $a = mysqli_query($con, "SELECT Stocks - (SELECT Quantity FROM orderdetails WHERE SupplyID='$conv_stock' AND UserID='$userID') AS UpdatedStock FROM petsupplies WHERE SupplyID='$conv_stock'");
                         $a_row = mysqli_fetch_array($a);
-    
+
                         $updatedStock = $a_row['UpdatedStock'];
                         $b = mysqli_query($con, "UPDATE petsupplies SET Stocks='$updatedStock' WHERE SupplyID='$conv_stock'");
                     }
-    
+
                     // To remove item from cart
                     $del_query = mysqli_query($con, "DELETE FROM orderdetails WHERE UserID='$userID' AND ClinicID='$clinic_id'");
-    
+
                     // if ($a_query && $query && $stocks_query && $del_query) {
                     if ($query) {
                         // if ($query) {    
@@ -592,10 +596,8 @@ $sum_q = $row_q['total_items'];
                                                 })';
                     echo '</script>';
                 }
-
             }
         }
-
     } else {
         echo "<script>alert('Please add a product first to continue');</script>";
     }

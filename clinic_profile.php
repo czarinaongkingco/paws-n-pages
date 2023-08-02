@@ -164,6 +164,11 @@ $_SESSION['clinic_id'] = $clinic_id;
             padding-left: 1em;
             padding-right: 1em;
         }
+
+        a {
+            color: rgb(36, 94, 28);
+        }
+        
     </style>
 </head>
 
@@ -274,7 +279,7 @@ $_SESSION['clinic_id'] = $clinic_id;
 
             <!-- PRODUCTS START -->
             <div class="col-lg-9">
-                <div class="border-start border-5 border-primary ps-5 mb-5" style="width: 112%;">
+                <div class="border-start border-5 border-primary ps-5 mb-5" style="width: 112%; color:rgb(36, 94, 28);">
                     <h2 class="text-primary text-uppercase">Products <a style="float: right;" href="cart.php?clinicid='<?php echo htmlentities($clinic_id); ?>"><i class="fa fa-shopping-cart"></i></a></h2>
                 </div>
 
@@ -519,14 +524,15 @@ $_SESSION['clinic_id'] = $clinic_id;
     </div>
     <!-- END OF MODAL FOR VIEW SERVICES -->
 
-<!-- FINAL Footer Start -->
+    <!-- FINAL Footer Start -->
     <div class="container-fluid bg-light mt-5 py-5">
         <div class="container pt-5">
             <div class="row g-5">
                 <div class="col-lg-4 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Get In Touch</h5>
                     <p class="mb-4">If you have inquiries feel free to contact us below<br>
-                    <a href="contact.php">Contact Us </a></p>
+                        <a href="contact.php">Contact Us </a>
+                    </p>
                     <a class="mb-2" href="https://goo.gl/maps/nGdbiDamK7MP9L5z5"><i class="bi bi-geo-alt text-primary me-2"></i>Manila, PH</br></a>
                     <a class="mb-2" href="mailto:pawsnpages.site@gmail.com"><i class="bi bi-envelope-open text-primary me-2"></i>pawsnpages.site@gmail.com</a>
                     <a class="mb-0" href="tel:+6396176261"></br><i class="bi bi-telephone text-primary me-2"></i>+63 961

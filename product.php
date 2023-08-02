@@ -64,8 +64,7 @@ $row_a = mysqli_num_rows($ret_a);
 <head>
     <meta charset="utf-8">
     <title>Paws N Pages | Product</title>
-    <link rel="icon" href="https://media.discordapp.net/attachments/1112075552669581332/1113455947420024832/icon.png"
-        type="image/x-icon">
+    <link rel="icon" href="https://media.discordapp.net/attachments/1112075552669581332/1113455947420024832/icon.png" type="image/x-icon">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -255,6 +254,10 @@ $row_a = mysqli_num_rows($ret_a);
             color: black;
             user-select: none;
         }
+
+        a {
+            color: rgb(36, 94, 28);
+        }
     </style>
 </head>
 
@@ -304,11 +307,9 @@ $row_a = mysqli_num_rows($ret_a);
             <a href="clinic_profile.php?clinicid=<?php echo $clinic_id ?>"><i class="bi bi-chevron-left"></i> GO
                 BACK</a>
             <?php if ($row_c['Stocks'] > 0 && $userID != 0) { ?>
-                <a style="float: right; padding-right: 50px;"
-                    href="cart.php?clinicid='<?php echo htmlentities($clinic_id); ?>"><i
-                        class="fa fa-shopping-cart"></i></a>
-            </h3>
-        <?php } ?>
+                <a style="float: right; padding-right: 50px;" href="cart.php?clinicid='<?php echo htmlentities($clinic_id); ?>"><i class="fa fa-shopping-cart"></i></a>
+        </h3>
+    <?php } ?>
     </div>
 
     <br><br>
@@ -322,7 +323,7 @@ $row_a = mysqli_num_rows($ret_a);
         $row = mysqli_num_rows($ret);
         if ($row > 0) {
             while ($row = mysqli_fetch_array($ret)) {
-                ?>
+        ?>
                 <div class="product-container">
                     <?php if ($row['SupplyImage'] != "") {
                         echo '<img width="60%" src="image_upload/' . $row['SupplyImage'] . '">';
@@ -339,7 +340,7 @@ $row_a = mysqli_num_rows($ret_a);
                             </h1>
 
                             <h3>
-                                <b style="color:rgb(102, 176, 50);">
+                                <b style="color:rgb(36,94,28);">
                                     PHP
                                     <?php echo $row['SupplyPrice'] ?>
                                 </b>
@@ -365,37 +366,35 @@ $row_a = mysqli_num_rows($ret_a);
                                     $row1 = mysqli_num_rows($ret1);
                                     if ($row1 > 0) {
                                         while ($row1 = mysqli_fetch_array($ret1)) {
-                                            ?>
-                                            <select name="quantity" class="bg-light border-0 px-4 py-3"
-                                                style="width: 20%; border-radius: 15px;">
+                                    ?>
+                                            <select name="quantity" class="bg-light border-0 px-4 py-3" style="width: 20%; border-radius: 15px;">
                                                 <?php
                                                 for ($i = 1; $i <= $row_c['Stocks']; $i++) {
-                                                    ?>
+                                                ?>
                                                     <option value="<?php echo $i ?>"><?php echo $i ?></option>
                                                     <option value="<?php echo $row1['Quantity']; ?>" selected hidden><?php echo $row1['Quantity']; ?></option>
-                                                    <?php
+                                                <?php
                                                 }
                                                 ?>
                                             </select>
 
-                                            <?php
+                                        <?php
                                             $cnt1 = $cnt1 + 1;
                                         }
                                     } else {
                                         ?>
 
-                                    <select name="quantity" class="bg-light border-0 px-4 py-3"
-                                        style="width: 20%; border-radius: 15px;">
-                                        <?php
-                                        for ($i = 1; $i <= $row_c['Stocks']; $i++) {
-                                            ?>
-                                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                        <select name="quantity" class="bg-light border-0 px-4 py-3" style="width: 20%; border-radius: 15px;">
                                             <?php
-                                        }
-                                        ?>
-                                    </select>
+                                            for ($i = 1; $i <= $row_c['Stocks']; $i++) {
+                                            ?>
+                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
 
-                                <?php } ?>
+                                    <?php } ?>
 
                                 </div>
                             <?php } ?>
@@ -425,14 +424,12 @@ $row_a = mysqli_num_rows($ret_a);
                             ?>
 
                             <?php if ($row_b > 0) { ?>
-                                <button name="submit" class="btn btn-primary" id="addToCart"
-                                    style="width: 100%; border-radius: 15px;">Update Cart</button>
-                            <?php } else {
+                                <button name="submit" class="btn btn-primary" id="addToCart" style="width: 100%; border-radius: 15px;">Update Cart</button>
+                                <?php } else {
                                 if ($row_c['Stocks'] > 0 && $userID != 0) { ?>
 
-                                    <button name="submit" class="btn btn-primary" id="addToCart"
-                                        style="width: 100%; border-radius: 15px;">Add to Cart</button>
-                                <?php }
+                                    <button name="submit" class="btn btn-primary" id="addToCart" style="width: 100%; border-radius: 15px;">Add to Cart</button>
+                            <?php }
                             } ?>
 
                             <?php
@@ -507,7 +504,7 @@ $row_a = mysqli_num_rows($ret_a);
                         </form>
                     </div>
                 </div>
-                <?php
+        <?php
                 $cnt = $cnt + 1;
             }
         }
@@ -520,8 +517,7 @@ $row_a = mysqli_num_rows($ret_a);
 
 
     <!-- Modal Start -->
-    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -548,14 +544,15 @@ $row_a = mysqli_num_rows($ret_a);
     <!-- Modal End -->
 
 
-<!-- FINAL Footer Start -->
+    <!-- FINAL Footer Start -->
     <div class="container-fluid bg-light mt-5 py-5">
         <div class="container pt-5">
             <div class="row g-5">
                 <div class="col-lg-4 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Get In Touch</h5>
                     <p class="mb-4">If you have inquiries feel free to contact us below<br>
-                    <a href="contact.php">Contact Us </a></p>
+                        <a href="contact.php">Contact Us </a>
+                    </p>
                     <a class="mb-2" href="https://goo.gl/maps/nGdbiDamK7MP9L5z5"><i class="bi bi-geo-alt text-primary me-2"></i>Manila, PH</br></a>
                     <a class="mb-2" href="mailto:pawsnpages.site@gmail.com"><i class="bi bi-envelope-open text-primary me-2"></i>pawsnpages.site@gmail.com</a>
                     <a class="mb-0" href="tel:+6396176261"></br><i class="bi bi-telephone text-primary me-2"></i>+63 961
@@ -609,7 +606,7 @@ $row_a = mysqli_num_rows($ret_a);
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             var cartItems = [];
 
             function updateCart() {
@@ -633,7 +630,7 @@ $row_a = mysqli_num_rows($ret_a);
                 $("#cartItems").html(cartContent);
             }
 
-            $(document).on("click", ".remove-btn", function () {
+            $(document).on("click", ".remove-btn", function() {
                 var index = $(this).data("index");
                 cartItems.splice(index, 1);
                 updateCart();
@@ -642,7 +639,7 @@ $row_a = mysqli_num_rows($ret_a);
             // Rest of the JavaScript code remains the same
 
             function addToCart(name) {
-                var index = cartItems.findIndex(function (item) {
+                var index = cartItems.findIndex(function(item) {
                     return item.name === name;
                 });
                 if (index === -1) {
@@ -656,17 +653,17 @@ $row_a = mysqli_num_rows($ret_a);
                 updateCart();
             }
 
-            $(document).on("click", "#openCartBtn", function () {
+            $(document).on("click", "#openCartBtn", function() {
                 updateCart();
                 $("#cartModal").modal("show");
             });
 
-            $(document).on("click", "#addToCart", function () {
+            $(document).on("click", "#addToCart", function() {
                 var productName = $(this).closest(".product-item").find("h6").text();
                 addToCart(productName);
             });
 
-            $(document).on("click", ".quantity-btn", function () {
+            $(document).on("click", ".quantity-btn", function() {
                 var index = $(this).data("index");
                 var action = $(this).data("action");
                 if (action === "increase") {
@@ -680,7 +677,7 @@ $row_a = mysqli_num_rows($ret_a);
                 updateCart();
             });
 
-            $(document).on("click", "#checkoutBtn", function () {
+            $(document).on("click", "#checkoutBtn", function() {
                 // Handle checkout logic here
                 console.log("Checkout button clicked");
             });
@@ -689,14 +686,14 @@ $row_a = mysqli_num_rows($ret_a);
     <!-- Add the JavaScript code at the bottom of your HTML file -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Close button click event
-            $('#cartModal .close').click(function () {
+            $('#cartModal .close').click(function() {
                 $('#cartModal').modal('hide');
             });
 
             // Checkout button click event
-            $('#checkoutBtn').click(function () {
+            $('#checkoutBtn').click(function() {
                 // Perform the checkout action here
                 // You can add your own code to handle the checkout process
                 alert('Checkout button clicked!');
@@ -709,7 +706,7 @@ $row_a = mysqli_num_rows($ret_a);
         // var stocks = document.getElementById('stocks').value;
         // var qty = document.getElementById('quantity').value;
 
-        $('#add').on('click', function () {
+        $('#add').on('click', function() {
             var input = $('#quantity');
             var stocks = $('#stocks');
             if (input < stocks) {

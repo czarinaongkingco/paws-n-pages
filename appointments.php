@@ -53,6 +53,12 @@ $userID = $_SESSION["id"];
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
+    <style>
+        a {
+            color: rgb(36, 94, 28);
+        }
+    </style>
+
     <script type="text/javascript">
         function preview() {
             image.src = URL.createObjectURL(event.target.files[0]);
@@ -136,14 +142,14 @@ $userID = $_SESSION["id"];
                 <table class="table table-striped table-hover" name="appointments" id="appointments" style="border:0px;">
                     <thead>
                         <tr class="table100-head">
-                            <th class="column1" style="border:0px; color: #80B434;">Reference No.</th>
-                            <th class="column1" style="border:0px; color: #80B434;">Preferred Date</th>
-                            <th class="column1" style="border:0px; color: #80B434;">Preferred Time</th>
-                            <th class="column1" style="border:0px; color: #80B434;">Availed Services</th>
-                            <th class="column1" style="border:0px; color: #80B434;">Clinic</th>
-                            <th class="column1" style="border:0px; color: #80B434;">Status</th>
-                            <th class="column1" style="border:0px; color: #80B434;">Date and Time Booked</th>
-                            <th class="column1" style="border:0px; color: #80B434; text-align:center;">Action</th>
+                            <th class="column1" style="border:0px; color: #245e1c;">Reference No.</th>
+                            <th class="column1" style="border:0px; color: #245e1c;">Preferred Date</th>
+                            <th class="column1" style="border:0px; color: #245e1c;">Preferred Time</th>
+                            <th class="column1" style="border:0px; color: #245e1c;">Availed Services</th>
+                            <th class="column1" style="border:0px; color: #245e1c;">Clinic</th>
+                            <th class="column1" style="border:0px; color: #245e1c;">Status</th>
+                            <th class="column1" style="border:0px; color: #245e1c;">Date and Time Booked</th>
+                            <th class="column1" style="border:0px; color: #245e1c; text-align:center;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
