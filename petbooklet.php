@@ -57,8 +57,14 @@ $clinicID = $row_ca['ClinicID'];
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    
+
     <link rel="stylesheet" type="text/css" href="css/admin.css">
+
+    <style>
+        a {
+            color: #245e1c;
+        }
+    </style>
 
     <!-- FOR DIGITAL TIME AND DATE -->
     <script type="text/javascript">
@@ -247,12 +253,12 @@ $clinicID = $row_ca['ClinicID'];
                             <table class="table table-striped table-hover" style="border:0px; text-align:left;" id="orders">
                                 <thead style="border:0px;">
                                     <tr class="table100-head" style="border:0px;">
-                                        <th class="column1" style="border:0px; color:#80b434;">Customer</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">No. of Pets</th>
-                                        <th class="column1" style="border:0px; color:#80b434; display: none;">Proof of Payment</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Total Amount</th>
-                                        <th class="column1" style="border:0px; color:#80b434; text-align: center;">Payment Status</th>
-                                        <th class="column1" style="border:0px; color:#80b434; text-align: center;">Action</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Customer</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">No. of Pets</th>
+                                        <th class="column1" style="border:0px; color:#245e1c; display: none;">Proof of Payment</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Total Amount</th>
+                                        <th class="column1" style="border:0px; color:#245e1c; text-align: center;">Payment Status</th>
+                                        <th class="column1" style="border:0px; color:#245e1c; text-align: center;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody style="border:0px;">

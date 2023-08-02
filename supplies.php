@@ -56,6 +56,12 @@ $clinicID = $row_ca['ClinicID'];
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/admin.css">
 
+    <style>
+        a {
+            color: #245e1c;
+        }
+    </style>
+
     <!-- FOR DIGITAL TIME AND DATE -->
     <script type="text/javascript">
         function updateClock() {
@@ -174,7 +180,7 @@ $clinicID = $row_ca['ClinicID'];
 </head>
 
 <body onload="initClock()">
-     <div style="width:100%; height:50px;" class="aheader">
+    <div style="width:100%; height:50px;" class="aheader">
         <p style="color:white; font-size:23px; padding-left:10px;"><img src="img/logo_white.png" height="50px">&nbsp;PawsNPages
             <?php
             $ret = mysqli_query($con, "SELECT * FROM users WHERE UserID='$userID'");
@@ -306,12 +312,12 @@ $clinicID = $row_ca['ClinicID'];
                             <table class="table table-striped table-hover" style="border: 0px; text-align: left;" id="supplies">
                                 <thead>
                                     <tr class="table100-head">
-                                        <th class="column1" style="border:0px; color:#80b434;">Product Name</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Clinic Name</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Price</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Stocks</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Needs Prescription</th>
-                                        <th class="column1" style="border:0px; color:#80b434; text-align: center;">View</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Product Name</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Clinic Name</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Price</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Stocks</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Needs Prescription</th>
+                                        <th class="column1" style="border:0px; color:#245e1c; text-align: center;">View</th>
                                     </tr>
                                 </thead>
 
@@ -698,7 +704,7 @@ $clinicID = $row_ca['ClinicID'];
 
         if (in_array($_fileType, $_allowedTypes)) {
             $query = mysqli_query($con, "INSERT INTO petsupplies (SupplyImage, SupplyName, SupplyDescription, SupplyPrice, Stocks, NeedPrescription, ClinicID) VALUES ('$file', '$name', '$description', '$price', '$stocks', '$prescription', '$clinicID')");
-    
+
             if ($query) {
                 echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
                 echo '<script>';
@@ -737,7 +743,6 @@ $clinicID = $row_ca['ClinicID'];
                                                 })';
             echo '</script>';
         }
-
     }
 
     if (isset($_POST['update'])) {
@@ -802,10 +807,8 @@ $clinicID = $row_ca['ClinicID'];
                                                 })';
                 echo '</script>';
             }
-
-            
         } else {
-            
+
             $e_query = mysqli_query($con, "UPDATE petsupplies SET SupplyName='$Uname', SupplyDescription='$Udescription', SupplyPrice='$Uprice', Stocks='$Ustocks', NeedPrescription='$Uprescription' WHERE SupplyID='$eid'");
 
             if ($e_query) {

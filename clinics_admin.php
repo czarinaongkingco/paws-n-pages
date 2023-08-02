@@ -70,6 +70,12 @@ $clinicID = $row_ca['ClinicID'];
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/admin.css">
 
+    <style>
+        a {
+            color: #245e1c;
+        }
+    </style>
+
     <!-- FOR DIGITAL TIME AND DATE -->
     <script type="text/javascript">
         function updateClock() {
@@ -257,12 +263,12 @@ $clinicID = $row_ca['ClinicID'];
                             <table class="table table-striped table-hover" style="border:0px; text-align:left;" id="orders">
                                 <thead style="border:0px;">
                                     <tr class="table100-head" style="border:0px;">
-                                        <th class="column1" style="border:0px; color:#80b434;">Subscription No.</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Clinic Name</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Owner</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Subscription Type</th>
-                                        <th class="column1" style="border:0px; color:#80b434; text-align: center;">Subscription Status</th>
-                                        <th class="column1" style="border:0px; color:#80b434; text-align: center;">View/Update</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Subscription No.</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Clinic Name</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Owner</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Subscription Type</th>
+                                        <th class="column1" style="border:0px; color:#245e1c; text-align: center;">Subscription Status</th>
+                                        <th class="column1" style="border:0px; color:#245e1c; text-align: center;">View/Update</th>
                                     </tr>
                                 </thead>
                                 <tbody style="border:0px;">

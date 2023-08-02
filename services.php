@@ -61,6 +61,12 @@ $clinicID = $row_ca['ClinicID'];
 
     <link rel="stylesheet" type="text/css" href="css/admin.css">
 
+    <style>
+        a {
+            color: #245e1c;
+        }
+    </style>
+
     <!-- FOR DIGITAL TIME AND DATE -->
     <script type="text/javascript">
         function updateClock() {
@@ -134,7 +140,7 @@ $clinicID = $row_ca['ClinicID'];
 </head>
 
 <body onload="initClock()">
-   <div style="width:100%; height:50px;" class="aheader">
+    <div style="width:100%; height:50px;" class="aheader">
         <p style="color:white; font-size:23px; padding-left:10px;"><img src="img/logo_white.png" height="50px">&nbsp;PawsNPages
             <?php
             $ret = mysqli_query($con, "SELECT * FROM users WHERE UserID='$userID'");
@@ -271,10 +277,10 @@ $clinicID = $row_ca['ClinicID'];
                             <table class="table table-striped table-hover" style="border:0px; text-align:left;" id="orders">
                                 <thead style="border:0px;">
                                     <tr class="table100-head" style="border:0px;">
-                                        <th class="column1" style="border:0px; color:#80b434;">Service</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Description</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Price</th>
-                                        <th class="column1" style="border:0px; color:#80b434; text-align: center;">Action</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Service</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Description</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Price</th>
+                                        <th class="column1" style="border:0px; color:#245e1c; text-align: center;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody style="border:0px;">
@@ -336,10 +342,10 @@ $clinicID = $row_ca['ClinicID'];
                             <table class="table table-striped table-hover" style="border:0px; text-align:left;" id="orders">
                                 <thead style="border:0px;">
                                     <tr class="table100-head" style="border:0px;">
-                                        <th class="column1" style="border:0px; color:#80b434;">Clinic</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Service</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Description</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Price</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Clinic</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Service</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Description</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Price</th>
                                     </tr>
                                 </thead>
                                 <tbody style="border:0px;">

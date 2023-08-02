@@ -56,7 +56,13 @@ $clinicID = $row_ca['ClinicID'];
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/admin.css">
-    
+
+    <style>
+        a {
+            color: #245e1c;
+        }
+    </style>
+
 
     <!-- FOR DIGITAL TIME AND DATE -->
     <script type="text/javascript">
@@ -290,11 +296,11 @@ $clinicID = $row_ca['ClinicID'];
                             <table class="table table-striped table-hover" id="pets" style="border:0px;">
                                 <thead>
                                     <tr class="table100-head">
-                                        <th class="column1" style="border:0px; color:#80b434;">ID</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Owner</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Name</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Birthdate</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Health Record</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">ID</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Owner</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Name</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Birthdate</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Health Record</th>
                                     </tr>
                                 </thead>
 
@@ -382,13 +388,13 @@ $clinicID = $row_ca['ClinicID'];
                                     <table class="table table-striped table-hover" style="border: 0px; text-align: left;">
                                         <thead>
                                             <tr class="table100-head">
-                                                <th class="column1" style="border:0px; color:#80b434;">Pet ID</th>
-                                                <th class="column1" style="border:0px; color:#80b434;">Pet Name</th>
-                                                <th class="column1" style="border:0px; color:#80b434;">Species</th>
-                                                <th class="column1" style="border:0px; color:#80b434;">Breed</th>
-                                                <th class="column1" style="border:0px; color:#80b434;">Birthdate</th>
-                                                <th class="column1" style="border:0px; color:#80b434;">Owner</th>
-                                                <th class="column1" style="border:0px; color:#80b434; text-align: center;">Action</th>
+                                                <th class="column1" style="border:0px; color:#245e1c;">Pet ID</th>
+                                                <th class="column1" style="border:0px; color:#245e1c;">Pet Name</th>
+                                                <th class="column1" style="border:0px; color:#245e1c;">Species</th>
+                                                <th class="column1" style="border:0px; color:#245e1c;">Breed</th>
+                                                <th class="column1" style="border:0px; color:#245e1c;">Birthdate</th>
+                                                <th class="column1" style="border:0px; color:#245e1c;">Owner</th>
+                                                <th class="column1" style="border:0px; color:#245e1c; text-align: center;">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>

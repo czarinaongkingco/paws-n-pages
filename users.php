@@ -55,7 +55,192 @@ $clinicID = $row_ca['ClinicID'];
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            text-decoration: none;
+            list-style: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .wrapper {
+            background: white;
+            display: flex;
+        }
+
+        .side_bar {
+            width: 250px;
+            background: #245e1c;
+        }
+
+
+        .main_container {
+            width: calc(100% - 250px);
+            padding: 30px;
+            min-height: 100vh;
+        }
+
+
+
+        .side_bar .side_bar_top .profile_pic {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .side_bar .side_bar_top .profile_pic img {
+            width: 100px;
+            height: 100px;
+            padding: 5px;
+            border: 2px solid white;
+            border-radius: 50%;
+        }
+
+        .side_bar .side_bar_top .profile_info {
+            text-align: center;
+            color: #fff;
+        }
+
+        .side_bar .side_bar_top .profile_info p {
+            margin-top: 5px;
+            font-size: 12px;
+        }
+
+        .side_bar .side_bar_bottom {
+            background: #245e1c;
+            padding: 20px 0;
+            padding-left: 15px;
+            height: 100%;
+
+        }
+
+        .side_bar .side_bar_bottom ul li {
+            position: relative;
+        }
+
+        .side_bar .side_bar_bottom ul li a {
+            display: block;
+            padding: 15px;
+            font-size: 14px;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .side_bar .side_bar_bottom ul li a .icon {
+            margin-right: 8px;
+        }
+
+        .side_bar .side_bar_bottom ul li.active a {
+            background: white;
+            color: #245e1c;
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+        }
+
+        .side_bar .side_bar_bottom ul li.active .top_curve,
+        .side_bar .side_bar_bottom ul li.active .bottom_curve {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: white;
+        }
+
+        .side_bar .side_bar_bottom ul li.active .top_curve {
+            top: -20px;
+        }
+
+        .side_bar .side_bar_bottom ul li.active .bottom_curve {
+            bottom: -20px;
+        }
+
+        .side_bar .side_bar_bottom ul li.active .top_curve:before,
+        .side_bar .side_bar_bottom ul li.active .bottom_curve:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #245e1c;
+        }
+
+        .side_bar .side_bar_bottom ul li.active .top_curve:before {
+            border-bottom-right-radius: 25px;
+        }
+
+        .side_bar .side_bar_bottom ul li.active .bottom_curve:before {
+            border-top-right-radius: 25px;
+        }
+
+        .side_bar .side_bar_bottom .sidebar-footer {
+            height: 50px;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            list-style-type: none;
+            padding-bottom: 5.5em;
+        }
+
+        /* Style the tab */
+        .tab {
+            overflow: auto;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            border-radius: 15px 15px 0px 0px;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #245e1c;
+            color: white;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        .card-body {
+            display: none;
+        }
+
+        a {
+            color: rgb(36, 94, 28);
+        }
+
+        th {
+            color: rgb(36, 94, 28);
+        }
+    </style>
+
     <script>
         $(document).ready(function() {
             var table = $('#clients').DataTable({
@@ -116,7 +301,7 @@ $clinicID = $row_ca['ClinicID'];
             });
         });
     </script>
-    <link rel="stylesheet" type="text/css" href="css/admin.css">
+
     <!-- FOR DIGITAL TIME AND DATE -->
     <script type="text/javascript">
         function updateClock() {
@@ -294,21 +479,21 @@ $clinicID = $row_ca['ClinicID'];
                             <div class="tab">
                                 <button id="v_tab" class="tablinks active" onclick="showContent('content1', this)">Clients</button>
                                 <button id="ha_tab" class="tablinks" onclick="showContent('content2', this)">Admins</button>
-                                <button class="tablinks" data-toggle="modal" data-target="#add_modal" style="float:right; background-color:#80b434; color:white;">Add</button>
+                                <button class="tablinks" data-toggle="modal" data-target="#add_modal" style="float:right; background-color:#245e1c; color:white;">Add</button>
                             </div>
                             <div class="card-body text-center" id="content1">
                                 <table class="table table-striped table-hover" id="clients" style="text-align: left; border: 0;">
                                     <thead>
                                         <tr class="table100-head">
-                                            <th class="column1" style="border:0px; color:#80b434; ">Name</th>
-                                            <th class="column1" style="border:0px; color:#80b434; ">Username</th>
-                                            <th class="column1" style="border:0px; color:#80b434;  display: none;">Address</th>
-                                            <th class="column1" style="border:0px; color:#80b434;  display: none;">Age</th>
-                                            <th class="column1" style="border:0px; color:#80b434; ">User Type</th>
-                                            <th class="column1" style="border:0px; color:#80b434;  display: none;">Email</th>
-                                            <th class="column1" style="border:0px; color:#80b434;  display: none;">Contact No.</th>
-                                            <th class="column1" style="border:0px; color:#80b434; ">Date Modified</th>
-                                            <th class="column1" style="border:0px; color:#80b434;  text-align: center;">Action</th>
+                                            <th class="column1" style="border:0px; color:#245e1c; ">Name</th>
+                                            <th class="column1" style="border:0px; color:#245e1c; ">Username</th>
+                                            <th class="column1" style="border:0px; color:#245e1c;  display: none;">Address</th>
+                                            <th class="column1" style="border:0px; color:#245e1c;  display: none;">Age</th>
+                                            <th class="column1" style="border:0px; color:#245e1c; ">User Type</th>
+                                            <th class="column1" style="border:0px; color:#245e1c;  display: none;">Email</th>
+                                            <th class="column1" style="border:0px; color:#245e1c;  display: none;">Contact No.</th>
+                                            <th class="column1" style="border:0px; color:#245e1c; ">Date Modified</th>
+                                            <th class="column1" style="border:0px; color:#245e1c;  text-align: center;">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -369,12 +554,12 @@ $clinicID = $row_ca['ClinicID'];
                                 <table class="table table-striped table-hover" id="admins" style="text-align: left; border: 0px;">
                                     <thead>
                                         <tr class="table100-head">
-                                            <th class="column1" style="border:0px; color:#80b434;">Name</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Username</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Email</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Contact No.</th>
-                                            <th class="column1" style="border:0px; color:#80b434;">Date Modified</th>
-                                            <th class="column1" style="border:0px; color:#80b434;  text-align: center;">Action</th>
+                                            <th class="column1" style="border:0px; color:#245e1c;">Name</th>
+                                            <th class="column1" style="border:0px; color:#245e1c;">Username</th>
+                                            <th class="column1" style="border:0px; color:#245e1c;">Email</th>
+                                            <th class="column1" style="border:0px; color:#245e1c;">Contact No.</th>
+                                            <th class="column1" style="border:0px; color:#245e1c;">Date Modified</th>
+                                            <th class="column1" style="border:0px; color:#245e1c;  text-align: center;">Action</th>
                                             <!-- <th class="column1">Edit/Delete</th> -->
                                         </tr>
                                     </thead>

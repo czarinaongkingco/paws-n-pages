@@ -57,9 +57,15 @@ $clinicID = $row_ca['ClinicID'];
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    
 
     <link rel="stylesheet" type="text/css" href="css/admin.css">
+
+    <style>
+        a {
+            color: #245e1c;
+        }
+    </style>
+
     <!-- FOR DIGITAL TIME AND DATE -->
     <script type="text/javascript">
         function updateClock() {
@@ -116,7 +122,7 @@ $clinicID = $row_ca['ClinicID'];
 </head>
 
 <body onload="initClock()">
-   <div style="width:100%; height:50px;" class="aheader">
+    <div style="width:100%; height:50px;" class="aheader">
         <p style="color:white; font-size:23px; padding-left:10px;"><img src="img/logo_white.png" height="50px">&nbsp;PawsNPages
             <?php
             $ret = mysqli_query($con, "SELECT * FROM users WHERE UserID='$userID'");
@@ -249,14 +255,14 @@ $clinicID = $row_ca['ClinicID'];
                             <table class="table table-striped table-hover" style="border:0px; text-align:left;" id="bookings">
                                 <thead style="border:0px;">
                                     <tr class="table100-head" style="border:0px;">
-                                        <th class="column1" style="border:0px; color:#80b434;">Reference No.</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Clinic Name</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Preferred Date</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Preferred Time</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Customer</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Date & Time Booked</th>
-                                        <th class="column1" style="border:0px; color:#80b434; text-align:center;">Status</th>
-                                        <th class="column1" style="border:0px; color:#80b434; text-align:center;">View</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Reference No.</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Clinic Name</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Preferred Date</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Preferred Time</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Customer</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Date & Time Booked</th>
+                                        <th class="column1" style="border:0px; color:#245e1c; text-align:center;">Status</th>
+                                        <th class="column1" style="border:0px; color:#245e1c; text-align:center;">View</th>
                                     </tr>
                                 </thead>
                                 <tbody style="border:0px;">
@@ -355,14 +361,14 @@ $clinicID = $row_ca['ClinicID'];
                             <table class="table table-striped table-hover" style="border:0px; text-align:left;" id="bookings">
                                 <thead style="border:0px;">
                                     <tr class="table100-head" style="border:0px;">
-                                        <th class="column1" style="border:0px; color:#80b434;">Reference No.</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Preferred Date</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Preferred Time</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Services</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Customer</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Date & Time Booked</th>
-                                        <th class="column1" style="border:0px; color:#80b434; text-align:center;">Status</th>
-                                        <th class="column1" style="border:0px; color:#80b434; text-align:center;">View/Update</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Reference No.</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Preferred Date</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Preferred Time</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Services</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Customer</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Date & Time Booked</th>
+                                        <th class="column1" style="border:0px; color:#245e1c; text-align:center;">Status</th>
+                                        <th class="column1" style="border:0px; color:#245e1c; text-align:center;">View/Update</th>
                                     </tr>
                                 </thead>
                                 <tbody style="border:0px;">
@@ -533,7 +539,7 @@ $clinicID = $row_ca['ClinicID'];
 
 
                                         </div>
-                                        <div class="form-group" id="rem" >
+                                        <div class="form-group" id="rem">
                                             <label>Remarks</label>
                                             <textarea name="Remarks" id="Remarks" class="form-control" style=" width: 100%; height: 150px;"></textarea>
                                         </div>

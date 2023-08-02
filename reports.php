@@ -58,7 +58,14 @@ $clinicID = $row_ca['ClinicID'];
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-   <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+
+    <style>
+        a {
+            color: #245e1c;
+        }
+    </style>
+
     <!-- FOR DIGITAL TIME AND DATE -->
     <script type="text/javascript">
         function updateClock() {
@@ -245,11 +252,11 @@ $clinicID = $row_ca['ClinicID'];
                             <table class="table table-striped table-hover" style="border:0px; text-align:left;" id="reports">
                                 <thead style="border:0px;">
                                     <tr class="table100-head" style="border:0px;">
-                                        <th class="column1" style="border:0px; color:#80b434;">Name</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Email</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Subject</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Message</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Date & Time Reported</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Name</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Email</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Subject</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Message</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Date & Time Reported</th>
                                     </tr>
                                 </thead>
                                 <tbody style="border:0px;">

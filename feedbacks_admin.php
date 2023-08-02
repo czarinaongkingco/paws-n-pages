@@ -56,6 +56,13 @@ $clinicID = $row_ca['ClinicID'];
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/admin.css">
+
+    <style>
+        a {
+            color: #245e1c;
+        }
+    </style>
+
     <script>
         $(document).ready(function() {
             var table = $('#feedbacks').DataTable({
@@ -263,11 +270,11 @@ $clinicID = $row_ca['ClinicID'];
                             <table class="table table-striped table-hover" id="feedbacks" style="border:0px; text-align:left;">
                                 <thead>
                                     <tr class="table100-head">
-                                        <th class="column1" style="border:0px; color:#80b434;">Clinic</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Rating</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Comment</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Date & Time Rated</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Customer</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Clinic</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Rating</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Comment</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Date & Time Rated</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Customer</th>
                                     </tr>
                                 </thead>
 
@@ -322,10 +329,10 @@ $clinicID = $row_ca['ClinicID'];
                             <table class="table table-striped table-hover" id="feedbacks" style="border:0px; text-align: left;">
                                 <thead>
                                     <tr class="table100-head">
-                                        <th class="column1" style="border:0px; color:#80b434;">Rating</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Comment</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Date & Time Rated</th>
-                                        <th class="column1" style="border:0px; color:#80b434;">Customer</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Rating</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Comment</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Date & Time Rated</th>
+                                        <th class="column1" style="border:0px; color:#245e1c;">Customer</th>
                                     </tr>
                                 </thead>
 

@@ -306,7 +306,7 @@ $row_cb = mysqli_num_rows($ret_cb);
                                 <div class="card-header userProfile-font">👤 <b>User Details</b> &nbsp; <a href=""
                                         data-toggle="modal" title="Delete" style="float:right;"
                                         data-target="#update_modal<?php echo $row['userID'] ?>"><i
-                                            class="fa fa-pencil"></i></a></div>
+                                            class="fa fa-pencil" style="color: #245e1c;"></i></a></div>
                                 <div class="card-body text-center">
 
                                     <div class="userProfile">
@@ -531,7 +531,7 @@ $row_cb = mysqli_num_rows($ret_cb);
                         <div class="card mb-4 mb-xl-0" style="border-radius: 15px;">
                             <div class="card-header userProfile-font">👤 <b>User Details</b> &nbsp; <a href=""
                                     data-toggle="modal" title="Delete" style="float:right;"
-                                    data-target="#admin_modal<?php echo $row['userID'] ?>"><i class="fa fa-pencil"></i></a>
+                                    data-target="#admin_modal<?php echo $row['userID'] ?>"><i class="fa fa-pencil" style="color: #245e1c;"></i></a>
                             </div>
                             <div class="card-body text-center">
                                 <div class="userProfile">
