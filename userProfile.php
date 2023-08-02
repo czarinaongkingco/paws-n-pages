@@ -210,7 +210,7 @@ $row_u = mysqli_fetch_array($sql_u);
 
     <!-- START OF PROFILE -->
     <br>
-    <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
+    <div class="border-5 ps-5 mb-5" style="max-width: 600px; border-style: solid; border-color: transparent transparent transparent #245e1c;">
         <h1 class="text-primary text-uppercase">User Profile</h1>
     </div>
     <div class="container-xl px-4 mt-4">
