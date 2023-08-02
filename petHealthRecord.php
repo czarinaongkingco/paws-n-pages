@@ -77,7 +77,7 @@ $petID = $_GET['petid'];
 
         /* Create an active/current tablink class */
         .tab button.active {
-            background-color: #80b434;
+            background-color: #245e1c;
             color: white;
         }
 
@@ -174,7 +174,7 @@ $petID = $_GET['petid'];
 
     <!-- START OF PET HEALTH RECORD -->
     <br>
-    <div class="border-start border-5 border-primary ps-5 mb-5">
+    <div class="border-5 ps-5 mb-5" style="border-style: solid; border-color: transparent transparent transparent #245e1c;">
         <h2 class="text-primary text-uppercase"><b>⚕️Pet Health Record</b></h2>
     </div>
     <div style="padding-right:30px; padding-left:30px;">
@@ -191,15 +191,15 @@ $petID = $_GET['petid'];
                         <table class="table table-striped table-hover" style="border:0px;" id="vaccine">
                             <thead style="border:0px;">
                                 <tr class="table100-head">
-                                    <th class="column1" style="border:0px; color:#80b434;">Name</th>
-                                    <th class="column1" style="border:0px; color:#80b434;">Brand</th>
-                                    <th class="column1" style="border:0px; color:#80b434;">Description</th>
-                                    <th class="column1" style="border:0px; color:#80b434;">Dosage</th>
-                                    <th class="column1" style="border:0px; color:#80b434;">Lot #</th>
-                                    <th class="column1" style="border:0px; color:#80b434;">Date Vaccinated</th>
-                                    <th class="column1" style="border:0px; color:#80b434;">Expiration Date</th>
-                                    <th class="column1" style="border:0px; color:#80b434;">Vaccinator</th>
-                                    <th class="column1" style="border:0px; color:#80b434;">Clinic</th>
+                                    <th class="column1" style="border:0px; color:#245e1c;">Name</th>
+                                    <th class="column1" style="border:0px; color:#245e1c;">Brand</th>
+                                    <th class="column1" style="border:0px; color:#245e1c;">Description</th>
+                                    <th class="column1" style="border:0px; color:#245e1c;">Dosage</th>
+                                    <th class="column1" style="border:0px; color:#245e1c;">Lot #</th>
+                                    <th class="column1" style="border:0px; color:#245e1c;">Date Vaccinated</th>
+                                    <th class="column1" style="border:0px; color:#245e1c;">Expiration Date</th>
+                                    <th class="column1" style="border:0px; color:#245e1c;">Vaccinator</th>
+                                    <th class="column1" style="border:0px; color:#245e1c;">Clinic</th>
                                     <!-- <th class="column1">Edit/Delete</th> -->
                                 </tr>
                             </thead>
@@ -299,11 +299,11 @@ $petID = $_GET['petid'];
                         <table class="table table-striped table-hover" style="border:0px;" id="assessment">
                             <thead>
                                 <tr class="table100-head">
-                                    <th class="column1" style="border:0px; color:#80b434;">Remarks</th>
-                                    <th class="column1" style="border:0px; color:#80b434;">Date Assessed</th>
-                                    <th class="column1" style="border:0px; color:#80b434;">Assessed By</th>
-                                    <th class="column1" style="border:0px; color:#80b434;">Prescription</th>
-                                    <th class="column1" style="border:0px; color:#80b434;">Clinic</th>
+                                    <th class="column1" style="border:0px; color:#245e1c;">Remarks</th>
+                                    <th class="column1" style="border:0px; color:#245e1c;">Date Assessed</th>
+                                    <th class="column1" style="border:0px; color:#245e1c;">Assessed By</th>
+                                    <th class="column1" style="border:0px; color:#245e1c;">Prescription</th>
+                                    <th class="column1" style="border:0px; color:#245e1c;">Clinic</th>
                                     <!-- <th class="column1">Edit/Delete</th> -->
                                 </tr>
                             </thead>
@@ -387,14 +387,15 @@ $petID = $_GET['petid'];
 
 
 
-<!-- FINAL Footer Start -->
+    <!-- FINAL Footer Start -->
     <div class="container-fluid bg-light mt-5 py-5">
         <div class="container pt-5">
             <div class="row g-5">
                 <div class="col-lg-4 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Get In Touch</h5>
                     <p class="mb-4">If you have inquiries feel free to contact us below<br>
-                    <a href="contact.php">Contact Us </a></p>
+                        <a href="contact.php">Contact Us </a>
+                    </p>
                     <a class="mb-2" href="https://goo.gl/maps/nGdbiDamK7MP9L5z5"><i class="bi bi-geo-alt text-primary me-2"></i>Manila, PH</br></a>
                     <a class="mb-2" href="mailto:pawsnpages.site@gmail.com"><i class="bi bi-envelope-open text-primary me-2"></i>pawsnpages.site@gmail.com</a>
                     <a class="mb-0" href="tel:+6396176261"></br><i class="bi bi-telephone text-primary me-2"></i>+63 961
