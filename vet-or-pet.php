@@ -44,6 +44,20 @@
             margin: 0;
             padding: 0;
         }
+
+        #pet {
+            border-color: #245e1c;
+            color: #000000;
+        }
+
+        #pet:hover {
+            background-color: #245e1c;
+            color: #ffffff;
+        }
+
+        a {
+            color: #245e1c;
+        }
     </style>
 </head>
 
@@ -63,13 +77,11 @@
                             <h5 class="display-5 text-primary text-uppercase mb-0 text-center">I am a...</h5>
                         </div>
                         <div class="col-6 ">
-                            <a href="registration.php"><button type="submit" name="signup"
-                                    class="btn btn-outline-primary w-100 py-3" style="border-radius:15px;">Pet
+                            <a href="registration.php"><button type="submit" name="signup" class="btn w-100 py-3" id="pet" style="border-radius:15px;">Pet
                                     Owner</button></a>
                         </div>
                         <div class="col-6">
-                            <a href="clinics_registration.php"><button type="submit" name="submit"
-                                    class="btn btn-outline-dark w-100 py-3" style="border-radius:15px;">Vet Clinic
+                            <a href="clinics_registration.php"><button type="submit" name="submit" class="btn btn-outline-dark w-100 py-3" style="border-radius:15px;">Vet Clinic
                                     Owner</button></a>
                         </div>
 
