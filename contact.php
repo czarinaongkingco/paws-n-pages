@@ -88,7 +88,7 @@ require 'src/SMTP.php';
     <div class="container-fluid pt-5">
         <div class="container">
             <div class="col-12">
-                <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 100%;">
+                <div class="border-5 ps-5 mb-5" style="max-width: 600px; border-style: solid; border-color: transparent transparent transparent #245e1c;">
                     <h6 class="text-primary text-uppercase">Contact Us</h6>
                     <h1 class="display-5 text-uppercase mb-0">Feel Free To Contact Us</h1>
                 </div>
@@ -165,7 +165,7 @@ require 'src/SMTP.php';
             </div>
             <br>
             <br>
-            <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
+            <div class="border-5 ps-5 mb-5" style="max-width: 600px; border-style: solid; border-color: transparent transparent transparent #245e1c;">
                 <h6 class="text-primary text-uppercase">Vet clinics</h6>
                 <h1 class="display-5 text-uppercase mb-0">Want to showcase your clinic?</h1><br>
                 <div class="col-6">
@@ -177,14 +177,15 @@ require 'src/SMTP.php';
     <!-- Contact End -->
 
 
-<!-- FINAL Footer Start -->
+    <!-- FINAL Footer Start -->
     <div class="container-fluid bg-light mt-5 py-5">
         <div class="container pt-5">
             <div class="row g-5">
                 <div class="col-lg-4 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Get In Touch</h5>
                     <p class="mb-4">If you have inquiries feel free to contact us below<br>
-                    <a href="contact.php">Contact Us </a></p>
+                        <a href="contact.php">Contact Us </a>
+                    </p>
                     <a class="mb-2" href="https://goo.gl/maps/nGdbiDamK7MP9L5z5"><i class="bi bi-geo-alt text-primary me-2"></i>Manila, PH</br></a>
                     <a class="mb-2" href="mailto:pawsnpages.site@gmail.com"><i class="bi bi-envelope-open text-primary me-2"></i>pawsnpages.site@gmail.com</a>
                     <a class="mb-0" href="tel:+6396176261"></br><i class="bi bi-telephone text-primary me-2"></i>+63 961

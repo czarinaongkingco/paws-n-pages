@@ -161,10 +161,6 @@ $row_u = mysqli_fetch_array($sql_u);
             left: -3px;
             content: "✖";
         }
-
-        i {
-            color: #245e1c;
-        }
     </style>
 </head>
 
@@ -220,7 +216,7 @@ $row_u = mysqli_fetch_array($sql_u);
                 <div class="card mb-4 mb-xl-0" style="border-radius: 15px;">
                     <div class="card-header userProfile-font">👤 Pet Owner Profile &nbsp;
                         <button class="delete_user" name="delete_user" value="<?php echo $row['UserID'] ?>" style="border:0px; background-color:inherit; float:right;display:none;"><i class="fa fa-trash" style="color:red;"></i></button>
-                        <a href="" data-toggle="modal" title="Delete" style="float:right;" data-target="#update_modal"><i class="fa fa-pencil"></i></a>
+                        <a href="" data-toggle="modal" title="Delete" style="float:right;" data-target="#update_modal"><i class="fa fa-pencil" style="color: #245e1c;"></i></a>
                     </div>
                     <div class="card-body text-center">
                         <!-- Profile picture help block-->
@@ -362,7 +358,7 @@ $row_u = mysqli_fetch_array($sql_u);
                         <!-- <div class="card-header userProfile-font">🐾 Pet Profile &nbsp;<a href="userprofile.php?delid=<?php echo ($row['PetID']); ?>" style="float:right;" class="delete" title="Delete" data-toggle="tooltip" onclick="return confirm('Delete item?');"><i class="material-icons" style="color:firebrick;">&#xE872;</i></a></div> -->
                         <div class="card-header userProfile-font">🐾 Pet Profile &nbsp;
                             <button class="delete_pet" name="delete_pet" value="<?php echo $row['PetID'] ?>" style="border:0px; background-color:inherit; float:right; display:none;"><i class="fa fa-trash" style="color:red;"></i></button>
-                            <a href="" pet-id="<?php echo $row['PetID'] ?>" pet-image="<?php echo $row['PetImage'] ?>" pet-uid="<?php echo $row['PetUniqueID'] ?>" pet-name="<?php echo $row['PetName'] ?>" species="<?php echo $row['Species'] ?>" breed="<?php echo $row['Breed'] ?>" birth-date="<?php echo $row['BirthDate'] ?>" pet-color="<?php echo $row['Color'] ?>" style="float:right;" title="Edit" data-toggle="modal" data-target="#edit-pet"><i class="fa fa-pencil"></i></a>
+                            <a href="" pet-id="<?php echo $row['PetID'] ?>" pet-image="<?php echo $row['PetImage'] ?>" pet-uid="<?php echo $row['PetUniqueID'] ?>" pet-name="<?php echo $row['PetName'] ?>" species="<?php echo $row['Species'] ?>" breed="<?php echo $row['Breed'] ?>" birth-date="<?php echo $row['BirthDate'] ?>" pet-color="<?php echo $row['Color'] ?>" style="float:right;" title="Edit" data-toggle="modal" data-target="#edit-pet"><i class="fa fa-pencil" style="color: #245e1c;"></i></a>
                         </div>
 
 
