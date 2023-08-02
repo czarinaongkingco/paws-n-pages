@@ -119,7 +119,7 @@ include('config.php');
 
                 <!-- Services Start -->
                 <div class="mb-5">
-                    <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">People also search for</h5>
+                    <h5 class="text-uppercase border-5 ps-3 mb-4" style="border-style: solid; border-color: transparent transparent transparent #245e1c;">People also search for</h5>
                     <div class="d-flex flex-column justify-content-start">
                         <?php
                         $sql = mysqli_query($con, "SELECT DISTINCT ServiceName FROM services");

@@ -168,7 +168,6 @@ $_SESSION['clinic_id'] = $clinic_id;
         a {
             color: rgb(36, 94, 28);
         }
-        
     </style>
 </head>
 
@@ -279,7 +278,7 @@ $_SESSION['clinic_id'] = $clinic_id;
 
             <!-- PRODUCTS START -->
             <div class="col-lg-9">
-                <div class="border-start border-5 border-primary ps-5 mb-5" style="width: 112%; color:rgb(36, 94, 28);">
+                <div class=" border-5 ps-5 mb-5" style="width: 112%; border-style: solid; border-color: transparent transparent transparent #245e1c;">
                     <h2 class="text-primary text-uppercase">Products <a style="float: right;" href="cart.php?clinicid='<?php echo htmlentities($clinic_id); ?>"><i class="fa fa-shopping-cart"></i></a></h2>
                 </div>
 
@@ -336,7 +335,7 @@ $_SESSION['clinic_id'] = $clinic_id;
 
     <!-- Feedback Start -->
     <div class="container-fluid bg-testimonial py-5" style="margin: 90px 0;">
-        <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
+        <div class="border-5 ps-5 mb-5" style="max-width: 600px; border-style: solid; border-color: transparent transparent transparent #245e1c;">
             <h1 class="text-dark text-uppercase">Feedbacks</h1>
         </div>
         <div class="container py-5">

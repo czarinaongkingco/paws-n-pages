@@ -122,7 +122,7 @@ include('connection.php');
                     </div>
                 </div>
                 <div class="col-lg-7">
-                    <div class="border-start border-5 border-primary ps-5 mb-5">
+                    <div class="border-5 ps-5 mb-5" style="border-style: solid; border-color: transparent transparent transparent #245e1c;">
                         <h6 class="text-primary text-uppercase">About Us</h6>
                         <h1 class="text-primary text-uppercase">Welcome to Paws N Pages</h1>
                     </div>
@@ -161,7 +161,7 @@ include('connection.php');
 
             </p>
             <br>
-            <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
+            <div class="border-5 ps-5 mb-5" style="max-width: 600px; border-style: solid; border-color: transparent transparent transparent #245e1c;">
                 <h6 class="text-primary text-uppercase">Bianca</h6>
             </div>
             <div class="owl-carousel team-carousel position-relative" style="padding-right: 25px;">
@@ -215,7 +215,7 @@ include('connection.php');
     <!-- Shir Start -->
     <div class="container-fluid py-5">
         <div class="container">
-            <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
+            <div class="border-5 ps-5 mb-5" style="max-width: 600px; border-style: solid; border-color: transparent transparent transparent #245e1c;">
                 <h6 class="text-primary text-uppercase">Shirley</h6>
             </div>
             <div class="owl-carousel team-carousel position-relative" style="padding-right: 25px;">
@@ -268,7 +268,7 @@ include('connection.php');
     <!-- Services Start -->
     <div class="container-fluid py-5">
         <div class="container">
-            <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
+            <div class="border-5 ps-5 mb-5" style="max-width: 600px; border-style: solid; border-color: transparent transparent transparent #245e1c;">
                 <h6 class="text-primary text-uppercase">Services</h6>
                 <h1 class="display-5 text-uppercase mb-0">Our Services</h1>
             </div>
@@ -330,7 +330,7 @@ include('connection.php');
     <!-- FAQS Start -->
     <div class="container-fluid py-5" id="faqs">
         <div class="container">
-            <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
+            <div class="border-5 ps-5 mb-5" style="max-width: 600px; border-style: solid; border-color: transparent transparent transparent #245e1c;">
                 <h6 class="text-primary text-uppercase">Frequently Asked Questions</h6>
                 <h1 class="display-5 text-uppercase mb-0">Our FAQs</h1>
                 <!-- Search Form Start -->
