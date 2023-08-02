@@ -56,7 +56,7 @@ $sum_q = $row_q['total_items'];
     <style>
         body {
             /* background: url(https://wallpapercave.com/wp/wp2514316.jpg) no-repeat center center fixed; */
-            background: url(img/checkout.jpg) no-repeat center center fixed;
+            background: url(img/checkout2.jpg) no-repeat center center fixed;
             background-size: cover;
         }
     </style>
