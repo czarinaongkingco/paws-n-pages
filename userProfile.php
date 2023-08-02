@@ -25,8 +25,7 @@ $row_u = mysqli_fetch_array($sql_u);
 <head>
     <meta charset="utf-8">
     <title>Paws N Pages | User Profile</title>
-    <link rel="icon" href="https://media.discordapp.net/attachments/1112075552669581332/1113455947420024832/icon.png"
-        type="image/x-icon">
+    <link rel="icon" href="https://media.discordapp.net/attachments/1112075552669581332/1113455947420024832/icon.png" type="image/x-icon">
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -76,7 +75,7 @@ $row_u = mysqli_fetch_array($sql_u);
             if (file) {
                 var reader = new FileReader();
 
-                reader.onload = function () {
+                reader.onload = function() {
                     $("#image").attr("src", reader.result);
                 }
 
@@ -91,10 +90,10 @@ $row_u = mysqli_fetch_array($sql_u);
             var total = isNaN(petqty) ? 0 : price * petqty;
             document.getElementById("amount").value = "₱" + total.toFixed(2);
         }
-        $(function () {
+        $(function() {
             var dtToday = new Date();
 
-            var month = dtToday.getMonth() + 1;// jan=0; feb=1 .......
+            var month = dtToday.getMonth() + 1; // jan=0; feb=1 .......
             var day = dtToday.getDate();
             var year = dtToday.getFullYear() - 18;
             if (month < 10)
@@ -162,6 +161,10 @@ $row_u = mysqli_fetch_array($sql_u);
             left: -3px;
             content: "✖";
         }
+
+        i {
+            color: #245e1c;
+        }
     </style>
 </head>
 
@@ -216,11 +219,8 @@ $row_u = mysqli_fetch_array($sql_u);
             <div class="col-xl-5">
                 <div class="card mb-4 mb-xl-0" style="border-radius: 15px;">
                     <div class="card-header userProfile-font">👤 Pet Owner Profile &nbsp;
-                        <button class="delete_user" name="delete_user" value="<?php echo $row['UserID'] ?>"
-                            style="border:0px; background-color:inherit; float:right;display:none;"><i
-                                class="fa fa-trash" style="color:red;"></i></button>
-                        <a href="" data-toggle="modal" title="Delete" style="float:right;"
-                            data-target="#update_modal"><i class="fa fa-pencil"></i></a>
+                        <button class="delete_user" name="delete_user" value="<?php echo $row['UserID'] ?>" style="border:0px; background-color:inherit; float:right;display:none;"><i class="fa fa-trash" style="color:red;"></i></button>
+                        <a href="" data-toggle="modal" title="Delete" style="float:right;" data-target="#update_modal"><i class="fa fa-pencil"></i></a>
                     </div>
                     <div class="card-body text-center">
                         <!-- Profile picture help block-->
@@ -231,7 +231,7 @@ $row_u = mysqli_fetch_array($sql_u);
                                         <?php
                                         $ret = mysqli_query($con, "SELECT * FROM users WHERE UserID='$userID'");
                                         while ($row = mysqli_fetch_array($ret)) {
-                                            ?>
+                                        ?>
                                             <tr>
                                                 <td><b>Name: &nbsp;&nbsp;</b></td>
                                                 <td>
@@ -266,12 +266,8 @@ $row_u = mysqli_fetch_array($sql_u);
                                         <?php } ?>
                                     </tbody>
                                 </table>
-                                <a href="appointments.php" class="btn btn-primary" type="button"
-                                    style=" width:47%; border-radius: 15px;"><span
-                                        class="glyphicon glyphicon-plus"></span>Appointments</a>&nbsp;&nbsp;&nbsp;
-                                <a href="orders.php" class="btn btn-primary" type="button"
-                                    style="width:47%; border-radius: 15px;"><span
-                                        class="glyphicon glyphicon-plus"></span>Order History</a>
+                                <a href="appointments.php" class="btn btn-primary" type="button" style=" width:47%; border-radius: 15px;"><span class="glyphicon glyphicon-plus"></span>Appointments</a>&nbsp;&nbsp;&nbsp;
+                                <a href="orders.php" class="btn btn-primary" type="button" style="width:47%; border-radius: 15px;"><span class="glyphicon glyphicon-plus"></span>Order History</a>
 
                             </center>
                         </div>
@@ -291,26 +287,23 @@ $row_u = mysqli_fetch_array($sql_u);
                                         <?php
                                         $ret = mysqli_query($con, "SELECT * FROM petbooklet WHERE UserID='$userID' ORDER BY BookletID DESC LIMIT 1");
                                         while ($row = mysqli_fetch_array($ret)) {
-                                            ?>
+                                        ?>
                                             <tr>
                                                 <td><b>Status: &nbsp;&nbsp;</b></td>
                                                 <td>
                                                     <?php $status = $row['PaymentStatus'];
                                                     if ($status === 'Pending') { ?>
-                                                        <a
-                                                            style="color:white; font-size:12px; padding: 5px 10px; border-radius:10px; background-color:#F4BB44;">
+                                                        <a style="color:white; font-size:12px; padding: 5px 10px; border-radius:10px; background-color:#F4BB44;">
                                                             <?php echo $row['PaymentStatus']; ?>
                                                         </a>
                                                     <?php }
                                                     if ($status === 'Approved') { ?>
-                                                        <a
-                                                            style="color:white; font-size:12px; padding: 5px 7px; border-radius:10px; background-color:#228B22;">
+                                                        <a style="color:white; font-size:12px; padding: 5px 7px; border-radius:10px; background-color:#228B22;">
                                                             <?php echo $row['PaymentStatus']; ?>
                                                         </a>
                                                     <?php }
                                                     if ($status === 'Denied') { ?>
-                                                        <a
-                                                            style="color:white; font-size:12px; padding: 5px 15px;  border-radius:10px; background-color:#A52A2A;">
+                                                        <a style="color:white; font-size:12px; padding: 5px 15px;  border-radius:10px; background-color:#A52A2A;">
                                                             <?php echo $row['PaymentStatus']; ?>
                                                         </a>
                                                     <?php }
@@ -336,23 +329,17 @@ $row_u = mysqli_fetch_array($sql_u);
 
                                 <?php
                                 if ($row_a['NoOfPets'] > 0 && $row_a['PaymentStatus'] != 'Pending') {
-                                    ?>
+                                ?>
 
-                                    <button class="btn btn-primary" type="button" data-toggle="modal"
-                                        data-target="#form_modal"
-                                        style="float:right; width:100%; border-radius: 15px;"><span
-                                            class="glyphicon glyphicon-plus"></span>Add Pet</button>
+                                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#form_modal" style="float:right; width:100%; border-radius: 15px;"><span class="glyphicon glyphicon-plus"></span>Add Pet</button>
                                     <br>
-                                    <?php
+                                <?php
                                 } else {
-                                    ?>
+                                ?>
                                     <?php if ($row_a['PaymentStatus'] != 'Pending') { ?>
-                                        <button class="btn btn-primary" type="button" data-toggle="modal"
-                                            data-target="#booklet_modal"
-                                            style="float:right; width:100%; border-radius: 15px;"><span
-                                                class="glyphicon glyphicon-plus"></span>Buy a Pet Booklet</button>
+                                        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#booklet_modal" style="float:right; width:100%; border-radius: 15px;"><span class="glyphicon glyphicon-plus"></span>Buy a Pet Booklet</button>
                                         <br>
-                                    <?php }
+                                <?php }
                                 } ?>
 
 
@@ -369,20 +356,13 @@ $row_u = mysqli_fetch_array($sql_u);
                 <?php
                 $ret = mysqli_query($con, "SELECT * FROM pets WHERE UserID='$userID' ORDER BY PetID DESC ");
                 while ($row = mysqli_fetch_array($ret)) {
-                    ?>
+                ?>
                     <div class="card mb-4" style="border-radius: 15px;">
 
                         <!-- <div class="card-header userProfile-font">🐾 Pet Profile &nbsp;<a href="userprofile.php?delid=<?php echo ($row['PetID']); ?>" style="float:right;" class="delete" title="Delete" data-toggle="tooltip" onclick="return confirm('Delete item?');"><i class="material-icons" style="color:firebrick;">&#xE872;</i></a></div> -->
                         <div class="card-header userProfile-font">🐾 Pet Profile &nbsp;
-                            <button class="delete_pet" name="delete_pet" value="<?php echo $row['PetID'] ?>"
-                                style="border:0px; background-color:inherit; float:right; display:none;"><i
-                                    class="fa fa-trash" style="color:red;"></i></button>
-                            <a href="" pet-id="<?php echo $row['PetID'] ?>" pet-image="<?php echo $row['PetImage'] ?>"
-                                pet-uid="<?php echo $row['PetUniqueID'] ?>" pet-name="<?php echo $row['PetName'] ?>"
-                                species="<?php echo $row['Species'] ?>" breed="<?php echo $row['Breed'] ?>"
-                                birth-date="<?php echo $row['BirthDate'] ?>" pet-color="<?php echo $row['Color'] ?>"
-                                style="float:right;" title="Edit" data-toggle="modal" data-target="#edit-pet"><i
-                                    class="fa fa-pencil"></i></a>
+                            <button class="delete_pet" name="delete_pet" value="<?php echo $row['PetID'] ?>" style="border:0px; background-color:inherit; float:right; display:none;"><i class="fa fa-trash" style="color:red;"></i></button>
+                            <a href="" pet-id="<?php echo $row['PetID'] ?>" pet-image="<?php echo $row['PetImage'] ?>" pet-uid="<?php echo $row['PetUniqueID'] ?>" pet-name="<?php echo $row['PetName'] ?>" species="<?php echo $row['Species'] ?>" breed="<?php echo $row['Breed'] ?>" birth-date="<?php echo $row['BirthDate'] ?>" pet-color="<?php echo $row['Color'] ?>" style="float:right;" title="Edit" data-toggle="modal" data-target="#edit-pet"><i class="fa fa-pencil"></i></a>
                         </div>
 
 
@@ -409,8 +389,7 @@ $row_u = mysqli_fetch_array($sql_u);
                                     <tr>
                                         <td><b>Pet ID: &nbsp;&nbsp;</b></td>
                                         <td>
-                                            <span class="text-primary text-uppercase"
-                                                style="padding-top:10px; font-weight: bold;">
+                                            <span class="text-primary text-uppercase" style="padding-top:10px; font-weight: bold;">
                                                 <?php echo $row['PetUniqueID'] ?>
                                             </span>
                                         </td>
@@ -448,9 +427,7 @@ $row_u = mysqli_fetch_array($sql_u);
                                 </tbody>
                             </table>
                             <!-- START OF BUTTON FOR VIEWING OF HEALTH RECORD -->
-                            <a href="petHealthRecord.php?petid=<?php echo ($row['PetID']); ?>" class="btn btn-primary"
-                                type="button" style="float:left; border-radius: 15px;"><span
-                                    class="glyphicon glyphicon-plus"></span>VIEW HEALTH
+                            <a href="petHealthRecord.php?petid=<?php echo ($row['PetID']); ?>" class="btn btn-primary" type="button" style="float:left; border-radius: 15px;"><span class="glyphicon glyphicon-plus"></span>VIEW HEALTH
                                 RECORD</a>
 
                             <!-- END OF BUTTON FOR VIEWING OF HEALTH RECORD -->
@@ -477,62 +454,52 @@ $row_u = mysqli_fetch_array($sql_u);
                             <?php
                             $ret = mysqli_query($con, "SELECT * FROM users WHERE UserID='$userID'");
                             while ($row = mysqli_fetch_array($ret)) {
-                                ?>
+                            ?>
                                 <div class="row gx-3 mb-3">
                                     <div class="col-md-6">
                                         <label>First Name</label>
                                         <input type="hidden" name="userID" value="<?php echo $row['UserID'] ?>" />
-                                        <input type="text" name="fname" value="<?php echo $row['FirstName'] ?>"
-                                            class="form-control" />
+                                        <input type="text" name="fname" value="<?php echo $row['FirstName'] ?>" class="form-control" />
                                     </div>
                                     <div class="col-md-6">
                                         <label>Middle Name</label>
-                                        <input type="text" name="mname" value="<?php echo $row['MiddleName'] ?>"
-                                            class="form-control" />
+                                        <input type="text" name="mname" value="<?php echo $row['MiddleName'] ?>" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Last Name</label>
-                                    <input type="text" name="lname" value="<?php echo $row['LastName'] ?>"
-                                        class="form-control" />
+                                    <input type="text" name="lname" value="<?php echo $row['LastName'] ?>" class="form-control" />
                                 </div>
                                 <div class="row gx-3 mb-3">
                                     <div class="col-md-6">
                                         <label>Contact No.</label>
-                                        <input type="text" name="cnum" value="<?php echo $row['ContactNo'] ?>"
-                                            class="form-control" />
+                                        <input type="text" name="cnum" value="<?php echo $row['ContactNo'] ?>" class="form-control" />
                                     </div>
                                     <div class="col-md-6">
                                         <label>Birthdate</label>
-                                        <input type="date" name="pobirthdate" id="pobirthdate"
-                                            value="<?php echo $row['Birth_Date'] ?>" class="form-control" />
+                                        <input type="date" name="pobirthdate" id="pobirthdate" value="<?php echo $row['Birth_Date'] ?>" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <input type="text" name="username" value="<?php echo $row['Username'] ?>"
-                                        class="form-control" />
+                                    <input type="text" name="username" value="<?php echo $row['Username'] ?>" class="form-control" />
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" name="email" value="<?php echo $row['Email'] ?>"
-                                        class="form-control" />
+                                    <input type="text" name="email" value="<?php echo $row['Email'] ?>" class="form-control" />
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input type="password" name="password" value="<?php echo $row['Password'] ?>"
-                                        class="form-control" readonly />
+                                    <input type="password" name="password" value="<?php echo $row['Password'] ?>" class="form-control" readonly />
                                 </div>
                                 <div class="form-group">
                                     <label>New Password</label>
                                     <div class="password-container">
-                                        <input type="password" name="newpass" id="pword" minlength="8" maxlength="16"
-                                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" class="form-control" />
+                                        <input type="password" name="newpass" id="pword" minlength="8" maxlength="16" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" class="form-control" />
                                         <i class="fa-solid fa-eye" id="eye"></i>
                                     </div>
                                 </div>
-                                <p id="message"
-                                    style="display: none;font-style: italic; font-size: 15px; padding-top: 10px;">
+                                <p id="message" style="display: none;font-style: italic; font-size: 15px; padding-top: 10px;">
                                     &nbsp;&nbsp;&nbsp;&nbsp;<span id="length" class="invalid">*Minimum of (8)
                                         characters</span>, <span id="capital" class="invalid">at least (1)
                                         uppercase letter</span>, <span id="letter" class="invalid">(1) lowercase
@@ -543,11 +510,9 @@ $row_u = mysqli_fetch_array($sql_u);
                     </div>
                     <div style="clear:both;"></div>
                     <div class="modal-footer">
-                        <button name="update" class="btn btn-primary" style="border-radius: 15px;"><span
-                                class="glyphicon glyphicon-edit"></span>
+                        <button name="update" class="btn btn-primary" style="border-radius: 15px;"><span class="glyphicon glyphicon-edit"></span>
                             Update</button>
-                        <button class="btn btn-danger" type="button" data-dismiss="modal"
-                            style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                        <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span> Close</button>
                     </div>
             </div>
             </form>
@@ -572,40 +537,32 @@ $row_u = mysqli_fetch_array($sql_u);
                             </div>
                             <div class="form-group">
                                 <label>Pet Name</label>
-                                <input type="text" name="petname" style="border-radius: 15px;" class="form-control"
-                                    required="required" />
+                                <input type="text" name="petname" style="border-radius: 15px;" class="form-control" required="required" />
                             </div>
                             <div class="form-group">
                                 <label>Species</label>
-                                <input type="text" name="species" style="border-radius: 15px;" class="form-control"
-                                    required="required" />
+                                <input type="text" name="species" style="border-radius: 15px;" class="form-control" required="required" />
                             </div>
                             <div class="form-group">
                                 <label>Breed</label>
-                                <input type="text" name="breed" style="border-radius: 15px;" class="form-control"
-                                    required="required" />
+                                <input type="text" name="breed" style="border-radius: 15px;" class="form-control" required="required" />
                             </div>
                             <div class="form-group">
                                 <label>Birthdate</label>
-                                <input type="date" name="birthdate"
-                                    onfocus="this.max=new Date().toISOString().split('T')[0]"
-                                    style="border-radius: 15px;" class="form-control" required="required" />
+                                <input type="date" name="birthdate" onfocus="this.max=new Date().toISOString().split('T')[0]" style="border-radius: 15px;" class="form-control" required="required" />
                             </div>
                             <div class="form-group">
                                 <label>Color</label>
-                                <input type="text" name="color" style="border-radius: 15px;" class="form-control"
-                                    required="required" />
+                                <input type="text" name="color" style="border-radius: 15px;" class="form-control" required="required" />
                                 <input type="hidden" name="userID" value="<?php echo $userID ?>" />
                             </div>
                         </div>
                     </div>
                     <div style="clear:both;"></div>
                     <div class="modal-footer">
-                        <button name="save_pet" class="btn btn-primary" style="border-radius: 15px;"><span
-                                class="glyphicon glyphicon-save"></span>
+                        <button name="save_pet" class="btn btn-primary" style="border-radius: 15px;"><span class="glyphicon glyphicon-save"></span>
                             Add</button>
-                        <button class="btn btn-danger" type="button" data-dismiss="modal"
-                            style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
+                        <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
                             Cancel</button>
                     </div>
                 </form>
@@ -626,34 +583,27 @@ $row_u = mysqli_fetch_array($sql_u);
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>For How Many Pets</label>
-                                <input type="number" id="noofpets" name="noofpets" min="1" max="15"
-                                    oninput="calculateTotal()" style="border-radius: 15px;" class="form-control"
-                                    required />
+                                <input type="number" id="noofpets" name="noofpets" min="1" max="15" oninput="calculateTotal()" style="border-radius: 15px;" class="form-control" required />
                             </div>
                             <div class="form-group">
                                 <label>Amount to Pay</label>
-                                <input type="text" id="amount" name="amount" style="border-radius: 15px;"
-                                    class="form-control" readonly />
+                                <input type="text" id="amount" name="amount" style="border-radius: 15px;" class="form-control" readonly />
                             </div>
                             <div class="form-group">
                                 <label>Paws N Pages QR Code</label><br />
                                 <center>
-                                    <img id="image"
-                                        src="https://media.discordapp.net/attachments/1112075552669581332/1123236171829481552/4F28300A-EFF2-4FF4-B119-6A751AC8261B.jpg?width=630&height=630"
-                                        width="100%" />
+                                    <img id="image" src="https://media.discordapp.net/attachments/1112075552669581332/1123236171829481552/4F28300A-EFF2-4FF4-B119-6A751AC8261B.jpg?width=630&height=630" width="100%" />
                                 </center>
                             </div>
                             <br>
                             <div class="form-group">
                                 <label>Proof of Payment</label><br />
-                                <input type="file" name="proof_payment" class="form-control"
-                                    accept=".jpg, .jpeg, .png, .pdf" required>
+                                <input type="file" name="proof_payment" class="form-control" accept=".jpg, .jpeg, .png, .pdf" required>
                             </div>
                             <br>
                             <div class="form-group">
                                 <label>Reference Number of Payment</label>
-                                <input type="text" name="ref_no" style="border-radius: 15px;" class="form-control"
-                                    required />
+                                <input type="text" name="ref_no" style="border-radius: 15px;" class="form-control" required />
                             </div>
 
                             <br>
@@ -666,11 +616,9 @@ $row_u = mysqli_fetch_array($sql_u);
                     </div>
                     <div style="clear:both;"></div>
                     <div class="modal-footer">
-                        <button name="add_booklet" class="btn btn-primary" style="border-radius: 15px;"><span
-                                class="glyphicon glyphicon-save"></span>
+                        <button name="add_booklet" class="btn btn-primary" style="border-radius: 15px;"><span class="glyphicon glyphicon-save"></span>
                             Submit</button>
-                        <button class="btn btn-danger" type="button" data-dismiss="modal"
-                            style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
+                        <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
                             Cancel</button>
                     </div>
                 </form>
@@ -693,8 +641,7 @@ $row_u = mysqli_fetch_array($sql_u);
                                 <div class="col-md-6">
                                     <div class="form-group" style="display: none;">
                                         <label>Pet ID</label>
-                                        <input type="text" id="petid1" name="petid1" style="border-radius: 15px;"
-                                            class="form-control" readonly />
+                                        <input type="text" id="petid1" name="petid1" style="border-radius: 15px;" class="form-control" readonly />
                                     </div>
                                     <div class="form-group">
                                         <label>Current Pet Image</label>
@@ -705,39 +652,31 @@ $row_u = mysqli_fetch_array($sql_u);
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Pet ID</label>
-                                        <input type="text" id="petuid" name="petuid" style="border-radius: 15px;"
-                                            class="form-control" readonly />
+                                        <input type="text" id="petuid" name="petuid" style="border-radius: 15px;" class="form-control" readonly />
                                     </div>
                                     <div class="form-group">
                                         <label>Update Pet Image</label>
-                                        <input type="file" id="petimage2" name="petimage2" style="border-radius: 15px;"
-                                            class="form-control" accept=".jpg, .jpeg, .png, .pdf" />
+                                        <input type="file" id="petimage2" name="petimage2" style="border-radius: 15px;" class="form-control" accept=".jpg, .jpeg, .png, .pdf" />
                                     </div>
                                     <div class="form-group">
                                         <label>Pet Name</label>
-                                        <input type="text" id="petname1" name="petname1" style="border-radius: 15px;"
-                                            class="form-control" />
+                                        <input type="text" id="petname1" name="petname1" style="border-radius: 15px;" class="form-control" />
                                     </div>
                                     <div class="form-group">
                                         <label>Species</label>
-                                        <input type="text" id="species1" name="species1" style="border-radius: 15px;"
-                                            class="form-control" />
+                                        <input type="text" id="species1" name="species1" style="border-radius: 15px;" class="form-control" />
                                     </div>
                                     <div class="form-group">
                                         <label>Breed</label>
-                                        <input type="text" id="breed1" name="breed1" style="border-radius: 15px;"
-                                            class="form-control" />
+                                        <input type="text" id="breed1" name="breed1" style="border-radius: 15px;" class="form-control" />
                                     </div>
                                     <div class="form-group">
                                         <label>Date of Birth</label>
-                                        <input type="date" id="birthdate1" name="birthdate1"
-                                            onfocus="this.max=new Date().toISOString().split('T')[0]"
-                                            style="border-radius: 15px;" class="form-control" />
+                                        <input type="date" id="birthdate1" name="birthdate1" onfocus="this.max=new Date().toISOString().split('T')[0]" style="border-radius: 15px;" class="form-control" />
                                     </div>
                                     <div class="form-group">
                                         <label>Color</label>
-                                        <input type="text" id="color1" name="color1" style="border-radius: 15px;"
-                                            class="form-control" />
+                                        <input type="text" id="color1" name="color1" style="border-radius: 15px;" class="form-control" />
                                     </div>
                                 </div>
                             </div>
@@ -745,11 +684,9 @@ $row_u = mysqli_fetch_array($sql_u);
                     </div>
                     <div style="clear:both;"></div>
                     <div class="modal-footer">
-                        <button name="edit_pet_details" class="btn btn-primary" style="border-radius: 15px;"><span
-                                class="glyphicon glyphicon-save"></span>
+                        <button name="edit_pet_details" class="btn btn-primary" style="border-radius: 15px;"><span class="glyphicon glyphicon-save"></span>
                             Save</button>
-                        <button class="btn btn-danger" type="button" data-dismiss="modal"
-                            style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
+                        <button class="btn btn-danger" type="button" data-dismiss="modal" style="border-radius: 15px;"><span class="glyphicon glyphicon-remove"></span>
                             Cancel</button>
                     </div>
                 </form>
@@ -761,7 +698,7 @@ $row_u = mysqli_fetch_array($sql_u);
     <!-- START OF INSERTING DATA -->
     <?php
     ///////////////////// FOR UPDATING PET OWNER PROFILE ////////////////////////////
-    
+
     if (isset($_POST['update'])) {
 
         $userID = $_POST['userID'];
@@ -810,7 +747,7 @@ $row_u = mysqli_fetch_array($sql_u);
     }
 
     ///////////////////// FOR ADDING NEW PET ////////////////////////////  
-    
+
     if (isset($_POST['save_pet'])) {
 
         $file = $_FILES['image']['name'];
@@ -887,7 +824,6 @@ $row_u = mysqli_fetch_array($sql_u);
                                                 })';
             echo '</script>';
         }
-
     }
 
     ///////////////////// FOR DELETING PET ////////////////////////////  
@@ -959,9 +895,6 @@ $row_u = mysqli_fetch_array($sql_u);
                                                 })';
             echo '</script>';
         }
-
-
-        
     }
 
     if (isset($_POST['edit_pet_details'])) {
@@ -970,7 +903,7 @@ $row_u = mysqli_fetch_array($sql_u);
         $_tempfile = $_FILES['petimage2']['tmp_name'];
         $_folder = "image_upload/" . $_file;
         move_uploaded_file($_tempfile, $_folder);
-        
+
         $_allowedTypes = ['jpeg', 'png', 'jpg'];
         $_fileType = pathinfo($_file, PATHINFO_EXTENSION);
 
@@ -1059,30 +992,21 @@ $row_u = mysqli_fetch_array($sql_u);
                     <p class="mb-4">If you have inquiries feel free to contact us below<br>
                         <a href="contact.php">Contact Us </a>
                     </p>
-                    <a class="mb-2" href="https://goo.gl/maps/nGdbiDamK7MP9L5z5"><i
-                            class="bi bi-geo-alt text-primary me-2"></i>Manila, PH</br></a>
-                    <a class="mb-2" href="mailto:pawsnpages.site@gmail.com"><i
-                            class="bi bi-envelope-open text-primary me-2"></i>pawsnpages.site@gmail.com</a>
+                    <a class="mb-2" href="https://goo.gl/maps/nGdbiDamK7MP9L5z5"><i class="bi bi-geo-alt text-primary me-2"></i>Manila, PH</br></a>
+                    <a class="mb-2" href="mailto:pawsnpages.site@gmail.com"><i class="bi bi-envelope-open text-primary me-2"></i>pawsnpages.site@gmail.com</a>
                     <a class="mb-0" href="tel:+6396176261"></br><i class="bi bi-telephone text-primary me-2"></i>+63 961
                         762 6162</a>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <h5 class="text-uppercase border-start border-5 border-primary ps-3 mb-4">Quick Links</h5>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-body mb-2" href="index.php"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                        <a class="text-body mb-2" href="clinics.php"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Vet Clinics</a>
-                        <a class="text-body mb-2" href="index.php#services"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
-                        <a class="text-body mb-2" href="pricing.php"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Pricing</a>
-                        <a class="text-body mb-2" href="about.php"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                        <a class="text-body mb-2" href="about.php#faqs"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>FAQs</a>
-                        <a class="text-body" href="contact.php"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                        <a class="text-body mb-2" href="index.php"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                        <a class="text-body mb-2" href="clinics.php"><i class="bi bi-arrow-right text-primary me-2"></i>Vet Clinics</a>
+                        <a class="text-body mb-2" href="index.php#services"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
+                        <a class="text-body mb-2" href="pricing.php"><i class="bi bi-arrow-right text-primary me-2"></i>Pricing</a>
+                        <a class="text-body mb-2" href="about.php"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                        <a class="text-body mb-2" href="about.php#faqs"><i class="bi bi-arrow-right text-primary me-2"></i>FAQs</a>
+                        <a class="text-body" href="contact.php"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
                     </div>
                 </div>
 
@@ -1126,13 +1050,11 @@ $row_u = mysqli_fetch_array($sql_u);
     <script src="js/main.js"></script>
 
     <!-- Latest compiled and minified JavaScript (needed for editing details on a tabled list of data) -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <!-- To show details when editing -->
     <script>
-        $('#edit-pet').on('show.bs.modal', function (e) {
+        $('#edit-pet').on('show.bs.modal', function(e) {
             var opener = e.relatedTarget;
 
             var pet_id = $(opener).attr('pet-id');
@@ -1157,15 +1079,15 @@ $row_u = mysqli_fetch_array($sql_u);
             endResize();
         });
 
-        $('#update_modal').on('show.bs.modal', function (e) {
+        $('#update_modal').on('show.bs.modal', function(e) {
             endResize();
         });
 
-        $('#form_modal').on('show.bs.modal', function (e) {
+        $('#form_modal').on('show.bs.modal', function(e) {
             endResize();
         });
 
-        $('#booklet_modal').on('show.bs.modal', function (e) {
+        $('#booklet_modal').on('show.bs.modal', function(e) {
             endResize();
         });
 
@@ -1179,7 +1101,7 @@ $row_u = mysqli_fetch_array($sql_u);
         const passwordInput = document.querySelector("#pword");
         const eye = document.querySelector("#eye");
 
-        eye.addEventListener("click", function () {
+        eye.addEventListener("click", function() {
             this.classList.toggle("fa-eye-slash")
             const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
             passwordInput.setAttribute("type", type)
@@ -1193,17 +1115,17 @@ $row_u = mysqli_fetch_array($sql_u);
         var length = document.getElementById("length");
 
         // When the user clicks on the password field, show the message box
-        myInput.onfocus = function () {
+        myInput.onfocus = function() {
             document.getElementById("message").style.display = "block";
         }
 
         // When the user clicks outside of the password field, hide the message box
-        myInput.onblur = function () {
+        myInput.onblur = function() {
             document.getElementById("message").style.display = "none";
         }
 
         // When the user starts to type something inside the password field
-        myInput.onkeyup = function () {
+        myInput.onkeyup = function() {
             // Validate lowercase letters
             var lowerCaseLetters = /[a-z]/g;
             if (myInput.value.match(lowerCaseLetters)) {
@@ -1248,17 +1170,17 @@ $row_u = mysqli_fetch_array($sql_u);
     <!-- SWAL -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $('.delete_pet').click(function (e) {
+        $(document).ready(function() {
+            $('.delete_pet').click(function(e) {
                 var id = $(this).val();
                 e.preventDefault();
                 swal({
-                    title: "Warning",
-                    text: "Are you sure you want to delete this item?",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
+                        title: "Warning",
+                        text: "Are you sure you want to delete this item?",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
                     .then((willDelete) => {
                         if (willDelete) {
                             $.ajax({
@@ -1268,10 +1190,10 @@ $row_u = mysqli_fetch_array($sql_u);
                                     'Pet_ID': id,
                                     'delete_pet': true
                                 },
-                                success: function (response) {
+                                success: function(response) {
                                     console.log(response);
                                     if (response == 200) {
-                                        swal("Success", "You have successfully deleted a pet record", "success").then(function () {
+                                        swal("Success", "You have successfully deleted a pet record", "success").then(function() {
                                             location.reload();
                                         });
                                     }
@@ -1284,17 +1206,17 @@ $row_u = mysqli_fetch_array($sql_u);
     </script>
 
     <script>
-        $(document).ready(function () {
-            $('.delete_user').click(function (e) {
+        $(document).ready(function() {
+            $('.delete_user').click(function(e) {
                 var id = $(this).val();
                 e.preventDefault();
                 swal({
-                    title: "Warning",
-                    text: "Are you sure you want to delete this item?",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
+                        title: "Warning",
+                        text: "Are you sure you want to delete this item?",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
                     .then((willDelete) => {
                         if (willDelete) {
                             $.ajax({
@@ -1304,10 +1226,10 @@ $row_u = mysqli_fetch_array($sql_u);
                                     'User_ID': id,
                                     'delete_user': true
                                 },
-                                success: function (response) {
+                                success: function(response) {
                                     console.log(response);
                                     if (response == 200) {
-                                        swal("Success", "You have successfully your account", "success").then(function () {
+                                        swal("Success", "You have successfully your account", "success").then(function() {
                                             location.reload();
                                         });
                                     }
