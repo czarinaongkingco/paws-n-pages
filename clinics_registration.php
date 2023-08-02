@@ -13,8 +13,7 @@ include("connection.php");
 <head>
     <meta charset="utf-8">
     <title>Paws N Pages | Registration</title>
-    <link rel="icon" href="https://media.discordapp.net/attachments/1112075552669581332/1113455947420024832/icon.png"
-        type="image/x-icon">
+    <link rel="icon" href="https://media.discordapp.net/attachments/1112075552669581332/1113455947420024832/icon.png" type="image/x-icon">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -31,8 +30,7 @@ include("connection.php");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css'>
     <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
     <!-- Newly added -->
@@ -72,12 +70,12 @@ include("connection.php");
             border-bottom: 4px solid transparent;
             outline: none;
             cursor: pointer;
-            color: #80b434;
+            color: #245e1c;
         }
 
         .nav-link.active {
-            border-bottom-color: #80b434;
-            color: #80b434;
+            border-bottom-color: #245e1c;
+            color: #245e1c;
         }
 
         .samples {
@@ -137,7 +135,7 @@ include("connection.php");
         }
     </style>
     <script>
-        $(function () {
+        $(function() {
             var dtToday = new Date();
 
             var month = dtToday.getMonth() + 1;
@@ -166,57 +164,41 @@ include("connection.php");
                         <form id="regForm" method="POST" enctype="multipart/form-data" runat="server">
                             <br>
                             <h3 class="text-center text-primary" style="text-transform:uppercase">Clinic Registration
-                            </h3>
-                            <div class="samples row g-3 bg-light" id="content1"
-                                style=" border-radius: 15px; padding-left:30px; padding-right:10px;">
+                            </h3><br>
+                            <div class="samples row g-3 bg-light" id="content1" style=" border-radius: 15px; padding-left:30px; padding-right:10px;">
                                 <div class="row g-3 ">
-                                    <ul id="tabs" role="tablist" class="nav nav-underline nav-fill "
-                                        style="padding-bottom:30px;">
+                                    <ul id="tabs" role="tablist" class="nav nav-underline nav-fill " style="padding-bottom:30px;">
                                         <li class="nav-link active"><b><i class="fa fa-user"></i>&nbsp;&nbsp;Personal
                                                 Infromation</b></li>
-                                        <li class="nav-link" disabled><b><i
-                                                    class="fa fa-map-pin"></i>&nbsp;&nbsp;Address</b></li>
-                                        <li class="nav-link" disabled><b><i
-                                                    class="fa fa-building"></i>&nbsp;&nbsp;Clinic Details</b></li>
-                                        <li class="nav-link" disabled><b><i
-                                                    class="fa fa-folder"></i>&nbsp;&nbsp;Requirements</b></li>
+                                        <li class="nav-link" disabled><b><i class="fa fa-map-pin"></i>&nbsp;&nbsp;Address</b></li>
+                                        <li class="nav-link" disabled><b><i class="fa fa-building"></i>&nbsp;&nbsp;Clinic Details</b></li>
+                                        <li class="nav-link" disabled><b><i class="fa fa-folder"></i>&nbsp;&nbsp;Requirements</b></li>
                                     </ul>
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-4 ">
                                         <p class="required">&nbsp;&nbsp;First Name</p>
-                                        <input type="text" name="fname"
-                                            class="form-control  bg-light border-3 px-4 py-3"
-                                            style="border-radius:15px;" placeholder="Enter First Name" required>
+                                        <input type="text" name="fname" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter First Name" required>
                                     </div>
                                     <div class="col-4 ">
                                         <p class="required">&nbsp;&nbsp;Middle Name</p>
-                                        <input type="text" name="mname"
-                                            class="form-control  bg-light border-3 px-4 py-3"
-                                            style="border-radius:15px;" placeholder="Enter Middle Name" required>
+                                        <input type="text" name="mname" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter Middle Name" required>
                                     </div>
                                     <div class="col-4">
                                         <p class="required">&nbsp;&nbsp;Last Name</p>
-                                        <input type="text" name="lname"
-                                            class="form-control  bg-light border-3 px-4 py-3"
-                                            style="border-radius:15px;" placeholder="Enter Last Name" required>
+                                        <input type="text" name="lname" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter Last Name" required>
                                     </div>
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-6">
                                         <p class="required">&nbsp;&nbsp;Contact Number</p>
-                                        <input type="text" name="contactno" pattern="^(09|\+639)\d{9}$" minlength="11"
-                                            maxlength="11" class="form-control bg-light border-3 px-4 py-3"
-                                            style="border-radius: 15px;" placeholder="09XXXXXXXXX" required
-                                            oninput="validateContactNumber(this)">
+                                        <input type="text" name="contactno" pattern="^(09|\+639)\d{9}$" minlength="11" maxlength="11" class="form-control bg-light border-3 px-4 py-3" style="border-radius: 15px;" placeholder="09XXXXXXXXX" required oninput="validateContactNumber(this)">
                                         <span class="error small" id="contactno-error"></span>
 
                                     </div>
                                     <div class="col-6">
                                         <p class="required">&nbsp;&nbsp;Birthdate</p>
-                                        <input type="date" name="bdate" id="bdate"
-                                            class="form-control  bg-light border-3 px-4 py-3"
-                                            style="border-radius:15px;" placeholder="Birthdate" required>
+                                        <input type="date" name="bdate" id="bdate" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Birthdate" required>
                                     </div>
                                 </div>
 
@@ -224,17 +206,12 @@ include("connection.php");
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-5">
                                         <p class="required">&nbsp;&nbsp;Username</p>
-                                        <input type="text" name="uname" class="form-control bg-light border-3 px-4 py-3"
-                                            style="border-radius: 15px;" placeholder="Enter Username" required
-                                            oninput="validateUsername(this)">
+                                        <input type="text" name="uname" class="form-control bg-light border-3 px-4 py-3" style="border-radius: 15px;" placeholder="Enter Username" required oninput="validateUsername(this)">
                                         <span class="error small" id="uname-error"></span>
                                     </div>
                                     <div class="col-7">
                                         <p class="required">&nbsp;&nbsp;Email</p>
-                                        <input type="email" name="email"
-                                            class="form-control bg-light border-3 px-4 py-3"
-                                            style="border-radius: 15px;" placeholder="Enter Email" required
-                                            oninput="validateEmail(this)">
+                                        <input type="email" name="email" class="form-control bg-light border-3 px-4 py-3" style="border-radius: 15px;" placeholder="Enter Email" required oninput="validateEmail(this)">
                                         <span class="error small" id="email-error"></span>
                                     </div>
                                 </div>
@@ -243,12 +220,7 @@ include("connection.php");
                                         <p class="required">&nbsp;&nbsp;Password</p>
                                         <div class="password-container">
                                             <!-- Minimum eight characters, at least one uppercase letter, one lowercase letter and one number: -->
-                                            <input type="password" id="pword" name="pword" data-toggle="tooltip"
-                                                title="Minimum of (8) characters, at least (1) uppercase letter, (1) lowercase letter and (1) number"
-                                                minlength="8" maxlength="16"
-                                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                                                class="form-control  bg-light border-3 px-4 py-3"
-                                                style="border-radius:15px;" placeholder="Enter Password" required>
+                                            <input type="password" id="pword" name="pword" data-toggle="tooltip" title="Minimum of (8) characters, at least (1) uppercase letter, (1) lowercase letter and (1) number" minlength="8" maxlength="16" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter Password" required>
                                             <i class="fa-solid fa-eye" id="eye"></i>
                                         </div>
                                         <p id="message" style="display: none; font-size: 15px; padding-top: 10px;">
@@ -259,40 +231,28 @@ include("connection.php");
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row"
-                                    style="padding-top: 10px; padding-bottom:30px; padding-left:10px; padding-right:10px;">
+                                <div class="row" style="padding-top: 10px; padding-bottom:30px; padding-left:10px; padding-right:10px;">
                                     <div class="col-md-8">
                                     </div>
                                     <div class="col-md-4">
-                                        <button type="button" class="bts btn btn-primary"
-                                            onclick="showContent('content2')"
-                                            style="border-radius: 10px; width:100%; height: 60px;"
-                                            id="nextbtn">Next&nbsp;&nbsp;<i class="bi bi-chevron-right"></i></button>
+                                        <button type="button" class="bts btn btn-primary" onclick="showContent('content2')" style="border-radius: 10px; width:100%; height: 60px;" id="nextbtn">Next&nbsp;&nbsp;<i class="bi bi-chevron-right"></i></button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="samples row g-3 bg-light" id="content2"
-                                style=" border-radius: 15px; padding-left:30px; padding-right:30px;">
+                            <div class="samples row g-3 bg-light" id="content2" style=" border-radius: 15px; padding-left:30px; padding-right:30px;">
                                 <div class="row g-3 ">
-                                    <ul id="tabs" role="tablist" class="nav nav-underline nav-fill "
-                                        style="padding-bottom:30px;">
+                                    <ul id="tabs" role="tablist" class="nav nav-underline nav-fill " style="padding-bottom:30px;">
                                         <li class="nav-link" disabled><b><i class="fa fa-user"></i>&nbsp;&nbsp;Personal
                                                 Infromation</b></li>
-                                        <li class="nav-link active"><b><i
-                                                    class="fa fa-map-pin"></i>&nbsp;&nbsp;Address</b></li>
-                                        <li class="nav-link" disabled><b><i
-                                                    class="fa fa-building"></i>&nbsp;&nbsp;Clinic Details</b></li>
-                                        <li class="nav-link" disabled><b><i
-                                                    class="fa fa-building"></i>&nbsp;&nbsp;Requirements</b></li>
+                                        <li class="nav-link active"><b><i class="fa fa-map-pin"></i>&nbsp;&nbsp;Address</b></li>
+                                        <li class="nav-link" disabled><b><i class="fa fa-building"></i>&nbsp;&nbsp;Clinic Details</b></li>
+                                        <li class="nav-link" disabled><b><i class="fa fa-building"></i>&nbsp;&nbsp;Requirements</b></li>
                                     </ul>
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-12 ">
                                         <p class="required">&nbsp;&nbsp;House/Lot No. & Street</p>
-                                        <input type="text" name="lotno_street"
-                                            class="form-control  bg-light border-3 px-4 py-3"
-                                            style="border-radius:15px;" placeholder="Enter House/Lot No. & Street"
-                                            required>
+                                        <input type="text" name="lotno_street" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter House/Lot No. & Street" required>
                                     </div>
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
@@ -302,11 +262,9 @@ include("connection.php");
                                         $sql = mysqli_query($con, "SELECT BarangayName FROM Barangay");
                                         $data = $sql->fetch_all(MYSQLI_ASSOC);
                                         ?>
-                                        <select id="barangay" class="bg-light border-3 px-4 py-3"
-                                            style="border-radius:15px; border-color:#ced4da; height:60%; width: 100%;"
-                                            name="barangay" placeholder="Barangay" required>
+                                        <select id="barangay" class="bg-light border-3 px-4 py-3" style="border-radius:15px; border-color:#ced4da; height:60%; width: 100%;" name="barangay" placeholder="Barangay" required>
                                             <option selected disabled>-- Please choose a barangay --</option>
-                                            <?php foreach ($data as $row): ?>
+                                            <?php foreach ($data as $row) : ?>
                                                 <option value="<?= htmlspecialchars($row['BarangayName']) ?>">
                                                     <?= htmlspecialchars($row['BarangayName']) ?>
                                                 </option>
@@ -316,80 +274,57 @@ include("connection.php");
                                     </div>
                                     <div class="col-6">
                                         <p>&nbsp;&nbsp;City</p>
-                                        <input type="text" name="city" class="form-control  bg-light border-3 px-4 py-3"
-                                            style="border-radius:15px;" value="Quezon City" readonly>
+                                        <input type="text" name="city" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" value="Quezon City" readonly>
                                     </div>
                                 </div>
                                 <div class="row" style="padding-bottom:30px;">
                                     <div class="col-6">
                                         <p>&nbsp;&nbsp;Province</p>
-                                        <input type="text" name="province"
-                                            class="form-control  bg-light border-3 px-4 py-3"
-                                            style="border-radius:15px;" value="NCR" readonly>
+                                        <input type="text" name="province" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" value="NCR" readonly>
                                     </div>
                                     <div class="col-6">
                                         <p class="required">&nbsp;&nbsp;ZIP Code</p>
-                                        <input type="text" name="zipcode"
-                                            class="form-control  bg-light border-3 px-4 py-3"
-                                            style="border-radius:15px;" placeholder="Enter ZIP Code" required>
+                                        <input type="text" name="zipcode" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Enter ZIP Code" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <input type="hidden" name="utype" class="form-control  bg-light border-3 px-4 py-3"
-                                        style="border-radius:15px;" placeholder="User Type"
-                                        value="Clinic Administrator">
+                                    <input type="hidden" name="utype" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="User Type" value="Clinic Administrator">
                                 </div>
                                 <div class="row" style="padding-bottom:30px; padding-left:10px; padding-right:10px;">
                                     <div class="col-md-4">
-                                        <button type="button" onclick="showContent('content1')"
-                                            class="btss btn btn-primary"
-                                            style="border-radius: 10px; width:100%; height: 60px;" id="nextbtn"><i
-                                                class="bi bi-chevron-left"></i>&nbsp;&nbsp;Previous</button>
+                                        <button type="button" onclick="showContent('content1')" class="btss btn btn-primary" style="border-radius: 10px; width:100%; height: 60px;" id="nextbtn"><i class="bi bi-chevron-left"></i>&nbsp;&nbsp;Previous</button>
                                     </div>
                                     <div class="col-md-4"></div>
                                     <div class="col-md-4">
-                                        <button type="button" class="bts btn btn-primary"
-                                            onclick="showContent('content3')"
-                                            style="border-radius: 10px; width:100%; height: 60px;"
-                                            id="nextbtn">Next&nbsp;&nbsp;<i class="bi bi-chevron-right"></i></button>
+                                        <button type="button" class="bts btn btn-primary" onclick="showContent('content3')" style="border-radius: 10px; width:100%; height: 60px;" id="nextbtn">Next&nbsp;&nbsp;<i class="bi bi-chevron-right"></i></button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="samples row g-3 bg-light" id="content3"
-                                style=" border-radius: 15px; padding-left:30px; padding-right:30px;">
+                            <div class="samples row g-3 bg-light" id="content3" style=" border-radius: 15px; padding-left:30px; padding-right:30px;">
                                 <div class="row g-3 ">
-                                    <ul id="tabs" role="tablist" class="nav nav-underline nav-fill "
-                                        style="padding-bottom:30px;">
+                                    <ul id="tabs" role="tablist" class="nav nav-underline nav-fill " style="padding-bottom:30px;">
                                         <li class="nav-link" disabled><b><i class="fa fa-user"></i>&nbsp;&nbsp;Personal
                                                 Infromation</b></li>
-                                        <li class="nav-link" disabled><b><i
-                                                    class="fa fa-map-pin"></i>&nbsp;&nbsp;Address</b></li>
+                                        <li class="nav-link" disabled><b><i class="fa fa-map-pin"></i>&nbsp;&nbsp;Address</b></li>
                                         <li class="nav-link active"><b><i class="fa fa-building"></i>&nbsp;&nbsp;Clinic
                                                 Details</b></li>
-                                        <li class="nav-link" disabled><b><i
-                                                    class="fa fa-folder"></i>&nbsp;&nbsp;Requirements</b></li>
+                                        <li class="nav-link" disabled><b><i class="fa fa-folder"></i>&nbsp;&nbsp;Requirements</b></li>
                                     </ul>
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-12">
                                         <p class="required">Clinic Name</p>
-                                        <input type="text" name="clinicname"
-                                            class="form-control bg-light border-3 px-4 py-3" style="border-radius:15px;"
-                                            placeholder="Clinic Name" required>
+                                        <input type="text" name="clinicname" class="form-control bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Clinic Name" required>
                                     </div>
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
                                     <div class="col-6">
                                         <p class="required">Opening Hours</p>
-                                        <input type="time" name="openhours"
-                                            class="form-control bg-light border-3 px-4 py-3" style="border-radius:15px;"
-                                            required>
+                                        <input type="time" name="openhours" class="form-control bg-light border-3 px-4 py-3" style="border-radius:15px;" required>
                                     </div>
                                     <div class="col-6">
                                         <p class="required">Closing Hours</p>
-                                        <input type="time" name="closehours"
-                                            class="form-control bg-light border-3 px-4 py-3" style="border-radius:15px;"
-                                            required>
+                                        <input type="time" name="closehours" class="form-control bg-light border-3 px-4 py-3" style="border-radius:15px;" required>
                                     </div>
                                 </div>
                                 <div class="row" style="padding-bottom:10px;">
@@ -412,8 +347,7 @@ include("connection.php");
                                     </div>
                                     <div class="col-6">
                                         <p class="required">Subscription Type</p>
-                                        <select name="subtype" id="subtype" class="bg-light border-3 px-4 py-3"
-                                            style="border-radius:15px; border-color:#ced4da; height:40%; width: 100%;">
+                                        <select name="subtype" id="subtype" class="bg-light border-3 px-4 py-3" style="border-radius:15px; border-color:#ced4da; height:40%; width: 100%;">
                                             <option disabled selected>-- Select an option --</option>
                                             <option value="Monthly">Monthly</option>
                                             <option value="Annually">Annually</option>
@@ -423,83 +357,56 @@ include("connection.php");
                                 <br>
                                 <div class="row" style="padding-bottom:30px; padding-left:10px; padding-right:10px;">
                                     <div class="col-md-4">
-                                        <button type="button" onclick="showContent('content2')"
-                                            class="btss btn btn-primary"
-                                            style="border-radius: 10px; width:100%; height: 60px;" id="nextbtn"><i
-                                                class="bi bi-chevron-left"></i>&nbsp;&nbsp;Previous</button>
+                                        <button type="button" onclick="showContent('content2')" class="btss btn btn-primary" style="border-radius: 10px; width:100%; height: 60px;" id="nextbtn"><i class="bi bi-chevron-left"></i>&nbsp;&nbsp;Previous</button>
                                     </div>
                                     <div class="col-md-4"></div>
                                     <div class="col-md-4">
-                                        <button type="button" class="bts btn btn-primary"
-                                            onclick="showContent('content4')"
-                                            style="border-radius: 10px; width:100%; height: 60px;"
-                                            id="nextbtn">Next&nbsp;&nbsp;<i class="bi bi-chevron-right"></i></button>
+                                        <button type="button" class="bts btn btn-primary" onclick="showContent('content4')" style="border-radius: 10px; width:100%; height: 60px;" id="nextbtn">Next&nbsp;&nbsp;<i class="bi bi-chevron-right"></i></button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="samples row g-3 bg-light" id="content4"
-                                style=" border-radius: 15px; padding-left:30px; padding-right:30px;">
+                            <div class="samples row g-3 bg-light" id="content4" style=" border-radius: 15px; padding-left:30px; padding-right:30px;">
                                 <div class="row g-3 ">
-                                    <ul id="tabs" role="tablist" class="nav nav-underline nav-fill "
-                                        style="padding-bottom:30px;">
+                                    <ul id="tabs" role="tablist" class="nav nav-underline nav-fill " style="padding-bottom:30px;">
                                         <li class="nav-link" disabled><b><i class="fa fa-user"></i>&nbsp;&nbsp;Personal
                                                 Infromation</b></li>
-                                        <li class="nav-link" disabled><b><i
-                                                    class="fa fa-map-pin"></i>&nbsp;&nbsp;Address</b></li>
-                                        <li class="nav-link" disabled><b><i
-                                                    class="fa fa-building"></i>&nbsp;&nbsp;Clinic Details</b></li>
-                                        <li class="nav-link active"><b><i
-                                                    class="fa fa-folder"></i>&nbsp;&nbsp;Requirements</b></li>
+                                        <li class="nav-link" disabled><b><i class="fa fa-map-pin"></i>&nbsp;&nbsp;Address</b></li>
+                                        <li class="nav-link" disabled><b><i class="fa fa-building"></i>&nbsp;&nbsp;Clinic Details</b></li>
+                                        <li class="nav-link active"><b><i class="fa fa-folder"></i>&nbsp;&nbsp;Requirements</b></li>
                                     </ul>
                                 </div>
                                 <div class="row" style="padding-bottom:20px;">
                                     <div class="col-6">
                                         <p class="required"> Clinic Profile Picture </p>
                                         <!-- <img id="cliniclogo" src="" width="100px" /> -->
-                                        <input type="file" name="cliniclogo"
-                                            class="form-control  bg-light border-3 px-4 py-3"
-                                            style="border-radius:15px;" accept="image/*" />
+                                        <input type="file" name="cliniclogo" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" accept="image/*" />
                                     </div>
                                     <div class="col-6">
                                         <p class="required"> Upload DTI Certificate of Registration </p>
-                                        <input type="file" name="dticert"
-                                            class="form-control  bg-light border-3 px-4 py-3"
-                                            style="border-radius:15px;" placeholder="DTI Certificate of Registration"
-                                            required>
+                                        <input type="file" name="dticert" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="DTI Certificate of Registration" required>
                                     </div>
                                 </div>
                                 <div class="row" style="padding-bottom:20px;">
                                     <div class="col-6">
                                         <p class="required">Upload Business Permit</p>
-                                        <input type="file" name="businesspermit"
-                                            class="form-control  bg-light border-3 px-4 py-3"
-                                            style="border-radius:15px;" placeholder="Business Permit" required>
+                                        <input type="file" name="businesspermit" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Business Permit" required>
                                     </div>
                                     <div class="col-6">
                                         <p class="required">Upload DTI Registered Business Name</p>
-                                        <input type="file" name="businessname"
-                                            class="form-control  bg-light border-3 px-4 py-3"
-                                            style="border-radius:15px;" placeholder="Business Name" required>
+                                        <input type="file" name="businessname" class="form-control  bg-light border-3 px-4 py-3" style="border-radius:15px;" placeholder="Business Name" required>
                                     </div>
                                 </div>
                                 <div class="col-12" style="display: none;">
-                                    <input type="text" name="subscriptionstatus"
-                                        class="form-control  bg-light border-0 px-4 py-3"
-                                        placeholder="Subscription Status" value="Inactive">
+                                    <input type="text" name="subscriptionstatus" class="form-control  bg-light border-0 px-4 py-3" placeholder="Subscription Status" value="Inactive">
                                 </div>
                                 <br>
                                 <div class="row" style="padding-bottom:30px; padding-left:10px; padding-right:10px;">
                                     <div class="col-md-4">
-                                        <button type="button" onclick="showContent('content3')"
-                                            class="btss btn btn-primary"
-                                            style="border-radius: 10px; width:100%; height: 60px;" id="nextbtn"><i
-                                                class="bi bi-chevron-left"></i>&nbsp;&nbsp;Previous</button>
+                                        <button type="button" onclick="showContent('content3')" class="btss btn btn-primary" style="border-radius: 10px; width:100%; height: 60px;" id="nextbtn"><i class="bi bi-chevron-left"></i>&nbsp;&nbsp;Previous</button>
                                     </div>
                                     <div class="col-md-4"></div>
                                     <div class="col-md-4">
-                                        <button type="submit" class="btn btn-primary"
-                                            style="border-radius: 10px; width:100%; height:60px;" id="submitbtn"
-                                            name="submitbtn">Submit</button>
+                                        <button type="submit" class="btn btn-primary" style="border-radius: 10px; width:100%; height:60px;" id="submitbtn" name="submitbtn">Submit</button>
                                     </div>
                                 </div>
                             </div>
@@ -517,7 +424,7 @@ include("connection.php");
         const passwordInput = document.querySelector("#pword");
         const eye = document.querySelector("#eye");
 
-        eye.addEventListener("click", function () {
+        eye.addEventListener("click", function() {
             this.classList.toggle("fa-eye-slash")
             const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
             passwordInput.setAttribute("type", type)
@@ -531,17 +438,17 @@ include("connection.php");
         var length = document.getElementById("length");
 
         // When the user clicks on the password field, show the message box
-        myInput.onfocus = function () {
+        myInput.onfocus = function() {
             document.getElementById("message").style.display = "block";
         }
 
         // When the user clicks outside of the password field, hide the message box
-        myInput.onblur = function () {
+        myInput.onblur = function() {
             document.getElementById("message").style.display = "none";
         }
 
         // When the user starts to type something inside the password field
-        myInput.onkeyup = function () {
+        myInput.onkeyup = function() {
             // Validate lowercase letters
             var lowerCaseLetters = /[a-z]/g;
             if (myInput.value.match(lowerCaseLetters)) {
@@ -794,8 +701,6 @@ include("connection.php");
                 echo '</script>';
             }
         }
-
-
     }
     ?>
     <script>
@@ -833,7 +738,6 @@ include("connection.php");
                 emailError.textContent = "";
             }
         }
-
     </script>
 
 </body>
