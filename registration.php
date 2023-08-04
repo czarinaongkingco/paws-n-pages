@@ -439,13 +439,20 @@ include("connection.php");
         $em_stmt->execute();
         $em_result = $em_stmt->get_result();
 
+        // To check if contact number already exists
+        $cn_query = "SELECT * FROM users WHERE ContactNo = ?";
+        $cn_stmt = $con->prepare($cn_query);
+        $cn_stmt->bind_param("s", $contactno);
+        $cn_stmt->execute();
+        $cn_result = $cn_stmt->get_result();
 
-        if ($un_result->num_rows > 0 || $em_result->num_rows > 0) {
+
+        if ($un_result->num_rows > 0 || $em_result->num_rows > 0 || $cn_result->num_rows > 0) {
             echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
             echo '<script>';
             echo 'swal({
                                             title: "Error",
-                                            text: "Username or email is already taken",
+                                            text: "User credentials are already taken",
                                             icon: "error",
                                             html: true,
                                             showCancelButton: true,

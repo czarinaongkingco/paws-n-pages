@@ -7,6 +7,7 @@
 <head>
     <meta charset="utf-8">
     <title>Paws N Pages</title>
+    <link rel="icon" href="https://media.discordapp.net/attachments/1112075552669581332/1113455947420024832/icon.png" type="image/x-icon">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -85,7 +86,9 @@
                                     Owner</button></a>
                         </div>
 
-                        <div class="col-12"></div>
+                        <div class="col-12 text-center">
+                            <p style="color:gray; font-style: italic;">Only ages 18 and above can register to Paws N Pages </p>
+                        </div>
                     </div>
 
                 </div>

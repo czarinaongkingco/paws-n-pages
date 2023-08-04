@@ -243,7 +243,7 @@ include("connection.php");
                                 <div class="row g-3 ">
                                     <ul id="tabs" role="tablist" class="nav nav-underline nav-fill " style="padding-bottom:30px;">
                                         <li class="nav-link" disabled><b><i class="fa fa-user"></i>&nbsp;&nbsp;Personal
-                                                Infromation</b></li>
+                                                Information</b></li>
                                         <li class="nav-link active"><b><i class="fa fa-map-pin"></i>&nbsp;&nbsp;Address</b></li>
                                         <li class="nav-link" disabled><b><i class="fa fa-building"></i>&nbsp;&nbsp;Clinic Details</b></li>
                                         <li class="nav-link" disabled><b><i class="fa fa-building"></i>&nbsp;&nbsp;Requirements</b></li>
@@ -606,7 +606,7 @@ include("connection.php");
         $sequence = rand(00000, 99999);
         $sub_no = $code . $sequence;
 
-        // To check if user credentials already exists
+        // To check if username and email already exist
         $un_query = "SELECT * FROM users WHERE Username = ?";
         $un_stmt = $con->prepare($un_query);
         $un_stmt->bind_param("s", $uname);
@@ -619,12 +619,26 @@ include("connection.php");
         $em_stmt->execute();
         $em_result = $em_stmt->get_result();
 
-        if ($un_result->num_rows > 0 || $em_result->num_rows > 0) {
+        // To check if address already exists
+        $ad_query = "SELECT * FROM address WHERE LotNo_Street = ?";
+        $ad_stmt = $con->prepare($ad_query);
+        $ad_stmt->bind_param("s", $lotno_street);
+        $ad_stmt->execute();
+        $ad_result = $ad_stmt->get_result();
+
+        // To check if contact number already exists
+        $cn_query = "SELECT * FROM users WHERE ContactNo = ?";
+        $cn_stmt = $con->prepare($cn_query);
+        $cn_stmt->bind_param("s", $contactno);
+        $cn_stmt->execute();
+        $cn_result = $cn_stmt->get_result();
+
+        if ($un_result->num_rows > 0 || $em_result->num_rows > 0 || $ad_result->num_rows > 0 || $cn_result->num_rows > 0) {
             echo '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>';
             echo '<script>';
             echo 'swal({
                                             title: "Error",
-                                            text: "Username or email is already taken",
+                                            text: "User credentials are already taken",
                                             icon: "error",
                                             html: true,
                                             showCancelButton: true,
