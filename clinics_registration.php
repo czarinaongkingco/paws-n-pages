@@ -169,7 +169,7 @@ include("connection.php");
                                 <div class="row g-3 ">
                                     <ul id="tabs" role="tablist" class="nav nav-underline nav-fill " style="padding-bottom:30px;">
                                         <li class="nav-link active"><b><i class="fa fa-user"></i>&nbsp;&nbsp;Personal
-                                                Infromation</b></li>
+                                                Information</b></li>
                                         <li class="nav-link" disabled><b><i class="fa fa-map-pin"></i>&nbsp;&nbsp;Address</b></li>
                                         <li class="nav-link" disabled><b><i class="fa fa-building"></i>&nbsp;&nbsp;Clinic Details</b></li>
                                         <li class="nav-link" disabled><b><i class="fa fa-folder"></i>&nbsp;&nbsp;Requirements</b></li>
@@ -304,7 +304,7 @@ include("connection.php");
                                 <div class="row g-3 ">
                                     <ul id="tabs" role="tablist" class="nav nav-underline nav-fill " style="padding-bottom:30px;">
                                         <li class="nav-link" disabled><b><i class="fa fa-user"></i>&nbsp;&nbsp;Personal
-                                                Infromation</b></li>
+                                                Information</b></li>
                                         <li class="nav-link" disabled><b><i class="fa fa-map-pin"></i>&nbsp;&nbsp;Address</b></li>
                                         <li class="nav-link active"><b><i class="fa fa-building"></i>&nbsp;&nbsp;Clinic
                                                 Details</b></li>
@@ -369,7 +369,7 @@ include("connection.php");
                                 <div class="row g-3 ">
                                     <ul id="tabs" role="tablist" class="nav nav-underline nav-fill " style="padding-bottom:30px;">
                                         <li class="nav-link" disabled><b><i class="fa fa-user"></i>&nbsp;&nbsp;Personal
-                                                Infromation</b></li>
+                                                Information</b></li>
                                         <li class="nav-link" disabled><b><i class="fa fa-map-pin"></i>&nbsp;&nbsp;Address</b></li>
                                         <li class="nav-link" disabled><b><i class="fa fa-building"></i>&nbsp;&nbsp;Clinic Details</b></li>
                                         <li class="nav-link active"><b><i class="fa fa-folder"></i>&nbsp;&nbsp;Requirements</b></li>

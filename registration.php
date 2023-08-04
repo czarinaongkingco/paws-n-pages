@@ -164,7 +164,7 @@ include("connection.php");
                             <div class="samples row g-3 bg-light" id="content1" style=" border-radius: 15px;  padding-left:30px; padding-right:10px;">
                                 <ul id="tabs" role="tablist" class="nav nav-underline nav-fill " style="padding-bottom:30px;">
                                     <li class="nav-link active"><b><i class="fa fa-user"></i>&nbsp;&nbsp;Personal
-                                            Infromation</b></li>
+                                            Information</b></li>
                                     <li class="nav-link" disabled><b><i class="fa fa-map-pin"></i>&nbsp;&nbsp;Address</b></li>
                                 </ul>
                                 <div class="row" style="padding-bottom:10px;">
@@ -242,7 +242,7 @@ include("connection.php");
                             <div class="samples row g-3 bg-light" id="content2" style="border-radius: 15px; padding-left:30px; padding-right:10px;">
                                 <ul id="tabs" role="tablist" class="nav nav-underline nav-fill " style="padding-bottom:30px;">
                                     <li class="nav-link" disabled><b><i class="fa fa-user"></i>&nbsp;&nbsp;Personal
-                                            Infromation</b></li>
+                                            Information</b></li>
                                     <li class="nav-link active" disabled><b><i class="fa fa-map-pin"></i>&nbsp;&nbsp;Address</b></li>
                                 </ul>
                                 <div class="row" style="padding-bottom:10px;">
